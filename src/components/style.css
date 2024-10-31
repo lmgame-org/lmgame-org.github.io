@@ -1,0 +1,75 @@
+/* Styles for the entire board */
+.board {
+    text-align: center;
+}
+
+/* Styles for the leaderboard title */
+.board .leaderboard {
+    margin-bottom: 1em;
+}
+
+/* Styles for the column names */
+.board .columnnames {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    font-weight: bold;
+    margin: 10px 0;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    padding: 0 20px;
+    /* Align with profile item padding */
+    max-width: 600px;
+    /* Optional: limit width for centering */
+    margin: 0 auto;
+}
+
+/* Style for individual column items */
+.board .columnnames div {
+    flex: 1;
+    text-align: left;
+}
+
+/* Align the second column (Skill Strength) to the right */
+.board .columnnames .skill-strength {
+    text-align: right;
+}
+
+/* Profile container */
+#profile {
+    margin-top: 3em;
+    max-width: 600px;
+    /* Align max width with .columnnames */
+    margin: 0 auto;
+}
+
+/* Profile item layout */
+#profile .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    /* Match padding with .columnnames */
+    gap: 1em;
+    text-align: left;
+    margin-bottom: 2em;
+    border-bottom: 1px solid #eee;
+}
+
+/* Profile image */
+#profile .flex img {
+    width: 20%;
+    border-radius: 50%;
+}
+
+/* Profile information */
+#profile .flex .info {
+    flex: 1;
+    padding-left: 1em;
+}
+
+/* Skill strength alignment */
+#profile .flex .skill-strength {
+    text-align: right;
+    font-weight: bold;
+}
