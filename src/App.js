@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import {Routes, Route, Link } from 'react-router-dom';
+
+import AkinatorGame from './pages/AkinatorGame';
+import TabooGame from './pages/TabooGame';
+import BluffingGame from './pages/BluffingGame';
+import HomePage from './pages/HomePage';
+
+import Navigation from './Navigation';
+import Footer from './Footer'; 
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Link to="/" className="home-button">Home</Link>  
+      
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/akinator" element={<AkinatorGame />} />
+        <Route path="/taboo" element={<TabooGame />} />
+        <Route path="/bluffing" element={<BluffingGame />} />
+      </Routes>
+      <Navigation />
+      <Footer />
     </div>
   );
 }
 
 export default App;
+
+
