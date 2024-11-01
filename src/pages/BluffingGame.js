@@ -4,7 +4,8 @@ import { UseEffectScroll } from 'react-use-smooth-scroll'
 import 'react-use-smooth-scroll/dist/index.css'
 import TextContainer from '../TextContainer';
 import './PageStyle.css';
-import Board from './components/board';
+import BoardContainer from './components/BoardContainer';
+
 
 
 const BluffingGame = () => {
@@ -17,10 +18,7 @@ const BluffingGame = () => {
       />
       <UseEffectScroll>
         <section className='bgSec bgTabooSec1'>
-          <Board
-            title="Top Players Leaderboard"
-            columnnames={["Player Name", "Skill Level"]}>
-          </Board>
+          <BoardContainer />
         </section>
         <section className='bgSec bgTabooSec2'>
           <h1>Section 2</h1>

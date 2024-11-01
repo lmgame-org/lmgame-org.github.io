@@ -1,9 +1,9 @@
 import React from 'react';
 import Board from './board';
+import './style.css'
 
 
-
-function TextContainer({ title, content1, content2 }) {
+function BoardContainer() {
     return (
       <div class="parent-container">
         <div className="container">
@@ -16,5 +16,5 @@ function TextContainer({ title, content1, content2 }) {
     );
   }
   
-  export default TextContainer;
+  export default BoardContainer;
   
