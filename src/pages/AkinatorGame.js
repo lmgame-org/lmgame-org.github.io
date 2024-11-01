@@ -5,6 +5,7 @@ import 'react-use-smooth-scroll/dist/index.css'
 import TextContainer from '../TextContainer';
 import './PageStyle.css';
 
+
 const AkinatorGame = () => {
   return (
     <div>
