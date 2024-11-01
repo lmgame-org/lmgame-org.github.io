@@ -19,10 +19,10 @@ const BluffingGame = () => {
       />
       <UseEffectScroll>
         <section className='bgSec bgTabooSec1'>
-          <Board/>
+          <BoardContainer/>
         </section>
         <section className='bgSec bgTabooSec2'>
-          <h1>Section 2</h1>
+          <BoardContainer title='Top Model LeaderBoard' columnnames={['Model Name', 'Skill Strength']}/>
         </section>
         <section className='bgSec bgTabooSec3'>
           <h1>Section 3</h1>

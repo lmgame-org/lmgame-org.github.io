@@ -7,7 +7,7 @@
   flex-direction: column;
   background-size: cover;
   background-position: center;
-  opacity: 0.2; /* Lower the opacity to make the background images less solid */
+  opacity: 1; /* Lower the opacity to make the background images less solid */
 }
 
 

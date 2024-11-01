@@ -3,13 +3,13 @@ import Board from './board';
 import './style.css'
 
 
-function BoardContainer() {
+function BoardContainer({ title = "Top Player LeaderBoard", columnnames = ["User Name", "Skill Strength"] }) {
     return (
       <div class="parent-container">
         <div className="container">
             <Board
-                title="Top Players Leaderboard"
-                columnnames={["Player Name", "Skill Level"]}>
+                title={title}
+                columnnames={columnnames}>
             </Board>
         </div>
       </div>
