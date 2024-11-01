@@ -5,6 +5,7 @@ import 'react-use-smooth-scroll/dist/index.css'
 import TextContainer from '../TextContainer';
 import './PageStyle.css';
 import BoardContainer from './components/BoardContainer';
+import Board from './components/board'
 
 
 
@@ -18,7 +19,7 @@ const BluffingGame = () => {
       />
       <UseEffectScroll>
         <section className='bgSec bgTabooSec1'>
-          <BoardContainer />
+          <Board/>
         </section>
         <section className='bgSec bgTabooSec2'>
           <h1>Section 2</h1>

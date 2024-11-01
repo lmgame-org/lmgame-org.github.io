@@ -9,7 +9,7 @@ import HomePage from './pages/HomePage';
 
 import Footer from './Footer'; 
 import Header from './Header'; 
-
+import './pages/components/style.css'
 
 
 function App() {
