@@ -9,14 +9,40 @@
 
 .container {
     width: 100%;
-    /* 100% width to be fully responsive */
     max-width: 800px;
-    /* Limit maximum width for larger screens */
+    height: 90vh;
+    /* Max height based on viewport */
+    overflow-y: auto;
+    /* Enable scroll if content exceeds height */
     padding: 1rem;
     margin: 1rem auto;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+/* WebKit-based browsers (Chrome, Safari) */
+.container::-webkit-scrollbar {
+    width: 6px;
+    /* Set width for a smaller scrollbar */
+    background-color: transparent;
+    /* Hide scrollbar track by default */
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    /* Hide thumb initially */
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    /* Smooth transition */
+}
+
+/* Show scrollbar thumb on hover */
+.container:hover::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    /* Visible on hover */
+    border-radius: 4px;
 }
 
 /* General Styles for the entire board */
