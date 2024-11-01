@@ -7,23 +7,20 @@ import TabooGame from './pages/TabooGame';
 import BluffingGame from './pages/BluffingGame';
 import HomePage from './pages/HomePage';
 
-import Navigation from './Navigation';
 import Footer from './Footer'; 
-
+import Header from './Header'; 
 
 
 function App() {
   return (
     <div className="App">
-      <Link to="/" className="home-button">Home</Link>  
-      
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/akinator" element={<AkinatorGame />} />
         <Route path="/taboo" element={<TabooGame />} />
         <Route path="/bluffing" element={<BluffingGame />} />
       </Routes>
-      <Navigation />
       <Footer />
     </div>
   );
