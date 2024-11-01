@@ -1,0 +1,14 @@
+.parent-container {
+    display: flex;
+    justify-content: center; 
+    width: 100%; 
+  }
+
+  .container {
+    width: 50%; 
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }

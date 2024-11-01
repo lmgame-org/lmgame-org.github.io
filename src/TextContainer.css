@@ -1,7 +1,7 @@
 .parent-container {
     display: flex;
-    justify-content: center;  /* Centers horizontally */
-    width: 100%;             /* Full viewport height */
+    justify-content: center; 
+    width: 100%; 
   }
 
 .text-container {
@@ -12,6 +12,7 @@
     border-radius: 8px;
     background-color: #f9f9f9;
     
+    
   }
   
   .text-container h3 {
@@ -19,12 +20,14 @@
     color: #333;
   }
   
-  .text-container p {
+  .text-container p, .text-container ol {
     margin: 10px 0 0;
     line-height: 1.6;
     color: #666;
+    text-align: left;  
   }
   .underline {
     text-decoration: underline;
   }
+  
   

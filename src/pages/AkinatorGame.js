@@ -12,7 +12,7 @@ const AkinatorGame = () => {
       <h1>Game Arena - Akinator Game</h1>
       <TextContainer
         title="Akinator Game Introduction"
-        content="In the Akinator game, challenge our AI to a duel of wits! The AI, based on the classic web genie game, asks you a series of yes-or-no questions to guess the object you’re thinking of. This game tests the AI's <span class='underline'>deductive reasoning and multi-hop thinking</span> by requiring it to narrow down possibilities through each question answered, simulating a chain of logical deductions based on your responses. How quickly can the AI pinpoint your chosen object with the least amount of clues?"
+        content1="In the Akinator game, challenge our AI to a duel of wits! The AI, based on the classic web genie game, asks you a series of yes-or-no questions to guess the object you’re thinking of. This game tests the AI's <span class='underline'>deductive reasoning and multi-hop thinking</span> by requiring it to narrow down possibilities through each question answered, simulating a chain of logical deductions based on your responses. How quickly can the AI pinpoint your chosen object with the least amount of clues?"
       />
       <UseEffectScroll>
         <section className='bgSec bgTabooSec1'>
