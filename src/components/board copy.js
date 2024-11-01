@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Profiles from './profiles';
 import { Leaderboard } from './database';
 
-export default function Board( {title = "LeaderBoard", columnnames = ["User Name", "Skill Strength"]}) {
+export default function Board() {
     const [sortOrder, setSortOrder] = useState("descending"); // State to track sort order
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -20,12 +20,12 @@ export default function Board( {title = "LeaderBoard", columnnames = ["User Name
 
   return (
     <div className="board">
-        <h1 className='leaderboard'>{title}</h1>
+        <h1 className='leaderboard'>Leaderboard</h1>
 
           {/* Search Input */}
           <input
               type="text"
-              placeholder={`Filter ${columnnames[0]}...`}
+              placeholder="Filter usernames..."
               value={searchQuery}
               onChange={handleSearchChange}
               className="search-input"
@@ -33,21 +33,16 @@ export default function Board( {title = "LeaderBoard", columnnames = ["User Name
 
           {/* Column Headers */}
           <div className="columnnames">
-              <div className="column-item objectname">{columnnames[0]}</div>
-
-              {/* Second column with sorting functionality */}
-              <div className="column-item skill-strength">
-                  {columnnames[1]}
+              <div className="column-item objectname">User Names</div>
+              <div className="column-item skill-strength">Skill Strength
                   <button onClick={toggleSortOrder} className="sort-button">
                       {sortOrder === "ascending" ? "↑" : "↓"}
                   </button>
               </div>
           </div>
 
-          {/* Scrollable Profile Rows */}
-          <div className="profiles-container">
-              <Profiles Leaderboard={filteredLeaderboard} />
-          </div>
+          {/* Profile Rows */}
+          <Profiles Leaderboard={between(Leaderboard,  sortOrder, searchQuery)} />
 
           {/* Row Count Display */}
           <div className="row-count">

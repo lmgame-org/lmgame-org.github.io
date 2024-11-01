@@ -1,75 +1,153 @@
-/* Styles for the entire board */
+/* General Styles for the entire board */
 .board {
     text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* Styles for the leaderboard title */
 .board .leaderboard {
+    padding-right: 11.8em;
     margin-bottom: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
-/* Styles for the column names */
+/* Search input styling */
+.board .search-input {
+    width: 100%;
+    max-width: 540px;
+    padding: 8px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Highlighted text style */
+.board .highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Styles for the column headers */
 .board .columnnames {
     display: flex;
     justify-content: space-between;
-    gap: 1em;
     font-weight: bold;
-    margin: 10px 0;
     border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
-    padding: 0 20px;
-    /* Align with profile item padding */
+    padding: 0.75em 1.5em;
     max-width: 600px;
-    /* Optional: limit width for centering */
-    margin: 0 auto;
+    margin: 0 auto 10px;
 }
 
-/* Style for individual column items */
-.board .columnnames div {
+/* Column header items */
+.board .columnnames .column-item {
     flex: 1;
     text-align: left;
+    font-size: 1em;
 }
 
-/* Align the second column (Skill Strength) to the right */
 .board .columnnames .skill-strength {
     text-align: right;
 }
 
-/* Profile container */
+/* Row count display at the bottom left */
+.board .row-count {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 1.5em;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Profiles container with scroll */
+.board .profiles-container {
+    max-height: 825px;
+    overflow-y: auto;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    /* Make scrollbar thinner */
+    scrollbar-color: #ccc transparent;
+    /* Color for thumb and background */
+}
+
+/* WebKit-based browsers (Chrome, Safari) */
+.board .profiles-container::-webkit-scrollbar {
+    width: 6px;
+    /* Make scrollbar thinner */
+}
+
+.board .profiles-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    /* Scrollbar color */
+    border-radius: 4px;
+    /* Rounded scrollbar */
+}
+
+.board .profiles-container::-webkit-scrollbar-track {
+    background: transparent;
+    /* Transparent track */
+}
+
+/* Profile section styling */
 #profile {
     margin-top: 3em;
     max-width: 600px;
-    /* Align max width with .columnnames */
     margin: 0 auto;
 }
 
-/* Profile item layout */
+/* Profile row layout */
 #profile .flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    /* Match padding with .columnnames */
+    border-bottom: 1px solid #eee;
     gap: 1em;
     text-align: left;
-    margin-bottom: 2em;
-    border-bottom: 1px solid #eee;
 }
 
-/* Profile image */
-#profile .flex img {
-    width: 20%;
+/* Profile image styling */
+.profile-img {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 /* Profile information */
 #profile .flex .info {
     flex: 1;
     padding-left: 1em;
+    font-size: 1em;
+    color: #333;
 }
 
 /* Skill strength alignment */
 #profile .flex .skill-strength {
     text-align: right;
     font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Sort button styling */
+.sort-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    color: #4CAF50;
+    margin-left: 5px;
+}
+
+.sort-button:hover {
+    color: #388E3C;
+    /* Darker shade on hover */
 }
