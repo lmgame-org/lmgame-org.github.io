@@ -19,6 +19,10 @@ function Item(data){
                             {/* <img src={value.img} alt="" /> */}
             
                             <div className="info">
+                                {/* Display rank with conditional styling */}
+                                <span className={`rank ${value.rank <= 3 ? 'top-three' : ''}`}>
+                                    #{value.rank}
+                                </span>
                                 <h3 className='name text-dark'>{value.name}</h3>    
                                 {/* <span>{value.location}</span> */}
                             </div>                

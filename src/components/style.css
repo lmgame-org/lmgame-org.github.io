@@ -1,13 +1,17 @@
+/* Import custom font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700&display=swap');
+
 /* General Styles for the entire board */
 .board {
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
+    font-family: 'Chivo', sans-serif;
 }
 
 /* Styles for the leaderboard title */
 .board .leaderboard {
-    padding-right: 11.8em;
+    padding-right: 12em;
     margin-bottom: 1em;
     font-size: 1.5em;
     font-weight: bold;
@@ -16,7 +20,7 @@
 /* Search input styling */
 .board .search-input {
     width: 100%;
-    max-width: 540px;
+    max-width: 570px;
     padding: 8px;
     margin: 10px 0 20px;
     border: 1px solid #ccc;
@@ -63,7 +67,7 @@
 
 /* Profiles container with scroll */
 .board .profiles-container {
-    max-height: 825px;
+    max-height: 863px;
     overflow-y: auto;
     margin-top: 10px;
     border: 1px solid #ccc;
@@ -98,7 +102,7 @@
 
 /* Profile section styling */
 #profile {
-    margin-top: 3em;
+    margin-top: 2em;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -108,10 +112,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    border-bottom: 1px solid #eee;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
     gap: 1em;
     text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover effect for profile rows */
+#profile .flex:hover {
+    background-color: #f9f9f9;
 }
 
 /* Profile image styling */
@@ -120,23 +130,64 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+    margin-right: 10px;
 }
 
-/* Profile information */
+/* Profile information with rank and name */
 #profile .flex .info {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
     flex: 1;
-    padding-left: 1em;
     font-size: 1em;
     color: #333;
 }
 
-/* Skill strength alignment */
-#profile .flex .skill-strength {
-    text-align: right;
+/* Rank styling */
+#profile .flex .rank {
+    font-weight: normal;
+    color: #666;
+    margin-right: 8px;
+}
+
+/* Top-three rank highlight */
+#profile .flex .rank.top-three {
     font-weight: bold;
     color: #4CAF50;
 }
 
+/* Specific styling for the top three ranks based on their order */
+
+/* Largest font for the number one rank */
+#profile .flex:nth-child(1) .rank.top-three {
+    font-size: 1.5em;
+}
+
+/* Slightly smaller font for the number two rank */
+#profile .flex:nth-child(2) .rank.top-three {
+    font-size: 1.3em;
+}
+
+/* Standard bold font size for the number three rank */
+#profile .flex:nth-child(3) .rank.top-three {
+    font-size: 1.1em;
+}
+
+
+/* Name styling */
+#profile .flex .name {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Skill strength styling */
+#profile .flex .skill-strength {
+    text-align: right;
+    font-weight: bold;
+    color: #4CAF50;
+    min-width: 80px;
+    /* Ensures alignment with other rows */
+}
 /* Sort button styling */
 .sort-button {
     background: none;

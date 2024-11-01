@@ -16,7 +16,8 @@ export default function Board( {title = "LeaderBoard", columnnames = ["User Name
         setSearchQuery(event.target.value);
     };
 
-    const filteredLeaderboard = between(Leaderboard, sortOrder, searchQuery)
+    const rankedData = rankLeaderboard(Leaderboard)
+    const filteredLeaderboard = filterAndSortLeaderboard(rankedData, sortOrder, searchQuery)
 
   return (
     <div className="board">
@@ -59,24 +60,23 @@ export default function Board( {title = "LeaderBoard", columnnames = ["User Name
 }
 
 
+function rankLeaderboard(data) {
+    // Sort data in descending order and assign ranks based on this order
+    return data
+        .sort((a, b) => b.score - a.score)
+        .map((user, index) => ({ ...user, rank: index + 1 })); // Assign ranks
+}
 
-function between(data, sortOrder, searchQuery){
-    const today = new Date();
-    const previous = new Date(today);
-    previous.setDate(previous.getDate() - (between + 1));
+function filterAndSortLeaderboard(rankedData, sortOrder, searchQuery) {
+    // Filter data based on search query
+    let filteredData = rankedData.filter(user =>
+        user.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
-    let filter = data.filter(val => {
-        const matchesSearch = val.name.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesSearch
-    })
+    // Sort data for display based on the specified order
+    if (sortOrder === 'ascending') {
+        filteredData = filteredData.slice().sort((a, b) => a.score - b.score);
+    }
 
-    // sort with asending order
-    return filter.sort((a, b) => {
-        if (sortOrder === 'ascending') {
-            return a.score - b.score; // Ascending order
-        } else {
-            return b.score - a.score; // Descending order
-        }
-    })
-
+    return filteredData; // Return filtered and sorted data for display
 }
