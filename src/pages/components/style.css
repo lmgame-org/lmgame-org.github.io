@@ -225,14 +225,25 @@
     color: #333;
 }
 
-/* Skill strength styling */
 #profile .flex .skill-strength {
     text-align: right;
     font-weight: bold;
     color: #4CAF50;
+    /* Ensure the color contrasts with background */
     min-width: 80px;
+    /* Minimum width to prevent overflow or text cut-off */
+    white-space: nowrap;
+    /* Prevents wrapping if numbers are large */
+    overflow: hidden;
+    /* Ensures no extra overflow is visible */
 }
-
+/* Profile score styling */
+#profile .flex .score {
+    color: #000;
+    /* Set score text color to black */
+    font-weight: bold;
+    text-align: right;
+}
 /* Sort button styling */
 .sort-button {
     background: none;

@@ -27,7 +27,7 @@ function Item(data){
                                 {/* <span>{value.location}</span> */}
                             </div>                
                         </div>
-                        <div className="item">
+                        <div className="item score">
                             <span>{value.score}</span>
                         </div>
                     </div>
