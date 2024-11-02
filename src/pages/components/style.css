@@ -69,7 +69,8 @@
 /* Search input styling */
 .board .search-input {
     width: 100%;
-    max-width: 100%;
+    max-width: 300px;
+    /* Adjust max width to desired size */
     padding: 0.6rem;
     margin: 0.5rem 0 1rem;
     border: 1px solid #ccc;
