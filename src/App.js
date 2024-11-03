@@ -1,32 +1,18 @@
-import React, { useState } from 'react';
-import './App.css';
-import {Routes, Route, Link } from 'react-router-dom';
+import React from "react";
+import { Helmet } from "react-helmet";
+// Screens
+import Landing from "./screens/Landing.jsx";
 
-import AkinatorGame from './pages/AkinatorGame';
-import TabooGame from './pages/TabooGame';
-import BluffingGame from './pages/BluffingGame';
-import HomePage from './pages/HomePage';
-
-import Footer from './Footer'; 
-import Header from './Header'; 
-import './pages/components/style.css'
-
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/akinator" element={<AkinatorGame />} />
-        <Route path="/taboo" element={<TabooGame />} />
-        <Route path="/bluffing" element={<BluffingGame />} />
-      </Routes>
-      <Footer />
-    </div>
+    <>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Khula:wght@400;600;800&display=swap" rel="stylesheet" />
+      </Helmet>
+      <Landing />
+    </>
   );
 }
-
-export default App;
-
 
