@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 // Assets
-import LogoImg from "../../assets/svg/Logo";
+import LogoImg from "../../../assets/svg/Logo";
 
 export default function Contact() {
 
@@ -25,7 +25,7 @@ export default function Contact() {
               © {getCurrentYear()} - <span className="purpleColor font13">Game Arena</span> All Right Reserved
             </StyleP>
 
-            <Link className="whiteColor animate pointer font13" to="home" smooth={true} offset={-80}>
+            <Link className="whiteColor animate pointer font13" to="Akinator" smooth={true} offset={-80}>
               Back to top
             </Link>
           </InnerWrapper>

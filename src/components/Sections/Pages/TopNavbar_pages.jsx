@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-scroll";
+import { useNavigate } from "react-router-dom";
 // Components
-import Sidebar from "../Nav/Sidebar";
-import Backdrop from "../Elements/Backdrop";
+import Sidebar from "../../Nav/Sidebar";
+import Backdrop from "../../Elements/Backdrop";
 // Assets
-import LogoIcon from "../../assets/svg/Logo";
-import BurgerIcon from "../../assets/svg/BurgerIcon";
-
+import LogoIcon from "../../../assets/svg/Logo";
+import BurgerIcon from "../../../assets/svg/BurgerIcon";
 
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
-  
   const [sidebarOpen, toggleSidebar] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener("scroll", () => setY(window.scrollY));
@@ -21,47 +20,29 @@ export default function TopNavbar() {
     };
   }, [y]);
 
-
   return (
     <>
       <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
       <Wrapper className="flexCenter animate whiteBg" style={y > 100 ? { height: "60px" } : { height: "80px" }}>
         <NavInner className="container flexSpaceCenter">
-          <Link className="pointer flexNullCenter" to="home" smooth={true}>
+          <div className="pointer flexNullCenter" onClick={() => navigate("/")}>
             <LogoIcon />
             <h1 style={{ marginLeft: "15px" }} className="font20 extraBold">
               Game Arena
             </h1>
-          </Link>
+          </div>
           <BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>
             <BurgerIcon />
           </BurderWrapper>
           <UlWrapper className="flexNullCenter">
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="home" spy={true} smooth={true} offset={-80}>
+              <span
+                style={{ padding: "10px 15px" }}
+                onClick={() => navigate("/")}
+              >
                 Home
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="services" spy={true} smooth={true} offset={-80}>
-                Overall Leaderboard
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
-                Game Leaderboards
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="blog" spy={true} smooth={true} offset={-80}>
-                Blog
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="contact" spy={true} smooth={true} offset={-80}>
-                Contact
-              </Link>
+              </span>
             </li>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
@@ -87,7 +68,7 @@ const Wrapper = styled.nav`
 const NavInner = styled.div`
   position: relative;
   height: 100%;
-`
+`;
 const BurderWrapper = styled.button`
   outline: none;
   border: 0px;
@@ -110,5 +91,3 @@ const UlWrapperRight = styled.ul`
     display: none;
   }
 `;
-
-

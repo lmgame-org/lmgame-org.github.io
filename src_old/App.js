@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import {Routes, Route, Link } from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 import AkinatorGame from './pages/AkinatorGame';
 import TabooGame from './pages/TabooGame';

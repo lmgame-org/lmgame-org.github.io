@@ -24,19 +24,6 @@ export default function Header() {
       <RightSide>
         <ImageWrapper>
           <Img className="radius8" src={HeaderImage} alt="office" style={{zIndex: 9}} />
-          <QuoteWrapper className="flexCenter darkBg radius8">
-            <QuotesWrapper>
-              <QuotesIcon />
-            </QuotesWrapper>
-            <div>
-              <p className="font15 whiteColor">
-                <em>At GameArena, we use engaging games to assess the capabilities of large language models in reasoning and problem-solving.</em>
-              </p>
-            </div>
-          </QuoteWrapper>
-          <DotsWrapper>
-            <Dots />
-          </DotsWrapper>
         </ImageWrapper>
         <GreyDiv className="lightBg"></GreyDiv>
       </RightSide>

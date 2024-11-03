@@ -6,6 +6,9 @@ import Services from "../components/Sections/Services";
 import Projects from "../components/Sections/Projects";
 import Blog from "../components/Sections/Blog";
 import Footer from "../components/Sections/Footer"
+import Contact from "../components/Sections/Contact"
+
+
 
 export default function Landing() {
   return (
@@ -15,6 +18,7 @@ export default function Landing() {
       <Services />
       <Projects />
       <Blog />
+      <Contact />
       <Footer />
     </>
   );
