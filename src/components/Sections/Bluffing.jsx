@@ -20,7 +20,7 @@ export default function Bluffing() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Bluffing Player Leaderboard</h1>
               <p className="font13">
-                This is Bluffing player Leaderboards.
+                We have player leaderboard and model leaderboard for Bluffing game.
               </p>
             </HeaderInfo>
             <Board />
@@ -30,12 +30,6 @@ export default function Bluffing() {
       <Wrapper id="Bluffing">
         <div className="lightBg" style={{ padding: "90px 0" }}>
           <div className="container">
-            <HeaderInfo>
-              <h1 className="font40 extraBold">Bluffing Model Leaderboard</h1>
-              <p className="font13">
-                This is Bluffing model Leaderboards.
-              </p>
-            </HeaderInfo>
             <Board />
           </div>
         </div>

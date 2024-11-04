@@ -20,7 +20,7 @@ export default function Taboo() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Taboo Player Leaderboard</h1>
               <p className="font13">
-                This is Taboo player Leaderboards.
+              We have player leaderboard and model leaderboard for Taboo game.
               </p>
             </HeaderInfo>
             <Board />
@@ -30,12 +30,6 @@ export default function Taboo() {
       <Wrapper id="Taboo">
         <div className="lightBg" style={{ padding: "90px 0" }}>
           <div className="container">
-            <HeaderInfo>
-              <h1 className="font40 extraBold">Taboo Model Leaderboard</h1>
-              <p className="font13">
-                This is Taboo model Leaderboards.
-              </p>
-            </HeaderInfo>
             <Board />
           </div>
         </div>

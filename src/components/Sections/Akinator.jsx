@@ -20,7 +20,7 @@ export default function Akinator() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Akinator Player Leaderboard</h1>
               <p className="font13">
-                This is Akinator player Leaderboards.
+                We have player leaderboard and model leaderboard for Akinator game.
               </p>
             </HeaderInfo>
             <Board />
@@ -30,12 +30,6 @@ export default function Akinator() {
       <Wrapper id="Akinator">
         <div className="lightBg" style={{ padding: "90px 0" }}>
           <div className="container">
-            <HeaderInfo>
-              <h1 className="font40 extraBold">Akinator Model Leaderboard</h1>
-              <p className="font13">
-                This is Akinator model Leaderboards.
-              </p>
-            </HeaderInfo>
             <Board />
           </div>
         </div>
