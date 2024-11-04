@@ -4,8 +4,6 @@ import styled from "styled-components";
 import FullButton from "../Buttons/FullButton";
 // Assets
 import HeaderImage from "../../assets/img/header-img.png";
-import QuotesIcon from "../../assets/svg/Quotes";
-import Dots from "../../assets/svg/Dots";
 
 export default function Header() {
   return (
@@ -14,10 +12,10 @@ export default function Header() {
         <div>
           <h1 className="extraBold font60">Game Arena</h1>
           <HeaderP className="font13 semiBold">
-            Explore GameArena, where we evaluate diverse model skills in real-time through Akinator, Taboo, and Bluffing, highlighting top reasoning achievements on our leaderboards.
+          Think you've got what it takes? Dive into our Roblox escape games and beat LLMs. Challenge your reasoning, outpace the AI, and climb to the top of the leaderboard!
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Start Game" />
+            <FullButton title="Play Now" />
           </BtnWrapper>
         </div>
       </LeftSide>

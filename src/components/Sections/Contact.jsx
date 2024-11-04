@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDiscord, faGithub, faTwitter, faRoblox} from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faGithub, faTwitter} from "@fortawesome/free-brands-svg-icons";
 
 
 export default function Contact() {
@@ -19,13 +19,13 @@ export default function Contact() {
           </HeaderInfo>
           <SocialIcons>
             <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faDiscord} size="2x" />
+              <FontAwesomeIcon icon={faDiscord} size="3x" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faTwitter} size="2x" />
+              <FontAwesomeIcon icon={faTwitter} size="3x" />
             </a>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faGithub} size="2x" />
+              <FontAwesomeIcon icon={faGithub} size="3x" />
             </a>
           </SocialIcons>
         </div>
@@ -46,7 +46,7 @@ const HeaderInfo = styled.div`
 const SocialIcons = styled.div`
   display: flex;
   justify-content: center;
-  gap: 80px;
+  gap: 120px;
   padding-top: 10px;
 
   a {

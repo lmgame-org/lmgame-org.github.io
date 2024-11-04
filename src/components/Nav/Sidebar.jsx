@@ -41,6 +41,20 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             activeClass="active"
             className="whiteColor"
             style={{ padding: "10px 15px" }}
+            to="AboutUs"
+            spy={true}
+            smooth={true}
+            offset={-60}
+          >
+            Our Mission
+          </Link>
+        </li>
+        <li className="semiBold font15 pointer">
+          <Link
+            onClick={() => toggleSidebar(!sidebarOpen)}
+            activeClass="active"
+            className="whiteColor"
+            style={{ padding: "10px 15px" }}
             to="services"
             spy={true}
             smooth={true}
@@ -95,7 +109,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
       <UlStyle className="flexSpaceCenter">
         <li className="semiBold font15 pointer flexCenter">
           <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-            Start Game
+            Play Now
           </a>
         </li>
       </UlStyle>

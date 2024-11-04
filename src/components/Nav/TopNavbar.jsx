@@ -44,6 +44,11 @@ export default function TopNavbar() {
               </Link>
             </li>
             <li className="semiBold font15 pointer">
+              <Link activeClass="active" style={{ padding: "10px 15px" }} to="AboutUs" spy={true} smooth={true} offset={-80}>
+                Our Mission
+              </Link>
+            </li>
+            <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="services" spy={true} smooth={true} offset={-80}>
                 Overall Leaderboard
               </Link>
@@ -67,7 +72,7 @@ export default function TopNavbar() {
           <UlWrapperRight className="flexNullCenter">
             <li className="semiBold font15 pointer flexCenter">
               <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-                Start Game
+                Play Now
               </a>
             </li>
           </UlWrapperRight>
