@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { Link } from "react-scroll";
 // Assets
 import CloseIcon from "../../assets/svg/CloseIcon";
-import LogoIcon from "../../assets/svg/Logo";
+import Logo from "../../assets/svg/Logo";
 
 export default function Sidebar({ sidebarOpen, toggleSidebar }) {
   return (
     <Wrapper className="animate darkBg" sidebarOpen={sidebarOpen}>
       <SidebarHeader className="flexSpaceCenter">
         <div className="flexNullCenter">
-          <LogoIcon />
+          <Logo darkMode={true}/>
           <h1 className="whiteColor font20" style={{ marginLeft: "15px" }}>
             Game Arena
           </h1>
@@ -95,7 +95,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
       <UlStyle className="flexSpaceCenter">
         <li className="semiBold font15 pointer flexCenter">
           <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-            Get Started
+            Start Game
           </a>
         </li>
       </UlStyle>

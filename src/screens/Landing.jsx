@@ -14,6 +14,7 @@ export default function Landing() {
   return (
     <>
       <TopNavbar />
+      <div id="top"></div>
       <Header />
       <Services />
       <Projects />

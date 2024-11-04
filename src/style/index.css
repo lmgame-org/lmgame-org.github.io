@@ -137,6 +137,12 @@
     justify-content: center;
     align-items: center;
   }
+
+  .flexRight {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
   .flexSpaceNull {
     display: flex;
     justify-content: space-between;

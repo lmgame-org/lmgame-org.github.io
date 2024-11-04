@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet";
 // Screens
 import Landing from "./screens/Landing.jsx";
 import Akinator from "./components/Sections/Akinator";
+import Bluffing from "./components/Sections/Bluffing";
+import Taboo from "./components/Sections/Taboo";
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/akinator" element={<Akinator />} />
+          <Route path="/bluffing" element={<Bluffing/>} />
+          <Route path="/taboo" element={<Taboo />} />
         </Routes>
       </>
     </Router>

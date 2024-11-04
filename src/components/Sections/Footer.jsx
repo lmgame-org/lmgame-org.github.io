@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 // Assets
-import LogoImg from "../../assets/svg/Logo";
+import Logo from "../../assets/svg/Logo";
 
 export default function Contact() {
 
@@ -16,7 +16,8 @@ export default function Contact() {
         <div className="container">
           <InnerWrapper className="flexSpaceCenter" style={{ padding: "30px 0" }}>
             <Link className="flexCenter animate pointer" to="home" smooth={true} offset={-80}>
-              <LogoImg />
+              <Logo darkMode={true}/>
+              
               <h1 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
                 Game Arena
               </h1>
@@ -25,7 +26,7 @@ export default function Contact() {
               © {getCurrentYear()} - <span className="purpleColor font13">Game Arena</span> All Right Reserved
             </StyleP>
 
-            <Link className="whiteColor animate pointer font13" to="home" smooth={true} offset={-80}>
+            <Link className="whiteColor animate pointer font13" to="top" smooth={true} offset={-80}>
               Back to top
             </Link>
           </InnerWrapper>

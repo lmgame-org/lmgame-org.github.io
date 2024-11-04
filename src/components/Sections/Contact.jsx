@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord, faGithub, faTwitter, faRoblox} from "@fortawesome/free-brands-svg-icons";
+
 
 export default function Contact() {
   return (
@@ -7,11 +10,24 @@ export default function Contact() {
       <div className="whiteBg">
         <div className="container">
           <HeaderInfo>
-            <h1 className="font40 extraBold">Contact US or More Information</h1>
+            <h1 className="font40 extraBold">Contact US</h1>
             <p className="font13">
-              Join our Discord server for more information.
+              For more information, feel free to join our discord group or follow us on twitter.
+              <br />
+              For our code details, please visit our github page and look into our paper. 
             </p>
           </HeaderInfo>
+          <SocialIcons>
+            <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faDiscord} size="2x" />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faGithub} size="2x" />
+            </a>
+          </SocialIcons>
         </div>
       </div>
     </Wrapper>
@@ -27,54 +43,22 @@ const HeaderInfo = styled.div`
     text-align: center;
   }
 `;
-const Form = styled.form`
-  padding: 70px 0 30px 0;
-  input,
-  textarea {
-    width: 100%;
-    background-color: transparent;
-    border: 0px;
-    outline: none;
-    box-shadow: none;
-    border-bottom: 1px solid #707070;
-    height: 30px;
-    margin-bottom: 30px;
-  }
-  textarea {
-    min-height: 100px;
-  }
-  @media (max-width: 860px) {
-    padding: 30px 0;
-  }
-`;
-const ButtonInput = styled.input`
-  border: 1px solid #7620ff;
-  background-color: #7620ff;
-  width: 100%;
-  padding: 15px;
-  outline: none;
-  color: #fff;
-  :hover {
-    background-color: #580cd2;
-    border: 1px solid #7620ff;
-    color: #fff;
-  }
-  @media (max-width: 991px) {
-    margin: 0 auto;
-  }
-`;
-const ContactImgBox = styled.div`
-  max-width: 180px; 
-  align-self: flex-end; 
-  margin: 10px 30px 10px 0;
-`;
-const SumbitWrapper = styled.div`
-  @media (max-width: 991px) {
-    width: 100%;
-    margin-bottom: 50px;
-  }
-`;
+const SocialIcons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding-top: 10px;
 
+  a {
+    color: #333;
+    transition: color 0.3s;
+    padding-bottom: 20px;
+
+    &:hover {
+      color: #7620ff;
+    }
+  }
+`;
 
 
 

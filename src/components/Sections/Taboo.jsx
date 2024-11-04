@@ -6,7 +6,7 @@ import '../boards/style.css';
 import TopNavbar from "./Pages/TopNavbar_pages";
 import Footer from "./Footer"
 
-export default function Akinator() {
+export default function Taboo() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,26 +14,26 @@ export default function Akinator() {
     <>
       <TopNavbar />
       <div id="top"></div>
-      <Wrapper id="Akinator">
+      <Wrapper id="Taboo">
         <div className="whiteBg" style={{ padding: "90px 0" }}>
           <div className="container">
             <HeaderInfo>
-              <h1 className="font40 extraBold">Akinator Player Leaderboard</h1>
+              <h1 className="font40 extraBold">Taboo Player Leaderboard</h1>
               <p className="font13">
-                This is Akinator player Leaderboards.
+                This is Taboo player Leaderboards.
               </p>
             </HeaderInfo>
             <Board />
           </div>
         </div>
       </Wrapper>
-      <Wrapper id="Akinator">
+      <Wrapper id="Taboo">
         <div className="lightBg" style={{ padding: "90px 0" }}>
           <div className="container">
             <HeaderInfo>
-              <h1 className="font40 extraBold">Akinator Model Leaderboard</h1>
+              <h1 className="font40 extraBold">Taboo Model Leaderboard</h1>
               <p className="font13">
-                This is Akinator model Leaderboards.
+                This is Taboo model Leaderboards.
               </p>
             </HeaderInfo>
             <Board />

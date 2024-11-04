@@ -13,7 +13,7 @@ import TestimonialSlider from "../Elements/TestimonialSlider";
 export default function Projects() {
   return (
     <Wrapper id="blog">
-      <div className="whiteBg">
+      <div className="whiteBg" style={{ padding: "40px 0" }}>
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Game Blogs</h1>
