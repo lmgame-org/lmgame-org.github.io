@@ -23,14 +23,14 @@ export default function Akinator() {
                 We have player leaderboard and model leaderboard for Akinator game.
               </p>
             </HeaderInfo>
-            <Board />
+            <Board title={'Player LeaderBoard'} />
           </div>
         </div>
       </Wrapper>
       <Wrapper id="Akinator">
         <div className="lightBg" style={{ padding: "90px 0" }}>
           <div className="container">
-            <Board />
+            <Board clickEnabled={false}/>
           </div>
         </div>
       </Wrapper>

@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import Profiles from './profiles';
-import { Leaderboard } from './database';
+import { Leaderboard as DefaultLeaderboard} from './database';
 import UserInfoModal from './userInfoModal';
 
-export default function Board( {title = "Model LeaderBoard", columnnames = ["User Name", "Rank Score"]}) {
+export default function Board({
+    title = "Model LeaderBoard",
+    columnnames = ["User Name", "Rank Score"],
+    clickEnabled = true,
+    Leaderboard = DefaultLeaderboard // Use default if no data provided
+}) {
     const [sortOrder, setSortOrder] = useState("descending"); // State to track sort order
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedUser, setSelectedUser] = useState(null); // State to hold selected user data for modal
@@ -19,10 +24,12 @@ export default function Board( {title = "Model LeaderBoard", columnnames = ["Use
         setSearchQuery(event.target.value);
     };
 
-    // Handle row click to open modal with selected user data
+    // Conditionally handle row click based on clickEnabled status
     const handleRowClick = (user) => {
-        setSelectedUser(user);
-        setIsModalOpen(true);
+        if (clickEnabled) {
+            setSelectedUser(user);
+            setIsModalOpen(true);
+        }
     };
 
     // Close modal

@@ -23,14 +23,14 @@ export default function Bluffing() {
                 We have player leaderboard and model leaderboard for Bluffing game.
               </p>
             </HeaderInfo>
-            <Board />
+            <Board title={'Player LeaderBoard'}/>
           </div>
         </div>
       </Wrapper>
       <Wrapper id="Bluffing">
         <div className="lightBg" style={{ padding: "90px 0" }}>
           <div className="container">
-            <Board />
+            <Board clickEnabled={false}/>
           </div>
         </div>
       </Wrapper>

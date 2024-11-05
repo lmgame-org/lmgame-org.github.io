@@ -20,10 +20,10 @@ export default function Services() {
             <p className="font13">
               This is overall leaderboard 
               <br />
-              If you want tp see more in details, please keep scroll down.
+              If you want to see more in details, please keep scroll down.
             </p>
           </HeaderInfo>
-          <Board/>
+          <Board clickEnabled = {false}/>
         </div>
       </div>
     </Wrapper>

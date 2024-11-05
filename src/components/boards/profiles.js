@@ -7,8 +7,8 @@ export default function Profiles({ Leaderboard, onRowClick }) {
                 <div
                     className="flex"
                     key={index}
-                    onClick={() => onRowClick(user)} // Call onRowClick with user data
-                    style={{ cursor: 'pointer' }}
+                    onClick={() => onRowClick && onRowClick(user)} // Only call onRowClick if it’s provided
+                    style={{ cursor: onRowClick ? 'pointer' : 'default' }} // Show pointer only if clickable
                 >
                     <div className="item">
                         <div className="info">
@@ -16,8 +16,8 @@ export default function Profiles({ Leaderboard, onRowClick }) {
                             <span className={`rank ${user.rank <= 3 ? 'top-three' : ''}`}>
                                 #{user.rank}
                             </span>
-                            <h3 className='name text-dark'>
-                                {/* Limit the name length to avoid overflow */}
+                            <h3 className="name text-dark">
+                                {/* Limit name length to avoid overflow */}
                                 {user.name.length > 50 ? `${user.name.slice(0, 50)}...` : user.name}
                             </h3>
                         </div>
