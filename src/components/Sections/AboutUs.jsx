@@ -43,7 +43,6 @@ export default function AboutUs() {
                 <br />
                 The Bluffing game challenges the AI's inductive reasoning by having it determine the truthfulness of statements made by players based on observed responses. The AI uses multi-hop reasoning to connect these observations and formulate a logical conclusion about the player's honesty. This game assesses the AI's ability to detect deception and its strategic questioning prowess, which are crucial for understanding and responding to human interactions in realistic scenarios.</li>
               </ul>
-              <h2 className="font30 extraBold">Our team</h2>
             </MoreContent>
           )}
         </div>

@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 // Components
 import FullButton from "../Buttons/FullButton";
 // Assets
-import HeaderImage from "../../assets/img/header-img.png";
+import HeaderImage1 from "../../assets/img/bgs/bg1.jpg";
+import HeaderImage2 from "../../assets/img/bgs/bg2.jpg";
+import HeaderImage3 from "../../assets/img/bgs/bg3.jpg";
+
+const Img1 = styled.img`
+  width: 426px;   // Fixed width
+  height: 607px;  // Fixed height
+  object-fit: cover;  // Ensures the image covers the area properly
+  border-radius: 8px;  // Applies rounded corners
+  opacity: ${props => props.isVisible ? 1 : 0};
+  transition: opacity 1s ease-in-out;
+`;
 
 export default function Header() {
+  const images = [HeaderImage1, HeaderImage2, HeaderImage3];
+  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIsVisible(false); 
+      setTimeout(() => {
+        setCurrentImage((current) => {
+          const index = images.indexOf(current);
+          return images[(index + 1) % images.length];
+        });
+        setIsVisible(true); 
+      }, 1000); 
+    }, 6000);
+    return () => clearInterval(intervalId); 
+  }, []);
+  
+
   return (
     <Wrapper id="home" className="container flexSpaceCenter">
       <LeftSide className="flexCenter">
@@ -21,9 +51,8 @@ export default function Header() {
       </LeftSide>
       <RightSide>
         <ImageWrapper>
-          <Img className="radius8" src={HeaderImage} alt="office" style={{zIndex: 9}} />
+          <Img1 className="radius8" src={currentImage} alt="Game Arena" isVisible={isVisible} />
         </ImageWrapper>
-        <GreyDiv className="lightBg"></GreyDiv>
       </RightSide>
     </Wrapper>
   );
@@ -97,42 +126,3 @@ const ImageWrapper = styled.div`
     justify-content: center;
   }
 `;
-const Img = styled.img`
-  @media (max-width: 560px) {
-    width: 80%;
-    height: auto;
-  }
-`;
-const QuoteWrapper = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 50px;
-  max-width: 330px;
-  padding: 30px;
-  z-index: 99;
-  @media (max-width: 960px) {
-    left: 20px;
-  }
-  @media (max-width: 560px) {
-    bottom: -50px;
-  }
-`;
-const QuotesWrapper = styled.div`
-  position: absolute;
-  left: -20px;
-  top: -10px;
-`;
-const DotsWrapper = styled.div`
-  position: absolute;
-  right: -100px;
-  bottom: 100px;
-  z-index: 2;
-  @media (max-width: 960px) {
-    right: 100px;
-  }
-  @media (max-width: 560px) {
-    display: none;
-  }
-`;
-
-

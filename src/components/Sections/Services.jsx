@@ -1,18 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 // Components
-import ClientSlider from "../Elements/ClientSlider";
 import Board from "../boards/board"
 import '../boards/style.css'
 
 export default function Services() {
   return (
     <Wrapper id="services">
-      <div className="lightBg" style={{ padding: "10px 0" }}>
-        <div className="container">
-          <ClientSlider />
-        </div>
-      </div>
       <div className="whiteBg" style={{ padding: "40px 0" }}>
         <div className="container">
           <HeaderInfo>

@@ -4,9 +4,9 @@ import styled from "styled-components";
 import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
 // Assets
-import ProjectImg1 from "../../assets/img/projects/1.png";
-import ProjectImg2 from "../../assets/img/projects/2.png";
-import ProjectImg3 from "../../assets/img/projects/3.png";
+import ProjectImg1 from "../../assets/img/blogs/blog1.png";
+import ProjectImg2 from "../../assets/img/blogs/blog2.jpg";
+import ProjectImg3 from "../../assets/img/blogs/blog3.jpg";
 
 import TestimonialSlider from "../Elements/TestimonialSlider";
 
@@ -23,28 +23,34 @@ export default function Projects() {
           </HeaderInfo>
           <div className="row textCenter">
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <StyledImageWrapper>
               <ProjectBox
                 img={ProjectImg1}
                 title="Video1"
                 text="Defeat XXX"
                 action={() => alert("clicked")}
               />
+              </StyledImageWrapper>
             </div>
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <StyledImageWrapper>
               <ProjectBox
                 img={ProjectImg2}
                 title="Video2"
                 text="Escape room #99"
                 action={() => alert("clicked")}
               />
+              </StyledImageWrapper>
             </div>
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <StyledImageWrapper>
               <ProjectBox
                 img={ProjectImg3}
                 title="Video3"
                 text="XXX"
                 action={() => alert("clicked")}
               />
+              </StyledImageWrapper>
             </div>
           </div>
           <div className="row flexCenter">
@@ -70,6 +76,14 @@ export default function Projects() {
     </Wrapper>
   );
 }
+
+const StyledImageWrapper = styled.div`
+  img {
+    width: 300px;
+    height: 230px;
+    object-fit: cover;
+  }
+`; 
 
 const Wrapper = styled.section`
   width: 100%;

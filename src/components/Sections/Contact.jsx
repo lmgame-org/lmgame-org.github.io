@@ -1,34 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDiscord, faGithub, faTwitter} from "@fortawesome/free-brands-svg-icons";
-
+import { faDiscord, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export default function Contact() {
   return (
     <Wrapper id="contact">
       <div className="whiteBg">
-        <div className="container">
+        <ContentContainer className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Contact US</h1>
             <p className="font13">
               For more information, feel free to join our discord group or follow us on twitter.
               <br />
-              For our code details, please visit our github page and look into our paper. 
+              For our code details, please visit our github page and look into our paper.
             </p>
           </HeaderInfo>
           <SocialIcons>
             <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faDiscord} size="3x" />
+              <FontAwesomeIcon icon={faDiscord} size="4x" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faTwitter} size="3x" />
+              <FontAwesomeIcon icon={faTwitter} size="4x" />
             </a>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faGithub} size="3x" />
+              <FontAwesomeIcon icon={faGithub} size="4x" />
             </a>
           </SocialIcons>
-        </div>
+        </ContentContainer>
       </div>
     </Wrapper>
   );
@@ -37,33 +36,33 @@ export default function Contact() {
 const Wrapper = styled.section`
   width: 100%;
 `;
-const HeaderInfo = styled.div`
-  padding: 70px 0 30px 0;
-  @media (max-width: 860px) {
-    text-align: center;
+
+const ContentContainer = styled.div`
+  display: flex;
+  align-items: center; // Aligns children vertically in the center
+  justify-content: space-between; // Distributes space between and around content items
+  flex-wrap: wrap; // Allows items to wrap to the next line on smaller screens
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-items: center;
   }
 `;
+
+const HeaderInfo = styled.div`
+  padding: 40px 0 30px 0;
+`;
+
 const SocialIcons = styled.div`
   display: flex;
   justify-content: center;
-  gap: 120px;
-  padding-top: 10px;
+  gap: 90px; // Reduced gap for aesthetics
 
   a {
     color: #333;
     transition: color 0.3s;
-    padding-bottom: 20px;
-
     &:hover {
       color: #7620ff;
     }
   }
 `;
-
-
-
-
-
-
-
-

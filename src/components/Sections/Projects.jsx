@@ -4,9 +4,9 @@ import styled from "styled-components";
 import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
 // Assets
-import ProjectImg1 from "../../assets/img/projects/1.png";
-import ProjectImg2 from "../../assets/img/projects/2.png";
-import ProjectImg3 from "../../assets/img/projects/3.png";
+import ProjectImg1 from "../../assets/img/projects/ak1.png";
+import ProjectImg2 from "../../assets/img/projects/bluffing.png";
+import ProjectImg3 from "../../assets/img/projects/taboo.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ export default function Projects() {
   return (
     <Wrapper id="projects">
       <div className="lightBg" style={{ padding: "40px 0" }}>
-        <div className="container">
+      <div className="container">
           <HeaderContainer className="flexCenter">
             <HeaderInfo>
               <h1 className="font40 extraBold">Game Leaderboards</h1>
@@ -44,38 +44,51 @@ export default function Projects() {
               )}
             </ButtonWrapper>
           </HeaderContainer>
-          
           <div className="row textCenter">
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <StyledImageWrapper>
               <ProjectBox
                 img={ProjectImg1}
                 title="Akinator"
                 text=""
                 action={() => navigate("/akinator")}
               />
+              </StyledImageWrapper>
             </div>
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <StyledImageWrapper>
               <ProjectBox
-                img={ProjectImg2}
+                img={ProjectImg3}
                 title="Taboo"
                 text=""
                 action={() => navigate("/taboo")}
               />
+              </StyledImageWrapper>
             </div>
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <StyledImageWrapper>
               <ProjectBox
-                img={ProjectImg3}
+                img={ProjectImg2}
                 title="Bluffing"
                 text=""
                 action={() => navigate("/bluffing")}
               />
+              </StyledImageWrapper>
             </div>
           </div>
-        </div>
+          </div>
       </div>
     </Wrapper>
   );
 }
+
+const StyledImageWrapper = styled.div`
+  img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+`; 
 
 const Wrapper = styled.section`
   width: 100%;
