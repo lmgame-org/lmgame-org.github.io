@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Profiles from './profiles';
 import { Leaderboard as DefaultLeaderboard} from './database';
 import UserInfoModal from './userInfoModal';
@@ -7,12 +7,17 @@ export default function Board({
     title = "Model LeaderBoard",
     columnnames = ["User Name", "Rank Score"],
     clickEnabled = true,
-    Leaderboard = DefaultLeaderboard // Use default if no data provided
+    Leaderboard = DefaultLeaderboard, // Use default if no data provided
+    apiEndpoint = null // Placeholder, won't fetch data until modified
 }) {
     const [sortOrder, setSortOrder] = useState("descending"); // State to track sort order
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedUser, setSelectedUser] = useState(null); // State to hold selected user data for modal
     const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+
+    // Fetch data from api
+    const [leaderboardData, setLeaderboardData] = useState(Leaderboard);
+    const [error, setError] = useState(null); // 3. Added error state for fetch errors
 
     // Toggle sorting order
     const toggleSortOrder = () => {
@@ -38,6 +43,27 @@ export default function Board({
         setSelectedUser(null);
     };
 
+
+    // 4. Fetch data when apiEndpoint is provided
+    useEffect(() => {
+        if (!apiEndpoint) return; // Skip fetch if apiEndpoint is null or empty
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch(apiEndpoint);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch leaderboard data");
+                }
+                const data = await response.json();
+                setLeaderboardData(data); // Set fetched data to state
+            } catch (err) {
+                setError(err.message); // 5. Set error message if fetch fails
+            }
+        };
+        fetchData();
+    }, [apiEndpoint]); // Re-run fetch if API endpoint changes
+
+    // change the leaderboard with api input
     const rankedData = rankLeaderboard(Leaderboard)
     const filteredLeaderboard = filterAndSortLeaderboard(rankedData, sortOrder, searchQuery)
 
