@@ -7,6 +7,8 @@ import Landing from "./screens/Landing.jsx";
 import Akinator from "./components/Sections/Akinator";
 import Bluffing from "./components/Sections/Bluffing";
 import Taboo from "./components/Sections/Taboo";
+import OurMission from "./components/Sections/OurMission";
+import GameSkills from "./components/Sections/GameSkills";
 
 export default function App() {
   return (
@@ -23,6 +25,8 @@ export default function App() {
           <Route path="/akinator" element={<Akinator />} />
           <Route path="/bluffing" element={<Bluffing/>} />
           <Route path="/taboo" element={<Taboo />} />
+          <Route path="/ourmission" element={<OurMission />} />
+          <Route path="/gameskills" element={<GameSkills />} />
         </Routes>
       </>
     </Router>
