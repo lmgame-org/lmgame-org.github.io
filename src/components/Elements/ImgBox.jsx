@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ProjectBox({ img, title, text, action}) {
+export default function ImgBox({ img, title, text, action }) {
   return (
-    <Wrapper>
-      <ImgBtn className="aniamte pointer" onClick={action ? () => action() : null}>
-        <img className="radius8" src={img} alt="project"></img>
-      </ImgBtn>
-      <h3 className="font20 extraBold">{title}</h3>
-      <p className="font13">{text}</p>
+    <Wrapper onClick={action ? () => action() : null}>
+      <ImgContainer>
+        <img src={img} alt="project" />
+        <Overlay>
+          <h3 className="font20 extraBold">{title}</h3>
+          <p className="font13">{text}</p>
+        </Overlay>
+      </ImgContainer>
     </Wrapper>
   );
 }
@@ -16,22 +18,40 @@ export default function ProjectBox({ img, title, text, action}) {
 const Wrapper = styled.div`
   width: 100%;
   margin-top: 30px;
+  cursor: pointer;
+`;
+
+const ImgContainer = styled.div`
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Ensures zoomed image stays within bounds */
   img {
     width: 100%;
     height: auto;
-    margin: 20px 0;
+    border-radius: 8px;
+    transition: transform 0.3s ease; /* Smooth zoom transition */
   }
-  h3 {
-    padding-bottom: 10px;
+  &:hover img {
+    transform: scale(1.02); /* Zoom image slightly on hover */
   }
 `;
-const ImgBtn = styled.button`
-  background-color: transparent;
-  border: 0px;
-  outline: none;
-  padding: 0px;
-  margin: 0px;
-  :hover > img {
-    opacity: 0.5;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  width: 50%;
+  h3 {
+    margin: 0;
+  }
+  p {
+    margin: 5px 0 0;
   }
 `;

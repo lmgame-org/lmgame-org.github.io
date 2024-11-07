@@ -40,8 +40,8 @@ const StyledImageWrapper = styled.div`
   justify-content: space-around;
   width: 100%;
   img {
-    width: 300px;
-    height: 350px;
+    width: 90%; /* Sets image width to 90% of the container */
+    height: auto; /* Maintains aspect ratio */
     object-fit: cover;
   }
 `;
