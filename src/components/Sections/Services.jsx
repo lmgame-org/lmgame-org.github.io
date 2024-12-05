@@ -14,7 +14,7 @@ export default function Services() {
           <HeaderInfo>
             <h1 className="font40 extraBold">Overall Leaderboard</h1>
             <p className="font13">
-              This is overall leaderboard 
+              This is overall leaderboard, using the mean score from each game. 
               <br />
               If you want to see more in details, please keep scroll down.
             </p>
@@ -35,13 +35,13 @@ export default function Services() {
           </HeaderInfo>
           {selectedLeaderboard === "player" ? (
               <Board
-                title="Overall Player Leaderboard"
-                apiEndpoint="/api/general/player"
+                title="Player Leaderboard"
+                apiEndpoint="http://127.0.0.1:5000/api/general/player"
               />
             ) : (
               <Board
                 title="Overall Leaderboard"
-                apiEndpoint="/api/general/rank"
+                apiEndpoint="http://127.0.0.1:5000/api/general/model"
                 clickEnabled={false}
               />
             )}
