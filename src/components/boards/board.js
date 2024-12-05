@@ -1,35 +1,87 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 import Profiles from './profiles';
-import { Leaderboard as DefaultLeaderboard} from './database';
+import { Leaderboard as DefaultLeaderboard } from './database'; // Default data import
 import UserInfoModal from './userInfoModal';
 
 export default function Board({
-    title = "Model LeaderBoard",
+    title,
     columnnames = ["User Name", "Rank Score"],
     clickEnabled = true,
-    Leaderboard = DefaultLeaderboard, // Use default if no data provided
-    apiEndpoint = null // Placeholder, won't fetch data until modified
+    apiEndpoint = null,
 }) {
-    const [sortOrder, setSortOrder] = useState("descending"); // State to track sort order
+    const [sortOrder, setSortOrder] = useState("descending");
     const [searchQuery, setSearchQuery] = useState("");
-    const [selectedUser, setSelectedUser] = useState(null); // State to hold selected user data for modal
-    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Fetch data from api
-    const [leaderboardData, setLeaderboardData] = useState(Leaderboard);
-    const [error, setError] = useState(null); // 3. Added error state for fetch errors
+    // Set initial data to the default leaderboard to handle the case where API fails
+    const [leaderboardData, setLeaderboardData] = useState(DefaultLeaderboard);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-    // Toggle sorting order
+    useEffect(() => {
+        if (!apiEndpoint) return;
+
+        // Function to update scores (run less frequently)
+        const updateScores = async () => {
+            try {
+                const response = await fetch("http://127.0.0.1:5000/api/general/update", {
+                    method: "POST",
+                });
+                if (!response.ok) {
+                    throw new Error("Failed to update scores");
+                }
+                console.log("Scores updated successfully");
+            } catch (err) {
+                console.error("Error updating scores:", err);
+            }
+        };
+
+        // Function to fetch leaderboard data (run more frequently)
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch(apiEndpoint);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch leaderboard data");
+                }
+                const data = await response.json();
+                setLeaderboardData(data); // Update with fetched data
+                setError(null); // Clear any previous error if the fetch is successful
+            } catch (err) {
+                console.error("Error fetching leaderboard data:", err);
+                setError(err.message);
+                setLeaderboardData(DefaultLeaderboard); // Use default data on failure
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        // Call the update API initially to get updated data on the first load
+        updateScores();
+        fetchData();
+
+        // Set an interval for updating scores at a longer interval
+        const updateInterval = setInterval(updateScores, 60 * 60 * 1000); // Every 60 minutes (1 hour)
+
+        // Set an interval for fetching leaderboard data at a shorter interval
+        const fetchInterval = setInterval(fetchData, 30 * 1000); // Every 30 seconds
+
+        // Cleanup intervals on component unmount
+        return () => {
+            clearInterval(updateInterval);
+            clearInterval(fetchInterval);
+        };
+    }, [apiEndpoint]);
+
     const toggleSortOrder = () => {
         setSortOrder((prevOrder) => (prevOrder === "ascending" ? "descending" : "ascending"));
     };
 
-    // Handle changes to the search input
     const handleSearchChange = (event) => {
         setSearchQuery(event.target.value);
     };
 
-    // Conditionally handle row click based on clickEnabled status
     const handleRowClick = (user) => {
         if (clickEnabled) {
             setSelectedUser(user);
@@ -37,105 +89,71 @@ export default function Board({
         }
     };
 
-    // Close modal
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedUser(null);
     };
 
+    // Rank and filter the leaderboard data
+    const rankedData = rankLeaderboard(leaderboardData);
+    const filteredLeaderboard = filterAndSortLeaderboard(rankedData, sortOrder, searchQuery);
 
-    // 4. Fetch data when apiEndpoint is provided
-    useEffect(() => {
-        if (!apiEndpoint) return; // Skip fetch if apiEndpoint is null or empty
+    return (
+        <div className="board">
+            <h1 className="leaderboard">{title}</h1>
+            {loading && <p>Loading...</p>}
+            {error && <p>Error: {error}. Displaying default data instead.</p>}
 
-        const fetchData = async () => {
-            try {
-                const response = await fetch(apiEndpoint);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch leaderboard data");
-                }
-                const data = await response.json();
-                setLeaderboardData(data); // Set fetched data to state
-            } catch (err) {
-                setError(err.message); // 5. Set error message if fetch fails
-            }
-        };
-        fetchData();
+            {/* Search Input */}
+            <input
+                type="text"
+                placeholder={`Filter ${columnnames[0]}...`}
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="search-input"
+            />
 
-        const interval = setInterval(fetchData, 10);
+            {/* Column Headers */}
+            <div className="columnnames">
+                <div className="column-item objectname">{columnnames[0]}</div>
+                <div className="column-item skill-strength">
+                    {columnnames[1]}
+                    <button onClick={toggleSortOrder} className="sort-button">
+                        {sortOrder === "ascending" ? "↑" : "↓"}
+                    </button>
+                </div>
+            </div>
 
-        // Cleanup interval on unmount
-        return () => clearInterval(interval);
-    }, [apiEndpoint]); 
+            {/* Scrollable Profile Rows */}
+            <div className="profiles-container">
+                <Profiles Leaderboard={filteredLeaderboard} onRowClick={handleRowClick} />
+            </div>
 
-    // change the leaderboard with api input
-    const rankedData = rankLeaderboard(Leaderboard)
-    const filteredLeaderboard = filterAndSortLeaderboard(rankedData, sortOrder, searchQuery)
+            {/* Row Count Display */}
+            <div className="row-count">
+                {`${filteredLeaderboard.length} of ${leaderboardData.length} row(s) selected`}
+            </div>
 
-  return (
-    <div className="board">
-        <h1 className='leaderboard'>{title}</h1>
-
-          {/* Search Input */}
-          <input
-              type="text"
-              placeholder={`Filter ${columnnames[0]}...`}
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="search-input"
-          />
-
-          {/* Column Headers */}
-          <div className="columnnames">
-              <div className="column-item objectname">{columnnames[0]}</div>
-
-              {/* Second column with sorting functionality */}
-              <div className="column-item skill-strength">
-                  {columnnames[1]}
-                  <button onClick={toggleSortOrder} className="sort-button">
-                      {sortOrder === "ascending" ? "↑" : "↓"}
-                  </button>
-              </div>
-          </div>
-
-          {/* Scrollable Profile Rows */}
-          <div className="profiles-container">
-              <Profiles Leaderboard={filteredLeaderboard} onRowClick={handleRowClick} />
-          </div>
-
-          {/* Row Count Display */}
-          <div className="row-count">
-              {`${filteredLeaderboard.length} of ${Leaderboard.length} row(s) selected`}
-          </div>
-
-          {/* Modal Component
-          {isModalOpen && (
-              <UserInfoModal user={selectedUser} onClose={closeModal} />
-          )} */}
-
-    </div>
-  )
+            {/* Modal Component */}
+            {isModalOpen && <UserInfoModal user={selectedUser} onClose={closeModal} />}
+        </div>
+    );
 }
 
-
 function rankLeaderboard(data) {
-    // Sort data in descending order and assign ranks based on this order
     return data
         .sort((a, b) => b.score - a.score)
         .map((user, index) => ({ ...user, rank: index + 1 })); // Assign ranks
 }
 
 function filterAndSortLeaderboard(rankedData, sortOrder, searchQuery) {
-    // Filter data based on search query
     let filteredData = rankedData.filter(user =>
         user.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    // Sort data for display based on the specified order
     if (sortOrder === 'ascending') {
-        filteredData = filteredData.slice().sort((a, b) => {
+        filteredData = filteredData.sort((a, b) => {
             if (a.score === b.score) {
-                // Secondary sort by name in ascending order
                 return a.name.localeCompare(b.name);
             }
             return a.score - b.score;
