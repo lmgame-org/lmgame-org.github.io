@@ -5,99 +5,89 @@ from db import get_db_connection
 from psycopg2.extras import RealDictCursor
 # from trueskill2_user_ranking import calculate_player_scores
 from utilities import *
+import atexit
 
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
 
-# Helper function to query leaderboard data
-def fetch_leaderboard(query):
-    try:
-        conn = get_db_connection()
-        cursor = conn.cursor(cursor_factory=RealDictCursor)
-        cursor.execute(query)
-        leaderboard_data = cursor.fetchall()
-        cursor.close()
-        conn.close()
-        return leaderboard_data
-    except Exception as e:
-        print(f"Error fetching leaderboard data: {e}")
-        return None
 
-def update_leaderboard(data):
-    """Update leaderboard data in the database."""
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    for entry in data:
-        cursor.execute(
-            "UPDATE general_rank SET score = %s WHERE name = %s",
-            (entry['score'], entry['name'])
-        )
-    conn.commit()
-    cursor.close()
-    conn.close()
+@app.route('/')
+def home():
+    return "Welcome to the Game Arena Website Backend!"
+
+@app.route('/api/general/update', methods=['post'])
+def update_status():
+    try:
+        # Calculate model scores and user scores
+        model_scores = get_model_scores(input_file='./utilities/coefficients.json')
+        # user_scores = get_user_scores()  # Assuming you have a similar function
+
+        # Store scores in a file or database
+        with open('./precomputed_data/General_model_scores.json', 'w') as f:
+            json.dump(model_scores, f)
+
+        # with open('./precomputed_data/user_scores.json', 'w') as f:
+        #     json.dump(user_scores, f)
+
+        return jsonify({"status": "success", "message": "Scores updated successfully"})
+    except Exception as e:
+        return jsonify({"status": "failure", "message": str(e)}) 
+
+
 
 # # Akinator leaderboards
 # @app.route('/api/akinator/players', methods=['GET'])
 # def akinator_players():
-#     query = 'SELECT name, score FROM akinator_players ORDER BY score DESC'
-#     data = fetch_leaderboard(query)
-#     return jsonify(data) if data else jsonify({"error": "Failed to fetch akinator players data"}), 500
+#     mode = "akinator"
+#     return jsonify(data)
 
 # @app.route('/api/akinator/models', methods=['GET'])
 # def akinator_models():
-#     query = 'SELECT name, score FROM akinator_models ORDER BY score DESC'
-#     data = fetch_leaderboard(query)
-#     return jsonify(data) if data else jsonify({"error": "Failed to fetch akinator models data"}), 500
+#     mode = "akinator"
+#     return jsonify(data) 
 
 # # Taboo leaderboards
 # @app.route('/api/taboo/players', methods=['GET'])
 # def taboo_players():
-#     query = 'SELECT name, score FROM taboo_players ORDER BY score DESC'
-#     data = fetch_leaderboard(query)
-#     return jsonify(data) if data else jsonify({"error": "Failed to fetch taboo players data"}), 500
+#     mode = "taboo"
+#     return jsonify(data) 
 
 # @app.route('/api/taboo/models', methods=['GET'])
 # def taboo_models():
-#     query = 'SELECT name, score FROM taboo_models ORDER BY score DESC'
-#     data = fetch_leaderboard(query)
-#     return jsonify(data) if data else jsonify({"error": "Failed to fetch taboo models data"}), 500
+#     mode ="taboo"
+#     return jsonify(data) 
 
 # # Bluffing leaderboards
 # @app.route('/api/bluffing/players', methods=['GET'])
 # def bluffing_players():
-#     query = 'SELECT name, score FROM bluffing_players ORDER BY score DESC'
-#     data = fetch_leaderboard(query)
-#     return jsonify(data) if data else jsonify({"error": "Failed to fetch bluffing players data"}), 500
+#     mode = "bluffing"
+#     return jsonify(data) 
 
 # @app.route('/api/bluffing/models', methods=['GET'])
 # def bluffing_models():
-#     query = 'SELECT name, score FROM bluffing_models ORDER BY score DESC'
-#     data = fetch_leaderboard(query)
-#     return jsonify(data) if data else jsonify({"error": "Failed to fetch bluffing models data"}), 500
+#     mode = "bluffing"
+#     return jsonify(data)
 
-
-@app.route('/')
-def home():
-    return "Welcome to the Flask Backend!"
-
-@app.route('/api/general/update', methods=['post'])
-def update_status():
-
-    return 
 # General rank leaderboard
-@app.route('/api/general/rank', methods=['GET'])
+@app.route('/api/general/model', methods=['GET'])
 def general_model():
-    print(get_model_scores(input_file='./utilities/coefficients.json'))
-    return jsonify(get_model_scores())
+    try:
+        # Retrieve precomputed model scores from JSON file
+        with open('./precomputed_data/General_model_scores.json', 'r') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-# @app.route('/api/general/user', methods=['GET'])
-# def general_player():
-#     query = 'SELECT name, score FROM general_rank ORDER BY score DESC'
-#     data = fetch_leaderboard(query)
-#     if data:
-#         # player_scores = calculate_player_scores(data)
-#         return jsonify(player_scores)
-#     return jsonify({"error": "Failed to fetch general rank data"}), 500
+@app.route('/api/general/user', methods=['GET'])
+def general_player():
+    try:
+        # Retrieve precomputed user scores from JSON file
+        with open('./precomputed_data/General_user_scores.json', 'r') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(port=5000)
