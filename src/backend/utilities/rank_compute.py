@@ -1,7 +1,7 @@
 import json
 import os
 import pandas as pd
-from .db_query import get_db, query_table
+from db_query import get_db, query_table
 import numpy as np
 import pandas as pd
 import trueskill as ts
@@ -9,15 +9,16 @@ from trueskill import *
 import numpy as np
 import json
 
-prompt_mapping_file = "./prompt_mapping.json"
-# Mapping dictionaries - do we need chatgpt -1???
+OUTPUT_MODEL_SCORE_PATH = '/home/yuxuan/hao_ai_lab/game_arena_website/src/backend/precomputed_data/model_scores.json'
+OUTPUT_USER_SCORE_PATH = '/home/yuxuan/hao_ai_lab/game_arena_website/src/backend/precomputed_data/user_scores.json'
+# Initialize Mapping Data or Files
+PROMPT_MAPPING_FILE = "./prompt_mapping.json"
 model_name_mapping = {
     "llama-3-405b": 0,
     "gpt-4o-2024-08-06": 1,
     "gemini-1.5-pro": 2,
     "claude-3-5-sonnet-20240620": 3
 }
-
 reasoning_technique_mapping = {
     "CoT": 0
 }
@@ -45,7 +46,7 @@ def classify_level(user_id: int):
 # Main data processing function
 def process_data(output_path='./feature_vector.parquet'):
     data = query_table("game_sessions")
-    with open(prompt_mapping_file, "r") as file:
+    with open(PROMPT_MAPPING_FILE, "r") as file:
         prompt_mapping = json.load(file)
 
     # Processed data storage
@@ -97,10 +98,11 @@ def process_data(output_path='./feature_vector.parquet'):
 
     # Convert to DataFrame and save as a Parquet file
     df = pd.DataFrame(processed_data)
-    df.to_parquet(output_path, index=False)
-    print(f"Data saved to {output_path}")
 
-    return processed_data
+    # Filter out rows with outcome_index = -1 and None
+    df = df[(df["outcome_index"] != -1) & (df["outcome_index"].notna())]
+
+    return df
 
 
 def create_one_hot(index, size):
@@ -109,16 +111,11 @@ def create_one_hot(index, size):
         one_hot[index] = 1
     return one_hot
 
-def calculate_bt_model_scores(game_type: str,  # Specify game_type as a string
-                              input_file: str = './feature_vector.parquet', 
-                              output_json_file: str = './coefficients.json',
+def calculate_bt_model_scores(sample_df: pd.DataFrame,
                               model_size_count: int = 4,
                               user_level_count: int = 3,
                               prompt_size_count: int = 5,
                               reasoning_technique_count: int = 1):
-    # Load the Parquet file
-    df = pd.read_parquet(input_file)
-    df = df[df['game_name'] == game_type]
 
     # Define maximum indices for each category to determine one-hot vector dimensions
     model_size_count = 4
@@ -126,15 +123,12 @@ def calculate_bt_model_scores(game_type: str,  # Specify game_type as a string
     prompt_size_count = 5
     reasoning_technique_count = 1
 
-    # Filter out rows with outcome_index = -1 and None
-    df = df[(df["outcome_index"] != -1) & (df["outcome_index"].notna())]
-
     # Initialize a list to hold all feature vectors and outcome labels
     feature_vectors = []
     outcome_labels = []
 
     # Iterate through each row to construct one-hot vectors and concatenate
-    for _, row in df.iterrows():
+    for _, row in sample_df.iterrows():
         model_one_hot = create_one_hot(row["model_index"], model_size_count)
         user_score_one_hot = create_one_hot(row["user_level_index"], user_level_count)
         prompt_one_hot = create_one_hot(row["prompt_index"], prompt_size_count)
@@ -179,32 +173,13 @@ def calculate_bt_model_scores(game_type: str,  # Specify game_type as a string
         # Update beta
         beta -= step_size * gradient
 
-    beta_adjusted = []
-    for b in beta:
-        b *= 400
-        b += 1000
-        beta_adjusted.append(b)
-    # Display final beta coefficients
-    print("Final model coefficients:", beta_adjusted)
+    return beta
 
-    # Save to JSON file
-    with open(output_json_file, 'w') as json_file:
-        json.dump(beta.tolist(), json_file, indent=4)
-
-    return beta_adjusted
-
-def compute_trueskill_rankings(input_file='./feature_vector.parquet', 
-                               coefficients_file='./coefficients.json', 
+def compute_trueskill_rankings(sample_df: pd.DataFrame,
+                               coefficients, 
                                model_size_count = 4,
                                user_level_count = 3,
                                prompt_size_count = 5,):
-    # Load the Parquet file
-    df = pd.read_parquet(input_file)
-
-    # Load coefficients from JSON file
-    with open(coefficients_file, 'r') as file:
-        coefficients = json.load(file)
-
 
     # Extract and normalize model coefficients
     all_coefficients_raw = list(coefficients)
@@ -229,10 +204,12 @@ def compute_trueskill_rankings(input_file='./feature_vector.parquet',
     # Initialize TrueSkill environment
     ts.setup(draw_probability=0)
 
-    # Assign unique user levels
-    user_levels = df['user_level_index']
-    user_ids = df['user_id']
-    user_level_mapping = dict(zip(user_ids, user_levels))
+    # Assign unique user levels and usernames
+    unique_users = sample_df[['user_id', 'user_level_index', 'user_name']].drop_duplicates()
+
+    # Create mappings
+    user_level_mapping = dict(zip(unique_users['user_id'], unique_users['user_level_index']))
+    user_name_mapping = dict(zip(unique_users['user_id'], unique_users['user_name']))
 
     # Initialize user TrueSkill ratings based on logistic regression coefficients
     user_ratings = {}
@@ -241,8 +218,8 @@ def compute_trueskill_rankings(input_file='./feature_vector.parquet',
         user_ratings[user_id] = ts.Rating(mu=base_mu, sigma=base_sigma)
 
     # Initialize win tracking
-    win_counts = {user_id: 0 for user_id in user_ids}
-    total_counts = {user_id: 0 for user_id in user_ids}
+    win_counts = {user_id: 0 for user_id in user_level_mapping.keys()}
+    total_counts = {user_id: 0 for user_id in user_level_mapping.keys()}
 
     # Calculate virtual opponent's rating based on match factors
     def calculate_virtual_opponent_rating(row):
@@ -254,7 +231,7 @@ def compute_trueskill_rankings(input_file='./feature_vector.parquet',
         return ts.Rating(mu=combined_mu, sigma=base_sigma)
 
     # Update TrueSkill ratings for users based on outcomes
-    for _, row in df.iterrows():
+    for _, row in sample_df.iterrows():
         user_id = row["user_id"]
         outcome = row["outcome_index"]
 
@@ -280,15 +257,16 @@ def compute_trueskill_rankings(input_file='./feature_vector.parquet',
         print(f"User {user_id} (Level {user_level_mapping[user_id]}): mu={rating.mu}, sigma={rating.sigma}")
 
     print(f"\nOpponent: mu={new_opponent_rating.mu}, sigma={new_opponent_rating.sigma}")
+    return [{user_id: [user_name_mapping[user_id], rating.mu, rating.sigma]} for user_id, rating in sorted_users]
 
 
 
-def get_model_scores(input_file='./utilities/coefficients.json', model_size_count = 4 ):
-    with open(input_file, "r") as file:
+def get_model_scores(game_name: str, model_size_count = 4 ):
+    with open(OUTPUT_MODEL_SCORE_PATH, "r") as file:
         beta = json.load(file)
     beta_adjusted = []
-    for b in beta:
-        b *= 400
+    for b in beta[game_name]:
+        b *= 200
         b += 1000
         beta_adjusted.append(b)
     # Display final beta coefficients
@@ -299,13 +277,64 @@ def get_model_scores(input_file='./utilities/coefficients.json', model_size_coun
         json_output.append({'name':model, 'score':score})
     return json_output
 
+def get_average_model_scores(model_size_count = 4 ):
+    with open(OUTPUT_MODEL_SCORE_PATH, "r") as file:
+        beta = json.load(file)
+    all_beta_adjusted = []
+    for beta_value in beta.values():
+        beta_value = [b * 200 + 1000 for b in beta_value]
+        all_beta_adjusted.append(beta_value)
+
+    average_beta = np.mean(all_beta_adjusted, axis=0)
+
+    # Display final beta coefficients
+    print("Final model coefficients:", average_beta)
+    json_output = []
+    all_model_scores = dict(zip(model_name_mapping.keys() ,average_beta[:model_size_count]))
+    for model, score in all_model_scores.items():
+        json_output.append({'name':model, 'score':score})
+    return json_output
+
+def get_user_scores(game_name: str):
+    with open(OUTPUT_USER_SCORE_PATH, "r") as file:
+        user_mus = json.load(file)
+    
+    json_output = []
+    for user_mu in user_mus[game_name]:
+        for user_id, score_data in user_mu.items():
+            json_output.append({'user_id': user_id, 'name': score_data[0], 'score':score_data[1]})
+    return json_output
+
+
+def update_scores():
+    # Process data
+    df = process_data()
+    model_dict = dict()
+    user_dict = dict()
+
+    # Iterate over unique game names
+    for game_name in df['game_name'].unique():
+        sample_df = df[df["game_name"] == game_name]
+        model_dict[game_name] = list(calculate_bt_model_scores(sample_df))
+        user_dict[game_name] = compute_trueskill_rankings(sample_df=sample_df, coefficients=model_dict[game_name])
+    # Save model_dict to JSON
+    with open(OUTPUT_MODEL_SCORE_PATH, 'w') as model_file:
+        json.dump(model_dict, model_file, indent=4)
+
+    # Save user_dict to JSON
+    with open(OUTPUT_USER_SCORE_PATH, 'w') as user_file:
+        json.dump(user_dict, user_file, indent=4)
+
+    print(f"Model scores saved to {OUTPUT_MODEL_SCORE_PATH}")
+    print(f"User scores saved to {OUTPUT_USER_SCORE_PATH}")
+
+
 
 
 def main():
-    process_data()
-    calculate_bt_model_scores()
-    compute_trueskill_rankings()
+    update_scores()
+    print(get_user_scores('Taboo'))
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
