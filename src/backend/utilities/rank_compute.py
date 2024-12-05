@@ -36,7 +36,7 @@ def classify_level(user_id: int):
 
 
     # Example logic for classification based on stars
-    if stars > 10:
+    if stars > 9:
         return 2
     elif stars > 4:
         return 1
