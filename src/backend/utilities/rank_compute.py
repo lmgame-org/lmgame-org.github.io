@@ -2,6 +2,12 @@ import json
 import os
 import pandas as pd
 from db_query import get_db, query_table
+import numpy as np
+import pandas as pd
+import trueskill as ts
+from trueskill import *
+import numpy as np
+import json
 
 prompt_mapping_file = "./prompt_mapping.json"
 # Mapping dictionaries - do we need chatgpt -1???
@@ -18,7 +24,7 @@ reasoning_technique_mapping = {
 }
 
 # Main data processing function
-def process_data():
+def process_data(output_path='./feature_vector.parquet'):
     data = query_table("game_sessions")
     with open(prompt_mapping_file, "r") as file:
         prompt_mapping = json.load(file)
@@ -70,15 +76,202 @@ def process_data():
             "outcome_index": outcome_index
         })
 
-    return processed_data
-
-def main(input_path, output_path):
-    # Process the data
-    output_data = process_data(input_path)
-
     # Convert to DataFrame and save as a Parquet file
-    df = pd.DataFrame(output_data)
+    df = pd.DataFrame(processed_data)
     df.to_parquet(output_path, index=False)
     print(f"Data saved to {output_path}")
 
-print(process_data())
+    return processed_data
+
+
+def create_one_hot(index, size):
+    one_hot = np.zeros(size)
+    if index is not None:  # Check if the index is not None
+        one_hot[index] = 1
+    return one_hot
+
+def calculate_bt_model_scores(input_file='./feature_vector.parquet', 
+                              output_json_file='./coefficients.json',
+                              model_size_count = 4,
+                              user_level_count = 3,
+                              prompt_size_count = 5,
+                              reasoning_technique_count = 1):
+    # Load the Parquet file
+    df = pd.read_parquet(input_file)
+
+    # Define maximum indices for each category to determine one-hot vector dimensions
+    model_size_count = 4
+    user_level_count = 3
+    prompt_size_count = 5
+    reasoning_technique_count = 1
+
+    # Filter out rows with outcome_index = -1 and None
+    df = df[(df["outcome_index"] != -1) & (df["outcome_index"].notna())]
+
+    # Initialize a list to hold all feature vectors and outcome labels
+    feature_vectors = []
+    outcome_labels = []
+
+    # Iterate through each row to construct one-hot vectors and concatenate
+    for _, row in df.iterrows():
+        model_one_hot = create_one_hot(row["model_index"], model_size_count)
+        user_score_one_hot = create_one_hot(row["user_level_index"], user_level_count)
+        prompt_one_hot = create_one_hot(row["prompt_index"], prompt_size_count)
+        reasoning_technique_one_hot = create_one_hot(row["reasoning_technique_index"], reasoning_technique_count)
+
+        # Concatenate all one-hot vectors for this row
+        full_vector = np.concatenate([model_one_hot, user_score_one_hot, prompt_one_hot, reasoning_technique_one_hot])
+        feature_vectors.append(full_vector)
+
+        # Add outcome label (0 for MODEL_LOSE, 1 for MODEL_WIN)
+        outcome_labels.append(row["outcome_index"])
+
+    # Convert lists into numpy arrays for feature matrix and outcome labels
+    feature_matrix = np.array(feature_vectors)
+    outcome_labels = np.array(outcome_labels)
+
+    # Output the shape of the final feature matrix for verification
+    print("Feature matrix shape:", feature_matrix.shape)
+    print("Outcome labels shape:", outcome_labels.shape)
+
+    # Online logistic regression
+    step_size = 0.01
+    _, d = feature_matrix.shape
+    beta = np.zeros(d)  # Initialize coefficients
+
+    # Sigmoid function
+    def sigmoid(z):
+        return 1 / (1 + np.exp(-z))
+
+    # Online training loop
+    for i in range(len(feature_matrix)):
+        if i % 100 == 0:
+            print(f"performing {i}th iterations...")
+        x_i = feature_matrix[i]
+        y_i = outcome_labels[i]
+        
+        # Compute the gradient
+        z = np.dot(x_i, beta)
+        h = sigmoid(z)
+        gradient = x_i * (h - y_i)
+        
+        # Update beta
+        beta -= step_size * gradient
+
+    beta_adjusted = []
+    for b in beta:
+        b *= 400
+        b += 1000
+        beta_adjusted.append(b)
+    # Display final beta coefficients
+    print("Final model coefficients:", beta_adjusted)
+
+    # Save to JSON file
+    with open(output_json_file, 'w') as json_file:
+        json.dump(beta.tolist(), json_file, indent=4)
+
+    return beta_adjusted
+
+def compute_trueskill_rankings(input_file='./feature_vector.parquet', 
+                               coefficients_file='./coefficients.json', 
+                               model_size_count = 4,
+                               user_level_count = 3,
+                               prompt_size_count = 5,):
+    # Load the Parquet file
+    df = pd.read_parquet(input_file)
+
+    # Load coefficients from JSON file
+    with open(coefficients_file, 'r') as file:
+        coefficients = json.load(file)
+
+
+    # Extract and normalize model coefficients
+    all_coefficients_raw = list(coefficients)
+    all_coefficients = []
+    for c in all_coefficients_raw:
+        c *= 200
+        c += 1000
+        all_coefficients.append(c)
+
+    print(all_coefficients)
+
+    model_coefficients = all_coefficients[:model_size_count]
+
+    # Extract other coefficients
+    user_coefficients = all_coefficients[model_size_count:model_size_count + user_level_count]
+    prompt_coefficients = all_coefficients[model_size_count + user_level_count:model_size_count + user_level_count + prompt_size_count]
+    reasoning_technique_coefficient = all_coefficients[model_size_count + user_level_count + prompt_size_count:][0]
+
+    # Define base sigma (uncertainty) for all players in TrueSkill
+    base_sigma = 10.0
+
+    # Initialize TrueSkill environment
+    ts.setup(draw_probability=0)
+
+    # Assign unique user levels
+    user_levels = df['user_level_index']
+    user_ids = df['user_id']
+    user_level_mapping = dict(zip(user_ids, user_levels))
+
+    # Initialize user TrueSkill ratings based on logistic regression coefficients
+    user_ratings = {}
+    for user_id, level in user_level_mapping.items():
+        base_mu = user_coefficients[level]  # Adjust for stronger model with more negative score
+        user_ratings[user_id] = ts.Rating(mu=base_mu, sigma=base_sigma)
+
+    # Initialize win tracking
+    win_counts = {user_id: 0 for user_id in user_ids}
+    total_counts = {user_id: 0 for user_id in user_ids}
+
+    # Calculate virtual opponent's rating based on match factors
+    def calculate_virtual_opponent_rating(row):
+        model_coefficient = model_coefficients[row["model_index"]]
+        prompt_coefficient = prompt_coefficients[row["prompt_index"]]
+        reasoning_coefficient = reasoning_technique_coefficient
+
+        combined_mu = (model_coefficient + prompt_coefficient + reasoning_coefficient) / 3
+        return ts.Rating(mu=combined_mu, sigma=base_sigma)
+
+    # Update TrueSkill ratings for users based on outcomes
+    for _, row in df.iterrows():
+        user_id = row["user_id"]
+        outcome = row["outcome_index"]
+
+        # Get the user's rating
+        user_rating = user_ratings[user_id]
+        opponent_rating = calculate_virtual_opponent_rating(row)
+
+        # Update ratings based on outcome and track win/loss
+        if outcome == 1:  # Model wins (user loses)
+            new_opponent_rating, new_user_rating = ts.rate_1vs1(opponent_rating, user_rating)
+        else:  # User wins
+            new_user_rating, new_opponent_rating = ts.rate_1vs1(user_rating, opponent_rating)
+            win_counts[user_id] += 1  # Count win for the user
+
+        # Update total games played
+        total_counts[user_id] += 1
+        user_ratings[user_id] = new_user_rating
+
+    # Display user rankings, sorted by mu (highest to lowest)
+    sorted_users = sorted(user_ratings.items(), key=lambda x: x[1].mu, reverse=True)
+    print("User rankings based on TrueSkill ratings (from highest to lowest mu):")
+    for user_id, rating in sorted_users:
+        print(f"User {user_id} (Level {user_level_mapping[user_id]}): mu={rating.mu}, sigma={rating.sigma}")
+
+    # Calculate and display win rate for each user
+    # print("\nWin rates for each user:")
+    # for user_id in user_ids:
+    #     win_rate = win_counts[user_id] / total_counts[user_id] if total_counts[user_id] > 0 else 0
+    #     print(f"User {user_id}: Win Rate = {win_rate:.2%} (Wins: {win_counts[user_id]}, Total Games: {total_counts[user_id]})")
+
+    print(f"\nOpponent: mu={new_opponent_rating.mu}, sigma={new_opponent_rating.sigma}")
+
+
+def main():
+    process_data()
+    calculate_bt_model_scores()
+    compute_trueskill_rankings()
+
+
+if __name__ == "__main__":
+    main()
