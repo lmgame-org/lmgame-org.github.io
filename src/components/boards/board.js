@@ -61,7 +61,12 @@ export default function Board({
             }
         };
         fetchData();
-    }, [apiEndpoint]); // Re-run fetch if API endpoint changes
+
+        const interval = setInterval(fetchData, 100000);
+
+        // Cleanup interval on unmount
+        return () => clearInterval(interval);
+    }, [apiEndpoint]); 
 
     // change the leaderboard with api input
     const rankedData = rankLeaderboard(Leaderboard)
@@ -103,10 +108,10 @@ export default function Board({
               {`${filteredLeaderboard.length} of ${Leaderboard.length} row(s) selected`}
           </div>
 
-          {/* Modal Component */}
+          {/* Modal Component
           {isModalOpen && (
               <UserInfoModal user={selectedUser} onClose={closeModal} />
-          )}
+          )} */}
 
     </div>
   )

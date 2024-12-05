@@ -15,3 +15,4 @@ export default function UserInfoModal({ user, onClose }) {
         </div>
     );
 }
+
