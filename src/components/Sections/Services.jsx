@@ -41,7 +41,7 @@ export default function Services() {
             ) : (
               <Board
                 title="Overall Leaderboard"
-                apiEndpoint="/api/general/model"
+                apiEndpoint="/api/general/rank"
                 clickEnabled={false}
               />
             )}
