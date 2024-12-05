@@ -62,7 +62,7 @@ export default function Board({
         };
         fetchData();
 
-        const interval = setInterval(fetchData, 100000);
+        const interval = setInterval(fetchData, 10);
 
         // Cleanup interval on unmount
         return () => clearInterval(interval);

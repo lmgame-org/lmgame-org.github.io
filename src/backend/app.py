@@ -6,7 +6,6 @@ from psycopg2.extras import RealDictCursor
 # from trueskill2_user_ranking import calculate_player_scores
 from utilities import *
 
-
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
 
@@ -85,21 +84,17 @@ def home():
 # General rank leaderboard
 @app.route('/api/general/rank', methods=['GET'])
 def general_model():
-    query = 'SELECT name, score FROM general_rank ORDER BY score DESC'
-    data = fetch_leaderboard(query)
-    if data:
-        # model_scores = calculate_model_scores(data)
-        return jsonify(model_scores)
-    return jsonify({"error": "Failed to fetch general rank data"}), 500
+    get_model_scores()
+    return
 
-@app.route('/api/general/user', methods=['GET'])
-def general_player():
-    query = 'SELECT name, score FROM general_rank ORDER BY score DESC'
-    data = fetch_leaderboard(query)
-    if data:
-        # player_scores = calculate_player_scores(data)
-        return jsonify(player_scores)
-    return jsonify({"error": "Failed to fetch general rank data"}), 500
+# @app.route('/api/general/user', methods=['GET'])
+# def general_player():
+#     query = 'SELECT name, score FROM general_rank ORDER BY score DESC'
+#     data = fetch_leaderboard(query)
+#     if data:
+#         # player_scores = calculate_player_scores(data)
+#         return jsonify(player_scores)
+#     return jsonify({"error": "Failed to fetch general rank data"}), 500
 
 if __name__ == "__main__":
     app.run(port=5000)
