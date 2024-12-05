@@ -22,6 +22,26 @@ reasoning_technique_mapping = {
     "CoT": 0
 }
 
+def classify_level(user_id: int):
+    # Query the user_stars table with the specified roblox_id
+    result = query_table("user_stars", filters={"roblox_id": user_id})
+
+    if not result:
+        # Raise an error if the user is not found
+        raise ValueError(f"User with roblox_id {user_id} not found in user_stars table.")
+
+    # Extract the stars value
+    stars = result[0]["stars"]
+
+
+    # Example logic for classification based on stars
+    if stars > 10:
+        return 2
+    elif stars > 4:
+        return 1
+    else:
+        return 0
+    
 # Main data processing function
 def process_data(output_path='./feature_vector.parquet'):
     data = query_table("game_sessions")
@@ -41,7 +61,7 @@ def process_data(output_path='./feature_vector.parquet'):
         username = entry.get("username")
         session_id = entry.get("session_id")
         game_name = entry.get("game_name")
-        level_index = entry.get("level")
+        level_index = classify_level(user_id)
 
         # Extract prompt index and reasoning technique index - delete them for now due to incomplete info
         prompt = entry.get("system_prompt")
@@ -89,14 +109,16 @@ def create_one_hot(index, size):
         one_hot[index] = 1
     return one_hot
 
-def calculate_bt_model_scores(input_file='./feature_vector.parquet', 
-                              output_json_file='./coefficients.json',
-                              model_size_count = 4,
-                              user_level_count = 3,
-                              prompt_size_count = 5,
-                              reasoning_technique_count = 1):
+def calculate_bt_model_scores(game_type: str,  # Specify game_type as a string
+                              input_file: str = './feature_vector.parquet', 
+                              output_json_file: str = './coefficients.json',
+                              model_size_count: int = 4,
+                              user_level_count: int = 3,
+                              prompt_size_count: int = 5,
+                              reasoning_technique_count: int = 1):
     # Load the Parquet file
     df = pd.read_parquet(input_file)
+    df = df[df['game_name'] == game_type]
 
     # Define maximum indices for each category to determine one-hot vector dimensions
     model_size_count = 4
