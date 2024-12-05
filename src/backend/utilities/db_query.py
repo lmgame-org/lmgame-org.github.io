@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 
 # Connect with database
-BASE_DIR = "/home/yuxuan/hao_ai_lab/game_arena_website"
+BASE_DIR = "/Users/vicayu/Desktop/game_arena_website"
 SQLALCHEMY_DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'users.db')}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 metadata = MetaData()

@@ -57,9 +57,9 @@ export default function Board({
             }
         };
 
-        // Call the update API initially to get updated data on the first load
-        updateScores();
+        // Call the update API initially to get updated data on the first load   
         fetchData();
+        updateScores();
 
         // Set an interval for updating scores at a longer interval
         const updateInterval = setInterval(updateScores, 60 * 60 * 1000); // Every 60 minutes (1 hour)

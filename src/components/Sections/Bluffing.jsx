@@ -41,9 +41,17 @@ export default function Bluffing() {
               </ButtonContainer>
             </HeaderInfo>
             {selectedLeaderboard === "player" ? (
-              <Board title="Player Leaderboard" />
-            ) : (
-              <Board clickEnabled={false} />
+            <Board 
+              title="Player Leaderboard" 
+              apiEndpoint="http://127.0.0.1:5000/api/bluffing/players" 
+              columnnames={["Player Name", "Rank Score"]}/>
+          ) : (
+            <Board 
+              title="Model Leaderboard" 
+              apiEndpoint="http://127.0.0.1:5000/api/bluffing/models" 
+              clickEnabled={false} 
+              columnnames={["Model Name", "Rank Score"]}
+            />
             )}
           </div>
         </div>

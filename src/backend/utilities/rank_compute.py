@@ -9,8 +9,8 @@ from trueskill import *
 import numpy as np
 import json
 
-OUTPUT_MODEL_SCORE_PATH = '/home/yuxuan/hao_ai_lab/game_arena_website/src/backend/precomputed_data/model_scores.json'
-OUTPUT_USER_SCORE_PATH = '/home/yuxuan/hao_ai_lab/game_arena_website/src/backend/precomputed_data/user_scores.json'
+OUTPUT_MODEL_SCORE_PATH = './precomputed_data/model_scores.json'
+OUTPUT_USER_SCORE_PATH = './precomputed_data/user_scores.json'
 # Initialize Mapping Data or Files
 PROMPT_MAPPING_FILE = "./prompt_mapping.json"
 model_name_mapping = {
@@ -301,8 +301,8 @@ def get_user_scores(game_name: str):
     
     json_output = []
     for user_mu in user_mus[game_name]:
-        for user_id, score_data in user_mu.items():
-            json_output.append({'user_id': user_id, 'name': score_data[0], 'score':score_data[1]})
+        for score_data in user_mu.values():
+            json_output.append({'name': score_data[0], 'score':score_data[1]})
     return json_output
 
 

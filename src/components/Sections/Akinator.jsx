@@ -41,9 +41,17 @@ export default function Akinator() {
               </ButtonContainer>
             </HeaderInfo>
             {selectedLeaderboard === "player" ? (
-              <Board title="Player Leaderboard" />
+              <Board 
+                title="Player Leaderboard" 
+                apiEndpoint="http://127.0.0.1:5000/api/akinator/players" 
+                columnnames={["Player Name", "Rank Score"]}/>
             ) : (
-              <Board clickEnabled={false} />
+              <Board 
+                title="Model Leaderboard" 
+                apiEndpoint="http://127.0.0.1:5000/api/akinator/models" 
+                clickEnabled={false} 
+                columnnames={["Model Name", "Rank Score"]}
+              />
             )}
           </div>
         </div>
