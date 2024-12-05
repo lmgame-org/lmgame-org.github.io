@@ -1,7 +1,7 @@
 import json
 import os
 import pandas as pd
-from db_query import get_db, query_table
+from .db_query import get_db, query_table
 import numpy as np
 import pandas as pd
 import trueskill as ts

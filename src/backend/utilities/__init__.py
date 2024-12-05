@@ -1,1 +1,1 @@
-from rank_compute import *
+from .rank_compute import *
