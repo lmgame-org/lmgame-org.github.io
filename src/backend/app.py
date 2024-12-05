@@ -18,17 +18,7 @@ def home():
 @app.route('/api/general/update', methods=['post'])
 def update_status():
     try:
-        # Calculate model scores and user scores
-        model_scores = get_model_scores(input_file='./utilities/coefficients.json')
-        # user_scores = get_user_scores()  # Assuming you have a similar function
-
-        # Store scores in a file or database
-        with open('./precomputed_data/General_model_scores.json', 'w') as f:
-            json.dump(model_scores, f)
-
-        # with open('./precomputed_data/user_scores.json', 'w') as f:
-        #     json.dump(user_scores, f)
-
+        update_scores()
         return jsonify({"status": "success", "message": "Scores updated successfully"})
     except Exception as e:
         return jsonify({"status": "failure", "message": str(e)}) 
@@ -72,22 +62,20 @@ def update_status():
 @app.route('/api/general/model', methods=['GET'])
 def general_model():
     try:
-        # Retrieve precomputed model scores from JSON file
-        with open('./precomputed_data/General_model_scores.json', 'r') as f:
-            data = json.load(f)
+        data = get_average_model_scores()
         return jsonify(data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/api/general/user', methods=['GET'])
-def general_player():
-    try:
-        # Retrieve precomputed user scores from JSON file
-        with open('./precomputed_data/General_user_scores.json', 'r') as f:
-            data = json.load(f)
-        return jsonify(data)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+# @app.route('/api/general/user', methods=['GET'])
+# def general_player():
+#     try:
+#         # Retrieve precomputed user scores from JSON file
+#         with open('./precomputed_data/General_user_scores.json', 'r') as f:
+#             data = json.load(f)
+#         return jsonify(data)
+#     except Exception as e:
+#         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(port=5000)
