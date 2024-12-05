@@ -257,16 +257,10 @@ def compute_trueskill_rankings(input_file='./feature_vector.parquet',
     for user_id, rating in sorted_users:
         print(f"User {user_id} (Level {user_level_mapping[user_id]}): mu={rating.mu}, sigma={rating.sigma}")
 
-    # Calculate and display win rate for each user
-    # print("\nWin rates for each user:")
-    # for user_id in user_ids:
-    #     win_rate = win_counts[user_id] / total_counts[user_id] if total_counts[user_id] > 0 else 0
-    #     print(f"User {user_id}: Win Rate = {win_rate:.2%} (Wins: {win_counts[user_id]}, Total Games: {total_counts[user_id]})")
-
     print(f"\nOpponent: mu={new_opponent_rating.mu}, sigma={new_opponent_rating.sigma}")
 
-def get_model_scores(input_file='./feature_vector.parquet', model_size_count = 4 ):
-    with open(input, "r") as file:
+def get_model_scores(input_file='./coefficients.json', model_size_count = 4 ):
+    with open(input_file, "r") as file:
         beta = json.load(file)
     beta_adjusted = []
     for b in beta:

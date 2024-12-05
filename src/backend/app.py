@@ -4,6 +4,7 @@ from flask_cors import CORS
 from db import get_db_connection
 from psycopg2.extras import RealDictCursor
 # from trueskill2_user_ranking import calculate_player_scores
+from utilities import *
 
 
 app = Flask(__name__)
