@@ -327,14 +327,3 @@ def update_scores():
 
     print(f"Model scores saved to {OUTPUT_MODEL_SCORE_PATH}")
     print(f"User scores saved to {OUTPUT_USER_SCORE_PATH}")
-
-
-
-
-def main():
-    update_scores()
-    print(get_user_scores('Taboo'))
-
-
-if __name__ == "__main__":
-    main()
