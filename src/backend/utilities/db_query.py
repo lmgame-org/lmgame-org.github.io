@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 
 # Base directory where your project and database are located
-BASE_DIR = "/home/yuxuan/hao_ai_lab/game_arena_website"
+BASE_DIR = "/Users/vicayu/Desktop/game_arena_website"
 
 # SQLite database file path
 SQLALCHEMY_DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'users.db')}"

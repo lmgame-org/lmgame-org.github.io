@@ -259,6 +259,8 @@ def compute_trueskill_rankings(input_file='./feature_vector.parquet',
 
     print(f"\nOpponent: mu={new_opponent_rating.mu}, sigma={new_opponent_rating.sigma}")
 
+
+
 def get_model_scores(input_file='./utilities/coefficients.json', model_size_count = 4 ):
     with open(input_file, "r") as file:
         beta = json.load(file)
