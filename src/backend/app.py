@@ -80,12 +80,15 @@ def update_leaderboard(data):
 def home():
     return "Welcome to the Flask Backend!"
 
+@app.route('/api/general/update', methods=['post'])
+def update_status():
 
+    return 
 # General rank leaderboard
 @app.route('/api/general/rank', methods=['GET'])
 def general_model():
-    get_model_scores()
-    return
+    print(get_model_scores(input_file='./utilities/coefficients.json'))
+    return jsonify(get_model_scores())
 
 # @app.route('/api/general/user', methods=['GET'])
 # def general_player():

@@ -259,7 +259,7 @@ def compute_trueskill_rankings(input_file='./feature_vector.parquet',
 
     print(f"\nOpponent: mu={new_opponent_rating.mu}, sigma={new_opponent_rating.sigma}")
 
-def get_model_scores(input_file='./coefficients.json', model_size_count = 4 ):
+def get_model_scores(input_file='./utilities/coefficients.json', model_size_count = 4 ):
     with open(input_file, "r") as file:
         beta = json.load(file)
     beta_adjusted = []
@@ -269,7 +269,11 @@ def get_model_scores(input_file='./coefficients.json', model_size_count = 4 ):
         beta_adjusted.append(b)
     # Display final beta coefficients
     print("Final model coefficients:", beta_adjusted)
-    return dict(zip(model_name_mapping.keys() ,beta[:model_size_count]))
+    json_output = []
+    all_model_scores = dict(zip(model_name_mapping.keys() ,beta_adjusted[:model_size_count]))
+    for model, score in all_model_scores.items():
+        json_output.append({'name':model, 'score':score})
+    return json_output
 
 
 
