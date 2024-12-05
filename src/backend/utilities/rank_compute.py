@@ -12,7 +12,6 @@ import json
 prompt_mapping_file = "./prompt_mapping.json"
 # Mapping dictionaries - do we need chatgpt -1???
 model_name_mapping = {
-    "chatgpt": -1,
     "llama-3-405b": 0,
     "gpt-4o-2024-08-06": 1,
     "gemini-1.5-pro": 2,
@@ -266,6 +265,19 @@ def compute_trueskill_rankings(input_file='./feature_vector.parquet',
 
     print(f"\nOpponent: mu={new_opponent_rating.mu}, sigma={new_opponent_rating.sigma}")
 
+def get_model_scores(input_file='./feature_vector.parquet', model_size_count = 4 ):
+    with open(input, "r") as file:
+        beta = json.load(file)
+    beta_adjusted = []
+    for b in beta:
+        b *= 400
+        b += 1000
+        beta_adjusted.append(b)
+    # Display final beta coefficients
+    print("Final model coefficients:", beta_adjusted)
+    return dict(zip(model_name_mapping.keys() ,beta[:model_size_count]))
+
+
 
 def main():
     process_data()
@@ -273,5 +285,5 @@ def main():
     compute_trueskill_rankings()
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
