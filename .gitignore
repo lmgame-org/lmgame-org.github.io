@@ -22,4 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Python-related
+__pycache__/
 game_arena_venv/
+
+# Editor configurations
+.vscode/
