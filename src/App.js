@@ -9,6 +9,7 @@ import Bluffing from "./components/Sections/Bluffing";
 import Taboo from "./components/Sections/Taboo";
 import OurMission from "./components/Sections/OurMission";
 import GameSkills from "./components/Sections/GameSkills";
+import BlogPage from "./components/Sections/BlogPage";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/taboo" element={<Taboo />} />
           <Route path="/ourmission" element={<OurMission />} />
           <Route path="/gameskills" element={<GameSkills />} />
+          <Route path="/blog/:blogId" element={<BlogPage />} />
         </Routes>
       </>
     </Router>
