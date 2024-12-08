@@ -6,6 +6,8 @@ import '../boards/style.css';
 import TopNavbar from "./Pages/TopNavbar_pages";
 import Footer from "./Footer";
 
+import { BASE_URL} from '../../backend/config';
+
 export default function Akinator() {
   const [selectedLeaderboard, setSelectedLeaderboard] = useState("player");
 
@@ -43,12 +45,12 @@ export default function Akinator() {
             {selectedLeaderboard === "player" ? (
               <Board 
                 title="Player Leaderboard" 
-                apiEndpoint="http://127.0.0.1:5000/api/akinator/players" 
+                apiEndpoint={`${BASE_URL}/api/akinator/players`} 
                 columnnames={["Player Name", "Rank Score"]}/>
             ) : (
               <Board 
                 title="Model Leaderboard" 
-                apiEndpoint="http://127.0.0.1:5000/api/akinator/models" 
+                apiEndpoint={`${BASE_URL}/api/akinator/models`} 
                 clickEnabled={false} 
                 columnnames={["Model Name", "Rank Score"]}
               />
