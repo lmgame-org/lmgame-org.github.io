@@ -2,6 +2,8 @@
 
 Follow these steps to set up, configure, and deploy the project locally and online.
 
+---
+
 ## Step 1: Clone the Repository
 
 1. Open a terminal or command prompt.
@@ -101,7 +103,24 @@ Follow these steps to set up, configure, and deploy the project locally and onli
 
 ---
 
-## Step 5: Deploy the Website
+## Step 5: Add Blogs
+
+1. Navigate to the `./public/blogs` directory in the project.
+2. Add your blog posts as markdown files. Each blog should be a separate `.md` file.
+
+   Example structure:
+   ```
+   ./public/blogs
+   ├── blog1.md
+   ├── blog2.md
+   └── blog3.md
+   ```
+
+3. Each markdown file will be automatically loaded and displayed in the blog section of the application.
+
+---
+
+## Step 6: Deploy the Website
 
 1. Ensure all changes are committed and pushed to the repository.
 2. Run the following command to deploy the website to GitHub Pages:
@@ -148,6 +167,10 @@ ngrok http 5000
 const BASE_URL = "https://abc123.ngrok.io"; // Replace with ngrok link
 export default BASE_URL;
 ```
+
+### Add Blogs:
+1. Navigate to `./public/blogs`.
+2. Add markdown files for your blog posts.
 
 ### Deploy the Website:
 ```bash
