@@ -89,14 +89,20 @@ Follow these steps to set up, configure, and deploy the project locally and onli
    ```
    Copy the generated `https` URL from the ngrok output (e.g., `https://abc123.ngrok.io`).
 
-3. Update the `base_url.js` for the frontend:
-   - Open the file `./src/backend/base_url.js` in a text editor.
+3. Update the `config.js` for the frontend:
+   - Open the file `./src/backend/config.js` in a text editor.
    - Replace `http://127.0.0.1:5000` with the ngrok-generated URL.
+   - Adjust the UPDATE_INTERVAL and FETCH_INTERVAL values based on your desired timing.
 
-   Example `base_url.js`:
-   ```javascript
-   const BASE_URL = "https://abc123.ngrok.io"; // ngrok URL
+   Example `config.js`:
+   ```javascript   
    export default BASE_URL;
+   const BASE_URL = "https://abc123.ngrok.io"; // Replace with ngrok link
+   // Replace with Update interval in milliseconds (e.g., 60 minutes)
+   const UPDATE_INTERVAL = 60 * 60 * 1000; // 1 hour
+   // Replace with read data interval in milliseconds (e.g., 30 seconds)
+   const FETCH_INTERVAL = 30 * 1000; // 30 seconds
+   export { BASE_URL, UPDATE_INTERVAL, FETCH_INTERVAL };
    ```
 
    **Important:** Adding the `ngrok` link as the `BASE_URL` allows the frontend to access backend data seamlessly.
@@ -165,7 +171,11 @@ ngrok http 5000
 ### Update `base_url.js`:
 ```javascript
 const BASE_URL = "https://abc123.ngrok.io"; // Replace with ngrok link
-export default BASE_URL;
+// Replace with Update interval in milliseconds (e.g., 60 minutes)
+const UPDATE_INTERVAL = 60 * 60 * 1000; // 1 hour
+// Replace with read data interval in milliseconds (e.g., 30 seconds)
+const FETCH_INTERVAL = 30 * 1000; // 30 seconds
+export { BASE_URL, UPDATE_INTERVAL, FETCH_INTERVAL };
 ```
 
 ### Add Blogs:
