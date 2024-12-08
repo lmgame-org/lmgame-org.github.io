@@ -6,6 +6,8 @@ import '../boards/style.css';
 import TopNavbar from "./Pages/TopNavbar_pages";
 import Footer from "./Footer";
 
+import { BASE_URL} from '../../backend/config';
+
 export default function Bluffing() {
   const [selectedLeaderboard, setSelectedLeaderboard] = useState("player");
 
@@ -43,12 +45,12 @@ export default function Bluffing() {
             {selectedLeaderboard === "player" ? (
             <Board 
               title="Player Leaderboard" 
-              apiEndpoint="http://127.0.0.1:5000/api/bluffing/players" 
+              apiEndpoint={`${BASE_URL}/api/bluffing/players`}  
               columnnames={["Player Name", "Rank Score"]}/>
           ) : (
             <Board 
               title="Model Leaderboard" 
-              apiEndpoint="http://127.0.0.1:5000/api/bluffing/models" 
+              apiEndpoint={`${BASE_URL}/api/bluffing/models`} 
               clickEnabled={false} 
               columnnames={["Model Name", "Rank Score"]}
             />

@@ -3,6 +3,8 @@ import Profiles from './profiles';
 import { Leaderboard as DefaultLeaderboard } from './database'; // Default data import
 import UserInfoModal from './userInfoModal';
 
+import { BASE_URL, UPDATE_INTERVAL, FETCH_INTERVAL } from '../../backend/config';
+
 export default function Board({
     title,
     columnnames = ["User Name", "Rank Score"],
@@ -25,7 +27,7 @@ export default function Board({
         // Function to update scores (run less frequently)
         const updateScores = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:5000/api/general/update", {
+                const response = await fetch(`${BASE_URL}/api/general/update`, {
                     method: "POST",
                 });
                 if (!response.ok) {
@@ -61,11 +63,8 @@ export default function Board({
         fetchData();
         updateScores();
 
-        // Set an interval for updating scores at a longer interval
-        const updateInterval = setInterval(updateScores, 60 * 60 * 1000); // Every 60 minutes (1 hour)
-
-        // Set an interval for fetching leaderboard data at a shorter interval
-        const fetchInterval = setInterval(fetchData, 30 * 1000); // Every 30 seconds
+        const updateInterval = setInterval(updateScores, UPDATE_INTERVAL);
+        const fetchInterval = setInterval(fetchData, FETCH_INTERVAL);
 
         // Cleanup intervals on component unmount
         return () => {

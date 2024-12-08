@@ -5,6 +5,7 @@ import Board from "../boards/board";
 import '../boards/style.css';
 import TopNavbar from "./Pages/TopNavbar_pages";
 import Footer from "./Footer";
+import { BASE_URL} from '../../backend/config';
 
 export default function Taboo() {
   const [selectedLeaderboard, setSelectedLeaderboard] = useState("player");
@@ -43,12 +44,12 @@ export default function Taboo() {
             {selectedLeaderboard === "player" ? (
             <Board 
               title="Player Leaderboard" 
-              apiEndpoint="http://127.0.0.1:5000/api/taboo/players" 
+              apiEndpoint={`${BASE_URL}/api/taboo/players`}  
               columnnames={["Player Name", "Rank Score"]}/>
           ) : (
             <Board 
               title="Model Leaderboard" 
-              apiEndpoint="http://127.0.0.1:5000/api/taboo/models" 
+              apiEndpoint={`${BASE_URL}/api/taboo/models`}  
               clickEnabled={false} 
               columnnames={["Model Name", "Rank Score"]}
             />
