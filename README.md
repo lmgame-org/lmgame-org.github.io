@@ -1,70 +1,161 @@
-# Getting Started with Create React App
+# Project Initialization and Deployment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Follow these steps to set up, configure, and deploy the project locally and online.
 
-## Available Scripts
+## Step 1: Clone the Repository
 
-In the project directory, you can run:
+1. Open a terminal or command prompt.
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/llmgame-org/llmgame-org.github.io
+   ```
+3. Navigate into the project directory:
+   ```bash
+   cd llmgame-org.github.io
+   ```
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Step 2: Set Up the Front-End
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Ensure you have **Node.js** and **npm** installed:
+   ```bash
+   node -v
+   npm -v
+   ```
+   If not installed, download and install them from [Node.js](https://nodejs.org/).
 
-### `npm test`
+2. Install the front-end dependencies:
+   ```bash
+   npm install
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Start the front-end development server:
+   ```bash
+   npm start
+   ```
 
-### `npm run build`
+4. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Step 3: Set Up the Backend Server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Ensure **Python** is installed:
+   ```bash
+   python --version
+   ```
+   If not installed, download and install it from [python.org](https://www.python.org/).
 
-### `npm run eject`
+2. Create a virtual environment:
+   ```bash
+   python -m venv game_arena_venv
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Activate the virtual environment:
+   - On Linux/macOS:
+     ```bash
+     source game_arena_venv/bin/activate
+     ```
+   - On Windows:
+     ```bash
+     game_arena_venv\Scripts\activate
+     ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Install backend dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. Start the backend server:
+   ```bash
+   python ./src/backend/app.py
+   ```
+   The backend will run on port `5000` by default.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Step 4: Set Up `ngrok` for API Access
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Install **ngrok**:
+   - Download it from [ngrok.com](https://ngrok.com/download).
+   - Follow the installation instructions for your operating system.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Start ngrok to expose the backend API:
+   ```bash
+   ngrok http 5000
+   ```
+   Copy the generated `https` URL from the ngrok output (e.g., `https://abc123.ngrok.io`).
 
-### Code Splitting
+3. Update the `base_url.js` for the frontend:
+   - Open the file `./src/backend/base_url.js` in a text editor.
+   - Replace `http://127.0.0.1:5000` with the ngrok-generated URL.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   Example `base_url.js`:
+   ```javascript
+   const BASE_URL = "https://abc123.ngrok.io"; // ngrok URL
+   export default BASE_URL;
+   ```
 
-### Analyzing the Bundle Size
+   **Important:** Adding the `ngrok` link as the `BASE_URL` allows the frontend to access backend data seamlessly.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## Step 5: Deploy the Website
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Ensure all changes are committed and pushed to the repository.
+2. Run the following command to deploy the website to GitHub Pages:
+   ```bash
+   npm run deploy
+   ```
 
-### Advanced Configuration
+3. The website will be deployed and accessible at:
+   ```
+   https://<username>.github.io/<repository-name>
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Replace `<username>` with your GitHub username and `<repository-name>` with your repository name.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Summary of Commands
 
-### `npm run build` fails to minify
+### Clone the Repository:
+```bash
+git clone https://github.com/llmgame-org/llmgame-org.github.io
+cd llmgame-org.github.io
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Set Up the Front-End:
+```bash
+npm install
+npm start
+```
+
+### Set Up the Backend:
+```bash
+python -m venv game_arena_venv
+source game_arena_venv/bin/activate  # or game_arena_venv\Scripts\activate on Windows
+pip install -r requirements.txt
+python ./src/backend/app.py
+```
+
+### Expose Backend with ngrok:
+```bash
+ngrok http 5000
+```
+
+### Update `base_url.js`:
+```javascript
+const BASE_URL = "https://abc123.ngrok.io"; // Replace with ngrok link
+export default BASE_URL;
+```
+
+### Deploy the Website:
+```bash
+npm run deploy
+```
+
+---
+
+This README provides all the necessary steps to initialize, configure, and deploy the project.

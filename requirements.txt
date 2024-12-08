@@ -1,0 +1,7 @@
+flask
+flask-cors
+pandas
+numpy
+trueskill
+sqlalchemy
+psycopg2
