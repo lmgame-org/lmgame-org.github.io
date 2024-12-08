@@ -111,11 +111,9 @@ Follow these steps to set up, configure, and deploy the project locally and onli
 
 3. The website will be deployed and accessible at:
    ```
-   https://<username>.github.io/<repository-name>
+   https://llmgame-org.github.io
    ```
-
-Replace `<username>` with your GitHub username and `<repository-name>` with your repository name.
-
+   
 ---
 
 ## Summary of Commands
