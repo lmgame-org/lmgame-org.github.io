@@ -50,7 +50,7 @@ export default function Projects() {
               <ProjectBox
                 img={ProjectImg1}
                 title="Akinator"
-                text=""
+                text="Help AI guess the target object by answering yes/no questions."
                 action={() => navigate("/akinator")}
               />
               </StyledImageWrapper>
@@ -60,7 +60,7 @@ export default function Projects() {
               <ProjectBox
                 img={ProjectImg3}
                 title="Taboo"
-                text=""
+                text="Induce the AI to say the target word."
                 action={() => navigate("/taboo")}
               />
               </StyledImageWrapper>
@@ -70,7 +70,7 @@ export default function Projects() {
               <ProjectBox
                 img={ProjectImg2}
                 title="Bluffing"
-                text=""
+                text="Bluff the AI into believing the player's statements."
                 action={() => navigate("/bluffing")}
               />
               </StyledImageWrapper>

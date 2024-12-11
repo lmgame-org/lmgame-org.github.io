@@ -30,7 +30,7 @@ export default function OurMission() {
                 <ul className="font16">
                     <li><strong>Taboo (Abductive and Multi-hop Reasoning):</strong>
                     <br />
-                    The AI utilizes abductive reasoning to generate hypotheses from fragmented clues provided by the player, aiming to guess a secret word without directly mentioning it. The game tests the AI's ability to infer under conditions of uncertainty and ambiguity, employing multi-hop reasoning to piece together information from the player's prompts. This game is a test of the AI's capacity to handle incomplete information and still arrive at the most probable conclusion.</li>
+                    The player tries to induce the AI into saying the target word without directly mentioning it. If the AI says the target word, the player wins. The AI employs abductive reasoning to generate hypotheses from fragmented clues, trying to guess the secret word while avoiding saying it directly. The game tests the AI's ability to infer under conditions of uncertainty and ambiguity, utilizing multi-hop reasoning to connect information provided by the player. This game evaluates the AI's capacity to handle incomplete information and arrive at the most probable conclusion.</li>
                 </ul>
             </TextContainer>
               <TextContainer>

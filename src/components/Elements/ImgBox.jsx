@@ -5,10 +5,10 @@ export default function ImgBox({ img, title, text, action }) {
   return (
     <Wrapper onClick={action ? () => action() : null}>
       <ImgContainer>
-        <img src={img} alt="project" />
+        <StyledImage src={img} alt="project" />
         <Overlay>
-          <h3>{title}</h3>
-          <p>{text}</p>
+          <Title>{title}</Title>
+          <Description>{text}</Description>
         </Overlay>
       </ImgContainer>
     </Wrapper>
@@ -24,15 +24,16 @@ const Wrapper = styled.div`
 const ImgContainer = styled.div`
   position: relative;
   width: 100%;
-  overflow: hidden; // Ensures zoomed image stays within bounds
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease; // Smooth zoom transition
-  }
-  &:hover img {
-    transform: scale(1.02); // Zoom image slightly on hover
+  overflow: hidden; /* Ensures the overlay stays within the image bounds */
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.02); /* Scale image on hover for a slight zoom effect */
   }
 `;
 
@@ -44,20 +45,31 @@ const Overlay = styled.div`
   color: white;
   text-align: center;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.2); // Slightly darker background for better readability
+  background: rgba(0, 0, 0, 0.3); /* Increased opacity for better text contrast */
   backdrop-filter: blur(5px);
   border-radius: 8px;
-  width: 80%; // Increased width for better readability on smaller screens
-  h3, p {
-    padding: 0 10px; // Padding inside text elements
-  }
+  width: 80%; /* Constant width relative to the parent image container */
+  box-sizing: border-box; /* Includes padding in the width calculation */
+  max-width: 80%; /* Ensures overlay does not exceed the image width */
   @media (max-width: 768px) {
-    width: 90%; // More width in small screens
-    h3 {
-      font-size: 1rem; // Smaller font size for the title
-    }
-    p {
-      font-size: 0.8rem; // Smaller font size for the paragraph
-    }
+    width: 80%; /* Optionally, increase width for smaller screens */
+  }
+`;
+
+const Title = styled.h3`
+  margin: 0;
+  padding: 0 10px;
+  font-size: 1.2rem; /* Increased base font size */
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust font size for mobile devices */
+  }
+`;
+
+const Description = styled.p`
+  margin-top: 5px;
+  padding: 0 10px;
+  font-size: 1rem;
+  @media (max-width: 768px) {
+    font-size: 0.9rem; /* Slightly smaller font size for descriptions on mobile */
   }
 `;
