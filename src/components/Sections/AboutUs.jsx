@@ -26,7 +26,7 @@ export default function AboutUs() {
           <div className="row textCenter">
             <StyledImageWrapper>
               <ImgBox img={Image1} title="Our Mission" text="Learn more about Game Arena" action={() => navigate("/ourmission")}/>
-              <ImgBox img={Image2} title="Game Reasoning Skills" text="Discover more details about our AI games." action={() => navigate("/gameskills")}/>
+              <ImgBox img={Image2} title="Game Reasoning Skills" text="Discover more details about our games." action={() => navigate("/gameskills")}/>
             </StyledImageWrapper>
           </div>
         </div>

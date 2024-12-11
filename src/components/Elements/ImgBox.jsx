@@ -42,8 +42,8 @@ const Overlay = styled.div`
   top: 50%; /* Start at the vertical center */
   left: 50%; /* Start at the horizontal center */
   transform: translate(-50%, -50%); /* Center the overlay by shifting it */
-  width: 50%; /* Width relative to the image */
-  height: 50%; /* Height relative to the image */
+  width: 80%; /* Width relative to the image */
+  height: 40%; /* Height relative to the image */
   display: flex;
   flex-direction: column; /* Aligns title and description */
   justify-content: center; /* Centers content vertically */
@@ -60,7 +60,7 @@ const Overlay = styled.div`
 const Title = styled.h3`
   margin: 0;
   padding: 0 10px;
-  font-size: 1.2rem; /* Increased base font size */
+  font-size: 1rem; /* Increased base font size */
   @media (max-width: 768px) {
     font-size: 1rem; /* Adjust font size for mobile devices */
   }
@@ -69,7 +69,7 @@ const Title = styled.h3`
 const Description = styled.p`
   margin-top: 5px;
   padding: 0 10px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   @media (max-width: 768px) {
     font-size: 0.9rem; /* Slightly smaller font size for descriptions on mobile */
   }
