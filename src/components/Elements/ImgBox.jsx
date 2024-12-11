@@ -38,22 +38,23 @@ const StyledImage = styled.img`
 `;
 
 const Overlay = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute; /* Positions the overlay on top of the image */
+  top: 50%; /* Start at the vertical center */
+  left: 50%; /* Start at the horizontal center */
+  transform: translate(-50%, -50%); /* Center the overlay by shifting it */
+  width: 50%; /* Width relative to the image */
+  height: 50%; /* Height relative to the image */
+  display: flex;
+  flex-direction: column; /* Aligns title and description */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
   color: white;
   text-align: center;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.3); /* Increased opacity for better text contrast */
-  backdrop-filter: blur(5px);
-  border-radius: 8px;
-  width: 80%; /* Constant width relative to the parent image container */
-  box-sizing: border-box; /* Includes padding in the width calculation */
-  max-width: 80%; /* Ensures overlay does not exceed the image width */
-  @media (max-width: 768px) {
-    width: 80%; /* Optionally, increase width for smaller screens */
-  }
+  background: rgba(0, 0, 0, 0.3); /* Adds a semi-transparent background */
+  backdrop-filter: blur(2px); /* Optional: adds a blur effect */
+  border-radius: 8px; /* Matches the image's border radius */
+  transition: opacity 0.3s ease; /* Smoothly transition overlay visibility */
+  opacity: 1; /* Initially visible */
 `;
 
 const Title = styled.h3`

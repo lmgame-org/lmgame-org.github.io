@@ -65,7 +65,7 @@ const HeaderInfo = styled.div`
 `;
 
 const TextContainer = styled.div`
-  width: 60%;  // Sets the width to 50% of the parent container
+  width: 70%;  // Sets the width to 50% of the parent container
   margin: 0 auto; // Centers the container horizontally
   padding: 20px; // Adds padding inside the container for spacing around the text
   text-align: left;
