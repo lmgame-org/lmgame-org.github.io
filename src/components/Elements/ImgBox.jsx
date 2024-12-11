@@ -7,8 +7,9 @@ export default function ImgBox({ img, title, text, action }) {
       <ImgContainer>
         <StyledImage src={img} alt="project" />
         <TextContainer>
-          <p>{title}</p>
-          <p>{text}</p>
+          <p className="font18"><strong>{title}</strong></p>
+          <p className="font16">{text}</p>
+
         </TextContainer>
       </ImgContainer>
     </Wrapper>
@@ -47,9 +48,7 @@ const TextContainer = styled.div`
   text-align: center;
   color: black;
   background: rgba(255, 255, 255, 0.7);
-  padding: 10px;
+  padding: 5px;
   border-radius: 8px;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
+
 `;
