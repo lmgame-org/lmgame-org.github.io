@@ -7,8 +7,8 @@ export default function ImgBox({ img, title, text, action }) {
       <ImgContainer>
         <img src={img} alt="project" />
         <Overlay>
-          <h3 className="font20 extraBold">{title}</h3>
-          <p className="font13">{text}</p>
+          <h3>{title}</h3>
+          <p>{text}</p>
         </Overlay>
       </ImgContainer>
     </Wrapper>
@@ -24,15 +24,15 @@ const Wrapper = styled.div`
 const ImgContainer = styled.div`
   position: relative;
   width: 100%;
-  overflow: hidden; /* Ensures zoomed image stays within bounds */
+  overflow: hidden; // Ensures zoomed image stays within bounds
   img {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    transition: transform 0.3s ease; /* Smooth zoom transition */
+    transition: transform 0.3s ease; // Smooth zoom transition
   }
   &:hover img {
-    transform: scale(1.02); /* Zoom image slightly on hover */
+    transform: scale(1.02); // Zoom image slightly on hover
   }
 `;
 
@@ -44,14 +44,20 @@ const Overlay = styled.div`
   color: white;
   text-align: center;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2); // Slightly darker background for better readability
   backdrop-filter: blur(5px);
   border-radius: 8px;
-  width: 50%;
-  h3 {
-    margin: 0;
+  width: 80%; // Increased width for better readability on smaller screens
+  h3, p {
+    padding: 0 10px; // Padding inside text elements
   }
-  p {
-    margin: 5px 0 0;
+  @media (max-width: 768px) {
+    width: 90%; // More width in small screens
+    h3 {
+      font-size: 1rem; // Smaller font size for the title
+    }
+    p {
+      font-size: 0.8rem; // Smaller font size for the paragraph
+    }
   }
 `;

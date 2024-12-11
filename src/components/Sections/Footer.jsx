@@ -22,11 +22,11 @@ export default function Contact() {
                 Game Arena
               </h1>
             </Link>
-            <StyleP className="whiteColor font13">
-              © {getCurrentYear()} - <span className="purpleColor font13">Game Arena</span> All Right Reserved
+            <StyleP className="whiteColor font16">
+              © {getCurrentYear()} - <span className="purpleColor font16">Game Arena</span> All Right Reserved
             </StyleP>
 
-            <Link className="whiteColor animate pointer font13" to="top" smooth={true} offset={-80}>
+            <Link className="whiteColor animate pointer font16" to="top" smooth={true} offset={-80}>
               Back to top
             </Link>
           </InnerWrapper>

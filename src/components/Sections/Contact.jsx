@@ -10,14 +10,14 @@ export default function Contact() {
         <ContentContainer className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Contact US</h1>
-            <p className="font13">
+            <p className="font16">
               For more information, feel free to join our discord group or follow us on twitter.
               <br />
               For our code details, please visit our github page and look into our paper.
             </p>
           </HeaderInfo>
           <SocialIcons>
-            <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://discord.gg/jknCew2DcP" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faDiscord} size="4x" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">

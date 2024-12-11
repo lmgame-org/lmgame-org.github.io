@@ -20,8 +20,11 @@ export default function OurMission() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Our Mission</h1>
               <TextContainer>
-                <p className="font15">
-                  At GameArena, our mission is to redefine the evaluation of large language models (LLMs) by merging rigorous scientific testing with interactive gameplay. We have integrated our specially designed games—Akinator, Taboo, and Bluffing—each tailored to assess distinct reasoning capabilities like deductive, inductive, and abductive reasoning, into the Roblox platform to form an escape game. This setup tests and hones both AI and human intelligence in a dynamic environment. Our goal is to advance our understanding of AI's reasoning processes within a controlled yet engaging setting, pushing the boundaries of AI research while providing participants with a challenging and enjoyable experience.
+                <p className="font16">
+                  At GameArena, our mission is to redefine the evaluation of large language models (LLMs) by merging rigorous scientific testing with interactive gameplay. We have integrated our specially designed games—Akinator, Taboo, and Bluffing—each tailored to assess distinct reasoning capabilities like deductive, inductive, and abductive reasoning, into the Roblox platform to form an escape game. 
+                  <br />
+                  <br />
+                  This setup tests and hones both AI and human intelligence in a dynamic environment. Our goal is to advance our understanding of AI's reasoning processes within a controlled yet engaging setting, pushing the boundaries of AI research while providing participants with a challenging and enjoyable experience.
                 </p>
               </TextContainer>
             </HeaderInfo>
@@ -48,10 +51,12 @@ const HeaderInfo = styled.div`
 `;
 
 const TextContainer = styled.div`
-  width: 50%;  // Sets the width to 50% of the parent container
-  margin: 0 auto; // Centers the container horizontally
-  padding: 20px; // Adds padding inside the container for spacing around the text
+  width: 60%; // Keeps the text container at 50% width
+  margin: 0 auto; // Centers the container horizontally within the parent
+  padding: 20px; // Adds padding for spacing
+  text-align: left; // Aligns the text to the left
 `;
+
 
 const ImageWrapper = styled.div`
   display: flex;

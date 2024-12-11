@@ -3,6 +3,7 @@ import styled from "styled-components";
 // Components
 import Board from "../boards/board";
 import "../boards/style.css";
+import { BASE_URL} from '../../backend/config';
 
 export default function Services() {
   return (
@@ -11,7 +12,7 @@ export default function Services() {
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Overall Leaderboard</h1>
-            <p className="font13">
+            <p className="font16">
             This leaderboard displays the overall rankings, calculated using the average scores across three games.
               <br />
               If you want to see more in details, please keep scroll down.
@@ -19,7 +20,7 @@ export default function Services() {
           </HeaderInfo>
           <Board
             title="Overall Leaderboard"
-            apiEndpoint="http://127.0.0.1:5000/api/general/model"
+            apiEndpoint={`${BASE_URL}/api/general/model`}  
             columnnames={["Model Name", "Rank Score"]}
             clickEnabled={false}
           />

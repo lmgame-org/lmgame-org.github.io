@@ -24,7 +24,7 @@ export default function Bluffing() {
           <div className="container">
             <HeaderInfo>
               <h1 className="font40 extraBold">Bluffing Leaderboard</h1>
-              <p className="font13">
+              <p className="font16">
                 Choose between the player leaderboard and model leaderboard.
               </p>
               <ButtonContainer>

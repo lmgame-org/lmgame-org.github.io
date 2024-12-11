@@ -32,7 +32,7 @@ export default function Header() {
       <LeftSide className="flexCenter">
         <div>
           <h1 className="extraBold font60">Game Arena</h1>
-          <HeaderP className="font13 semiBold">
+          <HeaderP className="font16 semiBold">
           Think you've got what it takes? Dive into our Roblox escape games and beat LLMs. Challenge your reasoning, outpace the AI, and climb to the top of the leaderboard!
           </HeaderP>
           <BtnWrapper>

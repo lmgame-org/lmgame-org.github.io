@@ -18,7 +18,7 @@ export default function AboutUs() {
           <HeaderContainer className="flexCenter">
             <HeaderInfo>
               <h1 className="font40 extraBold">About Us</h1>
-              <p className="font13">
+              <p className="font16">
                 GameArena's mission is to enhance the understanding and assessment of large language models by engaging them in strategic games that test their reasoning skills, promoting deeper AI research and user interaction through an escape game that builds on Roblox.
               </p>
             </HeaderInfo>

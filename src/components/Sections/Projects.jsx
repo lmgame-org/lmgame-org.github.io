@@ -23,7 +23,7 @@ export default function Projects() {
           <HeaderContainer className="flexCenter">
             <HeaderInfo>
               <h1 className="font40 extraBold">Game Leaderboards</h1>
-              <p className="font13">
+              <p className="font16">
                 Want to know more information? You can look into each game's leaderboard for more information.
               </p>
             </HeaderInfo>
