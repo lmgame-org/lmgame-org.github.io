@@ -10,7 +10,7 @@ export default function Contact() {
         <ContentContainer className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Contact US</h1>
-            <p className="font16">
+            <p className="font16" style={{ textAlign: 'left'}}>
               For more information, feel free to join our discord group or follow us on twitter.
               <br />
               For our code details, please visit our github page and look into our paper.

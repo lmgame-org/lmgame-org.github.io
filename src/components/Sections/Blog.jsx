@@ -17,7 +17,7 @@ export default function Projects() {
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Game Blogs</h1>
-            <p className="font16">
+            <p className="font16" style={{ textAlign: 'left' }}>
               Here are some great blogs we have.
             </p>
           </HeaderInfo>

@@ -20,7 +20,7 @@ export default function OurMission() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Our Mission</h1>
               <TextContainer>
-                <p className="font16">
+                <p className="font16" style={{ textAlign: 'left' }}>
                 <br />
                   At GameArena, our mission is to redefine the evaluation of large language models (LLMs) by merging rigorous scientific testing with interactive gameplay. We have integrated our specially designed games—Akinator, Taboo, and Bluffing—each tailored to assess distinct reasoning capabilities like deductive, inductive, and abductive reasoning, into the Roblox platform to form an escape game. 
                   <br />
