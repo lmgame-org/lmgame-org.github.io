@@ -21,6 +21,7 @@ export default function OurMission() {
               <h1 className="font40 extraBold">Games Overview</h1>
               <TextContainer>
                 <ul className="font16">
+                <br />
                     <li><strong>Akinator (Deductive and Multi-hop Reasoning) :</strong> 
                     <br />
                     Players challenge the AI by having it guess objects based on a series of yes/no questions. The AI demonstrates deductive reasoning by deriving specific conclusions from general premises, while multi-hop reasoning is showcased as it connects sequential information to narrow down the possibilities to the correct answer. This controlled setting evaluates the AI's ability to formulate and refine hypotheses over multiple rounds.</li>
@@ -65,7 +66,7 @@ const HeaderInfo = styled.div`
 `;
 
 const TextContainer = styled.div`
-  width: 70%;  // Sets the width to 50% of the parent container
+  width: 90%;  // Sets the width to 50% of the parent container
   margin: 0 auto; // Centers the container horizontally
   padding: 20px; // Adds padding inside the container for spacing around the text
   text-align: left;
