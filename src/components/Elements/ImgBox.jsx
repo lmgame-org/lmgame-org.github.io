@@ -6,10 +6,10 @@ export default function ImgBox({ img, title, text, action }) {
     <Wrapper onClick={action ? () => action() : null}>
       <ImgContainer>
         <StyledImage src={img} alt="project" />
-        <Overlay>
-          <Title>{title}</Title>
-          <Description>{text}</Description>
-        </Overlay>
+        <TextContainer>
+          <p>{title}</p>
+          <p>{text}</p>
+        </TextContainer>
       </ImgContainer>
     </Wrapper>
   );
@@ -24,53 +24,32 @@ const Wrapper = styled.div`
 const ImgContainer = styled.div`
   position: relative;
   width: 100%;
-  overflow: hidden; /* Ensures the overlay stays within the image bounds */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 const StyledImage = styled.img`
   width: 100%;
   height: auto;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   &:hover {
-    transform: scale(1.02); /* Scale image on hover for a slight zoom effect */
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   }
 `;
 
-const Overlay = styled.div`
-  position: absolute; /* Positions the overlay on top of the image */
-  top: 50%; /* Start at the vertical center */
-  left: 50%; /* Start at the horizontal center */
-  transform: translate(-50%, -50%); /* Center the overlay by shifting it */
-  width: 80%; /* Width relative to the image */
-  height: 40%; /* Height relative to the image */
-  display: flex;
-  flex-direction: column; /* Aligns title and description */
-  justify-content: center; /* Centers content vertically */
-  align-items: center; /* Centers content horizontally */
-  color: white;
+const TextContainer = styled.div`
+  position: absolute;
   text-align: center;
-  background: rgba(0, 0, 0, 0.3); /* Adds a semi-transparent background */
-  backdrop-filter: blur(2px); /* Optional: adds a blur effect */
-  border-radius: 8px; /* Matches the image's border radius */
-  transition: opacity 0.3s ease; /* Smoothly transition overlay visibility */
-  opacity: 1; /* Initially visible */
-`;
-
-const Title = styled.h3`
-  margin: 0;
-  padding: 0 10px;
-  font-size: 1rem; /* Increased base font size */
-  @media (max-width: 768px) {
-    font-size: 1rem; /* Adjust font size for mobile devices */
-  }
-`;
-
-const Description = styled.p`
-  margin-top: 5px;
-  padding: 0 10px;
-  font-size: 0.8rem;
-  @media (max-width: 768px) {
-    font-size: 0.9rem; /* Slightly smaller font size for descriptions on mobile */
-  }
+  color: black;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 `;
