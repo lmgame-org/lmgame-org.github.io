@@ -17,7 +17,7 @@ export default function AboutUs() {
   return (
     <Wrapper id="AboutUs">
       <TopNavbar />
-      <div className="lightBg" style={{ padding: "120px 0" }}>
+      <div className="lightBg" style={{ padding: "100px 0" }}>
         <div className="container">
           <HeaderContainer className="flexCenter">
             <HeaderInfo>

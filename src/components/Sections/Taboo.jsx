@@ -24,7 +24,7 @@ export default function Taboo() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Taboo Leaderboard</h1>
               <p className="font16">
-                Choose between the player leaderboard and model leaderboard.
+                Players induce the AI to guess a target word from incomplete clues, evaluating its ability to infer and connect ambiguous information.
               </p>
               <ButtonContainer>
                 <ToggleButton

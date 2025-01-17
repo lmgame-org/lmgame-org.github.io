@@ -24,13 +24,13 @@ export default function Projects() {
     slidesToScroll: 1, // Number of items to scroll at once
     autoplay: true, // Enable automatic sliding
     autoplaySpeed: 3000, // Delay between slides (in milliseconds)
-    pauseOnHover: true, // Prevent pausing on mouse hover
+    pauseOnHover: false, // Prevent pausing on mouse hover
     cssEase: "linear", // Smooth animation for continuous spinning
   };
 
   return (
     <Wrapper id="projects">
-      <div className="lightBg" style={{ padding: "40px 0" }}>
+      <div className="lightBg" style={{ padding: "20px 0" }}>
         <div className="container">
 
           {/* Carousel Wrapper */}
@@ -75,8 +75,8 @@ const StyledImageWrapper = styled.div`
   padding: 15px;
 
   img {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
   }
 `;

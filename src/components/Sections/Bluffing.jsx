@@ -25,7 +25,7 @@ export default function Bluffing() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Bluffing Leaderboard</h1>
               <p className="font16">
-                Choose between the player leaderboard and model leaderboard.
+                The AI determines the truthfulness of player statements based on observed responses, testing its ability to detect deception and use strategic reasoning.
               </p>
               <ButtonContainer>
                 <ToggleButton

@@ -25,7 +25,7 @@ export default function Akinator() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Akinator Leaderboard</h1>
               <p className="font16">
-                Choose between the player leaderboard and model leaderboard for the Akinator game.
+                Players help the AI guess an object through yes/no questions, testing its ability to refine hypotheses and connect sequential information.
               </p>
               <ButtonContainer>
                 <ToggleButton
