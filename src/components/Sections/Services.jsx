@@ -13,7 +13,7 @@ export default function Services() {
           <HeaderInfo>
             <h1 className="font40 extraBold">Overall Leaderboard</h1>
             <p className="font16" style={{ textAlign: 'left' }}>
-            This leaderboard displays the overall rankings, calculated using the average scores across three games.
+              This leaderboard displays the overall rankings, calculated using the average scores across three games.
               <br />
               If you want to see more in details, please keep scroll down.
             </p>

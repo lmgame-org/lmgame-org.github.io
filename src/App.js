@@ -10,6 +10,8 @@ import Taboo from "./components/Sections/Taboo";
 import OurMission from "./components/Sections/OurMission";
 import GameSkills from "./components/Sections/GameSkills";
 import BlogPage from "./components/Sections/BlogPage";
+import AboutUs from "./components/Sections/AboutUs";
+import Blog from "./components/Sections/Blog";
 
 export default function App() {
   return (
@@ -29,6 +31,8 @@ export default function App() {
           <Route path="/ourmission" element={<OurMission />} />
           <Route path="/gameskills" element={<GameSkills />} />
           <Route path="/blog/:blogId" element={<BlogPage />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </>
     </Router>

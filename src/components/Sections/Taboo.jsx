@@ -3,9 +3,9 @@ import styled from "styled-components";
 // Components
 import Board from "../boards/board";
 import '../boards/style.css';
-import TopNavbar from "./Pages/TopNavbar_pages";
 import Footer from "./Footer";
 import { BASE_URL} from '../../backend/config';
+import TopNavbar from "../Nav/TopNavbar";
 
 export default function Taboo() {
   const [selectedLeaderboard, setSelectedLeaderboard] = useState("player");

@@ -7,9 +7,11 @@ import Backdrop from "../Elements/Backdrop";
 // Assets
 import Logo from "../../assets/svg/Logo";
 import BurgerIcon from "../../assets/svg/BurgerIcon";
+import { useNavigate } from "react-router-dom";
 
 
 export default function TopNavbar() {
+  const navigate = useNavigate();
   const [y, setY] = useState(window.scrollY);
   
   const [sidebarOpen, toggleSidebar] = useState(false);
@@ -21,6 +23,11 @@ export default function TopNavbar() {
     };
   }, [y]);
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const closeDropdown = () => setIsDropdownOpen(false);
+
 
   return (
     <>
@@ -30,7 +37,7 @@ export default function TopNavbar() {
         <NavInner className="container flexSpaceCenter">
           <Link className="pointer flexNullCenter" to="home" smooth={true}>
             <Logo darkMode={false}/>
-            <h1 style={{ marginLeft: "15px" }} className="font20 extraBold">
+            <h1 style={{ marginLeft: "16px" }} className="font20 extraBold">
               Game Arena
             </h1>
           </Link>
@@ -38,43 +45,48 @@ export default function TopNavbar() {
             <BurgerIcon />
           </BurderWrapper>
           <UlWrapper className="flexNullCenter">
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="home" spy={true} smooth={true} offset={-80}>
-                Home
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="AboutUs" spy={true} smooth={true} offset={-80}>
-                About Us
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="services" spy={true} smooth={true} offset={-80}>
-                Overall Leaderboard
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
+            <StyledLi className="semiBold font16 pointer" onClick={() => navigate("/")}>
+              Home
+            </StyledLi>
+
+            <StyledLi className="semiBold font16 pointer" onClick={toggleDropdown} style={{ position: "relative" }}>
+              <span style={{ padding: "10px 16px", cursor: "pointer" }}>
                 Game Leaderboards
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="blog" spy={true} smooth={true} offset={-80}>
+              </span>
+              {isDropdownOpen && (
+                <DropdownMenu>
+                  <DropdownItem onClick={() => { navigate("/akinator"); closeDropdown(); }}>
+                    Akinator
+                  </DropdownItem>
+                  <DropdownItem onClick={() => { navigate("/taboo"); closeDropdown(); }}>
+                    Taboo
+                  </DropdownItem>
+                  <DropdownItem onClick={() => { navigate("/bluffing"); closeDropdown(); }}>
+                    Bluffing
+                  </DropdownItem>
+                </DropdownMenu>
+              )}
+            </StyledLi>
+            <StyledLi className="semiBold font16 pointer" onClick={() => navigate("/blog")}>
                 Blog
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="contact" spy={true} smooth={true} offset={-80}>
-                Contact
-              </Link>
-            </li>
+            </StyledLi>
+            <StyledLi className="semiBold font16 pointer" onClick={() => navigate("/aboutus")}>
+              About Us
+            </StyledLi>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
-            <li className="semiBold font15 pointer flexCenter">
-              <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
+            <StyledLi className="semiBold font16 pointer flexCenter">
+              <a
+                href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
+                className="radius8 lightBg"
+                style={{ padding: "10px 16px" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Play Now
               </a>
-            </li>
+            </StyledLi>
+
           </UlWrapperRight>
         </NavInner>
       </Wrapper>
@@ -98,7 +110,7 @@ const BurderWrapper = styled.button`
   border: 0px;
   background-color: transparent;
   height: 100%;
-  padding: 0 15px;
+  padding: 0 16px;
   display: none;
   @media (max-width: 760px) {
     display: block;
@@ -117,3 +129,35 @@ const UlWrapperRight = styled.ul`
 `;
 
 
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 1000;
+  width: 100%;
+`;
+
+const DropdownItem = styled.div`
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #333;
+  &:hover {
+    background-color: #f1f1f1;
+  }
+`;
+
+const StyledLi = styled.li`
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    border-bottom: 2px solid #7620FF;
+    color: #7620FF;
+  }
+`;

@@ -7,13 +7,16 @@ import ProjectBox from "../Elements/ProjectBox";
 import ProjectImg1 from "../../assets/img/blogs/blog1.png";
 import ProjectImg2 from "../../assets/img/blogs/blog2.jpg";
 import ProjectImg3 from "../../assets/img/blogs/blog3.jpg";
+import TopNavbar from "../Nav/TopNavbar";
+import Footer from "./Footer";
 
 export default function Projects() {
   const navigate = useNavigate();
 
   return (
     <Wrapper id="blog">
-      <div className="whiteBg" style={{ padding: "40px 0" }}>
+      <TopNavbar />
+      <div className="whiteBg" style={{ padding: "120px 0" }}>
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Game Blogs</h1>
@@ -55,6 +58,7 @@ export default function Projects() {
           </div>
         </div>
       </div>
+      <Footer />
     </Wrapper>
   );
 }

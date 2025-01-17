@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-scroll";
+import { useNavigate, Link} from "react-router-dom";
 // Assets
 import CloseIcon from "../../assets/svg/CloseIcon";
 import Logo from "../../assets/svg/Logo";
 
 export default function Sidebar({ sidebarOpen, toggleSidebar }) {
+  const navigate = useNavigate();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const closeDropdown = () => setIsDropdownOpen(false);
+
   return (
     <Wrapper className="animate darkBg" sidebarOpen={sidebarOpen}>
       <SidebarHeader className="flexSpaceCenter">
@@ -21,90 +27,33 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
       </SidebarHeader>
 
       <UlStyle className="flexNullCenter flexColumn">
-        <li className="semiBold font15 pointer">
-          <Link
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
-            to="home"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
+        <StyledLi className="whiteColor" onClick={() => navigate("/")}>
             Home
-          </Link>
-        </li>
-        <li className="semiBold font15 pointer">
-          <Link
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
-            to="AboutUs"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
-            About Us
-          </Link>
-        </li>
-        <li className="semiBold font15 pointer">
-          <Link
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
-            to="services"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
-            Overall Leaderboard
-          </Link>
-        </li>
-        <li className="semiBold font15 pointer">
-          <Link
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
-            to="projects"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
-            Game Leaderboards
-          </Link>
-        </li>
-        <li className="semiBold font15 pointer">
-          <Link
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
-            to="blog"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
-            Blog
-          </Link>
-        </li>
-        <li className="semiBold font15 pointer">
-          <Link
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
-            Contact
-          </Link>
-        </li>
+        </StyledLi>
+        <StyledLi className="whiteColor" onClick={toggleDropdown} style={{ position: "relative" }}>
+            <span style={{ padding: "10px 16px", cursor: "pointer" }}>
+              Game Leaderboards
+            </span>
+            {isDropdownOpen && (
+              <DropdownMenu>
+                <DropdownItem onClick={() => { navigate("/akinator"); closeDropdown(); }}>
+                  Akinator
+                </DropdownItem>
+                <DropdownItem onClick={() => { navigate("/taboo"); closeDropdown(); }}>
+                  Taboo
+                </DropdownItem>
+                <DropdownItem onClick={() => { navigate("/bluffing"); closeDropdown(); }}>
+                  Bluffing
+                </DropdownItem>
+              </DropdownMenu>
+            )}
+          </StyledLi>
+            <StyledLi className="whiteColor" onClick={() => navigate("/blog")}>
+                Blog
+            </StyledLi>
+            <StyledLi className="whiteColor" onClick={() => navigate("/aboutus")}>
+              About Us
+            </StyledLi>
       </UlStyle>
       <UlStyle className="flexSpaceCenter">
         <li className="semiBold font15 pointer flexCenter">
@@ -142,5 +91,37 @@ const UlStyle = styled.ul`
   padding: 40px;
   li {
     margin: 20px 0;
+  }
+`;
+
+const StyledLi = styled.li`
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    border-bottom: 2px solid #7620FF;
+    color: #7620FF;
+  }
+`;
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 1000;
+  width: 100%;
+`;
+
+const DropdownItem = styled.div`
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #333;
+  &:hover {
+    background-color: #f1f1f1;
   }
 `;

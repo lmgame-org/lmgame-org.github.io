@@ -3,7 +3,7 @@ import styled from "styled-components";
 // Components
 import Board from "../boards/board";
 import '../boards/style.css';
-import TopNavbar from "./Pages/TopNavbar_pages";
+import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
 
 import { BASE_URL} from '../../backend/config';

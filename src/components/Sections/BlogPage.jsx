@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import MarkdownRenderer from "./MarkdownRenderer";
-import TopNavbar from "./Pages/TopNavbar_pages";
+import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
 
 import styled from "styled-components";

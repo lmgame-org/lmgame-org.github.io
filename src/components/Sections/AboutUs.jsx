@@ -9,11 +9,15 @@ import Image2 from "../../assets/img/bgs/b3.jpg";
 
 import { useNavigate } from "react-router-dom";
 
+import TopNavbar from "../Nav/TopNavbar";
+import Footer from "./Footer";
+
 export default function AboutUs() {
   const navigate = useNavigate();
   return (
     <Wrapper id="AboutUs">
-      <div className="lightBg" style={{ padding: "40px 0" }}>
+      <TopNavbar />
+      <div className="lightBg" style={{ padding: "120px 0" }}>
         <div className="container">
           <HeaderContainer className="flexCenter">
             <HeaderInfo>
@@ -31,7 +35,9 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
+    <Footer />
     </Wrapper>
+    
   );
 }
 

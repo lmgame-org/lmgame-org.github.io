@@ -6,7 +6,7 @@ import { faDiscord, faGithub, faTwitter } from "@fortawesome/free-brands-svg-ico
 export default function Contact() {
   return (
     <Wrapper id="contact">
-      <div className="whiteBg">
+      <div className="lightBg">
         <ContentContainer className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Contact US</h1>

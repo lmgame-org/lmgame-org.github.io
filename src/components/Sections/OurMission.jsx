@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import '../boards/style.css';
-import TopNavbar from "./Pages/TopNavbar_pages";
+import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
 import Image from "../../assets/img/bgs/b4.jpg";
 

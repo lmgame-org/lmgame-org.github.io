@@ -36,7 +36,14 @@ export default function Header() {
           Think you've got what it takes? Dive into our Roblox escape games and beat LLMs. Challenge your reasoning, outpace the AI, and climb to the top of the leaderboard!
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Play Now" />
+            <a
+              href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              <FullButton title="Play Now" />
+            </a>
           </BtnWrapper>
         </div>
       </LeftSide>
