@@ -5,12 +5,18 @@ import FullButton from "../Buttons/FullButton";
 import HomePic1 from "../../assets/homepic/homepic1.jpg";
 import HomePic2 from "../../assets/homepic/homepic2.jpg";
 import HomePic3 from "../../assets/homepic/homepic3.jpg";
+import HomePic4 from "../../assets/homepic/homepic4.jpg";
+import HomePic5 from "../../assets/homepic/homepic5.jpg";
+import HomePic6 from "../../assets/homepic/homepic6.png";
 
 export default function Header() {
   const images = [
+    { src: HomePic6, animation: "slide", duration: 8000 }, // 4 seconds
     { src: HomePic1, animation: "fade", duration: 4000 }, // 4 seconds
     { src: HomePic2, animation: "zoom", duration: 6000 }, // 6 seconds
     { src: HomePic3, animation: "slide", duration: 8000 }, // 8 seconds
+    { src: HomePic4, animation: "fade", duration: 6000 }, // 6 seconds
+    { src: HomePic5, animation: "zoom", duration: 8000 }, // 8 seconds
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
