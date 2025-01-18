@@ -1,11 +1,13 @@
 {
   "files": {
     "main.css": "/static/css/main.69abd278.css",
-    "main.js": "/static/js/main.75a71ed0.js",
+    "main.js": "/static/js/main.b0f8f05a.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
+    "static/media/homepic6.png": "/static/media/homepic6.965bb0ca2000a7a19b62.png",
     "static/media/homepic2.jpg": "/static/media/homepic2.2001cbe2174a283d247a.jpg",
     "static/media/blog1.png": "/static/media/blog1.224a5f52acfa6a2c43dd.png",
-    "static/media/homepic3.jpg": "/static/media/homepic3.770359d9306a410040d0.jpg",
+    "static/media/homepic3.jpg": "/static/media/homepic3.236c1697407e118f1bad.jpg",
+    "static/media/homepic5.jpg": "/static/media/homepic5.cdd3c528d1dffe6c1724.jpg",
     "static/media/taboo.png": "/static/media/taboo.515cd28de3fa08ff6046.png",
     "static/media/ak1.png": "/static/media/ak1.b912d39d6f809e3803c6.png",
     "static/media/bluffing.png": "/static/media/bluffing.e9007db72e8da87ba3f1.png",
@@ -14,6 +16,7 @@
     "static/media/b2.jpg": "/static/media/b2.d67c1260ad84c05d6c3a.jpg",
     "static/media/b4.jpg": "/static/media/b4.5ef9493b4b08856741de.jpg",
     "static/media/blog3.jpg": "/static/media/blog3.b976d74f5af8ee3f2a7f.jpg",
+    "static/media/homepic4.jpg": "/static/media/homepic4.5922828533cb49531c5c.jpg",
     "static/media/b3.jpg": "/static/media/b3.690adc4c59bca914b773.jpg",
     "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
@@ -21,11 +24,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.69abd278.css.map": "/static/css/main.69abd278.css.map",
-    "main.75a71ed0.js.map": "/static/js/main.75a71ed0.js.map",
+    "main.b0f8f05a.js.map": "/static/js/main.b0f8f05a.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.69abd278.css",
-    "static/js/main.75a71ed0.js"
+    "static/js/main.b0f8f05a.js"
   ]
 }
