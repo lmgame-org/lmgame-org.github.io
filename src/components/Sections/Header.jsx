@@ -1,25 +1,46 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import FullButton from "../Buttons/FullButton";
 // Assets
+import HomePic1 from "../../assets/homepic/homepic1.jpg";
 import HomePic2 from "../../assets/homepic/homepic2.jpg";
 import HomePic3 from "../../assets/homepic/homepic3.jpg";
-import HomePic1 from "../../assets/homepic/homepic1.jpg";
 
 export default function Header() {
-  const images = [HomePic2, HomePic3, HomePic1];
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [
+    { src: HomePic1, animation: "fade", duration: 4000 }, // 4 seconds
+    { src: HomePic2, animation: "zoom", duration: 6000 }, // 6 seconds
+    { src: HomePic3, animation: "slide", duration: 8000 }, // 8 seconds
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000); // Change every 6 seconds
-    return () => clearInterval(interval);
-  }, [images.length]);
+    const currentDuration = images[currentIndex].duration;
+
+    const timeout = setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, currentDuration);
+
+    return () => clearTimeout(timeout);
+  }, [currentIndex, images]);
 
   return (
     <Wrapper>
-      <BackgroundImage src={images[currentImageIndex]} />
+      {/* Background Images */}
+      {images.map((image, index) => (
+        <BackgroundImage
+          key={index}
+          src={image.src}
+          animation={image.animation}
+          isVisible={index === currentIndex}
+        />
+      ))}
+
+      {/* Black Transparency Overlay */}
+      <Overlay />
+
+      {/* Foreground Content */}
       <ContentWrapper>
         <h1 className="extraBold font60">Game Arena</h1>
         <HeaderP>
@@ -37,23 +58,40 @@ export default function Header() {
   );
 }
 
+// Animations
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const zoomIn = keyframes`
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+`;
+
+const slideIn = keyframes`
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+
 // Styled Components
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Adjust transparency: 0 = fully transparent, 1 = fully opaque */
-    z-index: 0; /* Keep the overlay behind the text */
-  }
 `;
 
 const BackgroundImage = styled.div`
@@ -65,13 +103,36 @@ const BackgroundImage = styled.div`
   background-image: url(${(props) => props.src});
   background-size: cover;
   background-position: center;
-  transition: background-image 1s ease-in-out; /* Smooth transition effect */
-  z-index: -1; /* Ensures the background stays behind other elements */
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transition: opacity 1s ease-in-out;
+
+  ${(props) =>
+    props.isVisible &&
+    css`
+      animation: ${
+        props.animation === "fade"
+          ? fadeIn
+          : props.animation === "zoom"
+          ? zoomIn
+          : slideIn
+      } 1s ease-in-out;
+    `}
+`;
+
+// Black Transparency Overlay
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% transparency */
+  z-index: 1; /* Ensures it overlays the background images but not the content */
 `;
 
 const ContentWrapper = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: 2; /* Keeps content above the overlay */
   text-align: center;
   color: #fff;
   display: flex;
@@ -84,7 +145,7 @@ const ContentWrapper = styled.div`
   h1 {
     font-size: 3rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9); /* Stronger and clearer shadow */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   }
 
   @media (max-width: 768px) {
@@ -98,10 +159,9 @@ const HeaderP = styled.p`
   font-size: 1.2rem;
   line-height: 1.5rem;
   margin-bottom: 30px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9); /* Subtle text shadow */
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 
   @media (max-width: 768px) {
     font-size: 1rem;
   }
 `;
-
