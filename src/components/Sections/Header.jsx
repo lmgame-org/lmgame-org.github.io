@@ -1,134 +1,107 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-// Components
 import FullButton from "../Buttons/FullButton";
 // Assets
-import HeaderImage1 from "../../assets/img/bgs/bg1.jpg";
-import HeaderImage2 from "../../assets/img/bgs/bg2.jpg";
-import HeaderImage3 from "../../assets/img/bgs/bg3.jpg";
+import HomePic2 from "../../assets/homepic/homepic2.jpg";
+import HomePic3 from "../../assets/homepic/homepic3.jpg";
+import HomePic1 from "../../assets/homepic/homepic1.jpg";
 
 export default function Header() {
-  const images = [HeaderImage1, HeaderImage2, HeaderImage3];
-  const [currentImage, setCurrentImage] = useState(images[0]);
-  const [isVisible, setIsVisible] = useState(true);
+  const images = [HomePic2, HomePic3, HomePic1];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setIsVisible(false); 
-      setTimeout(() => {
-        setCurrentImage((current) => {
-          const index = images.indexOf(current);
-          return images[(index + 1) % images.length];
-        });
-        setIsVisible(true); 
-      }, 1000); 
-    }, 6000);
-    return () => clearInterval(intervalId); 
-  }, []);
-  
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 6000); // Change every 6 seconds
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
-    <Wrapper id="home" className="container flexSpaceCenter">
-      <LeftSide className="flexCenter">
-        <div>
-          <h1 className="extraBold font60">Game Arena</h1>
-          <HeaderP className="font16 semiBold" style={{ textAlign: 'left' }}>
-          Think you've got what it takes? Dive into our Roblox escape games and beat LLMs. Challenge your reasoning, outpace the AI, and climb to the top of the leaderboard!
-          </HeaderP>
-          <BtnWrapper>
-            <a
-              href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none" }}
-            >
-              <FullButton title="Play Now" />
-            </a>
-          </BtnWrapper>
-        </div>
-      </LeftSide>
-      <RightSide>
-        <ImageWrapper>
-          <Img1 className="radius8" src={currentImage} alt="Game Arena" isVisible={isVisible} />
-        </ImageWrapper>
-      </RightSide>
+    <Wrapper>
+      <BackgroundImage src={images[currentImageIndex]} />
+      <ContentWrapper>
+        <h1 className="extraBold font60">Game Arena</h1>
+        <HeaderP>
+          Dive into Roblox escape games. Beat LLMs, outpace AI, and climb the leaderboard!
+        </HeaderP>
+        <a
+          href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FullButton title="Play Now" />
+        </a>
+      </ContentWrapper>
     </Wrapper>
   );
 }
 
-
+// Styled Components
 const Wrapper = styled.section`
-  padding-top: 80px;
+  position: relative;
   width: 100%;
-  min-height: 840px;
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
-`;
-const LeftSide = styled.div`
-  width: 50%;
-  height: 100%;
-  @media (max-width: 960px) {
+  height: 100vh;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    order: 2;
-    margin: 50px 0;
-    text-align: center;
-  }
-  @media (max-width: 560px) {
-    margin: 80px 0 50px 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust transparency: 0 = fully transparent, 1 = fully opaque */
+    z-index: 0; /* Keep the overlay behind the text */
   }
 `;
-const RightSide = styled.div`
-  width: 50%;
-  height: 100%;
-  @media (max-width: 960px) {
-    width: 100%;
-    order: 1;
-    margin-top: 30px;
-  }
-`;
-const HeaderP = styled.div`
-  max-width: 470px;
-  padding: 15px 0 50px 0;
-  line-height: 1.5rem;
-  @media (max-width: 960px) {
-    padding: 15px 0 50px 0;
-    text-align: center;
-    max-width: 100%;
-  }
-`;
-const BtnWrapper = styled.div`
-  max-width: 190px;
-  @media (max-width: 960px) {
-    margin: 0 auto;
-  }
-`;
-const GreyDiv = styled.div`
-  width: 30%;
-  height: 700px;
+
+const BackgroundImage = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
-  z-index: 0;
-  @media (max-width: 960px) {
-    display: none;
-  }
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out; /* Smooth transition effect */
+  z-index: -1; /* Ensures the background stays behind other elements */
 `;
-const ImageWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
+
+const ContentWrapper = styled.div`
   position: relative;
-  z-index: 9;
-  @media (max-width: 960px) {
-    width: 100%;
-    justify-content: center;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9); /* Stronger and clearer shadow */
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
   }
 `;
-const Img1 = styled.img`
-  width: 426px;   // Fixed width
-  height: 607px;  // Fixed height
-  object-fit: cover;  // Ensures the image covers the area properly
-  border-radius: 8px;  // Applies rounded corners
-  opacity: ${props => props.isVisible ? 1 : 0};
-  transition: opacity 1s ease-in-out;
+
+const HeaderP = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9); /* Subtle text shadow */
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
+
