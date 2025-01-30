@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 // Components
 import ProjectBox from "../Elements/ProjectBox";
 // Assets
-import ProjectImg1 from "../../assets/img/blogs/blog1.png";
+import ProjectImg1 from "../../assets/img/blogs/blog3.jpg";
 import ProjectImg2 from "../../assets/img/blogs/blog2.jpg";
 import ProjectImg3 from "../../assets/img/blogs/blog3.jpg";
 import TopNavbar from "../Nav/TopNavbar";
@@ -20,42 +20,40 @@ export default function Projects() {
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Game Blogs</h1>
-            <p className="font16" style={{ textAlign: 'left' }}>
+            <p className="font16">
               Here are some great blogs we have.
             </p>
           </HeaderInfo>
-          <div className="row textCenter">
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <StyledImageWrapper>
-                <ProjectBox
-                  img={ProjectImg1}
-                  title="Blog 1"
-                  text="Some useful info"
-                  action={() => navigate("/blog/blog1")}
-                />
-              </StyledImageWrapper>
-            </div>
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <StyledImageWrapper>
-                <ProjectBox
-                  img={ProjectImg2}
-                  title="Blog 2"
-                  text="Some review"
-                  action={() => navigate("/blog/blog2")}
-                />
-              </StyledImageWrapper>
-            </div>
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <StyledImageWrapper>
-                <ProjectBox
-                  img={ProjectImg3}
-                  title="Blog 3"
-                  text="XXX"
-                  action={() => navigate("/blog/blog3")}
-                />
-              </StyledImageWrapper>
-            </div>
-          </div>
+
+          {/* Centered Blog Section */}
+          <BlogContainer>
+            <StyledImageWrapper>
+              <ProjectBox
+                img={ProjectImg1}
+                title="Blog 1"
+                text="Some useful info"
+                action={() => navigate("/blog/blog1")}
+              />
+            </StyledImageWrapper>
+
+            {/* <StyledImageWrapper>
+              <ProjectBox
+                img={ProjectImg2}
+                title="Blog 2"
+                text="Some review"
+                action={() => navigate("/blog/blog2")}
+              />
+            </StyledImageWrapper>
+
+            <StyledImageWrapper>
+              <ProjectBox
+                img={ProjectImg3}
+                title="Blog 3"
+                text="XXX"
+                action={() => navigate("/blog/blog3")}
+              />
+            </StyledImageWrapper> */}
+          </BlogContainer>
         </div>
       </div>
       <Footer />
@@ -63,7 +61,21 @@ export default function Projects() {
   );
 }
 
+// Center the images inside the Blog section
+const BlogContainer = styled.div`
+  display: flex;
+  justify-content: center;  // Center items horizontally
+  align-items: center;      // Align items vertically
+  flex-wrap: wrap;          // Allow responsive wrapping
+  gap: 30px;                // Space between items
+
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack items on smaller screens
+  }
+`;
+
 const StyledImageWrapper = styled.div`
+  text-align: center; // Ensure text under images is centered
   img {
     width: 300px;
     height: 230px;
@@ -74,8 +86,8 @@ const StyledImageWrapper = styled.div`
 const Wrapper = styled.section`
   width: 100%;
 `;
+
 const HeaderInfo = styled.div`
-  @media (max-width: 860px) {
-    text-align: center;
-  }
+  text-align: center;
+  margin-bottom: 40px; // Adds spacing below the title
 `;
