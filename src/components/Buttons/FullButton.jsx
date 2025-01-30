@@ -19,6 +19,7 @@ const Wrapper = styled.button`
   width: 100%;
   padding: 15px;
   outline: none;
+  font-size: 16px;
   color: ${(props) => (props.border ? "#707070" : "#fff")};
   :hover {
     background-color: ${(props) => (props.border ? "transparent" : "#580cd2")};

@@ -7,16 +7,16 @@ import HomePic2 from "../../assets/homepic/homepic2.jpg";
 import HomePic3 from "../../assets/homepic/homepic3.jpg";
 import HomePic4 from "../../assets/homepic/homepic4.jpg";
 import HomePic5 from "../../assets/homepic/homepic5.jpg";
-import HomePic6 from "../../assets/homepic/homepic6.png";
+import HomePic6 from "../../assets/homepic/homepic6.png"; // This stays for 5 sec
 
 export default function Header() {
   const images = [
-    { src: HomePic6, animation: "slide", duration: 8000 }, // 4 seconds
-    { src: HomePic1, animation: "fade", duration: 4000 }, // 4 seconds
-    { src: HomePic2, animation: "zoom", duration: 6000 }, // 6 seconds
-    { src: HomePic3, animation: "slide", duration: 8000 }, // 8 seconds
-    { src: HomePic4, animation: "fade", duration: 6000 }, // 6 seconds
-    { src: HomePic5, animation: "zoom", duration: 8000 }, // 8 seconds
+    { src: HomePic6, animation: "none", duration: 10000 }, // Stays for 5 sec
+    { src: HomePic1, animation: "fade", duration: 8000 },
+    { src: HomePic2, animation: "zoom", duration: 12000 },
+    { src: HomePic3, animation: "slide", duration: 16000 },
+    { src: HomePic4, animation: "fade", duration: 12000 },
+    { src: HomePic5, animation: "zoom", duration: 16000 },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,7 +48,7 @@ export default function Header() {
 
       {/* Foreground Content */}
       <ContentWrapper>
-        <h1 className="extraBold font60">Game Arena</h1>
+        <h1 className="extraBold">Game Arena</h1>
         <HeaderP>
           Dive into Roblox escape games. Beat LLMs, outpace AI, and climb the leaderboard!
         </HeaderP>
@@ -111,9 +111,11 @@ const BackgroundImage = styled.div`
   background-position: center;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transition: opacity 1s ease-in-out;
+  z-index: -1; /* Ensures it appears in the background */
 
   ${(props) =>
     props.isVisible &&
+    props.animation !== "none" && // HomePic6 has no animation
     css`
       animation: ${
         props.animation === "fade"
@@ -132,13 +134,13 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% transparency */
-  z-index: 1; /* Ensures it overlays the background images but not the content */
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 `;
 
 const ContentWrapper = styled.div`
   position: relative;
-  z-index: 2; /* Keeps content above the overlay */
+  z-index: 2;
   text-align: center;
   color: #fff;
   display: flex;
@@ -149,7 +151,7 @@ const ContentWrapper = styled.div`
   padding: 20px;
 
   h1 {
-    font-size: 3rem;
+    font-size: 6rem;
     margin-bottom: 20px;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   }
@@ -162,7 +164,7 @@ const ContentWrapper = styled.div`
 `;
 
 const HeaderP = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.5rem;
   margin-bottom: 30px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);

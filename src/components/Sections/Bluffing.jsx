@@ -25,7 +25,7 @@ export default function Bluffing() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Bluffing Leaderboard</h1>
               <p className="font16">
-                The AI determines the truthfulness of player statements based on observed responses, testing its ability to detect deception and use strategic reasoning.
+                The Bluffing game challenges the AI's inductive reasoning by having it determine the truthfulness of statements made by players based on observed responses. The AI uses multi-hop reasoning to connect these observations and formulate a logical conclusion about the player's honesty. 
               </p>
               <ButtonContainer>
                 <ToggleButton

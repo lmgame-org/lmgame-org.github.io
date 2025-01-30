@@ -17,7 +17,6 @@ export default function Landing() {
       <Header />
       <Projects />
       <Services />
-      <Contact />
       <Footer />
     </>
   );

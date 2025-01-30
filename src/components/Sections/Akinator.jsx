@@ -25,7 +25,7 @@ export default function Akinator() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Akinator Leaderboard</h1>
               <p className="font16">
-                Players help the AI guess an object through yes/no questions, testing its ability to refine hypotheses and connect sequential information.
+                Players challenge the AI by having it guess objects based on a series of yes/no questions. The AI demonstrates deductive reasoning by deriving specific conclusions from general premises, while multi-hop reasoning is showcased as it connects sequential information to narrow down the possibilities to the correct answer.
               </p>
               <ButtonContainer>
                 <ToggleButton

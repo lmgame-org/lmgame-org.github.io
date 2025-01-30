@@ -18,15 +18,16 @@ export default function Projects() {
   // Slider settings for continuous spinning
   const settings = {
     dots: false, 
-    infinite: true, // Enable infinite loop
+    infinite: false, // Disable infinite loop
     speed: 1000, // Animation speed (in milliseconds)
     slidesToShow: 3, // Number of visible items
     slidesToScroll: 1, // Number of items to scroll at once
-    autoplay: true, // Enable automatic sliding
-    autoplaySpeed: 3000, // Delay between slides (in milliseconds)
-    pauseOnHover: false, // Prevent pausing on mouse hover
-    cssEase: "linear", // Smooth animation for continuous spinning
+    autoplay: false, // Disable automatic sliding
+    autoplaySpeed: 3000, // No effect since autoplay is off
+    pauseOnHover: false, 
+    cssEase: "linear",
   };
+  
 
   return (
     <Wrapper id="projects">

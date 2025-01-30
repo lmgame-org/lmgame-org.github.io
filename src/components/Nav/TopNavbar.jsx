@@ -9,6 +9,7 @@ import Logo from "../../assets/svg/Logo";
 import BurgerIcon from "../../assets/svg/BurgerIcon";
 import { useNavigate } from "react-router-dom";
 
+import FullButton from "../Buttons/FullButton";
 
 export default function TopNavbar() {
   const navigate = useNavigate();
@@ -33,23 +34,23 @@ export default function TopNavbar() {
     <>
       <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
-      <Wrapper className="flexCenter animate whiteBg" style={y > 100 ? { height: "60px" } : { height: "80px" }}>
+      <Wrapper className="flexCenter animate darkBg" style={y > 100 ? { height: "60px" } : { height: "80px" }}>
         <NavInner className="container flexSpaceCenter">
           <Link className="pointer flexNullCenter" to="home" smooth={true}>
-            <Logo darkMode={false}/>
-            <h1 style={{ marginLeft: "16px" }} className="font20 extraBold">
+            <Logo darkMode={true}/>
+            <h1 style={{ marginLeft: "16px" }} className="font20 extraBold whiteColor">
               Game Arena
             </h1>
           </Link>
           <BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>
-            <BurgerIcon />
+            <BurgerIcon style={{ fill: "#FFFFFF" }} /> {/* Set the icon color to white */}
           </BurderWrapper>
           <UlWrapper className="flexNullCenter">
-            <StyledLi className="semiBold font16 pointer" onClick={() => navigate("/")}>
+            <StyledLi className="semiBold font16 pointer whiteColor" onClick={() => navigate("/")}>
               Home
             </StyledLi>
 
-            <StyledLi className="semiBold font16 pointer" onClick={toggleDropdown} style={{ position: "relative" }}>
+            <StyledLi className="semiBold font16 pointer whiteColor" onClick={toggleDropdown} style={{ position: "relative" }}>
               <span style={{ padding: "10px 16px", cursor: "pointer" }}>
                 Game Leaderboards
               </span>
@@ -67,24 +68,22 @@ export default function TopNavbar() {
                 </DropdownMenu>
               )}
             </StyledLi>
-            <StyledLi className="semiBold font16 pointer" onClick={() => navigate("/blog")}>
+            <StyledLi className="semiBold font16 pointer whiteColor" onClick={() => navigate("/blog")}>
                 Blog
             </StyledLi>
-            <StyledLi className="semiBold font16 pointer" onClick={() => navigate("/aboutus")}>
+            <StyledLi className="semiBold font16 pointer whiteColor" onClick={() => navigate("/aboutus")}>
               About Us
             </StyledLi>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
             <StyledLi className="semiBold font16 pointer flexCenter">
-              <a
-                href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
-                className="radius8 lightBg"
-                style={{ padding: "10px 16px" }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Play Now
-              </a>
+            <a
+              href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FullButton title="Play Now" />
+            </a>
             </StyledLi>
 
           </UlWrapperRight>
@@ -93,6 +92,7 @@ export default function TopNavbar() {
     </>
   );
 }
+
 
 const Wrapper = styled.nav`
   width: 100%;

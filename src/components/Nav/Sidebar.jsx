@@ -21,7 +21,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             Game Arena
           </h1>
         </div>
-        <CloseBtn onClick={() => toggleSidebar(!sidebarOpen)} className="animate pointer">
+        <CloseBtn onClick={() => toggleSidebar(!sidebarOpen)} className="animate pointer ">
           <CloseIcon />
         </CloseBtn>
       </SidebarHeader>
@@ -54,13 +54,11 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             <StyledLi className="whiteColor" onClick={() => navigate("/aboutus")}>
               About Us
             </StyledLi>
-      </UlStyle>
-      <UlStyle className="flexSpaceCenter">
-        <li className="semiBold font15 pointer flexCenter">
-          <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-            Play Now
-          </a>
-        </li>
+            <li className="semiBold font15 pointer flexCenter">
+              <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
+                Play Now
+              </a>
+            </li>
       </UlStyle>
     </Wrapper>
   );

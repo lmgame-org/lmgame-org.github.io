@@ -24,7 +24,7 @@ export default function Taboo() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Taboo Leaderboard</h1>
               <p className="font16">
-                Players induce the AI to guess a target word from incomplete clues, evaluating its ability to infer and connect ambiguous information.
+                The player tries to induce the AI into saying the target word without directly mentioning it. If the AI says the target word, the player wins. The AI employs abductive reasoning to generate hypotheses from fragmented clues, trying to guess the secret word while avoiding saying it directly. The game tests the AI's ability to infer under conditions of uncertainty and ambiguity, utilizing multi-hop reasoning to connect information provided by the player.
               </p>
               <ButtonContainer>
                 <ToggleButton
