@@ -23,7 +23,7 @@
     display: block;
   }
   ol, ul {
-    list-style: none;
+    list-style-type: disc;
   }
   blockquote, q {
     quotes: none;

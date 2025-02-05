@@ -93,7 +93,6 @@ export default function TopNavbar() {
   );
 }
 
-
 const Wrapper = styled.nav`
   width: 100%;
   position: fixed;
@@ -116,18 +115,35 @@ const BurderWrapper = styled.button`
     display: block;
   }
 `;
+
 const UlWrapper = styled.ul`
   display: flex;
-  @media (max-width: 760px) {
-    display: none;
+  list-style: none; /* Removes default bullet points for the top bar */
+  padding: 0;       /* Ensures no extra padding around the list */
+  margin: 0;        /* Removes any margin applied by default */
+
+  li {
+    list-style-type: none; /* Explicitly removes bullets for individual items */
   }
-`;
-const UlWrapperRight = styled.ul`
+
   @media (max-width: 760px) {
     display: none;
   }
 `;
 
+const UlWrapperRight = styled.ul`
+  list-style: none; /* Removes default bullet points for the top bar */
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style-type: none; /* Ensures no bullets for each */
+  }
+
+  @media (max-width: 760px) {
+    display: none;
+  }
+`;
 
 const DropdownMenu = styled.div`
   position: absolute;
