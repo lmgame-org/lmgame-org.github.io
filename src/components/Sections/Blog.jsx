@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 // Components
 import ProjectBox from "../Elements/ProjectBox";
 // Assets
-import ProjectImg1 from "../../assets/img/blogs/blog3.jpg";
+import AISpaceEscapeCover from "../../assets/img/blogs/trimmed_ai_space_escape.jpg"
+import ProjectImg1 from "../../assets/img/blogs/blog1.png";
 import ProjectImg2 from "../../assets/img/blogs/blog2.jpg";
 import ProjectImg3 from "../../assets/img/blogs/blog3.jpg";
 import TopNavbar from "../Nav/TopNavbar";
@@ -21,13 +22,22 @@ export default function Projects() {
           <HeaderInfo>
             <h1 className="font40 extraBold">Game Blogs</h1>
             <p className="font16">
-              Here are some great blogs we have.
+            Here, we share our journey and reflections.
             </p>
           </HeaderInfo>
 
           {/* Centered Blog Section */}
           <BlogContainer>
-            <StyledImageWrapper>
+          <StyledImageWrapper>
+              <ProjectBox
+                img={AISpaceEscapeCover}
+                title="AI Space Escape"
+                text="Developer Diary 1"
+                action={() => navigate("/blog/ai_space_escape")}
+              />
+            </StyledImageWrapper>
+
+            {/* <StyledImageWrapper>
               <ProjectBox
                 img={ProjectImg1}
                 title="Blog 1"
@@ -36,7 +46,7 @@ export default function Projects() {
               />
             </StyledImageWrapper>
 
-            {/* <StyledImageWrapper>
+            <StyledImageWrapper>
               <ProjectBox
                 img={ProjectImg2}
                 title="Blog 2"
