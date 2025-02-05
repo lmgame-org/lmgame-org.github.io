@@ -87,6 +87,8 @@ const CloseBtn = styled.button`
 `;
 const UlStyle = styled.ul`
   padding: 40px;
+  list-style: none;
+  padding-left: 0;
   li {
     margin: 20px 0;
   }
@@ -96,6 +98,7 @@ const StyledLi = styled.li`
   padding: 10px 16px;
   cursor: pointer;
   transition: color 0.3s ease;
+  list-style: none;
 
   &:hover {
     border-bottom: 2px solid #7620FF;
