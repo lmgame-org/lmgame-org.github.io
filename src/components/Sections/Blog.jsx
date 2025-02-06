@@ -101,6 +101,7 @@ const Wrapper = styled.section`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  flex: 1;
   padding: 0;
   margin: 0;
 `;
