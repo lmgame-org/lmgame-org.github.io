@@ -10,6 +10,7 @@ export default function Board({
     columnnames = ["User Name", "Rank Score"],
     clickEnabled = true,
     apiEndpoint = null,
+    gamename = null,
 }) {
     const [sortOrder, setSortOrder] = useState("descending");
     const [searchQuery, setSearchQuery] = useState("");
@@ -17,7 +18,8 @@ export default function Board({
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Set initial data to the default leaderboard to handle the case where API fails
-    const [leaderboardData, setLeaderboardData] = useState(DefaultLeaderboard);
+    // const [leaderboardData, setLeaderboardData] = useState(DefaultLeaderboard);
+    const [leaderboardData, setLeaderboardData] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -53,7 +55,7 @@ export default function Board({
             } catch (err) {
                 console.error("Error fetching leaderboard data:", err);
                 setError(err.message);
-                setLeaderboardData(DefaultLeaderboard); // Use default data on failure
+                setLeaderboardData([]); // Use default data on failure
             } finally {
                 setLoading(false);
             }
@@ -134,7 +136,7 @@ export default function Board({
             </div>
 
             {/* Modal Component */}
-            {isModalOpen && <UserInfoModal user={selectedUser} onClose={closeModal} />}
+            {isModalOpen && <UserInfoModal gamename= {gamename} user={selectedUser} onClose={closeModal} />}
         </div>
     );
 }

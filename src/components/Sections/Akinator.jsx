@@ -36,6 +36,7 @@ export default function Akinator() {
                   title="Player Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/akinator/players`}
                   columnnames={["Player Name", "Rank Score"]}
+                  gamename = "Akinator Game"
                 />
               </BoardWrapper>
 
