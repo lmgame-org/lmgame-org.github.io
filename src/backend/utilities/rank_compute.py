@@ -9,8 +9,8 @@ from trueskill import *
 import numpy as np
 import json
 
-OUTPUT_MODEL_SCORE_PATH = 'precomputed_data/2_5/model_scores.json'
-OUTPUT_USER_SCORE_PATH = 'precomputed_data/2_5/user_scores.json'
+OUTPUT_MODEL_SCORE_PATH = 'precomputed_data/1_1_2_5/model_scores.json'
+OUTPUT_USER_SCORE_PATH = 'precomputed_data/1_1_2_5/user_scores.json'
 # Initialize Mapping Data or Files
 PROMPT_MAPPING_FILE = "utilities/prompt_mapping.json"
 
@@ -73,13 +73,20 @@ def process_data(output_path='./feature_vector.parquet'):
     # Iterate over each entry in the data
     for entry in data:
         # Map template_name to model index
-        model_index = model_name_mapping.get(entry.get("model"), None)
+        
+        # Ignore story_scenario
+        if entry.get("game_name") == 'StoryScenario':
+            continue 
+
+        model_index = model_name_mapping.get(entry.get("model").strip().lower(), None)
 
         # NOTE: handle legacy data (will be deprecated soon)
-        if not model_index:
+        if model_index is None:
             model_index = legacy_model_name_mapping.get(entry.get("model"), None)
-            if not model_index:
-                raise NotImplementedError(F"MODEL: {entry.get("model")} is not supported.")
+            if model_index is None:
+                # print(F"MODEL: {entry.get("model")} is not supported.")
+                continue
+                # raise NotImplementedError(F"MODEL: {entry.get("model")} is not supported.")
 
         # Extract user_name and get user score classification
         user_id = entry.get('user_id')
@@ -293,7 +300,7 @@ def compute_trueskill_rankings(sample_df: pd.DataFrame,
 
 
 
-def get_model_scores(game_name: str, model_size_count = 4 ):
+def get_model_scores(game_name: str, model_size_count = 10 ):
     with open(OUTPUT_MODEL_SCORE_PATH, "r") as file:
         beta = json.load(file)
     beta_adjusted = []
@@ -309,7 +316,7 @@ def get_model_scores(game_name: str, model_size_count = 4 ):
         json_output.append({'name':model, 'score':score})
     return json_output
 
-def get_average_model_scores(model_size_count = 4 ):
+def get_average_model_scores(model_size_count = 10 ):
     with open(OUTPUT_MODEL_SCORE_PATH, "r") as file:
         beta = json.load(file)
     all_beta_adjusted = []
