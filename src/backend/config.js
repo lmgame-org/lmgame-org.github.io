@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:5000";
+const BASE_URL = "https://0e2d-70-95-168-38.ngrok-free.app";
 
 // Update interval in milliseconds (e.g., 60 minutes)
 const UPDATE_INTERVAL = 60; // 60s

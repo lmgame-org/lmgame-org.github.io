@@ -77,7 +77,7 @@ def process_data(output_path='./feature_vector.parquet'):
         # Ignore story_scenario
         if entry.get("game_name") == 'StoryScenario':
             continue 
-        
+
         model_index = model_name_mapping.get(entry.get("model").strip().lower(), None)
 
         # NOTE: handle legacy data (will be deprecated soon)
@@ -300,7 +300,7 @@ def compute_trueskill_rankings(sample_df: pd.DataFrame,
 
 
 
-def get_model_scores(game_name: str, model_size_count = 4 ):
+def get_model_scores(game_name: str, model_size_count = 10 ):
     with open(OUTPUT_MODEL_SCORE_PATH, "r") as file:
         beta = json.load(file)
     beta_adjusted = []
@@ -316,7 +316,7 @@ def get_model_scores(game_name: str, model_size_count = 4 ):
         json_output.append({'name':model, 'score':score})
     return json_output
 
-def get_average_model_scores(model_size_count = 4 ):
+def get_average_model_scores(model_size_count = 10 ):
     with open(OUTPUT_MODEL_SCORE_PATH, "r") as file:
         beta = json.load(file)
     all_beta_adjusted = []

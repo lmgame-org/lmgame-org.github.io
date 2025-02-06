@@ -4,6 +4,7 @@ from flask_cors import CORS
 from psycopg2.extras import RealDictCursor
 from utilities import *
 
+
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
 
