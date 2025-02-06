@@ -24,7 +24,7 @@ export default function Services() {
           <LeaderboardContainer>
               <BoardWrapper>
                 <Board
-                  title="Akinator Model"
+                  title="Akinator Model Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/akinator/models`}
                   clickEnabled={false}
                   columnnames={["Model Name", "Rank Score"]}
@@ -32,7 +32,7 @@ export default function Services() {
               </BoardWrapper>
               <BoardWrapper>
                 <Board
-                  title="Bluffing Model"
+                  title="Bluffing Model Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/bluffing/models`}
                   clickEnabled={false}
                   columnnames={["Model Name", "Rank Score"]}
@@ -40,7 +40,7 @@ export default function Services() {
               </BoardWrapper>
               <BoardWrapper>
                 <Board
-                  title="Taboo Model"
+                  title="Taboo Model Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/taboo/models`}
                   clickEnabled={false}
                   columnnames={["Model Name", "Rank Score"]}

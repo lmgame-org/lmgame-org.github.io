@@ -30,15 +30,15 @@ export default function Projects() {
           </HeaderInfo>
 
           {/* Centered Blog Section */}
-          {/* <BlogContainer> */}
-          {/* <StyledImageWrapper>
+          <BlogContainer>
+          <StyledImageWrapper>
               <ProjectBox
                 img={AISpaceEscapeCover}
                 title="AI Space Escape"
                 text="Developer Diary 1"
                 action={() => navigate("/blog/ai_space_escape")}
               />
-            </StyledImageWrapper> */}
+            </StyledImageWrapper>
 
             {/* <StyledImageWrapper>
               <ProjectBox
@@ -66,7 +66,7 @@ export default function Projects() {
                 action={() => navigate("/blog/blog3")}
               />
             </StyledImageWrapper> */}
-          {/* </BlogContainer> */}
+          </BlogContainer>
         </div>
       </div>
       <Footer />
