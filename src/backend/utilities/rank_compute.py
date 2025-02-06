@@ -84,7 +84,7 @@ def process_data(output_path='./feature_vector.parquet'):
         if model_index is None:
             model_index = legacy_model_name_mapping.get(entry.get("model"), None)
             if model_index is None:
-                print(F"MODEL: {entry.get("model")} is not supported.")
+                # print(F"MODEL: {entry.get("model")} is not supported.")
                 continue
                 # raise NotImplementedError(F"MODEL: {entry.get("model")} is not supported.")
 

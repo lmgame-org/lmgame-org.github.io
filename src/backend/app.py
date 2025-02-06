@@ -5,6 +5,10 @@ from psycopg2.extras import RealDictCursor
 from utilities import *
 
 
+# filter out untested models
+def filter_out_1000_values(data: list) -> list:
+    return  [item for item in data if item["score"] != 1000.0]
+
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
 
@@ -30,7 +34,7 @@ def akinator_players():
 @app.route('/api/akinator/models', methods=['GET'])
 def akinator_models():
     mode = "Akinator"
-    data =get_model_scores(mode)
+    data =filter_out_1000_values(get_model_scores(mode))
     return jsonify(data) 
 
 # Taboo leaderboards
@@ -43,7 +47,7 @@ def taboo_players():
 @app.route('/api/taboo/models', methods=['GET'])
 def taboo_models():
     mode ="Taboo"
-    data =get_model_scores(mode)
+    data = filter_out_1000_values(get_model_scores(mode))
     return jsonify(data) 
 
 # Bluffing leaderboards
@@ -56,17 +60,17 @@ def bluffing_players():
 @app.route('/api/bluffing/models', methods=['GET'])
 def bluffing_models():
     mode = "Bluffing"
-    data =get_model_scores(mode)
+    data = filter_out_1000_values(get_model_scores(mode))
     return jsonify(data)
 
 # General rank leaderboard
 @app.route('/api/general/model', methods=['GET'])
 def general_model():
     try:
-        data = get_average_model_scores()
+        data = filter_out_1000_values(get_average_model_scores())
         return jsonify(data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(port=8000)
