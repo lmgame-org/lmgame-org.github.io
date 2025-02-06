@@ -31,12 +31,17 @@ export default function BlogPage() {
 
 const Wrapper = styled.section`
   width: 100%;
+  min-height: 100vh; /* Ensures it covers the full viewport height */
+  display: flex;
+  flex-direction: column;
 `;
 
 const WhiteBg = styled.div`
   background-color: #ffffff;
-  padding: 120px 0; /* Enough padding for a spacious layout */
+  flex-grow: 1; /* Makes sure it expands to fill available space */
+  padding: 120px 0;
 `;
+
 
 const Container = styled.div`
   max-width: 1200px; 

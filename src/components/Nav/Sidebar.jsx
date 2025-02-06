@@ -55,7 +55,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
               About Us
             </StyledLi>
             <li className="semiBold font15 pointer flexCenter">
-              <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
+              <a href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
                 Play Now
               </a>
             </li>

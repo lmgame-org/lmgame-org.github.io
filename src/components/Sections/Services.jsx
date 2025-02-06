@@ -63,9 +63,13 @@ export default function Services() {
 
 const LeaderboardContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 40px; /* Space between the leaderboards */
+  justify-content: center; /* Center elements */
+  flex-wrap: wrap; /* Wrap elements if they exceed screen width */
+  gap: 40px; /* Space between leaderboards */
   margin-top: 40px;
+  max-width: 1200px; /* Prevents it from stretching too wide */
+  margin-left: auto;
+  margin-right: auto;
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -73,8 +77,11 @@ const LeaderboardContainer = styled.div`
     gap: 20px;
   }
 `;
+
 const BoardWrapper = styled.div`
   flex: 1;
+  min-width: 250px; /* Prevents shrinking too much */
+  max-width: 400px; /* Prevents expanding too much */
   text-align: center;
 
   h2 {
@@ -84,6 +91,10 @@ const BoardWrapper = styled.div`
 
 const Wrapper = styled.section`
   width: 100%;
+  display: flex;
+  justify-content: center; /* Center the entire section */
+  align-items: center;
+  flex-direction: column;
 `;
 
 const HeaderInfo = styled.div`

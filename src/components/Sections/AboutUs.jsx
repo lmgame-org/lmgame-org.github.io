@@ -14,47 +14,50 @@ import Footer from "./Footer";
 
 import Image from "../../assets/img/bgs/b4.jpg";
 
+
 export default function AboutUs() {
-  const navigate = useNavigate();
   return (
     <Wrapper id="AboutUs">
       <TopNavbar />
-      <div className="lightBg" style={{ padding: "120px 0" }}>
+      <LightBgContainer className="lightBg">
         <div className="container">
-          <HeaderContainer className="flexCenter">
+          <HeaderContainer>
             <HeaderInfo>
               <h1 className="font40 extraBold">About Us</h1>
-              
               <TextContainer>
-                <p className="font16" style={{ textAlign: 'left' }}>
-                <br />
+                <p className="font16">
                   At GameArena, we use gaming to evaluate LLMs by integrating rigorous scientific testing with interactive gameplay. Our custom-designed games—Akinator, Taboo, and Bluffing—assess various reasoning abilities within a dynamic Roblox-based escape game, challenging both AI and human intelligence while advancing AI research.
                   <br />
                   <br />
+                  Advisors: Haojian Jin, Ion Stoica, Hao Zhang
                   <br />
-                  Advisors: Haojian Jin, Ion Stoica, Hao Zhang    
-                  <br />
-                  Members: Lanxiang Hu, Anze Xie, Qiyu Li, Haoyang Yu, Jsessica Zhang, Tony Meng, Jason Kong, Yuxuan Zhang
+                  Members: Lanxiang Hu, Anze Xie, Qiyu Li, Haoyang Yu, Jessica Zhang, Tony Meng, Jason Kong, Yuxuan Zhang
                 </p>
               </TextContainer>
             </HeaderInfo>
           </HeaderContainer>
-
         </div>
-      </div>
-    <Footer />
+      </LightBgContainer>
+      <Footer />
     </Wrapper>
-    
   );
 }
 
+
 const Wrapper = styled.section`
   width: 100%;
-  min-height: 100vh; // Ensures it fills the entire screen height
+  min-height: 100vh; // Ensures full-screen height
   display: flex;
-  flex-direction: column;
-  padding: 0; // Remove any extra padding
-  margin: 0; // Remove unnecessary margins
+  flex-direction: column; // Ensures child elements stack
+  padding: 0;
+  margin: 0;
+`;
+
+const LightBgContainer = styled.div`
+  flex-grow: 1; // Fills remaining space
+  display: flex;
+  justify-content: center; // Centers content vertically and horizontally
+  align-items: center;
 `;
 
 const HeaderContainer = styled.div`
