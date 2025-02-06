@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 # Connect with database
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SQLALCHEMY_DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'users.db')}"
+print(f"loading database at: {SQLALCHEMY_DATABASE_URL}")
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 metadata = MetaData()
 metadata.reflect(bind=engine)
