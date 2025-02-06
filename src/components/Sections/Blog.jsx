@@ -17,8 +17,11 @@ export default function Projects() {
   return (
     <Wrapper id="blog">
       <TopNavbar />
-      <div className="whiteBg" style={{ padding: "120px 0" }}>
-        <div className="container">
+      <div className="whiteBg" style={{ padding: "120px 0", flex: 1, display: "flex", flexDirection: "column" }}>
+
+
+        <div className="container" style={{ flex: 1 }}>
+
           <HeaderInfo>
             <h1 className="font40 extraBold">Game Blogs</h1>
             <p className="font16">
@@ -72,28 +75,15 @@ export default function Projects() {
 }
 
 // Center the images inside the Blog section
-const Wrapper = styled.section`
-  width: 100%;
-  min-height: 100vh; // Ensures it fills the screen
-  display: flex;
-  flex-direction: column;
-  padding: 0; // Remove any extra padding
-  margin: 0; // Remove unnecessary margins
-`;
-
 const BlogContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  width: 100%; // Ensure it takes full width
-  max-width: 1200px; // Restrict maximum width for better readability
-  margin: auto; // Center content properly
-  padding: 0; // Remove extra padding
+  justify-content: center;  // Center items horizontally
+  align-items: center;      // Align items vertically
+  flex-wrap: wrap;          // Allow responsive wrapping
+  gap: 30px;                // Space between items
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: column; // Stack items on smaller screens
   }
 `;
 
@@ -104,6 +94,15 @@ const StyledImageWrapper = styled.div`
     height: 230px;
     object-fit: cover;
   }
+`;
+
+const Wrapper = styled.section`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
 `;
 
 

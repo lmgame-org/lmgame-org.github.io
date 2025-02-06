@@ -29,9 +29,9 @@ export default function AboutUs() {
                   At GameArena, we use gaming to evaluate LLMs by integrating rigorous scientific testing with interactive gameplay. Our custom-designed games—Akinator, Taboo, and Bluffing—assess various reasoning abilities within a dynamic Roblox-based escape game, challenging both AI and human intelligence while advancing AI research.
                   <br />
                   <br />
-                  Advisors: Haojian Jin, Ion Stoica, Hao Zhang
+                  Advisors: HaoJian Jin, Hao Zhang, Ion Stoica.
                   <br />
-                  Members: Lanxiang Hu, Anze Xie, Qiyu Li, Haoyang Yu, Jessica Zhang, Tony Meng, Jason Kong, Yuxuan Zhang
+                  Members: Anze Xie, Haoyang Yu, Jason Kong, Jessica Zhang, Lanxiang Hu, Qiyu Li, Tony Meng, Yuxuan Zhang.
                 </p>
               </TextContainer>
             </HeaderInfo>
@@ -46,30 +46,39 @@ export default function AboutUs() {
 
 const Wrapper = styled.section`
   width: 100%;
-  min-height: 100vh; // Ensures full-screen height
+  min-height: 100vh; 
   display: flex;
-  flex-direction: column; // Ensures child elements stack
+  flex-direction: column;
+  flex: 1; /* Ensure it expands fully */
   padding: 0;
   margin: 0;
 `;
 
-const LightBgContainer = styled.div`
-  flex-grow: 1; // Fills remaining space
-  display: flex;
-  justify-content: center; // Centers content vertically and horizontally
-  align-items: center;
-`;
 
+const LightBgContainer = styled.div`
+  flex: 1; /* Forces it to expand */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
 const HeaderContainer = styled.div`
   display: flex;
-  justify-content: center; // Centers the header
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap; // Ensures responsiveness
-  margin-bottom: 30px; // Reduced space for a tighter layout
+  flex-wrap: wrap;
+  width: 100%; /* Ensures it stretches */
+  flex: 1; /* Makes it expand fully */
+`;
 
-  @media (max-width: 860px) {
-    flex-direction: column; // Stack elements on smaller screens
-  }
+const TextContainer = styled.div`
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px; /* Ensures spacing */
+  text-align: left;
+  line-height: 1.6;
+  flex: 1; /* Helps it expand */
 `;
 
 const HeaderInfo = styled.div`
@@ -77,15 +86,6 @@ const HeaderInfo = styled.div`
   max-width: 800px; // Limits width for better readability
   margin: 0 auto; // Ensures proper centering
   padding: 0 20px; // Adds slight padding for spacing
-`;
-
-const TextContainer = styled.div`
-  width: 100%;
-  max-width: 900px; // Keeps text container from stretching too wide
-  margin: 0 auto;
-  padding: 10px 20px; // Adjusted padding for better spacing
-  text-align: left;
-  line-height: 1.6; // Improves readability
 `;
 
 const StyledImageWrapper = styled.div`
