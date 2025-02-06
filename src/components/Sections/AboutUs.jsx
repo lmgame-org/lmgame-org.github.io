@@ -25,11 +25,12 @@ export default function AboutUs() {
             <HeaderInfo>
               <h1 className="font40 extraBold">About Us</h1>
               <TextContainer>
-                <p className="font16">
-                  At GameArena, we use gaming to evaluate LLMs by integrating rigorous scientific testing with interactive gameplay. Our custom-designed games—Akinator, Taboo, and Bluffing—assess various reasoning abilities within a dynamic Roblox-based escape game, challenging both AI and human intelligence while advancing AI research.
+                <p className="font18">
+                  Game Arena is a crowdsourcing platform that hosts live computer games to evaluate AI models. As a team of passionate researchers from UC San Diego and UC Berkeley, we design and maintain gamified AI benchmarks using rigorous scientific methods.
                   <br />
                   <br />
-                  Advisors: HaoJian Jin, Hao Zhang, Ion Stoica.
+                  <br />
+                  Advisors: HaoJian Jin, Ion Stoica, Hao Zhang.
                   <br />
                   Members: Anze Xie, Haoyang Yu, Jason Kong, Jessica Zhang, Lanxiang Hu, Qiyu Li, Tony Meng, Yuxuan Zhang.
                 </p>
