@@ -30,16 +30,16 @@ export default function Bluffing() {
             {/* Two Boards Side by Side */}
             <LeaderboardContainer>
               <BoardWrapper>
-                <h2 className="font24 extraBold">Player Leaderboard</h2>
                 <Board
+                  title="Player Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/bluffing/players`}
                   columnnames={["Player Name", "Rank Score"]}
                 />
               </BoardWrapper>
 
               <BoardWrapper>
-                <h2 className="font24 extraBold">Model Leaderboard</h2>
                 <Board
+                  title="Model Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/bluffing/models`}
                   clickEnabled={false}
                   columnnames={["Model Name", "Rank Score"]}

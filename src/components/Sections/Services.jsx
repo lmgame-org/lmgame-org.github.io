@@ -11,22 +11,76 @@ export default function Services() {
       <div className="whiteBg" style={{ padding: "40px 0" }}>
         <div className="container">
           <HeaderInfo>
-            <h1 className="font40 extraBold">Overall Leaderboard</h1>
+            <h1 className="font40 extraBold">Leaderboards</h1>
             <p className="font16" style={{ textAlign: 'left' }}>
-              This leaderboard displays the overall rankings, calculated using the average scores across three games.
+              We have four leaderboards: one for each game and an overall leaderboard.
+              <br />
+              Player leaderboards can be found in the top tab. 
+              <br />
+              The overall rankings are calculated using the average scores across three games. 
             </p>
           </HeaderInfo>
-          <Board
-            title="Overall Leaderboard"
-            apiEndpoint={`${BASE_URL}/api/general/model`}  
-            columnnames={["Model Name", "Rank Score"]}
-            clickEnabled={false}
-          />
+
+          <LeaderboardContainer>
+              <BoardWrapper>
+                <Board
+                  title="Akinator Model"
+                  apiEndpoint={`${BASE_URL}/api/akinator/models`}
+                  clickEnabled={false}
+                  columnnames={["Model Name", "Rank Score"]}
+                />
+              </BoardWrapper>
+              <BoardWrapper>
+                <Board
+                  title="Bluffing Model"
+                  apiEndpoint={`${BASE_URL}/api/bluffing/models`}
+                  clickEnabled={false}
+                  columnnames={["Model Name", "Rank Score"]}
+                />
+              </BoardWrapper>
+              <BoardWrapper>
+                <Board
+                  title="Taboo Model"
+                  apiEndpoint={`${BASE_URL}/api/taboo/models`}
+                  clickEnabled={false}
+                  columnnames={["Model Name", "Rank Score"]}
+                />
+              </BoardWrapper>
+              <BoardWrapper>
+                <Board
+                  title="Overall Leaderboard"
+                  apiEndpoint={`${BASE_URL}/api/general/model`}  
+                  columnnames={["Model Name", "Rank Score"]}
+                  clickEnabled={false}
+                />
+              </BoardWrapper>
+          </LeaderboardContainer>
         </div>
       </div>
     </Wrapper>
   );
 }
+
+const LeaderboardContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 40px; /* Space between the leaderboards */
+  margin-top: 40px;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+`;
+const BoardWrapper = styled.div`
+  flex: 1;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+`;
 
 const Wrapper = styled.section`
   width: 100%;

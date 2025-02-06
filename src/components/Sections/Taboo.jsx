@@ -31,6 +31,7 @@ export default function Taboo() {
               <BoardWrapper>
                 <h2 className="font24 extraBold">Player Leaderboard</h2>
                 <Board
+                  title="Player Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/taboo/players`}
                   columnnames={["Player Name", "Rank Score"]}
                 />
@@ -39,6 +40,7 @@ export default function Taboo() {
               <BoardWrapper>
                 <h2 className="font24 extraBold">Model Leaderboard</h2>
                 <Board
+                  title="Model Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/taboo/models`}
                   clickEnabled={false}
                   columnnames={["Model Name", "Rank Score"]}

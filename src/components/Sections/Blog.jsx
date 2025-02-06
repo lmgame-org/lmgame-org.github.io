@@ -72,15 +72,28 @@ export default function Projects() {
 }
 
 // Center the images inside the Blog section
+const Wrapper = styled.section`
+  width: 100%;
+  min-height: 100vh; // Ensures it fills the screen
+  display: flex;
+  flex-direction: column;
+  padding: 0; // Remove any extra padding
+  margin: 0; // Remove unnecessary margins
+`;
+
 const BlogContainer = styled.div`
   display: flex;
-  justify-content: center;  // Center items horizontally
-  align-items: center;      // Align items vertically
-  flex-wrap: wrap;          // Allow responsive wrapping
-  gap: 30px;                // Space between items
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%; // Ensure it takes full width
+  max-width: 1200px; // Restrict maximum width for better readability
+  margin: auto; // Center content properly
+  padding: 0; // Remove extra padding
 
   @media (max-width: 768px) {
-    flex-direction: column; // Stack items on smaller screens
+    flex-direction: column;
   }
 `;
 
@@ -93,9 +106,6 @@ const StyledImageWrapper = styled.div`
   }
 `;
 
-const Wrapper = styled.section`
-  width: 100%;
-`;
 
 const HeaderInfo = styled.div`
   text-align: center;

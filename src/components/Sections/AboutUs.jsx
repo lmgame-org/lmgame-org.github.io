@@ -28,11 +28,13 @@ export default function AboutUs() {
               <TextContainer>
                 <p className="font16" style={{ textAlign: 'left' }}>
                 <br />
-                  At GameArena, our mission is to redefine the evaluation of large language models (LLMs) by merging rigorous scientific testing with interactive gameplay. We have integrated our specially designed games—Akinator, Taboo, and Bluffing—each tailored to assess distinct reasoning capabilities like deductive, inductive, and abductive reasoning, into the Roblox platform to form an escape game. 
+                  At GameArena, we use gaming to evaluate LLMs by integrating rigorous scientific testing with interactive gameplay. Our custom-designed games—Akinator, Taboo, and Bluffing—assess various reasoning abilities within a dynamic Roblox-based escape game, challenging both AI and human intelligence while advancing AI research.
                   <br />
                   <br />
                   <br />
-                  This setup tests and hones both AI and human intelligence in a dynamic environment. Our goal is to advance our understanding of AI's reasoning processes within a controlled yet engaging setting, pushing the boundaries of AI research while providing participants with a challenging and enjoyable experience.
+                  Advisors: Haojian Jin, Ion Stoica, Hao Zhang    
+                  <br />
+                  Members: Lanxiang Hu, Anze Xie, Qiyu Li, Haoyang Yu, Jsessica Zhang, Tony Meng, Jason Kong, Yuxuan Zhang
                 </p>
               </TextContainer>
             </HeaderInfo>
@@ -46,57 +48,53 @@ export default function AboutUs() {
   );
 }
 
-const StyledImageWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  img {
-    width: 90%; /* Sets image width to 90% of the container */
-    height: auto; /* Maintains aspect ratio */
-    object-fit: cover;
-  }
-`;
-
 const Wrapper = styled.section`
   width: 100%;
+  min-height: 100vh; // Ensures it fills the entire screen height
+  display: flex;
+  flex-direction: column;
+  padding: 0; // Remove any extra padding
+  margin: 0; // Remove unnecessary margins
 `;
 
 const HeaderContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center; // Centers the header
   align-items: center;
-  margin-bottom: 50px;
-`;
+  flex-wrap: wrap; // Ensures responsiveness
+  margin-bottom: 30px; // Reduced space for a tighter layout
 
-
-
-const HeaderInfo = styled.div`
-  text-align: center;
   @media (max-width: 860px) {
-    text-align: center;
+    flex-direction: column; // Stack elements on smaller screens
   }
 `;
 
-const TextContainer = styled.div`
-  width: 80%; // Keeps the text container at 50% width
-  margin: 0 auto; // Centers the container horizontally within the parent
-  padding: 20px; // Adds padding for spacing
-  text-align: left; // Aligns the text to the left
+const HeaderInfo = styled.div`
+  text-align: center;
+  max-width: 800px; // Limits width for better readability
+  margin: 0 auto; // Ensures proper centering
+  padding: 0 20px; // Adds slight padding for spacing
 `;
 
+const TextContainer = styled.div`
+  width: 100%;
+  max-width: 900px; // Keeps text container from stretching too wide
+  margin: 0 auto;
+  padding: 10px 20px; // Adjusted padding for better spacing
+  text-align: left;
+  line-height: 1.6; // Improves readability
+`;
 
-const ImageWrapper = styled.div`
+const StyledImageWrapper = styled.div`
   display: flex;
   justify-content: center;
-  position: relative;
-  z-index: 9;
   width: 100%;
-`;
-
-const Img1 = styled.img`
-  width: 600px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 50px;
+  img {
+    width: 90%; /* Sets image width to 90% of the container */
+    max-width: 600px; // Prevents oversized images
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px; // Reduces excess spacing
+  }
 `;

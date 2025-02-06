@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDiscord, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faGithub, faTwitter, faTiktok} from "@fortawesome/free-brands-svg-icons";
 // Assets
 import Logo from "../../assets/svg/Logo";
 
@@ -35,13 +35,16 @@ export default function Footer() {
             {/* Social Media Icons */}
             <SocialIcons>
               <a href="https://discord.gg/jknCew2DcP" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faDiscord} size="3x" />
+                <FontAwesomeIcon icon={faDiscord} size="2x" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faTwitter} size="3x" />
+              <a href="https://x.com/largemodelgame" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faTwitter} size="2x" />
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faGithub} size="3x" />
+              <a href="https://github.com/lmgame-org" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faGithub} size="2x" />
+              </a>
+              <a href="https://www.tiktok.com/@largemodelgame" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faTiktok} size="2x" />
               </a>
             </SocialIcons>
           </InnerWrapper>
