@@ -4,7 +4,7 @@
 
 > Date: February 6, 2025
 
-> TLDR: We developed a live Roblox game, AI Space Escape, powered by state-of-the-art AI models, offering a unique experience to reason with AI. Beyond entertainment, our game generates gaming data for evaluating AI reasoning abilities in real-world scenarios, extending beyond math and coding benchmarks. All gaming data, evaluation scripts, and code are publicly available for further research.
+> TLDR: We developed a live Roblox game, AI Space Escape, powered by state-of-the-art large language models (LLMs), offering a unique experience to reason with AI. Beyond entertainment, our game generates gaming data for evaluating AI reasoning abilities in real-world scenarios, extending beyond math and coding benchmarks. All gaming data, evaluation scripts, and code are publicly available for further research.
 
 [lmgame](https://x.com/largemodelgame) | [paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org) | [Discord](https://discord.gg/pKhAhVfY) | [AI Space Escape](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)
 
@@ -123,6 +123,17 @@ We conducted a user study to compare the user experience and willingness to part
 
 ![User Test](user_test.png "Figure 3: User test results from 100 users with diverse demographic background.")
 
+---
+
+## Last Few Words
+
+"Imagine the gods are playing a great game like chess, and you don’t know the rules. You’re allowed to observe the board occasionally, trying to deduce the rules of the pieces moving... Later on you might discover the law for the bishop is that it moves on a diagonal, which would explain the law that you understood before, that it maintains its color." 
+
+This analogy, drawn by the renowned physicist, Richard Feynman in his 1983, “Fun to Imagine” TV Series, likened understanding physics to learning the rules of playing a chess game solely by observation. It illustrates how the greatest scientists uncover the laws of nature: by observing patterns and inducting the underlying principles.
+
+Forty years later, with the advent of modern AI, from AlphaFold-3 to Deep Research, state-of-the-art AI systems now show the potential to revolutionize scientific exploration. The power of inductive reasoning passes down from brilliant human minds to AIs.
+
+Given the parallels between the reasoning involved in games and science, an interesting question arises: can games serve as a medium to evaluate AI's capabilities and potential? With the questions and inspirations, we press forward, standing at where we are today and relentlessly seeking not only a deeper understanding of AI but also the evolving role of humanity in a future shaped by AI that far surpasses human capabilities.
 
 ---
 

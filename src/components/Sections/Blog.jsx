@@ -22,7 +22,7 @@ export default function Projects() {
       <TopNavbar />
       <ContentSection>
         <HeaderInfo>
-          <h1 className="font50 extraBold">Game Blogs</h1>
+          <h1 className="font40 extraBold">Game Blogs</h1>
           <p className="font20">Here, we share our journey and reflections.</p>
         </HeaderInfo>
 
@@ -88,11 +88,12 @@ const ContentSection = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 60px 0;
+  padding: 80px 20px;
 `;
 
 const HeaderInfo = styled.div`
   text-align: center;
+  margin-top: 2.5em;
   margin-bottom: 40px;
 
   h1 {
