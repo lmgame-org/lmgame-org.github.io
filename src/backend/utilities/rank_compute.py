@@ -9,18 +9,36 @@ from trueskill import *
 import numpy as np
 import json
 
-OUTPUT_MODEL_SCORE_PATH = './precomputed_data/model_scores.json'
-OUTPUT_USER_SCORE_PATH = './precomputed_data/user_scores.json'
+OUTPUT_MODEL_SCORE_PATH = 'precomputed_data/2_5/model_scores.json'
+OUTPUT_USER_SCORE_PATH = 'precomputed_data/2_5/user_scores.json'
 # Initialize Mapping Data or Files
-PROMPT_MAPPING_FILE = "./prompt_mapping.json"
+PROMPT_MAPPING_FILE = "utilities/prompt_mapping.json"
+
 model_name_mapping = {
     "llama-3-405b": 0,
-    "gpt-4o-2024-08-06": 1,
+    "gpt-4o-2024-11-20": 1,
     "gemini-1.5-pro": 2,
-    "claude-3-5-sonnet-20240620": 3
+    "claude-3-5-sonnet-20240620": 3,
+    "grok-2-beta": 4,
+    "qwen-max": 5,
+    "gemini-2.0-flash-thinking-exp-01-21": 6,
+    "o1-mini": 7,
+    "o3-mini": 8,
+    "deepseek-reasoner": 9
 }
+legacy_model_name_mapping = {
+    "gpt-4o-2024-08-06": 1,
+    "gemini-2.0-flash-thinking-exp": 6
+}
+reasoning_models = [
+    "gemini-2.0-flash-thinking-exp-01-21",
+    "o1-mini",
+    "o3-mini",
+    "deepseek-reasoner"
+]
 reasoning_technique_mapping = {
-    "CoT": 0
+    "CoT": 0,
+    "longCoT": 1
 }
 
 def classify_level(user_id: int):
@@ -57,6 +75,12 @@ def process_data(output_path='./feature_vector.parquet'):
         # Map template_name to model index
         model_index = model_name_mapping.get(entry.get("model"), None)
 
+        # NOTE: handle legacy data (will be deprecated soon)
+        if not model_index:
+            model_index = legacy_model_name_mapping.get(entry.get("model"), None)
+            if not model_index:
+                raise NotImplementedError(F"MODEL: {entry.get("model")} is not supported.")
+
         # Extract user_name and get user score classification
         user_id = entry.get('user_id')
         username = entry.get("username")
@@ -68,9 +92,14 @@ def process_data(output_path='./feature_vector.parquet'):
         prompt = entry.get("system_prompt")
         prompt_values = [prompt_value[:100].lower().strip() for prompt_value in prompt_mapping[game_name].values()]
         prompt_index = prompt_values.index(prompt[:100].lower().strip())
-
+        
+        # Assign reasonining technique used
         reasoning_technique = entry.get("reasoning_technique")
-        reasoning_technique_index = reasoning_technique_mapping.get(reasoning_technique, None)
+        if model_name_mapping.get(entry.get("model"), None) in reasoning_models:
+            # longCoT
+            reasoning_technique_index = reasoning_technique_mapping.get(reasoning_technique, 1)
+        else:
+            reasoning_technique_index = reasoning_technique_mapping.get(reasoning_technique, 0)
 
         # Determine outcome index based on game_status
         game_status = entry.get("game_status")
@@ -115,18 +144,19 @@ def calculate_bt_model_scores(sample_df: pd.DataFrame,
                               model_size_count: int = 4,
                               user_level_count: int = 3,
                               prompt_size_count: int = 5,
-                              reasoning_technique_count: int = 1):
+                              reasoning_technique_count: int = 2):
 
     # Define maximum indices for each category to determine one-hot vector dimensions
-    model_size_count = 4
-    user_level_count = 3
-    prompt_size_count = 5
-    reasoning_technique_count = 1
+    model_size_count = model_size_count
+    user_level_count = user_level_count
+    prompt_size_count = prompt_size_count
+    reasoning_technique_count = reasoning_technique_count
 
     # Initialize a list to hold all feature vectors and outcome labels
     feature_vectors = []
     outcome_labels = []
 
+    print("start iterating through each row to construct one-hot feature vector.")
     # Iterate through each row to construct one-hot vectors and concatenate
     for _, row in sample_df.iterrows():
         model_one_hot = create_one_hot(row["model_index"], model_size_count)
@@ -141,6 +171,7 @@ def calculate_bt_model_scores(sample_df: pd.DataFrame,
         # Add outcome label (0 for MODEL_LOSE, 1 for MODEL_WIN)
         outcome_labels.append(row["outcome_index"])
 
+    print("converting list into np arrays.")
     # Convert lists into numpy arrays for feature matrix and outcome labels
     feature_matrix = np.array(feature_vectors)
     outcome_labels = np.array(outcome_labels)
@@ -189,6 +220,7 @@ def compute_trueskill_rankings(sample_df: pd.DataFrame,
         c += 1000
         all_coefficients.append(c)
 
+    print("all user coeffiicents:")
     print(all_coefficients)
 
     model_coefficients = all_coefficients[:model_size_count]
@@ -315,8 +347,8 @@ def update_scores():
     # Iterate over unique game names
     for game_name in df['game_name'].unique():
         sample_df = df[df["game_name"] == game_name]
-        model_dict[game_name] = list(calculate_bt_model_scores(sample_df))
-        user_dict[game_name] = compute_trueskill_rankings(sample_df=sample_df, coefficients=model_dict[game_name])
+        model_dict[game_name] = list(calculate_bt_model_scores(sample_df, model_size_count=len(model_name_mapping.keys()), reasoning_technique_count=len(reasoning_technique_mapping.keys())))
+        user_dict[game_name] = compute_trueskill_rankings(sample_df=sample_df, coefficients=model_dict[game_name], model_size_count=len(model_name_mapping.keys()))
     # Save model_dict to JSON
     with open(OUTPUT_MODEL_SCORE_PATH, 'w') as model_file:
         json.dump(model_dict, model_file, indent=4)

@@ -7,7 +7,6 @@ from utilities import *
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
 
-
 @app.route('/')
 def home():
     return "Welcome to the Game Arena Website Backend!"
