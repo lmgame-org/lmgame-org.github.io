@@ -61,14 +61,14 @@ const MarkdownWrapper = styled.div`
   /* No extra spacing for h1 (#) */
   h1 {
     margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0.1em;
     font-size: 2.2rem;
     line-height: 1.3;
   }
 
   /* Larger spacing only for h2 (##) */
   h2 {
-    margin-top: 1em;
+    margin-top: 0.5em;
     margin-bottom: 0.5em;
     font-size: 2rem;
     line-height: 1.4;

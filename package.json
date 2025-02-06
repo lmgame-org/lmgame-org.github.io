@@ -19,6 +19,8 @@
     "react-scripts": "^5.0.1",
     "react-scroll": "^1.9.0",
     "react-slick": "^0.30.3",
+    "rehype-raw": "^7.0.0",
+    "remark-captions": "^2.2.4",
     "remark-gfm": "^4.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.11",

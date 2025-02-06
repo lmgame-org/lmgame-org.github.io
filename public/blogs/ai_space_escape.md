@@ -1,22 +1,20 @@
 # GameArena: Evaluating LLM Reasoning through Live Computer Games
 
-[paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org)
+> Author: Game Arena Team
 
-"Imagine the gods are playing a great game like chess, and you don’t know the rules. You’re allowed to observe the board occasionally, trying to deduce the rules of the pieces moving... Later on you might discover the law for the bishop is that it moves on a diagonal, which would explain the law that you understood before, that it maintains its color."
+> Date: February 6, 2025
 
-This analogy, drawn by the renowned physicist, Richard Feynman in his 1983 “Fun to Imagine” TV Series, likened understanding physics to learning the rules of playing a chess game solely by observation. It illustrates how the greatest scientists uncover the laws of nature: by observing patterns and inducting the underlying principles.
+> TLDR: We developed a live Roblox game, AI Space Escape, powered by state-of-the-art AI models, offering a unique experience to reason with AI. Beyond entertainment, our game generates gaming data for evaluating AI reasoning abilities in real-world scenarios, extending beyond math and coding benchmarks. All gaming data, evaluation scripts, and code are publicly available for further research.
 
-Forty years later, with the advent of modern AI, state-of-the-art large language models (LLMs) now show the potential to revolutionize scientific exploration. The power of inductive reasoning passes down from brilliant human minds to AIs.
-
-Given the parallels between the reasoning involved in games and science, an interesting question arises: can games serve as a medium to evaluate AI's capabilities and potential? In this blog, we present a game we’ve developed over the past few months for both entertainment and evaluation, along with the techniques we used to achieve the evaluation goal.
-
-![Game intro illustration](taboo_example.png "Figure 1: the Taboo reasoning challenge in our Roblox game: AI Space Escape. The project is designed to permit live computer gaming while evaluating SOTA AI models.")
+[lmgame](https://x.com/largemodelgame) | [paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org) | [AI Space Escape](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)
 
 ## AI Space Escape
 
-With the proliferation of static math and coding benchmarks, significant improvements in AI capabilities are being rigorously evaluated, yet that’s only part of the picture. Inspired by the potential of games to showcase reasoning capabilities, our team set out to evaluate how state-of-the-art AI models perform in tasks requiring interactive and strategic thinking. Unlike traditional static benchmarks, a great variety of reasoning tasks in real life require back-and-forth interactions and flexible problem-solving paths, which games naturally provide. We’re particularly interested in how different models compare in the context of a real game.
+With the proliferation of static math and coding benchmarks, significant improvements in AI capabilities are being rigorously evaluated, However, a great variety of reasoning tasks in real life require back-and-forth interactions and flexible problem-solving paths, which games naturally provide. We’re particularly interested in how different models compare in the context of a real game.
 
 Our exploration of these research questions led to the development of our first game. The game is set in a space expedition where humans need to work closely with AIs. After months of dedication and hard work from our incredible team, we are thrilled to announce that **AI Space Escape** is now live on [Roblox](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)!
+
+![Game intro illustration](taboo_example.png "Figure 1: the Taboo reasoning challenge in our Roblox game: AI Space Escape. The project is designed to permit live computer gaming while evaluating SOTA AI models.")
 
 ### Background Story
 
@@ -59,29 +57,25 @@ Moreover, beyond their use in chat applications, LLMs hold immense potential for
 
 Static evaluations, such as MMLU, Spider, and HumanEval, offer capability-specific assessments but rely on less intuitive metrics like F1, BLEU, and ROUGE. Additionally, their static nature makes benchmarks easier to exploit, as seen with MT-Bench. In contrast, dynamic evaluations like Chatbot Arena provide more intuitive metrics, such as win rates or Elo scores, and are harder to manipulate. However, they suffer from a low feedback rate (around 4% for Chatbot Arena) and the coupling of multiple capabilities within Elo scores, which limits their granularity in assessing specific skills.
 
-### Gaming Data — Retrospective Analysis
+### Evaluting LLMs with Games
 
-To assess reasoning capabilities and reveal hidden chain-of-thought processes, we retrospectively analyze game session chat histories. By reenacting game trajectories with identical prompts, history, and parameters, we prompt models to generate intermediate outputs for quantitative and qualitative evaluation.
+To address the challenges, Game Arena:
 
-For instance, in the Akinator game, retrospective analysis evaluates the model’s multi-hop and deductive reasoning by prompting it to generate ranked lists of possible objects after each question-answer round. These lists reflect the model’s reasoning process, prioritizing likely candidates. For each session, we examine the rankings to determine if the secret object is correctly identified and its position in the lists.
+- An incentivized, dynamic benchmark using live computer games to evaluate the interactive and strategic aspect of many other reasoning tasks required in real-life.
 
-### Gaming Data — Evaluation Metrics
+- Involves three reasoning games, each target at different reasoning capabilities.
 
-To evaluate LLM reasoning through interactive games, we rank each LLM’s performance in each game according to the following metrics from gaming data:
+- Employs novel evaluation techniques that evaluate LLMs based on gaming outcomes and reasoning trajectories.
 
-- **Outcome metrics:** We compute win rate and average rounds across all game sessions. These metrics are most useful in games where winning rate and number of game rounds have strong correlations with model capabilities.
+| **Game**    | **Reasoning Type and Metrics**                                                | **Multi-hop Reasoning and Metrics**                                     |
+|:------------:|:------------------------------------------------------------------------------:|:-------------------------------------------------------------------------:|
+| **Akinator**  | **Deductive reasoning** <br> *first appear round avg, final rank*             | **Multi-hop reasoning** <br> *recall rate, top-k recall rate, disparity ratio* |
+| **Taboo**     | **Abductive reasoning** <br> *first appear round avg, final rank*             | **Multi-hop reasoning** <br> *recall rate, top-k recall rate*                  |
+| **Bluffing**  | **Inductive reasoning** <br> *first appear round avg, final rank*             | **Multi-hop reasoning** <br> *consistency rate, recall rate, top-k recall rate* |
 
-- **Procedural metrics:** We record and analyze the LLM's reasoning trajectories collected from retrospective analysis for each game. We design game-specific metrics to mirror and assess specific reasoning capabilities.
+![hidetable](placeholder.jpg "Table 1: procedural analysis metrics for the Akinator, Taboo, and Bluffing games and their corresponding model capabilities.")
 
-![Procedural metrics analysis](procedural_metrics.png "Figure 3: Procedural metrics for each game, and the reasoning capabilities involved.")
-
-Here is a specific example of how procedural metrics are calculated and used:
-
-- In the Akinator game, we compute procedural metrics such as recall rates, the average round of first appearance, the final rank of the target secret word, and the disparity ratio (information balance) of the candidate secret word lists.
-
-- The **average first appearance** and **final rank** reflect the model's deductive reasoning ability to efficiently identify the target word.
-
-- The **top-k recall rate** and **disparity ratio** evaluate the model's multi-hop reasoning skills, testing its capacity to leverage information from previous rounds and systematically narrow down potential choices.
+Stay tuned and we will release more details about how we generated the leaderboard!
 
 
 ---
@@ -102,7 +96,20 @@ Our evaluation results show the following findings:
 
 - Models that excel at short conversations but with poor reasoning in extended game sessions, such as **Mistral-Large-2**, usually rank low in GameArena.
 
-![Ranking Chart Placeholder](ranking_placeholder_september.png "Figure 4: GameArena Rankings as of September 2024.")
+| **Ranking source**                | **Claude 3.5 Sonnet** | **Gemini-1.5 Pro** | **GPT-4o** | **LLaMA3.1 405B** | **Mistral Large 2** |
+|:-----------------------------------:|:-----------------------:|:--------------------:|:-----------:|:-------------------:|:---------------------:|
+| GameArena Akinator-Outcome        | 1                     | 2                  | 3         | 4                 | 5                   |
+| GameArena Taboo-Outcome           | 4                     | 5                  | 1         | 3                 | 2                   |
+| GameArena Bluffing-Outcome        | 1                     | 2                  | 3         | 4                 | 5                   |
+| GameArena Akinator-Retro          | 1                     | 3                  | 2         | 4                 | 5                   |
+| GameArena Taboo-Retro             | 1                     | 3                  | 2         | 4                 | 5                   |
+| GameArena Bluffing-Retro          | 1                     | 2                  | 3         | 4                 | 5                   |
+| Chatbot Arena                     | 3                     | 2                  | 1         | 4                 | 5                   |
+| LiveBench Reasoning               | 1                     | 4                  | 2         | 3                 | 5                   |
+| LiveBench Language                | 1                     | 4                  | 2         | 3                 | 5                   |
+| GPQA                              | 1                     | 4                  | 2         | 3                 | 5                   |
+
+![hidetable](placeholder.jpg "Table 2: Game Arena model rankings in comparison with other rankings as of September 2024.")
 
 ### User Tests
 
@@ -114,7 +121,7 @@ We conducted a user study to compare the user experience and willingness to part
 
 - We found that about 87% of the gaming sessions from GameArena were complete and useful, while only 4% of total conversations in Chatbot Arena provided meaningful votes (due to its reliance on voluntary participation).
 
-![User Test](user_test.png "Figure 5: User test results.")
+![User Test](user_test.png "Figure 3: User test results from 100 users with diverse demographic background.")
 
 
 ---

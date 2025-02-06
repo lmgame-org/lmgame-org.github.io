@@ -35,7 +35,7 @@ export default function Projects() {
               <ProjectBox
                 img={AISpaceEscapeCover}
                 title="AI Space Escape"
-                text="Developer Diary 1"
+                text="Project Overview"
                 action={() => navigate("/blog/ai_space_escape")}
               />
             </StyledImageWrapper>
