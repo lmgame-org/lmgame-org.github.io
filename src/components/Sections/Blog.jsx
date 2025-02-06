@@ -22,7 +22,7 @@ export default function Projects() {
       <TopNavbar />
       <ContentSection>
         <HeaderInfo>
-          <h1 className="font50 extraBold">Game Blogs</h1>
+          <h1 className="font50 extraBold" style={{ padding: "50px 0" }}>Game Blogs</h1>
           <p className="font20">Here, we share our journey and reflections.</p>
         </HeaderInfo>
 
