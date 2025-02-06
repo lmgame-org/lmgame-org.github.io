@@ -6,7 +6,7 @@
 
 > TLDR: We developed a live Roblox game, AI Space Escape, powered by state-of-the-art AI models, offering a unique experience to reason with AI. Beyond entertainment, our game generates gaming data for evaluating AI reasoning abilities in real-world scenarios, extending beyond math and coding benchmarks. All gaming data, evaluation scripts, and code are publicly available for further research.
 
-[lmgame](https://x.com/largemodelgame) | [paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org) | [AI Space Escape](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)
+[lmgame](https://x.com/largemodelgame) | [paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org) | [Discord](https://discord.gg/pKhAhVfY) | [AI Space Escape](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)
 
 ## AI Space Escape
 

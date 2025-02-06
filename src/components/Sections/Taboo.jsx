@@ -29,7 +29,6 @@ export default function Taboo() {
             {/* Two Boards Side by Side */}
             <LeaderboardContainer>
               <BoardWrapper>
-                <h2 className="font24 extraBold">Player Leaderboard</h2>
                 <Board
                   title="Player Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/taboo/players`}
@@ -38,7 +37,6 @@ export default function Taboo() {
               </BoardWrapper>
 
               <BoardWrapper>
-                <h2 className="font24 extraBold">Model Leaderboard</h2>
                 <Board
                   title="Model Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/taboo/models`}
