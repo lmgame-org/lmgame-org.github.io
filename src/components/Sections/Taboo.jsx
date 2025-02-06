@@ -33,6 +33,7 @@ export default function Taboo() {
                   title="Player Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/taboo/players`}
                   columnnames={["Player Name", "Rank Score"]}
+                  gamename = "Taboo Game"
                 />
               </BoardWrapper>
 

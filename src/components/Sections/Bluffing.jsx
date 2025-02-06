@@ -34,6 +34,7 @@ export default function Bluffing() {
                   title="Player Leaderboard"
                   apiEndpoint={`${BASE_URL}/api/bluffing/players`}
                   columnnames={["Player Name", "Rank Score"]}
+                  gamename = "Bluffing Game"
                 />
               </BoardWrapper>
 

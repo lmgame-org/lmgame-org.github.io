@@ -29,3 +29,7 @@ game_arena_venv/
 
 # Editor configurations
 .vscode/
+
+# Ignore all .db files except users.db
+*.db
+!users.db

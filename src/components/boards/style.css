@@ -1,51 +1,25 @@
 /* Import custom font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700&display=swap');
 
-/* WebKit-based browsers (Chrome, Safari) */
-.container::-webkit-scrollbar {
-    width: 6px;
-    /* Set width for a smaller scrollbar */
-    background-color: transparent;
-    /* Hide scrollbar track by default */
-}
-
-.container::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    /* Hide thumb initially */
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    /* Smooth transition */
-}
-
-/* Show scrollbar thumb on hover */
-.container:hover::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    /* Visible on hover */
-    border-radius: 4px;
-}
-
-/* General Styles for the entire board */
+/* General Board Styling */
 .board {
     text-align: center;
     max-width: 100%;
-    /* Use full width of the parent container */
     margin: 0 auto;
     font-family: 'Chivo', sans-serif;
     padding: 1rem;
 }
 
-/* Styles for the leaderboard title */
+/* Leaderboard Title */
 .board .leaderboard {
     margin-bottom: 1em;
     font-size: 1.5em;
     font-weight: bold;
-    text-align: center;
-    color: #000;/* Set text color to black */
+    color: #000;
     word-wrap: break-word;
-    /* Handle long titles */
 }
 
-/* Search input styling */
+/* Search Input */
 .board .search-input {
     width: 98%;
     max-width: 100%;
@@ -56,25 +30,17 @@
     font-size: 1em;
 }
 
-/* Highlighted text style */
-.board .highlight {
-    background-color: yellow;
-    font-weight: bold;
-}
-
-/* Styles for the column headers */
+/* Column Headers */
 .board .columnnames {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
     border-bottom: 2px solid #ccc;
     padding: 0.75em 1em;
-    max-width: 100%;
     margin: 0 auto 10px;
     color: #000;
 }
 
-/* Column header items */
 .board .columnnames .column-item {
     flex: 1;
     text-align: left;
@@ -85,21 +51,15 @@
     text-align: right;
 }
 
-/* Row count display at the bottom left */
-.board .row-count {
-    text-align: left;
-    padding-top: 10px;
-    padding-left: 1em;
-    font-size: 0.9em;
-    color: #666;
-}
-
-/* Profiles container with scroll */
+/* Profiles Container */
 .board .profiles-container {
+    max-width: 100%;
     max-height: 65vh;
     min-height: 65vh;
-    /* Set relative to viewport height */
+
     overflow-y: auto;
+    overflow-x: hidden;
+
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -111,7 +71,7 @@
     scrollbar-color: #ccc transparent;
 }
 
-/* WebKit-based browsers (Chrome, Safari) */
+/* WebKit-based scrollbar styling */
 .board .profiles-container::-webkit-scrollbar {
     width: 6px;
 }
@@ -125,14 +85,13 @@
     background: transparent;
 }
 
-/* Profile section styling */
+/* Profile Row Styling */
 #profile {
-    margin-top: 2em;
     max-width: 100%;
     margin: 0 auto;
 }
 
-/* Profile row layout */
+/* Profile Row Layout */
 #profile .flex {
     display: flex;
     justify-content: space-between;
@@ -144,12 +103,12 @@
     transition: background-color 0.2s ease;
 }
 
-/* Hover effect for profile rows */
+/* Hover Effect */
 #profile .flex:hover {
     background-color: #f9f9f9;
 }
 
-/* Profile image styling */
+/* Profile Image */
 .profile-img {
     width: 40px;
     height: 40px;
@@ -158,72 +117,86 @@
     margin-right: 10px;
 }
 
-/* Profile information with rank and name */
+/* Profile Info Container (Rank + Name) */
 #profile .flex .info {
     display: flex;
     align-items: center;
     gap: 0.5em;
     flex: 1;
-    font-size: 1em;
-    color: #333;
+    min-width: 120px;
 }
 
-/* Rank styling */
+/* Default max-width for medium & large screens */
+#profile .flex .name {
+    font-weight: bold;
+    color: #333;
+    max-width: 100%;
+    /* Default max-width */
+    word-wrap: break-word;
+    white-space: normal;
+    line-height: 1.2;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+/* 📱 On smaller screens, reduce max-width */
+@media (max-width: 768px) {
+    #profile .flex .name {
+        max-width: 100px;
+        /* Slightly reduce */
+    }
+}
+
+@media (max-width: 480px) {
+    #profile .flex .name {
+        max-width: 80px;
+        /* Even smaller on very small screens */
+    }
+}
+
+/* ✅ Score Styling - Keep Right-Aligned */
+#profile .flex .skill-strength,
+#profile .flex .score {
+    color: #000;
+    /* Black */
+    font-weight: bold;
+    text-align: right;
+}
+
+/* Top 3 scores should be green */
+#profile .flex:nth-child(1) .score,
+#profile .flex:nth-child(2) .score,
+#profile .flex:nth-child(3) .score {
+    color: #4CAF50;
+    /* Green */
+}
+
 #profile .flex .rank {
     font-weight: normal;
     color: #666;
+    /* Gray color */
     margin-right: 8px;
 }
 
-/* Top-three rank highlight */
 #profile .flex .rank.top-three {
     font-weight: bold;
     color: #4CAF50;
+    /* Green color */
 }
 
-/* Specific styling for the top three ranks based on their order */
-
-/* Largest font for the number one rank */
 #profile .flex:nth-child(1) .rank.top-three {
     font-size: 1.5em;
 }
 
-/* Slightly smaller font for the number two rank */
 #profile .flex:nth-child(2) .rank.top-three {
     font-size: 1.3em;
 }
 
-/* Standard bold font size for the number three rank */
 #profile .flex:nth-child(3) .rank.top-three {
     font-size: 1.1em;
 }
 
-/* Name styling */
-#profile .flex .name {
-    font-weight: bold;
-    color: #333;
-}
-
-#profile .flex .skill-strength {
-    text-align: right;
-    font-weight: bold;
-    color: #4CAF50;
-    /* Ensure the color contrasts with background */
-    min-width: 80px;
-    /* Minimum width to prevent overflow or text cut-off */
-    white-space: nowrap;
-    /* Prevents wrapping if numbers are large */
-    overflow: hidden;
-    /* Ensures no extra overflow is visible */
-}
-/* Profile score styling */
-#profile .flex .score {
-    color: #000;
-    /* Set score text color to black */
-    font-weight: bold;
-    text-align: right;
-}
-/* Sort button styling */
+/* Sort Button */
 .sort-button {
     background: none;
     border: none;
@@ -237,7 +210,7 @@
     color: #388E3C;
 }
 
-
+/* Modal Styling */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -261,6 +234,7 @@
     text-align: center;
 }
 
+/* Close Button */
 .close-button {
     position: absolute;
     top: 10px;
@@ -271,6 +245,7 @@
     cursor: pointer;
 }
 
+/* Share Button */
 .share-button {
     background-color: #4CAF50;
     color: white;
@@ -279,4 +254,12 @@
     margin-top: 1rem;
     border-radius: 4px;
     cursor: pointer;
+}
+
+/* 📱 Responsive Fix: Ensure Name Breaks on Small Screens */
+@media (max-width: 600px) {
+    #profile .flex .name {
+        max-width: 70px;
+        /* 🔹 ADJUSTED: Cut down further for small screens */
+    }
 }
