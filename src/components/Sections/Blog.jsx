@@ -30,15 +30,15 @@ export default function Projects() {
           </HeaderInfo>
 
           {/* Centered Blog Section */}
-          <BlogContainer>
-          <StyledImageWrapper>
+          {/* <BlogContainer> */}
+          {/* <StyledImageWrapper>
               <ProjectBox
                 img={AISpaceEscapeCover}
                 title="AI Space Escape"
                 text="Developer Diary 1"
                 action={() => navigate("/blog/ai_space_escape")}
               />
-            </StyledImageWrapper>
+            </StyledImageWrapper> */}
 
             {/* <StyledImageWrapper>
               <ProjectBox
@@ -66,7 +66,7 @@ export default function Projects() {
                 action={() => navigate("/blog/blog3")}
               />
             </StyledImageWrapper> */}
-          </BlogContainer>
+          {/* </BlogContainer> */}
         </div>
       </div>
       <Footer />
@@ -75,17 +75,17 @@ export default function Projects() {
 }
 
 // Center the images inside the Blog section
-const BlogContainer = styled.div`
-  display: flex;
-  justify-content: center;  // Center items horizontally
-  align-items: center;      // Align items vertically
-  flex-wrap: wrap;          // Allow responsive wrapping
-  gap: 30px;                // Space between items
+// const BlogContainer = styled.div`
+//   display: flex;
+//   justify-content: center;  // Center items horizontally
+//   align-items: center;      // Align items vertically
+//   flex-wrap: wrap;          // Allow responsive wrapping
+//   gap: 30px;                // Space between items
 
-  @media (max-width: 768px) {
-    flex-direction: column; // Stack items on smaller screens
-  }
-`;
+//   @media (max-width: 768px) {
+//     flex-direction: column; // Stack items on smaller screens
+//   }
+// `;
 
 const StyledImageWrapper = styled.div`
   text-align: center; // Ensure text under images is centered
