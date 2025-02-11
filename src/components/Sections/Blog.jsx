@@ -37,7 +37,7 @@ export default function Projects() {
               <StyledImage src={AISpaceEscapeCover} alt="AI Space Escape" />
             </ImageWrapper>
             <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/ai_space_escape")}>AI Space Escape Project Overview</PostTitle>
+              <PostTitle onClick={() => navigate("/blog/ai_space_escape")}>introducing AI Space Escape: playing games while evaluting LLM reasonsing!</PostTitle>
               <PostDescription>
                 <TLDR onClick={() => togglePostDescription(0)}>
                   {expandedPost === 0 ? "Hide TLDR" : "Show TLDR"}
