@@ -8,7 +8,7 @@
 
 <br>
 
-[paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org) | [lmgame](https://x.com/largemodelgame) | [Discord](https://discord.gg/pKhAhVfY) | [AI Space Escape](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)
+[paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org) | [lmgame](https://x.com/largemodelgame) | [Discord](https://discord.gg/pKhAhVfY) | [AI Space Escape](https://www.roblox.com/games/114904064694961/AI-Space-Escape)
 
 ## AI Space Escape
 
