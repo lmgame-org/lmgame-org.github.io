@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3d1717d5.css",
-    "main.js": "/static/js/main.b9b6922c.js",
+    "main.css": "/static/css/main.30750e69.css",
+    "main.js": "/static/js/main.e7c855d7.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
     "static/media/taboo_example.png": "/static/media/taboo_example.d782ec3301959176d356.png",
     "static/media/homepic6.png": "/static/media/homepic6.965bb0ca2000a7a19b62.png",
@@ -31,12 +31,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.3d1717d5.css.map": "/static/css/main.3d1717d5.css.map",
-    "main.b9b6922c.js.map": "/static/js/main.b9b6922c.js.map",
+    "main.30750e69.css.map": "/static/css/main.30750e69.css.map",
+    "main.e7c855d7.js.map": "/static/js/main.e7c855d7.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d1717d5.css",
-    "static/js/main.b9b6922c.js"
+    "static/css/main.30750e69.css",
+    "static/js/main.e7c855d7.js"
   ]
 }
