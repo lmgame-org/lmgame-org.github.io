@@ -105,17 +105,17 @@ Our evaluation results show the following findings:
 
 - GameArena’s ranking aligns with other reasoning benchmarks considering both reasoning and language capabilities (LiveBench-Reasoning, LiveBench-Language, GPQA).
 
-| Model Name                | Akinator Score | Bluffing Score | Taboo Score | Average Score |
-|---------------------------|----------------|----------------|-------------|---------------|
-| **claude-3-5-sonnet-20240620** | 1004.45        | 1024.43        | 992.18      | 1007.02       |
-| **gemini-2.0-flash-thinking-exp-01-21** | N/A            | 1002.58            | 1008.78     | 1005.68       |
-| **deepsseek-r1**        | N/A            | N/A            | 999.42         | 999.42           |
-| **gemini-1.5-pro**     | 1016.93        | 1024.71        | 954.93      | 998.86        |
-| **o1-mini**            | 1001.12        | 997.69         | 989.82      | 996.21        |
-| **qwen-max**           | 1015.34        | 970.44         | 990.89      | 992.22        |
-| **gpt-4o-2024-11-20**  | 1003.29        | 995.38         | 972.78      | 990.48        |
-| **llama-3-405b**       | 999.59         | 982.88         | 982.33      | 988.26        |
-| **grok-2-beta**        | 995.30         | 977.72         | 971.21      | 981.41        |
+| Rank | Model Name                          | Akinator Score | Bluffing Score | Taboo Score | Average Score |
+|-----:|-------------------------------------|---------------:|---------------:|------------:|--------------:|
+| #1   | claude-3-5-sonnet...-20240620       | 1004.71        | 1025.65        | 990.47      | 1006.94       |
+| #2   | gemini-2.0-flash-thinking-exp-01-21 | N/A            | 1002.38        | 1007.45     | 1004.91       |
+| #3   | gemini-1.5-pro                      | 1016.54        | 1026.82        | 955.56      | 999.64        |
+| #4   | deepseek-r1                         | 1001.00        | 999.03         | 998.52      | 999.51        |
+| #5   | o1-mini                             | 999.08         | 994.05         | 990.21      | 994.45        |
+| #6   | qwen-max                            | 1015.84        | 970.93         | 992.81      | 993.19        |
+| #7   | gpt-4o-2024-11-20                   | 1003.60        | 996.06         | 973.09      | 990.92        |
+| #8   | llama-3-405b                        | 999.59         | 984.04         | 980.55      | 988.06        |
+| #9   | grok-2-beta                         | 994.91         | 977.67         | 973.24      | 981.94        d|
 
 
 ![hidetable](placeholder.jpg "Table 2: Game Arena model ranking (sorted by average score across three games) as of Feburary 2025. For more fine-grained analysis with detailed metrics, please check our paper.")
