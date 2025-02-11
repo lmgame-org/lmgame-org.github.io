@@ -63,6 +63,7 @@ const Wrapper = styled.section`
 
 const HeaderInfo = styled.div`
   text-align: center;
+  margin-top: 2.5em;
   margin-bottom: 40px;
 
   @media (max-width: 860px) {

@@ -24,7 +24,10 @@ model_name_mapping = {
     "gemini-2.0-flash-thinking-exp-01-21": 6,
     "o1-mini": 7,
     "o3-mini": 8,
-    "deepseek-reasoner": 9
+    "deepseek-r1": 9
+}
+model_name_replacement_mapping = {
+    "deepseek-reasoner": "deepseek-R1"
 }
 legacy_model_name_mapping = {
     "gpt-4o-2024-08-06": 1,
@@ -34,7 +37,7 @@ reasoning_models = [
     "gemini-2.0-flash-thinking-exp-01-21",
     "o1-mini",
     "o3-mini",
-    "deepseek-reasoner"
+    "deepseek-r1"
 ]
 reasoning_technique_mapping = {
     "CoT": 0,
@@ -60,6 +63,14 @@ def classify_level(user_id: int):
         return 1
     else:
         return 0
+
+def compute_total_sessions():
+    data = query_table("game_sessions")
+    
+    total_sessions = len(data)
+    
+    print(f"Total number of game sessions: {total_sessions}")
+    return total_sessions
     
 # Main data processing function
 def process_data(output_path='./feature_vector.parquet'):
@@ -72,12 +83,15 @@ def process_data(output_path='./feature_vector.parquet'):
 
     # Iterate over each entry in the data
     for entry in data:
+        # Model name replacement
+        entry["model"] = model_name_replacement_mapping.get(entry.get("model"), entry.get("model"))
+
         # Map template_name to model index
         
         # Ignore story_scenario
         if entry.get("game_name") == 'StoryScenario':
             continue 
-
+        
         model_index = model_name_mapping.get(entry.get("model").strip().lower(), None)
 
         # NOTE: handle legacy data (will be deprecated soon)

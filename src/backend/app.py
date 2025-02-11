@@ -72,5 +72,16 @@ def general_model():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+# Total game sessions endpoint
+@app.route('/api/general/total_sessions', methods=['GET'])
+def total_sessions():
+    try:
+        total_game_sessions = query_table("game_sessions")
+        total_sessions_count = len(total_game_sessions)
+        
+        return jsonify({"total_sessions": total_sessions_count})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
 if __name__ == "__main__":
     app.run(port=5000)

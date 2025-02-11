@@ -2,11 +2,13 @@
 
 > Author: Game Arena Team
 
-> Date: February 6, 2025
+> Date: February 10, 2025
 
-> TLDR: We developed a live Roblox game, AI Space Escape, powered by state-of-the-art AI models, offering a unique experience to reason with AI. Beyond entertainment, our game generates gaming data for evaluating AI reasoning abilities in real-world scenarios, extending beyond math and coding benchmarks. All gaming data, evaluation scripts, and code are publicly available for further research.
+> TL;DR: We developed a live Roblox game, AI Space Escape, powered by state-of-the-art large language models (LLMs), offering a unique experience to reason with AI. Beyond entertainment, our game generates gaming data for evaluating AI reasoning abilities in real-world scenarios, extending beyond math and coding benchmarks. All gaming data, evaluation scripts, and code are publicly available for further research.
 
-[lmgame](https://x.com/largemodelgame) | [paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org) | [Discord](https://discord.gg/pKhAhVfY) | [AI Space Escape](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)
+<br>
+
+[paper](https://arxiv.org/abs/2412.06394) | [lmgame-org](https://github.com/lmgame-org) | [lmgame](https://x.com/largemodelgame) | [Discord](https://discord.gg/pKhAhVfY) | [AI Space Escape](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)
 
 ## AI Space Escape
 
@@ -38,10 +40,19 @@ We invite you to join and discover the cause of the threat to the spaceship. You
 
 [AI Space Escape on Roblox](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)
 
+If you're new to Roblox, follow these simple steps to get started:
+
+- Click the link above and press the **Play** button.
+
+- Select **Sign Up** and enter your details.
+
+- Download and install the app.
+
+- Jump in and start having fun!
 
 ---
 
-## LLM Evaluation
+## Evaluting LLMs with Games
 
 ### Motivation
 
@@ -57,7 +68,7 @@ Moreover, beyond their use in chat applications, LLMs hold immense potential for
 
 Static evaluations, such as MMLU, Spider, and HumanEval, offer capability-specific assessments but rely on less intuitive metrics like F1, BLEU, and ROUGE. Additionally, their static nature makes benchmarks easier to exploit, as seen with MT-Bench. In contrast, dynamic evaluations like Chatbot Arena provide more intuitive metrics, such as win rates or Elo scores, and are harder to manipulate. However, they suffer from a low feedback rate (around 4% for Chatbot Arena) and the coupling of multiple capabilities within Elo scores, which limits their granularity in assessing specific skills.
 
-### Evaluting LLMs with Games
+### What Make Us Different?
 
 To address the challenges, Game Arena:
 
@@ -67,15 +78,15 @@ To address the challenges, Game Arena:
 
 - Employs novel evaluation techniques that evaluate LLMs based on gaming outcomes and reasoning trajectories.
 
-| **Game**    | **Reasoning Type and Metrics**                                                | **Multi-hop Reasoning and Metrics**                                     |
-|:------------:|:------------------------------------------------------------------------------:|:-------------------------------------------------------------------------:|
-| **Akinator**  | **Deductive reasoning** <br> *first appear round avg, final rank*             | **Multi-hop reasoning** <br> *recall rate, top-k recall rate, disparity ratio* |
-| **Taboo**     | **Abductive reasoning** <br> *first appear round avg, final rank*             | **Multi-hop reasoning** <br> *recall rate, top-k recall rate*                  |
-| **Bluffing**  | **Inductive reasoning** <br> *first appear round avg, final rank*             | **Multi-hop reasoning** <br> *consistency rate, recall rate, top-k recall rate* |
+| **Game**    | **Reasoning Types**             |
+|:------------:|:------------------------------------------------------------------------------:|
+| Akinator  | Deductive reasoning, Multi-hop reasoning  |
+| Taboo     | Abductive reasoning, Multi-hop reasoning  |
+| Bluffing  | Inductive reasoning, Multi-hop reasoning  |
 
-![hidetable](placeholder.jpg "Table 1: procedural analysis metrics for the Akinator, Taboo, and Bluffing games and their corresponding model capabilities.")
+![hidetable](placeholder.jpg "Table 1: major reasoning capabilities involved in the Akinator, Taboo, and Bluffing games.")
 
-Stay tuned and we will release more details about how we generated the leaderboard!
+Stay tuned and we will release more details about how we generated the leaderboard! 🔔
 
 
 ---
@@ -84,32 +95,30 @@ Stay tuned and we will release more details about how we generated the leaderboa
 
 ### Rankings
 
-#### Gaming Data Metrics
+#### Cross Comparison
 
 Our evaluation results show the following findings:
 
-- GameArena’s ranking aligns with other static reasoning benchmarks (LiveBench-Reasoning, GPQA).
+- Models with strong reasoning capabilities and multi-turn instruction-following capabilities, such as **claude-3.5-sonnet**, **gemini-2.0-flash-thinking-exp-01-21**, and **gemini-1.5-pro** are ranked high in GameArena.
 
-- GameArena’s ranking is weakly correlated with Chatbot Arena.
+- Models that excel at short conversations but with poor reasoning in extended game sessions, such as **Mistral-Large-2**, usually rank low in GameArena (not shown).
 
-- Models with strong reasoning capabilities and multi-turn instruction-following capabilities, such as **claude-3.5-sonnet** and **GPT-4o**, are ranked high in GameArena.
+- GameArena’s ranking aligns with other reasoning benchmarks considering both reasoning and language capabilities (LiveBench-Reasoning, LiveBench-Language, GPQA).
 
-- Models that excel at short conversations but with poor reasoning in extended game sessions, such as **Mistral-Large-2**, usually rank low in GameArena.
+| Model Name                | Akinator Score | Bluffing Score | Taboo Score | Average Score |
+|---------------------------|----------------|----------------|-------------|---------------|
+| **claude-3-5-sonnet-20240620** | 1004.45        | 1024.43        | 992.18      | 1007.02       |
+| **gemini-2.0-flash-thinking-exp-01-21** | N/A            | 1002.58            | 1008.78     | 1005.68       |
+| **deepsseek-r1**        | N/A            | N/A            | 999.42         | 999.42           |
+| **gemini-1.5-pro**     | 1016.93        | 1024.71        | 954.93      | 998.86        |
+| **o1-mini**            | 1001.12        | 997.69         | 989.82      | 996.21        |
+| **qwen-max**           | 1015.34        | 970.44         | 990.89      | 992.22        |
+| **gpt-4o-2024-11-20**  | 1003.29        | 995.38         | 972.78      | 990.48        |
+| **llama-3-405b**       | 999.59         | 982.88         | 982.33      | 988.26        |
+| **grok-2-beta**        | 995.30         | 977.72         | 971.21      | 981.41        |
 
-| **Ranking source**                | **Claude 3.5 Sonnet** | **Gemini-1.5 Pro** | **GPT-4o** | **LLaMA3.1 405B** | **Mistral Large 2** |
-|:-----------------------------------:|:-----------------------:|:--------------------:|:-----------:|:-------------------:|:---------------------:|
-| GameArena Akinator-Outcome        | 1                     | 2                  | 3         | 4                 | 5                   |
-| GameArena Taboo-Outcome           | 4                     | 5                  | 1         | 3                 | 2                   |
-| GameArena Bluffing-Outcome        | 1                     | 2                  | 3         | 4                 | 5                   |
-| GameArena Akinator-Retro          | 1                     | 3                  | 2         | 4                 | 5                   |
-| GameArena Taboo-Retro             | 1                     | 3                  | 2         | 4                 | 5                   |
-| GameArena Bluffing-Retro          | 1                     | 2                  | 3         | 4                 | 5                   |
-| Chatbot Arena                     | 3                     | 2                  | 1         | 4                 | 5                   |
-| LiveBench Reasoning               | 1                     | 4                  | 2         | 3                 | 5                   |
-| LiveBench Language                | 1                     | 4                  | 2         | 3                 | 5                   |
-| GPQA                              | 1                     | 4                  | 2         | 3                 | 5                   |
 
-![hidetable](placeholder.jpg "Table 2: Game Arena model rankings in comparison with other rankings as of September 2024.")
+![hidetable](placeholder.jpg "Table 2: Game Arena model ranking (sorted by average score across three games) as of Feburary 2025. For more fine-grained analysis with detailed metrics, please check our paper.")
 
 ### User Tests
 
@@ -123,14 +132,25 @@ We conducted a user study to compare the user experience and willingness to part
 
 ![User Test](user_test.png "Figure 3: User test results from 100 users with diverse demographic background.")
 
+---
+
+## Last Few Words
+
+"Imagine the gods are playing a great game like chess, and you don’t know the rules. You’re allowed to observe the board occasionally, trying to deduce the rules of the pieces moving... Later on you might discover the law for the bishop is that it moves on a diagonal, which would explain the law that you understood before, that it maintains its color." 
+
+This analogy, drawn by the renowned physicist, Richard Feynman in his 1983, “Fun to Imagine” TV Series, likened understanding physics to learning the rules of playing a chess game solely by observation. It illustrates how the greatest scientists uncover the laws of nature: by observing patterns and inducting the underlying principles.
+
+Forty years later, with the advent of modern AI, from AlphaFold-3 to Deep Research, state-of-the-art AI systems now show the potential to revolutionize scientific exploration. The power of inductive reasoning passes down from brilliant human minds to AIs.
+
+Given the parallels between the reasoning involved in games and science, an interesting question arises: can games serve as a medium to evaluate AI's capabilities and potential? With the questions and inspirations, we press forward, standing at where we are today and relentlessly seeking not only a deeper understanding of AI but also the evolving role of humanity in a future shaped by AI that far surpasses human capabilities.
 
 ---
 
 ## Research and Open-sourced Commitments
 
-Please see [our paper](https://arxiv.org/pdf/2412.06394) for more details. Check out our [Hugging Face repository](#) (link placeholder) where you can find our gaming data and script for exploratory data analysis.
+Please see [our paper](https://arxiv.org/pdf/2412.06394) for more details. Check out our [Hugging Face repository](#) (link placeholder) where you can find our gaming data.
 
-We also invite you to try out [our codebase](https://github.com/lmgame-org) to build your own games!
+We also invite you to try out [game engine](https://github.com/lmgame-org) and build your own games!
 
 
 ---

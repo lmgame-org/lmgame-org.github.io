@@ -144,8 +144,13 @@ export default function Board({
 function rankLeaderboard(data) {
     return data
         .sort((a, b) => b.score - a.score)
-        .map((user, index) => ({ ...user, rank: index + 1 })); // Assign ranks
+        .map((user, index) => ({
+            ...user,
+            rank: index + 1,
+            score: user.score.toFixed(2)
+        }));
 }
+
 
 function filterAndSortLeaderboard(rankedData, sortOrder, searchQuery) {
     let filteredData = rankedData.filter(user =>

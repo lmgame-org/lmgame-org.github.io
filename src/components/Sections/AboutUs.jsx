@@ -19,12 +19,20 @@ export default function AboutUs() {
         <div className="container">
           <HeaderContainer>
             <HeaderInfo>
-              <h1 className="font40 extraBold">About Us</h1>
+              <h1 className="font40 extraBold">About</h1>
               <CenterText>
                 <p>
-                  Game Arena is a crowdsourcing platform that hosts live computer games to evaluate AI models. 
-                  As a team of passionate researchers from UC San Diego and UC Berkeley, we design and maintain 
-                  gamified AI benchmarks using rigorous scientific methods.
+                  Game Arena hosts live computer games for AI evaluations. 
+                  As a team of passionate researchers from UC San Diego, we design and maintain 
+                  gamified AI benchmarks.
+                </p>
+              </CenterText>
+              <CenterText>
+                <p>
+                  Our mission is to enable engaging gameplay while evaluating a variety of 
+                  large-scale AI models and systems.
+                  We also seek to redefine the role of humans in data annotation and evaluation,
+                  in anticipation of a future shaped by superintelligence.
                 </p>
               </CenterText>
               <CenterText>
@@ -36,11 +44,11 @@ export default function AboutUs() {
               </CenterText>
 
               <Text>
-                <strong>Advisors:</strong> HaoJian Jin, Ion Stoica, Hao Zhang.
+                <strong>Members:</strong> Lanxiang Hu, Jason Kong, Qiyu Li, Tony Meng, Anze Xie, Haoyang Yu, Jessica Zhang, Yuxuan Zhang.
               </Text>
+              
               <Text>
-                <strong>Members:</strong> Anze Xie, Haoyang Yu, Jason Kong, Jessica Zhang, Lanxiang Hu, 
-                Qiyu Li, Tony Meng, Yuxuan Zhang.
+                <strong>Advisors:</strong> HaoJian Jin, Tajana Rosing, Ion Stoica, Hao Zhang.
               </Text>
             </HeaderInfo>
           </HeaderContainer>
@@ -63,8 +71,8 @@ const Wrapper = styled.section`
 const ContentSection = styled.div`
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   width: 100%;
   padding: 60px 20px;
 `;
@@ -79,10 +87,12 @@ const HeaderContainer = styled.div`
 
 const HeaderInfo = styled.div`
   max-width: 800px;
-  margin: 0 auto;
+  margin-top: 2.5em;
   padding: 20px;
 
   h1 {
+    font-size: 50px; /* Enlarged Title */
+    font-weight: 700;
     margin-bottom: 20px;
   }
 `;
@@ -99,7 +109,7 @@ const CenterText = styled.p`
   font-size: 18px;
   line-height: 1.6;
   color: #333;
-  text-align: justify;
+  text-align: left;
   margin-bottom: 15px;
 `;
 

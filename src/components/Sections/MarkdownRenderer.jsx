@@ -120,47 +120,6 @@ const MarkdownContainer = styled.div`
       color: #ff8c00;
     }
   }
-
-  .metadata-container {
-    background: #f8f9fa; /* Light grey background */
-    border-radius: 12px;
-    padding: 15px 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-    max-width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .author-container {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #999; /* Light grey color */
-  }
-
-  .author-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  .date-container {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #999; /* Light grey color */
-    margin-top: 8px;
-    font-style: italic;
-  }
 `;
 
 // Custom Component for External Links with Icons
@@ -183,25 +142,6 @@ const CustomLink = ({ href, children }) => {
     <a href={href} target="_blank" rel="noopener noreferrer" className="custom-link">
       {icon} {children}
     </a>
-  );
-};
-
-// Author Component
-const AuthorComponent = ({ name }) => {
-  return (
-    <div className="author-container">
-      <span className="author-name">{name}</span>
-    </div>
-  );
-};
-
-// Metadata Component
-const MetadataComponent = ({ name, date }) => {
-  return (
-    <div className="metadata-container">
-      {name && <AuthorComponent name={name} />}
-      {date && <div className="date-container">{date}</div>}
-    </div>
   );
 };
 
@@ -316,18 +256,33 @@ export default function MarkdownRenderer({ filePath }) {
           
           // BLOCKQUOTE RENDERING (for Author/Date metadata)
           blockquote: ({ children }) => {
-            const text = children[0]?.props?.children;
+            const text = children[1]?.props?.children;
+          
             if (typeof text === "string") {
               if (text.startsWith("Author:")) {
                 const authorName = text.replace("Author:", "").trim();
-                return <MetadataComponent name={authorName} />;
+                return <div style={{ backgroundColor: "#f0f0f0", padding: "2px", borderRadius: "5px"}}>
+                    <strong>Author:</strong> {authorName}
+                  </div>
               } else if (text.startsWith("Date:")) {
                 const dateText = text.replace("Date:", "").trim();
-                return <MetadataComponent date={dateText} />;
+                return (
+                  <div style={{ backgroundColor: "#f0f0f0", padding: "2px", borderRadius: "5px"}}>
+                    <strong>Date:</strong> {dateText}
+                  </div>
+                );
+              } else if (text.startsWith("TL;DR:")) {
+                const tldrText = text.replace("TL;DR:", "").trim();
+                return (
+                  <div style={{ backgroundColor: "#f0f0f0", padding: "2px", borderRadius: "5px"}}>
+                    <strong>TL;DR:</strong> {tldrText}
+                  </div>
+                );
               }
             }
+          
             return <blockquote>{children}</blockquote>;
-          },
+          },                   
         }}
       />
     </MarkdownContainer>
