@@ -72,7 +72,7 @@ Static evaluations, such as MMLU, Spider, and HumanEval, offer capability-specif
 
 To address the challenges, Game Arena:
 
-- An incentivized, dynamic benchmark using live computer games to evaluate the interactive and strategic aspect of many other reasoning tasks required in real-life.
+- Introduces an incentivized, dynamic benchmark using live computer games to evaluate the interactive and strategic aspect of many other reasoning tasks required in real-life.
 
 - Involves three reasoning games, each target at different reasoning capabilities.
 
@@ -88,7 +88,6 @@ To address the challenges, Game Arena:
 
 Stay tuned and we will release more details about how we generated the leaderboard! 🔔
 
-
 ---
 
 ## Results
@@ -99,7 +98,7 @@ Stay tuned and we will release more details about how we generated the leaderboa
 
 Our evaluation results show the following findings:
 
-- Models with strong reasoning capabilities and multi-turn instruction-following capabilities, such as **claude-3.5-sonnet**, **gemini-2.0-flash-thinking-exp-01-21**, and **gemini-1.5-pro** are ranked high in GameArena.
+- Models with both strong reasoning capability and multi-turn instruction-following capability, such as **claude-3.5-sonnet**, **gemini-2.0-flash-thinking-exp-01-21**, and **gemini-1.5-pro** are ranked high in GameArena.
 
 - Models that excel at short conversations but with poor reasoning in extended game sessions, such as **Mistral-Large-2**, usually rank low in GameArena (not shown).
 
@@ -118,7 +117,7 @@ Our evaluation results show the following findings:
 | grok-2-beta                         | 994.91         | 977.67         | 973.24      | 981.94        |
 
 
-![hidetable](placeholder.jpg "Table 2: Game Arena model ranking (sorted by average score across three games) as of Feburary 2025. For more fine-grained analysis with detailed metrics, please check our paper.")
+![hidetable](placeholder.jpg "Table 2: Game Arena model ranking based on outcome-based metrics (sorted by average score across three games) as of Feburary the 10th, 2025. For more fine-grained analysis and other detailed evaluation metrics, please check our paper.")
 
 ### User Tests
 
@@ -157,7 +156,7 @@ We also invite you to try out [game engine](https://github.com/lmgame-org) and b
 
 ## Acknowledgement
 
-We would like to thank Yonghao Zhuang, Xin (Kris) Gao, Yinmin Zhong, Yao Fu, Anastasios Angelopoulos, Roger Wang for providing insightful feedbacks.
+We would like to thank Yonghao Zhuang, Xin (Kris) Gao, Yinmin Zhong, Yao Fu, Anastasios Angelopoulos, Roger Wang, Ligeng Zhu for providing insightful feedbacks.
 
 ---
 
