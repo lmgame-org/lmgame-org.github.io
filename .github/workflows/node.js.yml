@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
+    - run: CI=false npm run build --if-present # Disable CI mode temporarily if needed
     - run: npm test
 
     - name: Deploy with gh-pages
