@@ -98,11 +98,11 @@ Stay tuned and we will release more details about how we generated the leaderboa
 
 Our evaluation results show the following findings:
 
-- Models with both strong reasoning capability and multi-turn instruction-following capability, such as **claude-3.5-sonnet**, **gemini-2.0-flash-thinking-exp-01-21**, and **gemini-1.5-pro** are ranked high in GameArena.
+- Well aligned models with strong reasoning capability and multi-turn instruction-following capability, such as **claude-3.5-sonnet** and **gemini-1.5-pro** are ranked high in GameArena.
+
+- Reasoning models such as **gemini-2.0-flash-thinking-exp-01-21**, **deepseek-r1**, **o1-mini** generally perform well on the games, but come with slight to significantly higher latency.
 
 - Models that excel at short conversations but with poor reasoning in extended game sessions, such as **Mistral-Large-2**, usually rank low in GameArena (not shown).
-
-- GameArena’s ranking aligns with other reasoning benchmarks considering both reasoning and language capabilities (LiveBench-Reasoning, LiveBench-Language, GPQA).
 
 | Model Name                          | Akinator Score | Bluffing Score | Taboo Score | Average Score |
 |:-------------------------------------|---------------:|---------------:|------------:|--------------:|
