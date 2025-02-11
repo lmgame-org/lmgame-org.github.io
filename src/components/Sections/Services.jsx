@@ -18,7 +18,7 @@ export default function Services() {
               <br />
               Player leaderboards can be found in the top tab. 
               <br />
-              The overall ranking is calculated using the average scores across three games. 
+              The overall ranking is calculated using the average score across all games. 
             </p>
           </HeaderInfo>
 

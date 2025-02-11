@@ -12,7 +12,7 @@
 
 /* Leaderboard Title */
 .board .leaderboard {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     font-size: 1.5em;
     font-weight: bold;
     color: #000;
@@ -47,8 +47,18 @@
     font-size: 1em;
 }
 
+.board .columnnames .column-item-center {
+    flex: 1;
+    text-align: center;
+    font-size: 1em;
+}
+
 .board .columnnames .skill-strength {
     text-align: right;
+}
+
+.board .columnnames .skill-strength-center {
+    text-align: center;
 }
 
 /* Profiles Container */
@@ -69,6 +79,31 @@
     /* Firefox scrollbar */
     scrollbar-width: thin;
     scrollbar-color: #ccc transparent;
+}
+
+.profiles-container .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    gap: 1em;
+    text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+.profiles-container .row:hover {
+    background-color: #f9f9f9;
+}
+
+.profiles-container .cell {
+    flex: 1;
+    text-align: center;
+}
+
+.profiles-container .cell-left {
+    flex: 1;
+    text-align: left;
 }
 
 /* WebKit-based scrollbar styling */
@@ -94,13 +129,31 @@
 /* Profile Row Layout */
 #profile .flex {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem;
-    border-bottom: 1px solid #ddd;
-    gap: 1em;
+    justify-content: flex-start; /* Left-align rows */
+    align-items: center; /* Vertically center content */
     text-align: left;
-    transition: background-color 0.2s ease;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Align the first column (Model Name) to the left */
+.name-container {
+    flex: 1;  /* Takes more space for model name */
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Align score columns to the right */
+.score {
+    flex: 1;
+    text-align: right;  /* Right-align scores */
+    padding: 0 10px;
+}
+
+/* Make sure last row has no bottom border */
+.row:last-child {
+    border-bottom: none;
 }
 
 /* Hover Effect */

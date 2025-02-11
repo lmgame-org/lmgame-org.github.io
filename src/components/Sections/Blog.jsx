@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +16,11 @@ import Footer from "./Footer";
 
 export default function Projects() {
   const navigate = useNavigate();
+  const [expandedPost, setExpandedPost] = useState(null);
+
+  const togglePostDescription = (index) => {
+    setExpandedPost(expandedPost === index ? null : index);
+  };
 
   return (
     <Wrapper id="blog">
@@ -32,40 +37,22 @@ export default function Projects() {
               <StyledImage src={AISpaceEscapeCover} alt="AI Space Escape" />
             </ImageWrapper>
             <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/ai_space_escape")}>AI Space Escape</PostTitle>
-              <PostDescription>Project Overview</PostDescription>
+              <PostTitle onClick={() => navigate("/blog/ai_space_escape")}>AI Space Escape Project Overview</PostTitle>
+              <PostDescription>
+                <TLDR onClick={() => togglePostDescription(0)}>
+                  {expandedPost === 0 ? "Hide TLDR" : "Show TLDR"}
+                </TLDR>
+                {expandedPost === 0 && (
+                  <FullDescription>
+                    We developed a live Roblox game, AI Space Escape, powered by state-of-the-art large language models (LLMs), offering a unique experience to reason with AI. Beyond entertainment, our game generates gaming data for evaluating AI reasoning abilities in real-world scenarios, extending beyond math and coding benchmarks. All gaming data, evaluation scripts, and code are publicly available for further research.
+                  </FullDescription>
+                )}
+              </PostDescription>
             </TextWrapper>
           </ProjectItem>
 
-          {/*<ProjectItem>
-            <ImageWrapper>
-              <StyledImage src={ProjectImg1} alt="Blog 1" />
-            </ImageWrapper>
-            <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/blog1")}>Blog 1</PostTitle>
-              <PostDescription>Some useful info</PostDescription>
-            </TextWrapper>
-          </ProjectItem>
+          {/* Repeat for other projects with the same TLDR support */}
 
-          <ProjectItem>
-            <ImageWrapper>
-              <StyledImage src={ProjectImg2} alt="Blog 2" />
-            </ImageWrapper>
-            <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/blog2")}>Blog 2</PostTitle>
-              <PostDescription>Some review</PostDescription>
-            </TextWrapper>
-          </ProjectItem>
-
-          <ProjectItem>
-            <ImageWrapper>
-              <StyledImage src={ProjectImg3} alt="Blog 3" />
-            </ImageWrapper>
-            <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/blog3")}>Blog 3</PostTitle>
-              <PostDescription>XXX</PostDescription>
-            </TextWrapper>
-          </ProjectItem> */}
         </ProjectList>
       </ContentSection>
       <Footer />
@@ -97,23 +84,23 @@ const HeaderInfo = styled.div`
   margin-bottom: 40px;
 
   h1 {
-    font-size: 50px; /* Enlarged Title */
+    font-size: 50px;
     font-weight: 700;
   }
 
   p {
-    font-size: 20px; /* Enlarged Subtitle */
+    font-size: 20px;
     color: #555;
   }
 `;
 
 const ProjectList = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px; /* Increased spacing between posts */
+  gap: 40px;
 `;
 
 const ProjectItem = styled.div`
@@ -144,7 +131,7 @@ const ImageWrapper = styled.div`
 const StyledImage = styled.img`
   width: 100%;
   max-width: 800px;
-  height: 400px; /* Ensures a consistent image height */
+  height: 400px;
   object-fit: cover;
   border-radius: 10px;
 `;
@@ -169,4 +156,26 @@ const PostDescription = styled.p`
   font-size: 22px;
   color: #333;
   margin-top: 10px;
+`;
+
+const TLDR = styled.span`
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #dd00dd; /* Magenta */
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #aa00aa; /* Darker magenta */
+  }
+`;
+
+const FullDescription = styled.div`
+  font-size: 18px;
+  color: #555;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
 `;

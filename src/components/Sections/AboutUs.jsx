@@ -22,9 +22,17 @@ export default function AboutUs() {
               <h1 className="font40 extraBold">About</h1>
               <CenterText>
                 <p>
-                  Game Arena hosts live computer games to evaluate AI models. 
+                  Game Arena hosts live computer games for AI evaluations. 
                   As a team of passionate researchers from UC San Diego, we design and maintain 
                   gamified AI benchmarks.
+                </p>
+              </CenterText>
+              <CenterText>
+                <p>
+                  Our mission is to enable engaging gameplay while evaluating a variety of 
+                  large-scale AI models and systems.
+                  We also seek to redefine the role of humans in data annotation and evaluation,
+                  in anticipation of a future shaped by superintelligence.
                 </p>
               </CenterText>
               <CenterText>
@@ -36,11 +44,11 @@ export default function AboutUs() {
               </CenterText>
 
               <Text>
-                <strong>Members:</strong> Anze Xie, Haoyang Yu, Jason Kong, Jessica Zhang, Lanxiang Hu, 
-                Qiyu Li, Tony Meng, Yuxuan Zhang.
+                <strong>Members:</strong> Lanxiang Hu, Jason Kong, Qiyu Li, Tony Meng, Anze Xie, Haoyang Yu, Jessica Zhang, Yuxuan Zhang.
               </Text>
+              
               <Text>
-                <strong>Advisors:</strong> HaoJian Jin, Ion Stoica, Hao Zhang.
+                <strong>Advisors:</strong> HaoJian Jin, Tajana Rosing, Ion Stoica, Hao Zhang.
               </Text>
             </HeaderInfo>
           </HeaderContainer>
