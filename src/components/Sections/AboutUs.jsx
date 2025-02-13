@@ -48,7 +48,7 @@ export default function AboutUs() {
               </Text>
               
               <Text>
-                <strong>Advisors:</strong> HaoJian Jin, Tajana Rosing, Ion Stoica, Hao Zhang.
+                <strong>Advisors:</strong> HaoJian Jin, Tajana Rosing, Ion Stoica, Eric P. Xing, Hao Zhang.
               </Text>
             </HeaderInfo>
           </HeaderContainer>
