@@ -1,7 +1,9 @@
 import React from "react";
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Helmet } from "react-helmet";
+import { initGA, logPageView } from "./utils/analytics.js";
+import { useEffect } from "react";
 
 // Screens
 import Landing from "./screens/Landing.jsx";
@@ -14,9 +16,24 @@ import BlogPage from "./components/Sections/BlogPage";
 import AboutUs from "./components/Sections/AboutUs";
 import Blog from "./components/Sections/Blog";
 
+const Analytics = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    logPageView();
+  }, [location]);
+
+  return null;
+};
+
 export default function App() {
+  useEffect(() => {
+    initGA();
+  }, []);
+
   return (
     <Router>
+      <Analytics />
       <>
         <Helmet>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
