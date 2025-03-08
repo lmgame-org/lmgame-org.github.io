@@ -1,9 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.30750e69.css",
-    "main.js": "/static/js/main.418f1fb8.js",
+    "main.js": "/static/js/main.ae279eca.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
+    "static/media/mario_demo.gif": "/static/media/mario_demo.8c5514fed2f2d3c53254.gif",
+    "static/media/tetris-demo.gif": "/static/media/tetris-demo.40de0acacfd1af372fd2.gif",
+    "static/media/candy_crush_o3_mini.gif": "/static/media/candy_crush_o3_mini.7e116d8988d2eace1327.gif",
+    "static/media/sokoban_reasoning.gif": "/static/media/sokoban_reasoning.f8e8799f7c0759bf31fc.gif",
+    "static/media/homepic8.jpg": "/static/media/homepic8.dd82b7ddff21697b4a0b.jpg",
     "static/media/taboo_example.png": "/static/media/taboo_example.d782ec3301959176d356.png",
+    "static/media/homepic7.jpg": "/static/media/homepic7.fc265fc44b14e36da000.jpg",
     "static/media/homepic6.png": "/static/media/homepic6.965bb0ca2000a7a19b62.png",
     "static/media/homepic2.jpg": "/static/media/homepic2.2001cbe2174a283d247a.jpg",
     "static/media/blog1.png": "/static/media/blog1.224a5f52acfa6a2c43dd.png",
@@ -12,6 +18,8 @@
     "static/media/taboo.png": "/static/media/taboo.515cd28de3fa08ff6046.png",
     "static/media/ai_space_escape.jpg": "/static/media/ai_space_escape.a7fa3e1188e4e5039730.jpg",
     "static/media/ak1.png": "/static/media/ak1.b912d39d6f809e3803c6.png",
+    "static/media/homepic10.jpg": "/static/media/homepic10.6b891601aca460521529.jpg",
+    "static/media/homepic9.jpg": "/static/media/homepic9.455823e611258da0bbc6.jpg",
     "static/media/bluffing.png": "/static/media/bluffing.e9007db72e8da87ba3f1.png",
     "static/media/eval_ranking.jpg": "/static/media/eval_ranking.51978c90def838233b22.jpg",
     "static/media/trimmed_ai_space_escape.jpg": "/static/media/trimmed_ai_space_escape.b57bd5989b38d2fe5c9a.jpg",
@@ -32,11 +40,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.30750e69.css.map": "/static/css/main.30750e69.css.map",
-    "main.418f1fb8.js.map": "/static/js/main.418f1fb8.js.map",
+    "main.ae279eca.js.map": "/static/js/main.ae279eca.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.30750e69.css",
-    "static/js/main.418f1fb8.js"
+    "static/js/main.ae279eca.js"
   ]
 }
