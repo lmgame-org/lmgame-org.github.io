@@ -7,11 +7,14 @@ import { useEffect } from "react";
 
 // Screens
 import Landing from "./screens/Landing.jsx";
-import Akinator from "./components/Sections/Akinator";
-import Bluffing from "./components/Sections/Bluffing";
-import Taboo from "./components/Sections/Taboo";
-import OurMission from "./components/Sections/OurMission";
-import GameSkills from "./components/Sections/GameSkills";
+import Landing_Escape from "./screens/Landing_Escape.jsx";
+import Landing_Agent from "./screens/Landing_Agent.jsx";
+
+import Akinator from "./components/Sections/AI_Escape/Akinator";
+import Bluffing from "./components/Sections/AI_Escape/Bluffing";
+import Taboo from "./components/Sections/AI_Escape/Taboo";
+// import OurMission from "./components/Sections/OurMission";
+// import GameSkills from "./components/Sections/GameSkills";
 import BlogPage from "./components/Sections/BlogPage";
 import AboutUs from "./components/Sections/AboutUs";
 import Blog from "./components/Sections/Blog";
@@ -46,8 +49,10 @@ export default function App() {
           <Route path="/akinator" element={<Akinator />} />
           <Route path="/bluffing" element={<Bluffing/>} />
           <Route path="/taboo" element={<Taboo />} />
-          <Route path="/ourmission" element={<OurMission />} />
-          <Route path="/gameskills" element={<GameSkills />} />
+          <Route path="/ai_escape" element={<Landing_Escape />} />
+          <Route path="/gaming_agent" element={<Landing_Agent />} />
+          {/* <Route path="/ourmission" element={<OurMission />} /> */}
+          {/* <Route path="/gameskills" element={<GameSkills />} /> */}
           <Route path="/blog/:blogId" element={<BlogPage />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/blog" element={<Blog />} />

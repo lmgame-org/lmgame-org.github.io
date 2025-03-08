@@ -2,14 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-// Components
-import ProjectBox from "../Elements/ProjectBox";
-
 // Assets
 import AISpaceEscapeCover from "../../assets/img/blogs/ai_space_escape.jpg";
-import ProjectImg1 from "../../assets/img/blogs/blog1.png";
-import ProjectImg2 from "../../assets/img/blogs/blog2.jpg";
-import ProjectImg3 from "../../assets/img/blogs/blog3.jpg";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";

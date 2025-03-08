@@ -9,7 +9,10 @@ import Logo from "../../assets/svg/Logo";
 import BurgerIcon from "../../assets/svg/BurgerIcon";
 import { useNavigate } from "react-router-dom";
 
-import FullButton from "../Buttons/FullButton";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faGithub} from "@fortawesome/free-brands-svg-icons";
+
 
 export default function TopNavbar() {
   const navigate = useNavigate();
@@ -52,18 +55,15 @@ export default function TopNavbar() {
 
             <StyledLi className="semiBold font16 pointer whiteColor" onClick={toggleDropdown} style={{ position: "relative" }}>
               <span style={{ padding: "10px 16px", cursor: "pointer" }}>
-                Game Leaderboards
+                Leaderboards
               </span>
               {isDropdownOpen && (
                 <DropdownMenu>
-                  <DropdownItem onClick={() => { navigate("/akinator"); closeDropdown(); }}>
-                    Akinator
+                  <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
+                    Space Escape
                   </DropdownItem>
-                  <DropdownItem onClick={() => { navigate("/taboo"); closeDropdown(); }}>
-                    Taboo
-                  </DropdownItem>
-                  <DropdownItem onClick={() => { navigate("/bluffing"); closeDropdown(); }}>
-                    Bluffing
+                  <DropdownItem onClick={() => { navigate("/gaming_agent"); closeDropdown(); }}>
+                    Gaming Agent
                   </DropdownItem>
                 </DropdownMenu>
               )}
@@ -76,7 +76,7 @@ export default function TopNavbar() {
             </StyledLi>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
-            <StyledLi className="semiBold font16 pointer flexCenter">
+            {/* <StyledLi className="semiBold font16 pointer flexCenter">
             <a
               href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
               target="_blank"
@@ -84,8 +84,12 @@ export default function TopNavbar() {
             >
               <FullButton title="Play Now" />
             </a>
-            </StyledLi>
-
+            </StyledLi> */}
+            <SocialIcons>
+              <a href="https://github.com/lmgame-org" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faGithub} size="3x" />
+              </a>
+            </SocialIcons>
           </UlWrapperRight>
         </NavInner>
       </Wrapper>
@@ -175,5 +179,19 @@ const StyledLi = styled.li`
   &:hover {
     border-bottom: 2px solid #7620FF;
     color: #7620FF;
+  }
+`;
+
+const SocialIcons = styled.div`
+  display: flex;
+  gap: 40px;
+
+  a {
+    color: #fff; /* White icons */
+    transition: color 0.3s;
+    
+    &:hover {
+      color: #7620ff; /* Purple hover effect */
+    }
   }
 `;

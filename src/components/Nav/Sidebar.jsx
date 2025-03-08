@@ -5,6 +5,9 @@ import { useNavigate, Link} from "react-router-dom";
 import CloseIcon from "../../assets/svg/CloseIcon";
 import Logo from "../../assets/svg/Logo";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faGithub, faTwitter} from "@fortawesome/free-brands-svg-icons";
+
 export default function Sidebar({ sidebarOpen, toggleSidebar }) {
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -32,20 +35,17 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
         </StyledLi>
         <StyledLi className="whiteColor" onClick={toggleDropdown} style={{ position: "relative" }}>
             <span style={{ padding: "10px 16px", cursor: "pointer" }}>
-              Game Leaderboards
+              GLeaderboards
             </span>
             {isDropdownOpen && (
               <DropdownMenu>
-                <DropdownItem onClick={() => { navigate("/akinator"); closeDropdown(); }}>
-                  Akinator
+                <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
+                  Space Escape
                 </DropdownItem>
-                <DropdownItem onClick={() => { navigate("/taboo"); closeDropdown(); }}>
-                  Taboo
+                <DropdownItem onClick={() => { navigate("/gaming_agent"); closeDropdown(); }}>
+                  Gaming Agent
                 </DropdownItem>
-                <DropdownItem onClick={() => { navigate("/bluffing"); closeDropdown(); }}>
-                  Bluffing
-                </DropdownItem>
-              </DropdownMenu>
+            </DropdownMenu>
             )}
           </StyledLi>
             <StyledLi className="whiteColor" onClick={() => navigate("/blog")}>
@@ -54,11 +54,17 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             <StyledLi className="whiteColor" onClick={() => navigate("/aboutus")}>
               About Us
             </StyledLi>
-            <li className="semiBold font15 pointer flexCenter">
+            {/* <li className="semiBold font15 pointer flexCenter">
               <a href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
                 Play Now
               </a>
-            </li>
+            </li> */}
+            <SocialIcons>
+              <a href="https://github.com/lmgame-org" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faGithub} size="3x" />
+              </a>
+            </SocialIcons>
+
       </UlStyle>
     </Wrapper>
   );
@@ -124,5 +130,19 @@ const DropdownItem = styled.div`
   color: #333;
   &:hover {
     background-color: #f1f1f1;
+  }
+`;
+
+const SocialIcons = styled.div`
+  display: flex;
+  gap: 40px;
+
+  a {
+    color: #fff; /* White icons */
+    transition: color 0.3s;
+    
+    &:hover {
+      color: #7620ff; /* Purple hover effect */
+    }
   }
 `;
