@@ -41,7 +41,7 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg1}
                   title="Candy Crush"
-                  text="Help AI guess the target object by answering yes/no questions."
+                  text="Evaluating AI's ability to recognize patterns and optimize moves in a match-three puzzle."
                   // action={() => navigate("/akinator")}
                 />
               </StyledImageWrapper>
@@ -49,7 +49,7 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg2}
                   title="Mario"
-                  text="Bluff the AI into believing the player's statements."
+                  text="Testing AI's reaction speed and decision-making in a platformer environment."
                   // action={() => navigate("/bluffing")}
                 />
               </StyledImageWrapper>
@@ -57,7 +57,7 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg3}
                   title="Sokoban"
-                  text="Induce the AI to say the target word."
+                  text="Assessing AI's strategic planning and problem-solving in a push-box puzzle game."
                   // action={() => navigate("/taboo")}
                 />
               </StyledImageWrapper>
@@ -65,7 +65,7 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg4}
                   title="Tetris"
-                  text="Bluff the AI into believing the player's statements."
+                  text="Measuring AI's efficiency in spatial awareness and real-time adaptability."
                   // action={() => navigate("/bluffing")}
                 />
               </StyledImageWrapper>
@@ -77,40 +77,29 @@ export default function Projects() {
   );
 }
 
+
+
+const Wrapper = styled.section`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const SliderWrapper = styled.div`
+  width: 100%;
+  max-width: 1600px;
+`;
+
 const StyledImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 20px;
 
   img {
     width: 300px;
     height: 300px;
     object-fit: cover;
   }
-`;
-
-const SliderWrapper = styled.div`
-  .slick-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-const Wrapper = styled.section`
-  width: 100%;
-`;
-
-const HeaderInfo = styled.div`
-  @media (max-width: 860px) {
-    text-align: center;
-  }
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 50px;
 `;

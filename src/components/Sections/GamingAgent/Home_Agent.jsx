@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
-import FullButton from "../../Buttons/FullButton";
 // Assets
 import HomePic1 from "../../../assets/homepic/homepic1.jpg";
 import HomePic2 from "../../../assets/homepic/homepic2.jpg";
 import HomePic3 from "../../../assets/homepic/homepic3.jpg";
-import HomePic4 from "../../../assets/homepic/homepic4.jpg";
 import HomePic5 from "../../../assets/homepic/homepic5.jpg";
-import HomePic6 from "../../../assets/homepic/homepic6.png"; 
+import HomePic7 from "../../../assets/homepic/homepic7.jpg";
+import HomePic8 from "../../../assets/homepic/homepic8.jpg";
+import HomePic9 from "../../../assets/homepic/homepic9.jpg";
+import HomePic10 from "../../../assets/homepic/homepic10.jpg";
 
-export default function Header() {
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faGithub, faTwitter} from "@fortawesome/free-brands-svg-icons";
+
+export default function Home_Agent() {
   const images = [
-    { src: HomePic6, animation: "none", duration: 10000 }, // Stays for 5 sec
+    { src: HomePic7, animation: "none", duration: 10000 },
     { src: HomePic1, animation: "fade", duration: 8000 },
     { src: HomePic2, animation: "zoom", duration: 12000 },
+    { src: HomePic10, animation: "fade", duration: 12000 },
     { src: HomePic3, animation: "slide", duration: 16000 },
-    { src: HomePic4, animation: "fade", duration: 12000 },
+    { src: HomePic8, animation: "fade", duration: 12000 },
     { src: HomePic5, animation: "zoom", duration: 16000 },
+    { src: HomePic9, animation: "slide", duration: 12000 },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,17 +55,23 @@ export default function Header() {
 
       {/* Foreground Content */}
       <ContentWrapper>
-        <h1>AI Space Escape</h1>
+        <h1 className="extraBold">Gaming Agent</h1>
         <HeaderP>
-          Dive into Roblox escape games. Beat LLMs, outpace AI, and climb the leaderboard!
+          Who is the most intelligent LLM?
+          <br/>
+          Dive into our gaming agent and explore a variety of games, including AI vs. AI and Human vs. AI. 
+          <br/>
+          Beat LLMs, outpace AI, and climb the leaderboard! 
         </HeaderP>
-        <a
-          href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FullButton title="Play Now" />
-        </a>
+
+        <SocialIcons>
+          <a href="https://github.com/lmgame-org/GamingAgent" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faGithub} size="5x" />
+          </a>
+        </SocialIcons>
+        
+
+       
       </ContentWrapper>
     </Wrapper>
   );
@@ -177,5 +190,19 @@ const HeaderP = styled.p`
 
   @media (max-width: 768px) {
     font-size: 1rem;
+  }
+`;
+
+const SocialIcons = styled.div`
+  display: flex;
+  gap: 40px;
+
+  a {
+    color: #fff; /* White icons */
+    transition: color 0.3s;
+    
+    &:hover {
+      color: #7620ff; /* Purple hover effect */
+    }
   }
 `;
