@@ -153,7 +153,7 @@ const ContentWrapper = styled.div`
   padding: 80px 20px 20px; 
 
   h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: 20px;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   }

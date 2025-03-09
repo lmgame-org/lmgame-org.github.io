@@ -57,16 +57,12 @@ export default function Home_Agent() {
       <ContentWrapper>
         <h1 className="extraBold">Gaming Agent</h1>
         <HeaderP>
-          Who is the most intelligent LLM?
-          <br/>
-          Dive into our gaming agent and explore a variety of games, including AI vs. AI and Human vs. AI. 
-          <br/>
-          Beat LLMs, outpace AI, and climb the leaderboard! 
+          Who is the most intelligent LLM? Dive into our gaming agent and explore a variety of games. 
         </HeaderP>
 
         <SocialIcons>
           <a href="https://github.com/lmgame-org/GamingAgent" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faGithub} size="5x" />
+            <FontAwesomeIcon icon={faGithub} size="3x" />
           </a>
         </SocialIcons>
         
@@ -163,10 +159,10 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 50vh; /* Bottom half of the screen */
-  padding: 80px 20px 20px; 
+  padding: 10px 20px 20px; 
 
   h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: 20px;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   }

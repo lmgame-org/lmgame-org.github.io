@@ -78,28 +78,40 @@ export default function Projects() {
 }
 
 
-
-const Wrapper = styled.section`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const SliderWrapper = styled.div`
-  width: 100%;
-  max-width: 1600px;
-`;
-
 const StyledImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
 
   img {
     width: 300px;
     height: 300px;
     object-fit: cover;
   }
+`;
+
+const SliderWrapper = styled.div`
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const Wrapper = styled.section`
+  width: 100%;
+`;
+
+const HeaderInfo = styled.div`
+  @media (max-width: 860px) {
+    text-align: center;
+  }
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
 `;
