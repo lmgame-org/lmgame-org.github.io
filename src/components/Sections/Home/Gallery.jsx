@@ -13,60 +13,88 @@ import ProjectImg4 from "../../../assets/img/projects/tetris-demo.gif";
 
 import { useNavigate } from "react-router-dom";
 
+// Custom Left Arrow
+const PrevArrow = ({ onClick }) => {
+  return <ArrowLeft onClick={onClick}>◀</ArrowLeft>;
+};
+
+// Custom Right Arrow
+const NextArrow = ({ onClick }) => {
+  return <ArrowRight onClick={onClick}>▶</ArrowRight>;
+};
+
 export default function Projects() {
   const navigate = useNavigate();
 
-  // Slider settings for continuous spinning
   const settings = {
-    dots: false, 
-    infinite: true, // Enable infinite loop
-    speed: 1000, // Animation speed (in milliseconds)
-    slidesToShow: 3, // Number of visible items
-    slidesToScroll: 1, // Number of items to scroll at once
-    autoplay: true, // Enable automatic sliding
-    autoplaySpeed: 9000, // Delay between slides (in milliseconds)
-    pauseOnHover: true, // Prevent pausing on mouse hover
-    cssEase: "linear", // Smooth animation for continuous spinning
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 9000,
+    pauseOnHover: true,
+    cssEase: "linear",
+    prevArrow: <PrevArrow />, // Custom Left Arrow
+    nextArrow: <NextArrow />, // Custom Right Arrow
+    responsive: [
+      {
+        breakpoint: 1024, // Tablet and smaller
+        settings: {
+          slidesToShow: 2,
+          
+        },
+      },
+      {
+        breakpoint: 768, // Mobile
+        settings: {
+          slidesToShow: 1,
+          arrows: true, // Enable arrows for mobile
+        },
+      },
+      {
+        breakpoint: 480, // Small mobile
+        settings: {
+          slidesToShow: 1,
+          arrows: true, // Ensure arrows are always there
+        },
+      },
+    ],
   };
 
   return (
     <Wrapper id="projects">
       <div className="lightBg" style={{ padding: "20px 0" }}>
         <div className="container">
-
-          {/* Carousel Wrapper */}
           <SliderWrapper>
             <Slider {...settings}>
               <StyledImageWrapper>
                 <ProjectBox
                   img={ProjectImg1}
                   title="Candy Crush"
-                  text="Evaluating AI's ability to recognize patterns and optimize moves in a match-three puzzle."
-                  // action={() => navigate("/akinator")}
+                  text="Help AI guess the target object by answering yes/no questions."
                 />
               </StyledImageWrapper>
               <StyledImageWrapper>
                 <ProjectBox
                   img={ProjectImg2}
                   title="Mario"
-                  text="Testing AI's reaction speed and decision-making in a platformer environment."
-                  // action={() => navigate("/bluffing")}
+                  text="Bluff the AI into believing the player's statements."
                 />
               </StyledImageWrapper>
               <StyledImageWrapper>
                 <ProjectBox
                   img={ProjectImg3}
                   title="Sokoban"
-                  text="Assessing AI's strategic planning and problem-solving in a push-box puzzle game."
-                  // action={() => navigate("/taboo")}
+                  text="Induce the AI to say the target word."
                 />
               </StyledImageWrapper>
               <StyledImageWrapper>
                 <ProjectBox
                   img={ProjectImg4}
                   title="Tetris"
-                  text="Measuring AI's efficiency in spatial awareness and real-time adaptability."
-                  // action={() => navigate("/bluffing")}
+                  text="Bluff the AI into believing the player's statements."
                 />
               </StyledImageWrapper>
             </Slider>
@@ -77,6 +105,34 @@ export default function Projects() {
   );
 }
 
+// Custom Arrow Styling
+const ArrowLeft = styled.div`
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  color: #333;
+  &:hover {
+    color: #000;
+  }
+`;
+
+const ArrowRight = styled.div`
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  color: #333;
+  &:hover {
+    color: #000;
+  }
+`;
 
 const StyledImageWrapper = styled.div`
   display: flex;
@@ -92,6 +148,7 @@ const StyledImageWrapper = styled.div`
 `;
 
 const SliderWrapper = styled.div`
+  position: relative;
   .slick-slide {
     display: flex;
     justify-content: center;
@@ -103,15 +160,3 @@ const Wrapper = styled.section`
   width: 100%;
 `;
 
-const HeaderInfo = styled.div`
-  @media (max-width: 860px) {
-    text-align: center;
-  }
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 50px;
-`;
