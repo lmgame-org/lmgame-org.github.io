@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.30750e69.css",
-    "main.js": "/static/js/main.724b7270.js",
+    "main.js": "/static/js/main.26c5b89a.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
     "static/media/mario_demo.gif": "/static/media/mario_demo.8c5514fed2f2d3c53254.gif",
     "static/media/tetris-demo.gif": "/static/media/tetris-demo.40de0acacfd1af372fd2.gif",
@@ -40,11 +40,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.30750e69.css.map": "/static/css/main.30750e69.css.map",
-    "main.724b7270.js.map": "/static/js/main.724b7270.js.map",
+    "main.26c5b89a.js.map": "/static/js/main.26c5b89a.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.30750e69.css",
-    "static/js/main.724b7270.js"
+    "static/js/main.26c5b89a.js"
   ]
 }
