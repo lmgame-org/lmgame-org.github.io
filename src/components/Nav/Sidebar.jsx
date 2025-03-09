@@ -35,7 +35,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
         </StyledLi>
         <StyledLi className="whiteColor" onClick={toggleDropdown} style={{ position: "relative" }}>
             <span style={{ padding: "10px 16px", cursor: "pointer" }}>
-              GLeaderboards
+              Leaderboards
             </span>
             {isDropdownOpen && (
               <DropdownMenu>
