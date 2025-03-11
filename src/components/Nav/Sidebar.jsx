@@ -33,37 +33,37 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
         <StyledLi className="whiteColor" onClick={() => navigate("/")}>
             Home
         </StyledLi>
-        <StyledLi className="whiteColor" onClick={toggleDropdown} style={{ position: "relative" }}>
-            <span style={{ padding: "10px 16px", cursor: "pointer" }}>
-              Leaderboards
-            </span>
-            {isDropdownOpen && (
-              <DropdownMenu>
-                <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
-                  Space Escape
-                </DropdownItem>
-                <DropdownItem onClick={() => { navigate("/gaming_agent"); closeDropdown(); }}>
-                  Gaming Agent
-                </DropdownItem>
+        <StyledLi className="semiBold font16 pointer whiteColor" onClick={() => navigate("/gaming_agent")} style={{ position: "relative" }}>
+          <span style={{ padding: "10px 16px", cursor: "pointer" }}>
+            Leaderboards
+          </span>
+          {/* {isDropdownOpen && (
+            <DropdownMenu>
+              <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
+                Space Escape
+              </DropdownItem>
+              <DropdownItem onClick={() => { navigate("/gaming_agent"); closeDropdown(); }}>
+                Gaming Agent
+              </DropdownItem>
             </DropdownMenu>
-            )}
-          </StyledLi>
-            <StyledLi className="whiteColor" onClick={() => navigate("/blog")}>
-                Blog
-            </StyledLi>
-            <StyledLi className="whiteColor" onClick={() => navigate("/aboutus")}>
-              About Us
-            </StyledLi>
-            {/* <li className="semiBold font15 pointer flexCenter">
-              <a href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-                Play Now
-              </a>
-            </li> */}
-            <SocialIcons>
-              <a href="https://github.com/lmgame-org" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faGithub} size="3x" />
-              </a>
-            </SocialIcons>
+          )} */}
+        </StyledLi>
+        <StyledLi className="whiteColor" onClick={() => navigate("/blog")}>
+            Blog
+        </StyledLi>
+        <StyledLi className="whiteColor" onClick={() => navigate("/aboutus")}>
+          About Us
+        </StyledLi>
+        {/* <li className="semiBold font15 pointer flexCenter">
+          <a href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
+            Play Now
+          </a>
+        </li> */}
+        <SocialIcons>
+          <a href="https://github.com/lmgame-org" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faGithub} size="3x" />
+          </a>
+        </SocialIcons>
 
       </UlStyle>
     </Wrapper>

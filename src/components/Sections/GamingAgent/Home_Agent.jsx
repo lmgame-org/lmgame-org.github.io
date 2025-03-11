@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
+import FullButton from "../../Buttons/FullButton";
 // Assets
 import HomePic1 from "../../../assets/homepic/homepic1.jpg";
 import HomePic2 from "../../../assets/homepic/homepic2.jpg";
@@ -55,17 +56,23 @@ export default function Home_Agent() {
 
       {/* Foreground Content */}
       <ContentWrapper>
-        <h1 className="extraBold">Gaming Agent</h1>
+        <h1 className="extraBold">Game Arena</h1>
         <HeaderP>
           Who is the most intelligent LLM? Dive into our gaming agent and explore a variety of games. 
         </HeaderP>
-
-        <SocialIcons>
+        <a
+          href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FullButton title="Try Now" />
+        </a>
+        {/* <SocialIcons>
           <a href="https://github.com/lmgame-org/GamingAgent" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faGithub} size="3x" />
+            <FontAwesomeIcon icon={faGithub} size="5x" />
           </a>
         </SocialIcons>
-        
+         */}
 
        
       </ContentWrapper>
@@ -159,7 +166,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 50vh; /* Bottom half of the screen */
-  padding: 10px 20px 20px; 
+  padding: 80px 20px 20px; 
 
   h1 {
     font-size: 4rem;
