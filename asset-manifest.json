@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.30750e69.css",
-    "main.js": "/static/js/main.f29be38b.js",
+    "main.js": "/static/js/main.f8730278.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
     "static/media/mario_demo.gif": "/static/media/mario_demo.8c5514fed2f2d3c53254.gif",
     "static/media/tetris-demo.gif": "/static/media/tetris-demo.40de0acacfd1af372fd2.gif",
@@ -13,12 +13,12 @@
     "static/media/mario.gif": "/static/media/mario.77fe0bf75c425a6be91d.gif",
     "static/media/taboo_example.png": "/static/media/taboo_example.d782ec3301959176d356.png",
     "static/media/teris.gif": "/static/media/teris.e397868126cbfb539efc.gif",
+    "static/media/game_2048.gif": "/static/media/game_2048.86dfcab2fbd64beb3f70.gif",
     "static/media/homepic7.jpg": "/static/media/homepic7.fc265fc44b14e36da000.jpg",
     "static/media/homepic6.png": "/static/media/homepic6.965bb0ca2000a7a19b62.png",
     "static/media/homepic2.jpg": "/static/media/homepic2.2001cbe2174a283d247a.jpg",
     "static/media/blog1.png": "/static/media/blog1.224a5f52acfa6a2c43dd.png",
     "static/media/homepic3.jpg": "/static/media/homepic3.236c1697407e118f1bad.jpg",
-    "static/media/2048.gif": "/static/media/2048.e23aa67852d7c9c3c25f.gif",
     "static/media/homepic5.jpg": "/static/media/homepic5.cdd3c528d1dffe6c1724.jpg",
     "static/media/taboo.png": "/static/media/taboo.515cd28de3fa08ff6046.png",
     "static/media/ai_space_escape.jpg": "/static/media/ai_space_escape.a7fa3e1188e4e5039730.jpg",
@@ -45,11 +45,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.30750e69.css.map": "/static/css/main.30750e69.css.map",
-    "main.f29be38b.js.map": "/static/js/main.f29be38b.js.map",
+    "main.f8730278.js.map": "/static/js/main.f8730278.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.30750e69.css",
-    "static/js/main.f29be38b.js"
+    "static/js/main.f8730278.js"
   ]
 }
