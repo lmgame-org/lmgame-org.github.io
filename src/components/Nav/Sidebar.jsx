@@ -33,11 +33,11 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
         <StyledLi className="whiteColor" onClick={() => navigate("/")}>
             Home
         </StyledLi>
-        <StyledLi className="semiBold font16 pointer whiteColor" onClick={() => navigate("/gaming_agent")} style={{ position: "relative" }}>
+        <StyledLi className="semiBold font16 pointer whiteColor" onClick={toggleDropdown} style={{ position: "relative" }}>
           <span style={{ padding: "10px 16px", cursor: "pointer" }}>
             Leaderboards
           </span>
-          {/* {isDropdownOpen && (
+          {isDropdownOpen && (
             <DropdownMenu>
               <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
                 Space Escape
@@ -46,7 +46,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
                 Gaming Agent
               </DropdownItem>
             </DropdownMenu>
-          )} */}
+          )}
         </StyledLi>
         <StyledLi className="whiteColor" onClick={() => navigate("/blog")}>
             Blog

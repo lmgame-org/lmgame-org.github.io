@@ -11,7 +11,7 @@ import HomePic8 from "../../../assets/homepic/homepic8.jpg";
 import HomePic9 from "../../../assets/homepic/homepic9.jpg";
 import Teris from "../../../assets/homepic/teris.gif";
 import Candy from "../../../assets/homepic/candy.gif";
-import Game_2048 from "../../../assets/homepic/2048.gif";
+import Game_2048 from "../../../assets/homepic/game_2048.gif";
 import Sokoban from "../../../assets/homepic/sokoban.gif";
 import Mario from "../../../assets/homepic/mario.gif";
 
@@ -25,6 +25,7 @@ export default function HomePage() {
     { src: Candy, animation: "fade", duration: 7000 },
     { src: Teris, animation: "fade", duration: 3800 },
     { src: Sokoban, animation: "fade", duration: 10000 },
+    { src: Game_2048, animation: "fade", duration: 3000 },
     // { src: HomePic1, animation: "fade", duration: 8000 },
     // { src: HomePic2, animation: "zoom", duration: 12000 },
     // { src: HomePic3, animation: "slide", duration: 16000 },
