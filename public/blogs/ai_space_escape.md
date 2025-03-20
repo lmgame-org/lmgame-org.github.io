@@ -16,7 +16,7 @@ With the proliferation of static math and coding benchmarks, significant improve
 
 Our exploration of these research questions led to the development of our first game. The game is set in a space expedition where humans need to work closely with AIs. After months of dedication and hard work from our incredible team, we are thrilled to announce that **AI Space Escape** is now live on [Roblox](https://www.roblox.com/share?code=ca3442c9a6dcb547ae6c70968ec2ecab&type=ExperienceDetails&stamp=1732088094496)!
 
-![Game intro illustration](taboo_example.png "Figure 1: the Taboo reasoning challenge in our Roblox game: AI Space Escape. The project is designed to permit live computer gaming while evaluating SOTA AI models.")
+![Game intro illustration](01_taboo_example.png "Figure 1: the Taboo reasoning challenge in our Roblox game: AI Space Escape. The project is designed to permit live computer gaming while evaluating SOTA AI models.")
 
 ### Background Story
 
@@ -58,7 +58,7 @@ If you're new to Roblox, follow these simple steps to get started:
 
 Beyond the fun, each game session provides valuable human-contributed feedback for the LLMs to form their in-game reasoning trajectories. This gaming data proves to be incredibly effective for evaluating LLMs. But before diving into how we conduct evaluations, you might wonder: **why is LLM evaluation so important?**
 
-![Ranking eval illustration](eval_ranking.jpg "Figure 2: Chatbot Arena Ranking from LMSYS as of Feb the 5th, 2025 ([image source](https://informationisbeautiful.net/visualizations/the-rise-of-generative-ai-large-language-models-llms-like-chatgpt/)).")
+![Ranking eval illustration](01_eval_ranking.jpg "Figure 2: Chatbot Arena Ranking from LMSYS as of Feb the 5th, 2025 ([image source](https://informationisbeautiful.net/visualizations/the-rise-of-generative-ai-large-language-models-llms-like-chatgpt/)).")
 
 LLMs are evolving rapidly, becoming increasingly powerful and often matching or even surpassing human performance in certain tasks, which necessitates continuous quantification of performance deltas.
 
@@ -84,7 +84,7 @@ To address the challenges, Game Arena:
 | Taboo     | Abductive reasoning, Multi-hop reasoning  |
 | Bluffing  | Inductive reasoning, Multi-hop reasoning  |
 
-![hidetable](placeholder.jpg "Table 1: major reasoning capabilities involved in the Akinator, Taboo, and Bluffing games.")
+![hidetable](01_placeholder.jpg "Table 1: major reasoning capabilities involved in the Akinator, Taboo, and Bluffing games.")
 
 Stay tuned and we will release more details about how we generated the leaderboard! 🔔
 
@@ -129,7 +129,7 @@ We conducted a user study to compare the user experience and willingness to part
 
 - We found that about 87% of the gaming sessions from GameArena were complete and useful, while only 4% of total conversations in Chatbot Arena provided meaningful votes (due to its reliance on voluntary participation).
 
-![User Test](user_test.png "Figure 3: User test results from 100 users with diverse demographic background.")
+![User Test](01_user_test.png "Figure 3: User test results from 100 users with diverse demographic background.")
 
 ---
 

@@ -61,7 +61,7 @@ export default function Home_Agent() {
           Who is the most intelligent LLM? Dive into our gaming agent and explore a variety of games. 
         </HeaderP>
         <a
-          href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
+          href="https://github.com/lmgame-org/GamingAgent"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -180,8 +180,6 @@ const ContentWrapper = styled.div`
     }
   }
 `;
-
-
 
 
 const HeaderP = styled.p`

@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 // Assets
-import AISpaceEscapeCover from "../../assets/img/blogs/ai_space_escape.jpg";
+import AISpaceEscapeCover from "../../assets/img/blogs/01_ai_space_escape.jpg";
+import GamingAgentCover from "../../assets/img/blogs/02_gaming_agent_intro.png";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
@@ -26,6 +27,32 @@ export default function Projects() {
         </HeaderInfo>
 
         <ProjectList>
+
+          {/* Repeat for other projects with the same TLDR support */}
+
+          <ProjectItem>
+            <ImageWrapper>
+              <StyledImage src={GamingAgentCover} alt="Gaming Agent" />
+            </ImageWrapper>
+            <TextWrapper>
+              <PostTitle onClick={() => navigate("/blog/gaming_agent_intro")}>
+                Gaming Agent: Evaluating Foundation Models with Platformer and Puzzle Games
+              </PostTitle>
+              <PostDescription>
+                <TLDR onClick={() => togglePostDescription(1)}>
+                  {expandedPost === 1 ? "Hide TLDR" : "Show TLDR"}
+                </TLDR>
+                {expandedPost === 1 && (
+                  <FullDescription>
+                    Classic platformer and puzzle games are designed to challenge human intelligence through carefully crafted difficulties and metrics with evolving mechanics. These designs are invaluable yet underutilized for benchmarking foundation models as their environment interaction capabilities continue to improve.
+                  </FullDescription>
+                )}
+              </PostDescription>
+            </TextWrapper>
+          </ProjectItem>
+
+          {/* Legacy Blogs */}
+
           <ProjectItem>
             <ImageWrapper>
               <StyledImage src={AISpaceEscapeCover} alt="AI Space Escape" />
@@ -44,8 +71,6 @@ export default function Projects() {
               </PostDescription>
             </TextWrapper>
           </ProjectItem>
-
-          {/* Repeat for other projects with the same TLDR support */}
 
         </ProjectList>
       </ContentSection>
