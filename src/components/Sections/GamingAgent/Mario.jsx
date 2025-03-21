@@ -23,7 +23,7 @@ export default function Mario() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Mario Leaderboard</h1>
               <p className="font16">
-              Ranking AI performance in a Mario game based on coins collected and levels completed.
+                Model rankings in Super Mario Bros (reasoning models are excluded due to their high latency).
               </p>
             </HeaderInfo>
 

@@ -15,7 +15,7 @@ export default function Landing_Agent() {
       <TopNavbar />
       <div id="top"></div>
       <Home_Agent />
-      {/* <Gallery /> */}
+      <Gallery />
       <LeaderBoard_Agent />
       <Footer />
     </>

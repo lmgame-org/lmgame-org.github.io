@@ -58,11 +58,11 @@ export default function TopNavbar() {
               </span>
               {isDropdownOpen && (
                 <DropdownMenu>
-                  <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
-                    Space Escape
-                  </DropdownItem>
                   <DropdownItem onClick={() => { navigate("/gaming_agent"); closeDropdown(); }}>
                     Gaming Agent
+                  </DropdownItem>
+                  <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
+                    Space Escape
                   </DropdownItem>
                 </DropdownMenu>
               )}
