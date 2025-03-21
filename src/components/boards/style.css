@@ -316,3 +316,51 @@
         /* 🔹 ADJUSTED: Cut down further for small screens */
     }
 }
+
+
+/* Grid-based column layout (auto-aligns columns dynamically) */
+.board .columnnames.grid-layout {
+    display: grid;
+    grid-template-columns: 50px repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+    padding: 0.75em 1em;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.board .columnnames.grid-layout .column-item {
+    padding: 6px 10px;
+}
+
+.profile-row.grid-layout {
+    display: grid;
+    grid-template-columns: 50px repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 0.6rem 1rem;
+    text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+.profile-row.grid-layout:hover {
+    background-color: #f9f9f9;
+}
+
+.profile-cell {
+    padding: 6px 10px;
+    overflow-wrap: break-word;
+    font-size: 1rem;
+}
+
+.profile-cell.rank {
+    font-weight: bold;
+    color: #666;
+    text-align: left;
+}
+
+.profile-cell.rank.top-three {
+    color: #4CAF50;
+}
