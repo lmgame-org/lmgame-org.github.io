@@ -1,6 +1,6 @@
 # Evaluating Foundation Models with Platformer and Puzzle Games
 
-> Author: Lanxiang Hu, Yuxuan Zhang, Haoyang Yu, Mingjia Huo, Haojian Jin, Hao Zhang
+> Author: Game Arena Team
 
 > Date: March 20, 2025
 
@@ -8,7 +8,7 @@
 
 <br>
 
-[demos](https://18b64c59f5474c132b.gradio.live) | [gamingAgent](https://github.com/lmgame-org/GamingAgent) | [lmgame](https://x.com/largemodelgame)
+[gamingAgent](https://github.com/lmgame-org/GamingAgent) | [lmgame](https://x.com/largemodelgame)
 
 ## Introduction
 
@@ -39,17 +39,17 @@ But in reality, most games are designed to challenge human perception, reaction,
 
 ### Integaring Foundating Models with Gaming Agents
 
-Our objective is to integrate models into games and evaluate their performance in ways analogous to how these games assess human abilities. However, current foundation models exhibit limitations in various critical areas, including spatial perception, spatial reasoning, long-horizon planning, and latency. To address these challenges, we augmented model evaluations using specialized modules such as a vision-to-text-table conversion module, memory module, and game-freezing mechanisms.
+Our objective is to integrate models into games and evaluate their performance in ways analogous to how these games assess human abilities. However, current foundation models exhibit limitations in various critical areas, including Vision understanding, spatial reasoning, long-horizon planning, and Realtime reasoning. To address these challenges, we augmented model evaluations using specialized modules such as a vision-to-text-table conversion module, memory module, and game-freezing mechanisms.
 The following table summarizes the specific capabilities tested by each game and each game’s fault tolerance levels:
 
 
 | **Game**    | **Capabilities**             |  **Fault Tolerance** |
 |:------------:|:-----------------------------------:|:------------------------:|
-| Super Mario Bros  | Latency, Spatial reasoning, (Spatial perception)  | high |
-| Tetris     | Latency, Long-horizon planning, Spatial reasoning, (Spatial perception) | low |
+| Super Mario Bros  | Realtime reasoning, Spatial reasoning, (Vision understanding)  | high |
+| Tetris     | Realtime reasoning, Long-horizon planning, Spatial reasoning, (Vision understanding) | low |
 | 2048  | Long-horizon planning, Spatial reasoning | high |
-| Candy Crash | Long-horizon planning, Spatial reasoning, (Spatial perception) | medium |
-| Sokoban  | Long-horizon planning, Spatial reasoning, (Spatial perception)  | low |
+| Candy Crash | Long-horizon planning, Spatial reasoning, (Vision understanding) | medium |
+| Sokoban  | Long-horizon planning, Spatial reasoning, (Vision understanding)  | low |
 
 ![hidetable](placeholder.jpg "Table 1: Capabilities tested and in-game fault tolerance by each of our supported games.")
 
@@ -70,7 +70,7 @@ We conducted each game on every model at least three times and reported the aver
 | Claude 3.5 haiku   | 140   | 1-1      | 76.4     |
 
 
-![hidetable](placeholder.jpg "Table 2: Model rankings in Super Mario Bros (reasoning models are excluded due to their high latency).")
+![hidetable](placeholder.jpg "Table 2: Model rankings in Super Mario Bros (reasoning models are excluded due to their high Realtime reasoning).")
 
 
 | Model                     | Score | Steps | Time (mins) |
@@ -125,7 +125,7 @@ From the rankings, several insights emerge:
 
 - Visual perception: While Gemini 2.0 flash and Claude 3.7 are good in visual perception, their performance degrades when the field of vision expands and the number of objects to track increases.
 
-- Latency-sensitive environments: For latency-sensitive games like Super Mario Bros and Tetris (C), models that strike a balance between low latency, robust visual perception, and effective planning—such as Claude 3.7, Claude 3.5, and Gemini 2.0 flash—are most effective.
+- Realtime reasoning-sensitive environments: For Realtime reasoning-sensitive games like Super Mario Bros and Tetris (C), models that strike a balance between low Realtime reasoning, robust visual perception, and effective planning—such as Claude 3.7, Claude 3.5, and Gemini 2.0 flash—are most effective.
 
 
 ---
