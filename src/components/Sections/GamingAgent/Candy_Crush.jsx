@@ -23,7 +23,7 @@ export default function Candy_Crush() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Candy Crush Leaderboard</h1>
               <p className="font16">
-              Challenge the AI to match and strategize candies to reach high scores.
+              Model rankings in Candy Crush (non-reasoning models are excluded due to their poor performance).
               </p>
             </HeaderInfo>
 

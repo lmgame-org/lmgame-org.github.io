@@ -23,7 +23,7 @@ export default function Tetris() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Tetris Leaderboard</h1>
               <p className="font16">
-              Let the AI stack and rotate pieces to clear lines and beat the clock.
+              Model rankings in Tetris (with complete (C) and planning-only (P), where each block doesn't fall until command actions are executed, variants).
               </p>
             </HeaderInfo>
 

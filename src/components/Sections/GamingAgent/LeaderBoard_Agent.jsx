@@ -14,7 +14,7 @@ export default function LeaderBoard_Agent() {
           <HeaderInfo>
             <h1 className="font40 extraBold" style={{ textAlign: 'center' }}>Leaderboards</h1>
             <p className="font30" style={{ textAlign: 'center' }}>
-              We will upload the leaderboard soon!
+              We will upload the overall leaderboard soon!
               {/* <br />
               Player leaderboards can be found in the top tab. 
               <br />
