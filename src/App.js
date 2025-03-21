@@ -19,6 +19,13 @@ import BlogPage from "./components/Sections/BlogPage";
 import AboutUs from "./components/Sections/AboutUs";
 import Blog from "./components/Sections/Blog";
 
+
+import Candy_Crush from "./components/Sections/GamingAgent/Candy_Crush";
+import Sokoban from "./components/Sections/GamingAgent/Sokoban";
+import Game_2048 from "./components/Sections/GamingAgent/Game_2048";
+import Mario from "./components/Sections/GamingAgent/Mario";
+import Tetris from "./components/Sections/GamingAgent/Tetris";
+
 const Analytics = () => {
   const location = useLocation();
 
@@ -56,6 +63,12 @@ export default function App() {
           <Route path="/blog/:blogId" element={<BlogPage />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/blog" element={<Blog />} />
+
+          <Route path="/mario" element={<Mario />} />
+          <Route path="/sokoban" element={<Sokoban/>} />
+          <Route path="/tetris" element={<Tetris />} />
+          <Route path="/candy_crush" element={<Candy_Crush />} />
+          <Route path="/game_2048" element={<Game_2048/>} />
         </Routes>
       </>
     </Router>

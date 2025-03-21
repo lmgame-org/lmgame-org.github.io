@@ -6,7 +6,7 @@ import remarkCaptions from "remark-captions";
 import styled from "styled-components";
 import { FaGithub, FaDiscord } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { SiArxiv, SiRoblox } from "react-icons/si";
+import { SiArxiv, SiRoblox, SiGradio, SiCodepen } from "react-icons/si";
 
 // Import all images from /src/assets/img/blogs
 const importAllImages = (requireContext) => {
@@ -17,7 +17,7 @@ const importAllImages = (requireContext) => {
   return images;
 };
 const images = importAllImages(
-  require.context("../../assets/img/blogs", false, /\.(png|jpe?g|svg)$/)
+  require.context("../../assets/img/blogs", false, /\.(png|jpe?g|svg|gif)$/)
 );
 
 // Styled Components
@@ -136,6 +136,8 @@ const CustomLink = ({ href, children }) => {
     icon = <FaXTwitter size={22} color="#000" />;
   } else if (href.includes("discord.gg") || href.includes("discord.com")) {
     icon = <FaDiscord size={22} color="#5865F2" />;
+  } else if (href.includes("gradio.live")) {
+    icon = <SiCodepen size={22} color="#FF4B4B" />;
   }
 
   return (
@@ -226,7 +228,8 @@ export default function MarkdownRenderer({ filePath }) {
               href.includes("twitter.com") ||
               href.includes("x.com") ||
               href.includes("discord.gg") ||
-              href.includes("discord.com")
+              href.includes("discord.com") ||
+              href.includes("gradio.live")
             ) {
               return <CustomLink href={href}>{children}</CustomLink>;
             }
