@@ -1,38 +1,16 @@
 # Evaluating Foundation Models with Platformer and Puzzle Games
 
-> Author: Lanxiang Hu, Mingjia Huo, Yuxuan Zhang, Haoyang Yu, Haojian Jin, Hao Zhang
+> Author: Game Arena Team
 
-> Date: March 17, 2025
+> Date: March 20, 2025
 
 > TL;DR: Classic platformer and puzzle games are designed to challenge human intelligence through carefully crafted difficulties and metrics with evolving mechanics. These designs are invaluable yet underutilized for benchmarking foundation models as their environment interaction capabilities continue to improve.
 
 <br>
 
-[Demos](placeholder) | [gamingAgent](https://github.com/lmgame-org/GamingAgent) | [lmgame](https://x.com/largemodelgame)
+[gamingAgent](https://github.com/lmgame-org/GamingAgent) | [lmgame](https://x.com/largemodelgame)
 
 ## Introduction
-
-### Games as AI Testbeds in Past Decades
-
-Games often offer diverse challenges, from long-horizon planning in games like Go to real-time decision-making in video games like Super Mario Bros, for researchers to assess and develop RL algorithms across various scenarios.
-
-Since the 1960s, during the era of mechanical computers, researchers have been testing RL algorithms on games like tic-tac-toe. For decades, games have served as ideal testbeds for evaluating RL algorithms due to their controlled environments, well-defined objectives, and quantifiable rewards.
-
-Over the past few years, platforms like OpenAI Gym and the Arcade Learning Environment (ALE) have been instrumental in advancing RL research. These structured frameworks enable consistent evaluation, foster reproducibility, and facilitate the comparison of different RL approaches. 
-
-![Mechanical Tic-Tac-Toe](gaming_agent/mechanical_computer.png "Figure 1: mechanical computer made from 304 matchboxes designed and built by artificial intelligence researcher Donald Michie in 1961.")
-
-
-### Games as Foundation Model Testbeds in Years to Come
-
-Recently, it has been shown that integrating reinforcement learning (RL) can further enhance foundation models' reasoning abilities in tasks like math and coding. Increasing evidence suggests that training these models with even simple RL algorithms can improve planning and decision-making. This capability becomes especially significant in s crucial when interacting with complex environments.
-
-These developments demonstrate how game environments can serve as effective benchmarks for evaluating foundation models, particularly in reasoning and decision-making tasks.
-
-![Large model Gaming](game_control.png "Figure 2: Claude-3.7 controlling PC to play Super Mario Bros.")
-
-
-### Our Intiatives
 
 Over the past few weeks, our team has been testing large foundation models across various games and analyzing their performance. From real-time challenges like Super Mario Bros to complex spatial reasoning tasks in Tetris, we aim to share key insights from our explorations and benchmarking results. Surprisingly, even the most advanced reasoning models excelling in math and coding struggle with tasks that are intuitive to humans, such as determining exactly which block to stack on top of another in Tetris.
 
@@ -40,31 +18,19 @@ Here, we showcase examples of how various models compare in performance across d
 
 ### Gallery
 
-![Super-Mario-Bros](gallery/gamingAgent-3-17-25/mario-demo.gif "Figure 3: Super Mario Bros Gameplay Comparison.")
+![Super-Mario-Bros](02_mario-demo.gif "Figure 1: Super Mario Bros Gameplay Comparison.")
 
-![Sokoban](gallery/gamingAgent-3-17-25/sokoban-reasoning-demo.gif "Figure 4: Sokoban Reasoning Models Gameplay Comparison.")
+![Sokoban](02_sokoban-reasoning-demo.gif "Figure 2: Sokoban Reasoning Models Gameplay Comparison.")
 
-![2048](gallery/gamingAgent-3-17-25/2048-reasoning-demo.gif "Figure 5: 2048 Reasoning Models Gameplay Comparison.")
+![2048](02_2048-reasoning-demo.gif "Figure 3: 2048 Reasoning Models Gameplay Comparison.")
 
-
-![2048](gallery/gamingAgent-3-17-25/2048-non-reasoning-demo.gif "Figure 6: 2048 non-Reasoning Models Gameplay Comparison.")
+![Candy-Crash](02_candycrash-reasoning-demo.gif "Figure 4: Candy Crash Reasoning Models Gameplay Comparison.")
 
 ---
 
 ## Evaluation
 
-### What is Missing from Existing Benchmarks?
-
-
-#### Static Benchmarks
-
-Static benchmarks, such as MMLU, Spider, HumanEval, AIME, and GPQA, are meticulously designed by experts to assess domain-specific capabilities. However, they are notably susceptible to data contamination.
-
-#### Dynamic Benchmarks
-
-Dynamic benchmarks, such as Chatbot Arena, rank models based on human preferences. However, they rely on human feedback to determine the superior model, a task that becomes increasingly challenging as model capabilities advance.
-
-#### Gaming Benchmarks
+### What is New to Our Benchmark?
 
 Previous research on using games for evaluations has explored various methods for assessing LLM capabilities through game environments, examples include GameBench [1], SmartPlay [2] and BALROG [3]. GameBench and SmartPlay adapted game mechanics specifically for LLM evaluations. For instance, in SmartPlay, the Minecraft benchmark is simplified to focus on a limited set of creative tasks, primarily aimed at identifying specific biomes in Minecraft. BALROG focuses on games that involve long-horizon planning and decision-making, including exploration- and progression-based games like TextWorld, MiniHack, Crafter etc.
 
@@ -73,19 +39,19 @@ But in reality, most games are designed to challenge human perception, reaction,
 
 ### Integaring Foundating Models with Gaming Agents
 
-Our objective is to integrate models into games and evaluate their performance in ways analogous to how these games assess human abilities. However, current foundation models exhibit limitations in various critical areas, including spatial perception, spatial reasoning, long-horizon planning, and latency. To address these challenges, we augmented model evaluations using specialized modules such as a vision-to-text-table conversion module, memory module, and game-freezing mechanisms.
+Our objective is to integrate models into games and evaluate their performance in ways analogous to how these games assess human abilities. However, current foundation models exhibit limitations in various critical areas, including Vision understanding, spatial reasoning, long-horizon planning, and Realtime reasoning. To address these challenges, we augmented model evaluations using specialized modules such as a vision-to-text-table conversion module, memory module, and game-freezing mechanisms.
 The following table summarizes the specific capabilities tested by each game and each game’s fault tolerance levels:
 
 
 | **Game**    | **Capabilities**             |  **Fault Tolerance** |
 |:------------:|:-----------------------------------:|:------------------------:|
-| Super Mario Bros  | Latency, Spatial reasoning, (Spatial perception)  | high |
-| Tetris     | Latency, Long-horizon planning, Spatial reasoning, (Spatial perception) | low |
+| Super Mario Bros  | Realtime reasoning, Spatial reasoning, (Vision understanding)  | high |
+| Tetris     | Realtime reasoning, Long-horizon planning, Spatial reasoning, (Vision understanding) | low |
 | 2048  | Long-horizon planning, Spatial reasoning | high |
-| Candy Crash | Long-horizon planning, Spatial reasoning, (Spatial perception) | high |
-| Sokoban  | Long-horizon planning, Spatial reasoning, (Spatial perception)  | low |
+| Candy Crash | Long-horizon planning, Spatial reasoning, (Vision understanding) | medium |
+| Sokoban  | Long-horizon planning, Spatial reasoning, (Vision understanding)  | low |
 
-![hidetable](placeholder.jpg "Table 1: Capabilities tested by each of our supported games and in-game fault tolerance.")
+![hidetable](placeholder.jpg "Table 1: Capabilities tested and in-game fault tolerance by each of our supported games.")
 
 ---
 
@@ -93,23 +59,86 @@ The following table summarizes the specific capabilities tested by each game and
 
 ### Rankings
 
-We conducted each game on every model at least three times and reported the average performance for each model. The summarized results are presented in the table below:
+We conducted each game on every model at least three times and reported the average performance for each model. The summarized results are presented in the tables below.
 
-| Model                     | SMB Score | SMB Progress | SMB Time (s) | 2048 Score | 2048 Steps | 2048 Time (mins) | Tetris (C) Score | Tetris (C) Steps | Tetris (P) Score | Tetris (P) Steps | Candy Crush Score | Candy Crush Steps | Sokoban Levels Cracked | Sokoban Steps                 |
-|---------------------------|-----------|--------------|--------------|------------|------------|-----------|------------------|------------------|------------------|------------------|-------------------|-------------------|------------------------|-------------------------------------|
-| Claude 3.7                | 710       | 1-1          | 64.2         | 256        | 130        | 20:36     | 95               | 27               | 110              | 29               | 35         | 25                | 0                  | [37]                                   |
-| Claude 3.7 thinking       | -         | -            | -            | 256        | 114        | >200      | -                | -                | -                | -                | -                 | -                 | 1 (2)                  | [16,38]              |
-| Claude 3.5 haiku          | 140       | 1-1          | 76.4         | -          | -          | -         | 90               | 25               | 92               | 25               | -                 | -                 | -                  |     -     |
-| GPT-4.5        | 160       | 1-1          | 62.8         | 34         | 34         | 8:25      | -                | -                | -                | -                | -                 | -                 | -                      | -                                   |
-| GPT 4o                    | 560       | 1-1          | 58.6         | 16         | 21         | 1:17      | 54               | 19               | 56               | 20               | -                 | -                 | 0 (0)                 | [113]             |
-| Gemini 2.0 flash          | 320       | 1-1          | 51.8         | 128        | 111        | 18:43     | 82               | 23               | 87               | 24               | -                 | -                 | -                      | -                                   |
-| Gemini 2.0 flash thinking | -         | -            | -            | 128        | 132        | >100      | -                | -                | -                | -                | 18           | 25                | 0 (0)                 | [17]                      |
-| Deepseek-R1               | -         | -            | -            | -          | -          | -         | -                | -                | -                | -                | 91       | 25                | 1 (1)                  | [17, 39]          |
-| o1                        | -         | -            | -            | 256        | 116        | >200      | -                | -                | -                | -                | 97         | 25                | -                      | -                                   |
-| o3-mini-medium            | -         | -            | -            | -          | -          | -         | -                | -                | -                | -                | 90                | 25                | 2 (3)                  | [20, 51, 70, 91] |
+| Model              | Score | Progress | Time (s) |
+|--------------------|-------|----------|----------|
+| Claude 3.7         | 710   | 1-1      | 64.2     |
+| GPT 4o             | 560   | 1-1      | 58.6     |
+| Gemini 2.0 flash   | 320   | 1-1      | 51.8     |
+| GPT-4.5            | 160   | 1-1      | 62.8     |
+| Claude 3.5 haiku   | 140   | 1-1      | 76.4     |
 
 
-![hidetable](placeholder.jpg "Table 2: Models rankings across different games.")
+![hidetable](placeholder.jpg "Table 2: Model rankings in Super Mario Bros (reasoning models are excluded due to their high Realtime reasoning).")
+
+
+| Model                     | Score | Steps | Time (mins) |
+|---------------------------|-------|-------|-------------|
+| Claude 3.7 thinking       | 256   | 114   | >200        |
+| o1                        | 256   | 116   | >200        |
+| o3-mini-medium            | 256   | 119   | >200        |
+| Claude 3.7                | 256   | 130   | ∼20         |
+| Gemini 2.0 flash          | 128   | 111   | ∼18         |
+| Gemini 2.0 flash thinking | 128   | 132   | >100        |
+| Claude 3.5 haiku          | 128   | 151   | ∼1          |
+| GPT-4.5                   | 34    | 34    | ∼8          |
+| GPT 4o                    | 16    | 21    | ∼1          |
+
+![hidetable](placeholder.jpg "Table 3: Model rankings in 2048.")
+
+| Model            | Tetris (C) Score | Tetris (C) Steps | Tetris (P) Score | Tetris (P) Steps |
+|------------------|------------------|------------------|------------------|------------------|
+| Claude 3.7       | 95               | 27               | 110              | 29               |
+| Claude 3.5 haiku | 90               | 25               | 92               | 25               |
+| Gemini 2.0 flash | 82               | 23               | 87               | 24               |
+| GPT 4o           | 54               | 19               | 56               | 20               |
+
+![hidetable](placeholder.jpg "Table 4: Model rankings in Tetris (with complete (C) and planning-only (P), where each block doesn't fall until command actions are executed, variants).")
+
+| Model                      | Score | Steps |
+|----------------------------|-------|-------|
+| o1                         | 97    | 25    |
+| o3-mini-medium             | 90    | 25    |
+| Deepseek-R1                | 91    | 25    |
+| Claude 3.7                 | 35    | 25    |
+| Gemini 2.0 flash thinking  | 18    | 25    |
+
+![hidetable](placeholder.jpg "Table 5: Model rankings in Candy Crush (non-reasoning models are excluded due to their poor performance).")
+
+| Model                      | Levels Cracked | Steps           |
+|----------------------------|----------------|-----------------|
+| o3-mini-medium             | 2 (3)        | [20,51,70,91]   |
+| Claude 3.7 thinking        | 1 (2)        | [16,38]         |
+| Deepseek-R1                | 1 (1)        | [17,39]         |
+| Gemini 2.0 flash thinking  | 0 (0)        | [17]            |
+| Claude 3.7                 | 0            | [37]            |
+| GPT 4o                     | 0 (0)        | [113]           |
+
+![hidetable](placeholder.jpg "Table 6: Model rankings in Sokoban (parenthesis reports the highest level ever reached).")
+
+From the rankings, several insights emerge:
+
+- Long-horizon planning: In games that demand long-horizon planning and decision-making, reasoning models like o3-mini, o1, and Claude 3.7 thinking perform better.
+
+- High complexity challenge: All models—including reasoning models—struggle in games such as Sokoban and Tetris, where the decision-making space is exceptionally large. There is still a big gap between human-level performance
+
+- Visual perception: While Gemini 2.0 flash and Claude 3.7 are good in visual perception, their performance degrades when the field of vision expands and the number of objects to track increases.
+
+- Realtime reasoning-sensitive environments: For Realtime reasoning-sensitive games like Super Mario Bros and Tetris (C), models that strike a balance between low Realtime reasoning, robust visual perception, and effective planning—such as Claude 3.7, Claude 3.5, and Gemini 2.0 flash—are most effective.
+
+
+---
+
+## Last Few Words
+
+Recent studies have shown that integrating reinforcement learning (RL) can enhance foundation models' reasoning abilities in tasks like math and coding. Evidence suggests that even simple RL algorithms can improve planning and decision-making, a capability that becomes particularly significant when interacting with complex environments. These developments highlight how game environments can serve as effective benchmarks for evaluating foundation models, especially in reasoning and decision-making tasks.
+
+Classic games are meticulously designed to challenge human minds. Skilled designers have carefully engineered the difficulties through in-game metrics, such as points and levels, and relentlessly developed new types of games to challenge different aspects of human intelligence. 
+
+We believe these game designs are invaluable yet underutilized resources for benchmarking AI. With decades of high-quality games from human society, we see a highly scalable path ahead for evaluations.
+
+In this journey, our mission is to study new perspectives for AI evaluations and the evolving roles humans play in evaluations. 
 
 ---
 

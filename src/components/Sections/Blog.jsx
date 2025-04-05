@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 // Assets
-import AISpaceEscapeCover from "../../assets/img/blogs/ai_space_escape.jpg";
+import AISpaceEscapeCover from "../../assets/img/blogs/01_ai_space_escape.jpg";
+import GamingAgentCover from "../../assets/img/blogs/02_gaming_agent_intro.png";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
@@ -26,6 +27,11 @@ export default function Projects() {
         </HeaderInfo>
 
         <ProjectList>
+
+          {/* Repeat for other projects with the same TLDR support */}
+
+          {/* Legacy Blogs */}
+
           <ProjectItem>
             <ImageWrapper>
               <StyledImage src={AISpaceEscapeCover} alt="AI Space Escape" />
@@ -44,8 +50,6 @@ export default function Projects() {
               </PostDescription>
             </TextWrapper>
           </ProjectItem>
-
-          {/* Repeat for other projects with the same TLDR support */}
 
         </ProjectList>
       </ContentSection>

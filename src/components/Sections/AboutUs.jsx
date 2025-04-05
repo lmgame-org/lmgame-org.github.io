@@ -44,7 +44,7 @@ export default function AboutUs() {
               </CenterText>
 
               <Text>
-                <strong>Members:</strong> Lanxiang Hu, Jason Kong, Qiyu Li, Tony Meng, Anze Xie, Haoyang Yu, Jessica Zhang, Yuxuan Zhang.
+                <strong>Members:</strong> Lanxiang Hu, Mingjia Huo, Jason Kong, Qiyu Li, Tony Meng, Isadora White, Anze Xie, Haoyang Yu, Jessica Zhang, Yuxuan Zhang.
               </Text>
               
               <Text>
