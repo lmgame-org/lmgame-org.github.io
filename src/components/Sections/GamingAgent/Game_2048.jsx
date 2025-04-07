@@ -23,7 +23,7 @@ export default function Game_2048() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Game 2048 Leaderboard</h1>
               <p className="font16">
-              Watch the AI combine tiles strategically to reach the 2048 goal.
+               Watch the AI combine tiles strategically to reach the 2048 goal.
               </p>
             </HeaderInfo>
 

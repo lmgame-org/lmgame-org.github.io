@@ -23,7 +23,7 @@ export default function Sokoban() {
             <HeaderInfo>
               <h1 className="font40 extraBold">Sokoban Leaderboard</h1>
               <p className="font16">
-              Train the AI to solve box-pushing puzzles with smart movement planning.
+                Model rankings in Sokoban (parenthesis reports the highest level ever reached).
               </p>
             </HeaderInfo>
 
@@ -40,6 +40,7 @@ export default function Sokoban() {
                 { model_name: "Deepseek-R1", level: "1 (1)", steps: "[17,39]" },
                 { model_name: "Gemini 2.0 flash thinking", level: "0", steps: "	[17]" },
                 { model_name: "Claude 3.7", level: "0", steps: "[37]" },
+                { model_name: "Deepseek - V3", level: "0", steps: "[40]" },
                 { model_name: "GPT 4o", level: "0", steps: "[113]" },
               ]}
             />

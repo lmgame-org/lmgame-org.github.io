@@ -30,27 +30,6 @@ export default function Projects() {
 
           {/* Repeat for other projects with the same TLDR support */}
 
-          <ProjectItem>
-            <ImageWrapper>
-              <StyledImage src={GamingAgentCover} alt="Gaming Agent" />
-            </ImageWrapper>
-            <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/gaming_agent_intro")}>
-                Gaming Agent: Evaluating Foundation Models with Platformer and Puzzle Games
-              </PostTitle>
-              <PostDescription>
-                <TLDR onClick={() => togglePostDescription(1)}>
-                  {expandedPost === 1 ? "Hide TLDR" : "Show TLDR"}
-                </TLDR>
-                {expandedPost === 1 && (
-                  <FullDescription>
-                    Classic platformer and puzzle games are designed to challenge human intelligence through carefully crafted difficulties and metrics with evolving mechanics. These designs are invaluable yet underutilized for benchmarking foundation models as their environment interaction capabilities continue to improve.
-                  </FullDescription>
-                )}
-              </PostDescription>
-            </TextWrapper>
-          </ProjectItem>
-
           {/* Legacy Blogs */}
 
           <ProjectItem>
