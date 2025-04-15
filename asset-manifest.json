@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.ada62c28.css",
-    "main.js": "/static/js/main.b9b83f5c.js",
+    "main.js": "/static/js/main.0a031342.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
     "static/media/02_mario-demo.gif": "/static/media/02_mario-demo.8c5514fed2f2d3c53254.gif",
     "static/media/mario_demo.gif": "/static/media/mario_demo.8c5514fed2f2d3c53254.gif",
     "static/media/02_2048-reasoning-demo.gif": "/static/media/02_2048-reasoning-demo.9407ebbacda43457c033.gif",
+    "static/media/detective-demo.gif": "/static/media/detective-demo.efc65ca9628f437db8e8.gif",
     "static/media/tetris-demo.gif": "/static/media/tetris-demo.40de0acacfd1af372fd2.gif",
     "static/media/02_2048-non-reasoning-demo.gif": "/static/media/02_2048-non-reasoning-demo.4f5043fb8d731e6158af.gif",
     "static/media/02_candycrash-reasoning-demo.gif": "/static/media/02_candycrash-reasoning-demo.b97395271b603ddf4d86.gif",
@@ -53,11 +54,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.ada62c28.css.map": "/static/css/main.ada62c28.css.map",
-    "main.b9b83f5c.js.map": "/static/js/main.b9b83f5c.js.map",
+    "main.0a031342.js.map": "/static/js/main.0a031342.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ada62c28.css",
-    "static/js/main.b9b83f5c.js"
+    "static/js/main.0a031342.js"
   ]
 }
