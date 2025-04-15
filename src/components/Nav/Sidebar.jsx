@@ -39,11 +39,19 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
           </span>
           {isDropdownOpen && (
             <DropdownMenu>
+              
+                <a
+                    href="https://huggingface.co/spaces/lmgame/game_arena_bench"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <DropdownItem onClick={closeDropdown}>
+                      Gaming Agent
+                    </DropdownItem>
+                </a>
               <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
                 Space Escape
-              </DropdownItem>
-              <DropdownItem onClick={() => { navigate("/gaming_agent"); closeDropdown(); }}>
-                Gaming Agent
               </DropdownItem>
             </DropdownMenu>
           )}
