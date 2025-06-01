@@ -21,7 +21,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
         <div className="flexNullCenter">
           <Logo darkMode={true}/>
           <h1 className="whiteColor font20" style={{ marginLeft: "15px" }}>
-            Game Arena
+            Lmgame Bench
           </h1>
         </div>
         <CloseBtn onClick={() => toggleSidebar(!sidebarOpen)} className="animate pointer ">
@@ -47,7 +47,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
                     style={{ textDecoration: 'none' }}
                   >
                     <DropdownItem onClick={closeDropdown}>
-                      Gaming Agent
+                      Lmgame Bench
                     </DropdownItem>
                 </a>
               <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>

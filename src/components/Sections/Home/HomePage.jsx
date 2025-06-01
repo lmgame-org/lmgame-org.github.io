@@ -64,14 +64,14 @@ export default function HomePage() {
 
       {/* Foreground Content */}
       <ContentWrapper>
-        <h1 className="extraBold">Game Arena</h1>
+        <h1 className="extraBold">lmgame Bench </h1>
         <HeaderP>
           Who is the most intelligent LLM?
           <br/>
           Dive into our gaming agent and explore a variety of games, including AI vs. AI and Human vs. AI. 
         </HeaderP>
         <a
-          href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
+          href="https://github.com/lmgame-org"
           target="_blank"
           rel="noopener noreferrer"
         >

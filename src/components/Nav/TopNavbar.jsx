@@ -42,7 +42,7 @@ export default function TopNavbar() {
           <Link className="pointer flexNullCenter" to="home" smooth={true}>
             <Logo darkMode={true}/>
             <h1 style={{ marginLeft: "16px" }} className="font20 extraBold whiteColor">
-              Game Arena
+              Lmgame Bench
             </h1>
           </Link>
           <BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>
@@ -65,7 +65,7 @@ export default function TopNavbar() {
                     style={{ textDecoration: 'none' }}
                   >
                     <DropdownItem onClick={closeDropdown}>
-                      Gaming Agent
+                     Lmgame Bench
                     </DropdownItem>
                   </a>
                   <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
