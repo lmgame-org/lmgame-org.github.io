@@ -11,7 +11,7 @@ import ProjectImg2 from "../../../assets/img/projects/mario_demo.gif";
 import ProjectImg3 from "../../../assets/img/projects/sokoban_reasoning.gif";
 import ProjectImg4 from "../../../assets/img/projects/tetris-demo.gif";
 import ProjectImg5 from "../../../assets/homepic/game_2048.gif";
-
+import ProjectImg6 from "../../../assets/img/projects/detective-demo.gif";
 import { useNavigate } from "react-router-dom";
 
 // Custom Left Arrow
@@ -74,7 +74,7 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg1}
                   title="Candy Crush"
-                  action={() => navigate("/candy_crush")}
+                  // action={() => navigate("/candy_crush")}
                   text="Challenge the AI to match and strategize candies to reach high scores."
                 />
               </StyledImageWrapper>
@@ -82,7 +82,7 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg2}
                   title="Mario"
-                  action={() => navigate("/mario")}
+                  // action={() => navigate("/mario")}
                   text="Ranking AI performance in a Mario game based on coins collected and levels completed."
                 />
               </StyledImageWrapper>
@@ -90,7 +90,7 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg3}
                   title="Sokoban"
-                  action={() => navigate("/sokoban")}
+                  // action={() => navigate("/sokoban")}
                   text="Train the AI to solve box-pushing puzzles with smart movement planning."
                 />
               </StyledImageWrapper>
@@ -98,7 +98,7 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg4}
                   title="Tetris"
-                  action={() => navigate("/tetris")}
+                  // action={() => navigate("/tetris")}
                   text="Let the AI stack and rotate pieces to clear lines and beat the clock."
                 />
               </StyledImageWrapper>
@@ -106,8 +106,16 @@ export default function Projects() {
                 <ProjectBox
                   img={ProjectImg5}
                   title="2048"
-                  action={() => navigate("/game_2048")}
+                  // action={() => navigate("/game_2048")}
                   text="Watch the AI combine tiles strategically to reach the 2048 goal."
+                />
+              </StyledImageWrapper>
+              <StyledImageWrapper>
+                <ProjectBox
+                  img={ProjectImg6}
+                  title="Ace Attorney"
+                  // action={() => navigate("/game_2048")}
+                  text="Watch the AI pressing witnesses and presenting evidence to expose contradictions."
                 />
               </StyledImageWrapper>
             </Slider>

@@ -5,6 +5,8 @@ import Board from "../../boards/board";
 import OverallLeaderboard from "../../boards/aggregated_board";
 import "../../boards/style.css";
 import { BASE_URL } from '../../../backend/config';
+import FullButton from "../../Buttons/FullButton";
+
 
 export default function LeaderBoard_Agent() {
   return (
@@ -12,14 +14,16 @@ export default function LeaderBoard_Agent() {
       <div className="whiteBg" style={{ padding: "40px 0" }}>
         <div className="container">
           <HeaderInfo>
-            <h1 className="font40 extraBold" style={{ textAlign: 'center' }}>Leaderboards</h1>
-            <p className="font30" style={{ textAlign: 'center' }}>
-              We will upload the overall leaderboard soon!
-              {/* <br />
-              Player leaderboards can be found in the top tab. 
-              <br />
-              The overall ranking is calculated using the average score across all games.  */}
-            </p>
+            <div style={{ textAlign: 'center', marginTop: '30px' }}>
+              <a
+                href="https://huggingface.co/spaces/lmgame/game_arena_bench"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FullButton title="Leaderboard" />
+              </a>
+            </div>
+
           </HeaderInfo>
 {/* 
           <LeaderboardContainer>

@@ -14,6 +14,7 @@ import Candy from "../../../assets/homepic/candy.gif";
 import Game_2048 from "../../../assets/homepic/game_2048.gif";
 import Sokoban from "../../../assets/homepic/sokoban.gif";
 import Mario from "../../../assets/homepic/mario.gif";
+import Detective from "../../../assets/img/projects/detective-demo.gif";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faGithub, faTwitter} from "@fortawesome/free-brands-svg-icons";
@@ -26,7 +27,7 @@ export default function HomePage() {
     { src: Teris, animation: "fade", duration: 3800 },
     { src: Sokoban, animation: "fade", duration: 10000 },
     { src: Game_2048, animation: "fade", duration: 3000 },
-    // { src: HomePic1, animation: "fade", duration: 8000 },
+    { src: Detective, animation: "fade", duration: 10000 },
     // { src: HomePic2, animation: "zoom", duration: 12000 },
     // { src: HomePic3, animation: "slide", duration: 16000 },
     // { src: HomePic8, animation: "fade", duration: 12000 },
@@ -63,14 +64,14 @@ export default function HomePage() {
 
       {/* Foreground Content */}
       <ContentWrapper>
-        <h1 className="extraBold">Game Arena</h1>
+        <h1 className="extraBold">lmgame Bench </h1>
         <HeaderP>
           Who is the most intelligent LLM?
           <br/>
           Dive into our gaming agent and explore a variety of games, including AI vs. AI and Human vs. AI. 
         </HeaderP>
         <a
-          href="https://www.roblox.com/share?code=7d09ddeb74a9034dbec6aa27bb0572a9&type=ExperienceDetails&stamp=1737092101410"
+          href="https://github.com/lmgame-org"
           target="_blank"
           rel="noopener noreferrer"
         >

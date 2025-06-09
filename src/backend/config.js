@@ -1,4 +1,4 @@
-const BASE_URL = "https://92171abb37f9.ngrok.app";
+const BASE_URL = "https://ce5ad395b28b.ngrok.app";
 
 // Update interval in milliseconds (e.g., 60 minutes)
 const UPDATE_INTERVAL = 60 * 60 * 1000; // 60 minutes
