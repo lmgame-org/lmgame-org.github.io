@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 // Assets
 import AISpaceEscapeCover from "../../assets/img/blogs/01_ai_space_escape.jpg";
 import GamingAgentCover from "../../assets/img/blogs/02_gaming_agent_intro.png";
+import LMGameBenchCover from "../../assets/img/blogs/03_lmgame_bench_cover.png";
+import PokemonRedCover from "../../assets/img/blogs/04_pokemon_red_cover.png";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
@@ -28,9 +30,30 @@ export default function Projects() {
 
         <ProjectList>
 
-          {/* Repeat for other projects with the same TLDR support */}
+          {/* Repeat below for other projects with the same TLDR support */}
+
+          <ProjectItem>
+            <ImageWrapper>
+              <StyledImage src={PokemonRedCover} alt="pokemon_red" />
+            </ImageWrapper>
+            <TextWrapper>
+              <PostTitle onClick={() => navigate("/blog/pokemon_red")}>How Good is Pokémon Red as a LLM Eval?</PostTitle>
+              <PostDescription>
+                <TLDR onClick={() => togglePostDescription(0)}>
+                  {expandedPost === 0 ? "Hide TLDR" : "Show TLDR"}
+                </TLDR>
+                {expandedPost === 0 && (
+                  <FullDescription>
+                    Pokémon is increasingly used to evaluate modern large language models, but current practices lack standardization, depend heavily on game-specific scaffolding, and are costly. We address these issues with lmgame-bench, a new framework offering standardized evaluations and initial results across diverse games.
+                  </FullDescription>
+                )}
+              </PostDescription>
+            </TextWrapper>
+          </ProjectItem>
 
           {/* Legacy Blogs */}
+          
+          {/*
 
           <ProjectItem>
             <ImageWrapper>
@@ -50,6 +73,8 @@ export default function Projects() {
               </PostDescription>
             </TextWrapper>
           </ProjectItem>
+
+          */}
 
         </ProjectList>
       </ContentSection>
