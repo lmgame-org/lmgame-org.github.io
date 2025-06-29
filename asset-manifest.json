@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ada62c28.css",
-    "main.js": "/static/js/main.0694b61b.js",
+    "main.js": "/static/js/main.5b02d263.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
     "static/media/02_mario-demo.gif": "/static/media/02_mario-demo.8c5514fed2f2d3c53254.gif",
     "static/media/mario_demo.gif": "/static/media/mario_demo.8c5514fed2f2d3c53254.gif",
@@ -19,15 +19,21 @@
     "static/media/mario.gif": "/static/media/mario.77fe0bf75c425a6be91d.gif",
     "static/media/01_taboo_example.png": "/static/media/01_taboo_example.d782ec3301959176d356.png",
     "static/media/02_gaming_agent_intro.png": "/static/media/02_gaming_agent_intro.0a0d859940bf87d762e8.png",
+    "static/media/04_pokemon_red_cover.png": "/static/media/04_pokemon_red_cover.7e96988acc2037c6734e.png",
     "static/media/teris.gif": "/static/media/teris.e397868126cbfb539efc.gif",
+    "static/media/04_side_by_side_scaffolds.png": "/static/media/04_side_by_side_scaffolds.c3552291c63cb80833c4.png",
+    "static/media/03_lmgame_bench_cover.png": "/static/media/03_lmgame_bench_cover.f8c9c73ba2922a6fc097.png",
     "static/media/game_2048.gif": "/static/media/game_2048.86dfcab2fbd64beb3f70.gif",
     "static/media/homepic7.jpg": "/static/media/homepic7.fc265fc44b14e36da000.jpg",
     "static/media/homepic6.png": "/static/media/homepic6.965bb0ca2000a7a19b62.png",
     "static/media/02_mechanical_computer.png": "/static/media/02_mechanical_computer.1fea9b372ada6d671988.png",
+    "static/media/04_elite_four_over_leveling.png": "/static/media/04_elite_four_over_leveling.cb92be62e28c4a85dc0d.png",
     "static/media/homepic2.jpg": "/static/media/homepic2.2001cbe2174a283d247a.jpg",
     "static/media/blog1.png": "/static/media/blog1.224a5f52acfa6a2c43dd.png",
+    "static/media/04_gym_retro.png": "/static/media/04_gym_retro.5b99f696592f9819bb6f.png",
     "static/media/02_game_control.png": "/static/media/02_game_control.cb723c465a02cc5283a1.png",
     "static/media/homepic3.jpg": "/static/media/homepic3.236c1697407e118f1bad.jpg",
+    "static/media/04_gym_1_without_harness_success.png": "/static/media/04_gym_1_without_harness_success.b73e1e34c412adc119f0.png",
     "static/media/homepic5.jpg": "/static/media/homepic5.cdd3c528d1dffe6c1724.jpg",
     "static/media/taboo.png": "/static/media/taboo.515cd28de3fa08ff6046.png",
     "static/media/01_ai_space_escape.jpg": "/static/media/01_ai_space_escape.a7fa3e1188e4e5039730.jpg",
@@ -54,11 +60,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.ada62c28.css.map": "/static/css/main.ada62c28.css.map",
-    "main.0694b61b.js.map": "/static/js/main.0694b61b.js.map",
+    "main.5b02d263.js.map": "/static/js/main.5b02d263.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ada62c28.css",
-    "static/js/main.0694b61b.js"
+    "static/js/main.5b02d263.js"
   ]
 }
