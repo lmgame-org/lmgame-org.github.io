@@ -34,7 +34,7 @@ export default function Footer() {
 
             {/* Social Media Icons */}
             <SocialIcons>
-              <a href="https://discord.gg/jknCew2DcP" target="_blank" rel="noopener noreferrer">
+              <a href="https://discord.gg/YYjVCVAbQd" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faDiscord} size="2x" />
               </a>
               <a href="https://x.com/largemodelgame" target="_blank" rel="noopener noreferrer">

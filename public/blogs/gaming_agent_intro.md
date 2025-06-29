@@ -2,7 +2,7 @@
 
 > Author: Game Arena Team
 
-> Date: March 20, 2025
+> Date: June 1, 2025
 
 > TL;DR: Classic platformer and puzzle games are designed to challenge human intelligence through carefully crafted difficulties and metrics with evolving mechanics. These designs are invaluable yet underutilized for benchmarking foundation models as their environment interaction capabilities continue to improve.
 

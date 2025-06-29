@@ -68,9 +68,11 @@ export default function TopNavbar() {
                      Lmgame Bench
                     </DropdownItem>
                   </a>
+                  {/*
                   <DropdownItem onClick={() => { navigate("/ai_escape"); closeDropdown(); }}>
                     Space Escape
                   </DropdownItem>
+                  */}
                 </DropdownMenu>
               )}
             </StyledLi>

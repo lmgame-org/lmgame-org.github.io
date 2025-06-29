@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDiscord, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faGithub, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+
+import { SiHuggingface } from 'react-icons/si'
 
 export default function Contact() {
   return (
@@ -17,7 +19,7 @@ export default function Contact() {
             </p>
           </HeaderInfo>
           <SocialIcons>
-            <a href="https://discord.gg/jknCew2DcP" target="_blank" rel="noopener noreferrer">
+            <a href="https://discord.gg/YYjVCVAbQd" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faDiscord} size="4x" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
@@ -25,6 +27,12 @@ export default function Contact() {
             </a>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faGithub} size="4x" />
+            </a>
+            <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer">
+              <SiHuggingface size={32} color="#f58421" />
+            </a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faYoutube} size="4x" />
             </a>
           </SocialIcons>
         </ContentContainer>

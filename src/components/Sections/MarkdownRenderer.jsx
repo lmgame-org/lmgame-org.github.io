@@ -7,6 +7,8 @@ import styled from "styled-components";
 import { FaGithub, FaDiscord } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiArxiv, SiRoblox, SiGradio, SiCodepen } from "react-icons/si";
+import { SiHuggingface } from "react-icons/si";
+import { FaYoutube } from "react-icons/fa";
 
 // Import all images from /src/assets/img/blogs
 const importAllImages = (requireContext) => {
@@ -72,17 +74,26 @@ const MarkdownContainer = styled.div`
   }
 
   /* Custom styling for links */
+  a,
   .custom-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-block;
+    vertical-align: middle;
     font-size: 18px;
     font-weight: 600;
     color: #007acc;
     text-decoration: none;
     transition: 0.3s;
+    /* Remove align-items and gap here */
   }
-
+  .custom-link svg {
+    vertical-align: middle;
+    height: 1em;
+    width: 1em;
+    /* No position: relative or top by default */
+    margin-right: 0.1em; /* Space between icon and text */
+  }
+  
+  a:hover,
   .custom-link:hover {
     color: #005fa3;
   }
@@ -127,17 +138,21 @@ const CustomLink = ({ href, children }) => {
   let icon = null;
 
   if (href.includes("arxiv.org")) {
-    icon = <SiArxiv size={22} color="#b31b1b" />;
+    icon = <SiArxiv size={18} color="#b31b1b" />;
   } else if (href.includes("github.com")) {
-    icon = <FaGithub size={22} color="#333" />;
+    icon = <FaGithub size={18} color="#333" />;
   } else if (href.includes("roblox.com")) {
-    icon = <SiRoblox size={22} color="#c42b1c" />;
+    icon = <SiRoblox size={18} color="#c42b1c" />;
   } else if (href.includes("twitter.com") || href.includes("x.com")) {
-    icon = <FaXTwitter size={22} color="#000" />;
+    icon = <FaXTwitter size={18} color="#000" />;
   } else if (href.includes("discord.gg") || href.includes("discord.com")) {
-    icon = <FaDiscord size={22} color="#5865F2" />;
+    icon = <FaDiscord size={18} color="#5865F2" />;
   } else if (href.includes("gradio.live")) {
-    icon = <SiCodepen size={22} color="#FF4B4B" />;
+    icon = <SiCodepen size={18} color="#FF4B4B" />;
+  } else if (href.includes("huggingface.co")) {
+    icon = <SiHuggingface size={18} color="#f58421" />;
+  } else if (href.includes("youtube.com") || href.includes("youtu.be")) {
+    icon = <FaYoutube size={18} color="#FF0000" />;
   }
 
   return (
@@ -229,7 +244,9 @@ export default function MarkdownRenderer({ filePath }) {
               href.includes("x.com") ||
               href.includes("discord.gg") ||
               href.includes("discord.com") ||
-              href.includes("gradio.live")
+              href.includes("gradio.live") ||
+              href.includes("huggingface.co") ||
+              href.includes("youtube.com")
             ) {
               return <CustomLink href={href}>{children}</CustomLink>;
             }
