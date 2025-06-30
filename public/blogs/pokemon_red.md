@@ -4,12 +4,12 @@
 
 > Date: June 27, 2025
 
-> TL;DR: Pokémon is increasingly used to evaluate modern large language models, but current practices lack standardization, and depend heavily on game-specific harness. The Pokémon Red involves three major tasks—navigation, combat control and training a competitive Pokémon team. We find they come with limitations: navigation tasks are too hard, combat control is too simple, and Pokémon training is too expensive. We address these issues in Lmgame Bench, a new framework offering standardized evaluations and initial results across diverse games.
+> TL;DR: Pokémon is increasingly used to evaluate modern large language models, but current practices lack standardization, and depend heavily on game-specific harness. The Pokémon Red involves three major tasks—navigation, combat control and training a competitive Pokémon team. We find they come with limitations: navigation tasks are too hard, combat control is too simple, and Pokémon team training is too expensive. We address these issues in Lmgame Bench, a new framework offering standardized evaluations and initial results across diverse games.
 
 <div style="font-size:18px; text-align:left; letter-spacing:1px;">
   <a href="https://arxiv.org/pdf/2505.15146">Paper</a>
   <span style="margin: 0 12px;"></span>
-  <a href="https://github.com/lmgame-org/GamingAgent">GamingAgent</a>
+  <a href="https://github.com/lmgame-org/GamingAgent?tab=readme-ov-file#lmgame-bench">Lmgame Bench</a>
   <span style="margin: 0 12px;"></span>
   <a href="https://huggingface.co/spaces/lmgame/lmgame_bench">Leaderboard</a>
   <span style="margin: 0 12px;"></span>
@@ -18,6 +18,8 @@
   <a href="https://www.youtube.com/@large-model-game">Gallery</a>
 </div>
 
+<div style="height:32px;"></div>
+
  
 Pokémon Red holds a special place in the childhood memories of an entire generation. Its simple controls and richly diverse Pokémon make it approachable even for young children, who can quickly make meaningful progress. However, cracking the game is non-trivial; it requires ahead-of-time planning and dozens of hours of effort to raise a competitive Pokémon team.
 
@@ -25,13 +27,13 @@ Pokémon Red holds a special place in the childhood memories of an entire genera
 
 Recently, a new generation of advanced AI models is being tested on how well they can play [Pokémon Red](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Red_and_Blue_Versions), but each uses slightly different setups. Anthropic gives the model navigation and game state memory reading tools. It played several gym battles and took around 35,000 in-game actions to reach the [Surge Gym Leader](https://pokemon.fandom.com/wiki/Lt._Surge), but didn't detail exactly what counts as an "action" or how many retries were allowed (Figure 1, left). Google’s Gemini 2.5 Pro reportedly finished [Pokémon Blue](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Red_and_Blue_Versions) (and earned its 5th badge in Red) according to [a developer livestream supported by Google](https://x.com/OfficialLoganK/status/1913365614397182096). However, it relied on extra scaffolding code to extract more comprehensive textual representations of game states and guide decisions (Figure 1, right), so Claude vs. Gemini is not an apple-to-apple comparison.
 
-Given how popular Pokémon Red has become as a way to test new AI models, it’s worth asking: is this game really a good way to evaluation for latest models? In this blog, we look at how Pokémon Red works as a benchmark in a standardized setting. We identify three key tasks involved in the game. Within our budget, our case studies show Pokémon Red as an eval involves at least three challenges:
+Given how popular Pokémon Red has become as a way to test new AI models, it’s worth asking: is this game really a good way to evaluating latest models? In this blog, we look at how Pokémon Red works as a benchmark in a standardized setting. We identify three key tasks involved in the game. Within our budget, our case studies show Pokémon Red as an eval involves at least three challenges:
 
 - Navigation tasks are so hard that it becomes a gaming harness evaluation.
 - Combat control by itself with sufficiently capable Pokémon is too easy. 
-- Pokémon training as an eval is too costly. 
+- Pokémon team training as an eval is too costly. 
 
-We find most of these challenges are largely addressable, and game as an eval remain a rich resource. To address these limitations, we introduce Lmgame Bench: a standardized framework that carefully selects a range of moderately challenging games, and offers varying degrees of gaming harness for model evaluation.
+We find most of these challenges are largely addressable, and games remain as useful resources for evaluating latest models (game-as-an-eval). To address these limitations, we introduce Lmgame Bench: a standardized framework that carefully selects a range of moderately challenging games, and offers varying degrees of gaming harness for model evaluation.
 
 ---
 
@@ -96,7 +98,7 @@ Gemini 2.5 Pro, outpaced Claude but only with heavy memory-inspection scaffoldin
 
 Because of navigation tasks are too hard and combat control is easy, Pokémon gameplay ends up serving primarily as a test of the underlying navigation gaming harness, rather than a true measure of the model’s reasoning abilities. 
 
-To better distinguish model capabilities even without custom gaming scaffolds, we introduce Lmgame Bench: a curated suite of moderately challenging video games paired with modular, easy-to-integrate gaming harnesses. Our benchmark aims to unleash the potential of game as an eval by providing standardized settings for meaningful model evalution rather than harness evaluation.
+To better distinguish model capabilities even without custom gaming scaffolds, we introduce Lmgame Bench: a curated suite of moderately challenging video games paired with modular, easy-to-integrate gaming harnesses. Our benchmark aims to unleash the potential of game-as-an-eval by providing standardized settings for meaningful model evalution rather than harness evaluation.
 
 ### Game Choice
 
