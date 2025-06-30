@@ -1,4 +1,4 @@
-# How Good is Pokémon Red as a LLM Eval?
+# From Pokémon Red to Standardized Game-as-Eval
  
 > Author: Lmgame Team
 
