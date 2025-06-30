@@ -18,8 +18,6 @@
   <a href="https://www.youtube.com/@large-model-game">Gallery</a>
 </div>
 
-
-## Background
  
 Pokémon Red holds a special place in the childhood memories of an entire generation. Its simple controls and richly diverse Pokémon make it approachable even for young children, who can quickly make meaningful progress. However, cracking the game is non-trivial; it requires ahead-of-time planning and dozens of hours of effort to raise a competitive pokemon team.
 
@@ -33,11 +31,13 @@ Given how popular Pokémon Red has become as a way to test new AI models, it’s
 - Combat control by itself with sufficiently capable Pokémon is too easy. 
 - Pokémon training as an eval is too costly. 
 
+To address these limitations, we introduce Lmgame Bench: a standardized framework that carefully selects a range of moderately challenging games, and offers varying degrees of gaming harness for model evaluation.
+
 ---
 
 ## Pokémon Red as Eval
 
-The Pokémon game comprises multiple long-horizon tasks requiring strategic planning and decision-making. As highlighted in the [Gemini 2.5 technical report](https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf), these challenges include training a team to defeat powerful Gym Leaders and [the Elite Four](https://pokemon.fandom.com/wiki/Elite_Four), acquiring hidden moves (special abilities) necessary for progression, navigating [the Safari Zone](https://pokemon.fandom.com/wiki/Safari_Zone), and locating keys within multi-level dungeons.
+The Pokémon game comprises multiple long-horizon tasks. As highlighted in the [Gemini 2.5 technical report](https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf), these challenges include training a team to defeat powerful Gym Leaders and [the Elite Four](https://pokemon.fandom.com/wiki/Elite_Four), acquiring hidden moves (special abilities) necessary for progression, navigating [the Safari Zone](https://pokemon.fandom.com/wiki/Safari_Zone), and locating keys within multi-level dungeons.
 
 Due to the substantial time investment required to run the full Pokémon game as reported in [Julian Bradshaw's Blog](https://www.lesswrong.com/posts/7mqp8uRnnPdbBzJZE/is-gemini-now-better-than-claude-at-pokemon#fnpo3z01lbur), which amounts to over 500 hours just to acquire the 5th badge—and incurs a four-digit API cost by our estimate—we instead focus our evaluation on a targeted subset of tasks that capture the game’s key gameplay elements. In our setup, we focus our evaluation to a targeted subset of tasks that capture key gameplay elements. Gameplay in Pokémon Red can be broadly categorized into control types: **navigation** and **combat**. Additionally, we include a cost analysis to estimate the cost-effectiveness of **Pokémon-training as an eval**. In total, we provide 3 case studies: navigation, combat control, and long-term planning for building and training a team in the early stage of the game.
 
@@ -113,7 +113,6 @@ To address these issues, we have been meticulous in selecting a diverse set of g
 **Candy Crush**: Total number of candies eliminated over a fixed 50–move session. While the game is relatively easy, it effectively differentiates between models based on their ability to optimize moves and clear candies.
 
 **Ace Attorney**: Total count of correct actions (evidence submissions, dialogue choices, etc.) across all case levels, measured until five incorrect decisions (lives) have been used. This game evaluates models’ contextual understanding and deductive reasoning skills.
-
 
 ### Harness Design
 
