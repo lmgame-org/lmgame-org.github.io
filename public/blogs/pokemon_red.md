@@ -31,7 +31,7 @@ Given how popular Pokémon Red has become as a way to test new AI models, it’s
 - Combat control by itself with sufficiently capable Pokémon is too easy. 
 - Pokémon training as an eval is too costly. 
 
-We find most of these challenges are largely addressable, and games remain a rich and underutilized resource for evaluating AI. To address these limitations, we introduce Lmgame Bench: a standardized framework that carefully selects a range of moderately challenging games, and offers varying degrees of gaming harness for model evaluation.
+We find most of these challenges are largely addressable, and game as an eval remain a rich resource. To address these limitations, we introduce Lmgame Bench: a standardized framework that carefully selects a range of moderately challenging games, and offers varying degrees of gaming harness for model evaluation.
 
 ---
 
