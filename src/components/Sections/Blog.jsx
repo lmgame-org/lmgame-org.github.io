@@ -37,7 +37,7 @@ export default function Projects() {
               <StyledImage src={PokemonRedCover} alt="pokemon_red" />
             </ImageWrapper>
             <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/pokemon_red")}>From Pokémon Red to Standardized Game-as-Eval</PostTitle>
+              <PostTitle onClick={() => navigate("/blog/pokemon_red")}>From Pokémon Red to Standardized Game-as-an-Eval</PostTitle>
               <PostDescription>
                 <TLDR onClick={() => togglePostDescription(0)}>
                   {expandedPost === 0 ? "Hide TLDR" : "Show TLDR"}

@@ -40,7 +40,7 @@ export default function Footer() {
               <a href="https://x.com/largemodelgame" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faTwitter} size="2x" />
               </a>
-              <a href="https://github.com/lmgame-org" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/lmgame-org/GamingAgent" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faGithub} size="2x" />
               </a>
             </SocialIcons>

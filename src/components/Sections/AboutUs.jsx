@@ -22,7 +22,7 @@ export default function AboutUs() {
               <h1 className="font40 extraBold">About</h1>
               <CenterText>
                 <p>
-                  Game Arena hosts live computer games for AI evaluations. 
+                  Lmgame hosts live computer games for AI evaluations. 
                   As a team of passionate researchers from UC San Diego, we design and maintain 
                   gamified AI benchmarks.
                 </p>
@@ -44,7 +44,11 @@ export default function AboutUs() {
               </CenterText>
 
               <Text>
-                <strong>Members:</strong> Lanxiang Hu, Mingjia Huo, Jason Kong, Qiyu Li, Tony Meng, Isadora White, Anze Xie, Haoyang Yu, Jessica Zhang, Yuxuan Zhang.
+                <strong>Key Contributors:</strong> Lanxiang Hu, Mingjia Huo, Haoyang Yu, Yuxuan Zhang.
+              </Text>
+              
+              <Text>
+                <strong>Other Members:</strong> Jason Kong, Qiyu Li, Tony Meng, Isadora White, Anze Xie, Jessica Zhang.
               </Text>
               
               <Text>
