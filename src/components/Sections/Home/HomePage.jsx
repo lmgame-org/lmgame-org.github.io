@@ -71,7 +71,7 @@ export default function HomePage() {
           Dive into our gaming agent and explore a variety of games, including AI vs. AI and Human vs. AI. 
         </HeaderP>
         <a
-          href="https://github.com/lmgame-org"
+          href="https://github.com/lmgame-org/GamingAgent"
           target="_blank"
           rel="noopener noreferrer"
         >

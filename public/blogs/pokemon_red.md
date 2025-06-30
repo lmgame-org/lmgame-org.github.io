@@ -1,10 +1,10 @@
-# From Pokémon Red to Standardized Game-as-Eval
+# From Pokémon Red to Standardized Game-as-an-Eval
  
 > Author: Lmgame Team
 
 > Date: June 27, 2025
 
-> TL;DR: Pokémon is increasingly used to evaluate modern large language models, but current practices lack standardization, and depend heavily on game-specific scaffolding. Specifically, navigation tasks are too hard, combat control is too simple, and Pokémon training as an eval is too expensive. We address these issues in Lmgame Bench, a new framework offering standardized evaluations and initial results across diverse games.
+> TL;DR: Pokémon is increasingly used to evaluate modern large language models, but current practices lack standardization, and depend heavily on game-specific harness. The Pokémon Red involves three major tasks—navigation, combat control and training a competitive Pokémon team. We find they come with limitations: navigation tasks are too hard, combat control is too simple, and Pokémon training is too expensive. We address these issues in Lmgame Bench, a new framework offering standardized evaluations and initial results across diverse games.
 
 <div style="font-size:18px; text-align:left; letter-spacing:1px;">
   <a href="https://arxiv.org/pdf/2505.15146">Paper</a>
@@ -19,23 +19,23 @@
 </div>
 
  
-Pokémon Red holds a special place in the childhood memories of an entire generation. Its simple controls and richly diverse Pokémon make it approachable even for young children, who can quickly make meaningful progress. However, cracking the game is non-trivial; it requires ahead-of-time planning and dozens of hours of effort to raise a competitive pokemon team.
+Pokémon Red holds a special place in the childhood memories of an entire generation. Its simple controls and richly diverse Pokémon make it approachable even for young children, who can quickly make meaningful progress. However, cracking the game is non-trivial; it requires ahead-of-time planning and dozens of hours of effort to raise a competitive Pokémon team.
 
 ![side-by-side-scaffolds](04_side_by_side_scaffolds.png "Figure 1: Perception scaffolding implementations for Claude (left) and Gemini (right) with [different levels of details](https://www.lesswrong.com/posts/7mqp8uRnnPdbBzJZE/is-gemini-now-better-than-claude-at-pokemon).")
 
 Recently, a new generation of advanced AI models is being tested on how well they can play [Pokémon Red](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Red_and_Blue_Versions), but each uses slightly different setups. Anthropic gives the model navigation and game state memory reading tools. It played several gym battles and took around 35,000 in-game actions to reach the [Surge Gym Leader](https://pokemon.fandom.com/wiki/Lt._Surge), but didn't detail exactly what counts as an "action" or how many retries were allowed (Figure 1, left). Google’s Gemini 2.5 Pro reportedly finished [Pokémon Blue](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Red_and_Blue_Versions) (and earned its 5th badge in Red) according to [a developer livestream supported by Google](https://x.com/OfficialLoganK/status/1913365614397182096). However, it relied on extra scaffolding code to extract more comprehensive textual representations of game states and guide decisions (Figure 1, right), so Claude vs. Gemini is not an apple-to-apple comparison.
 
-Given how popular Pokémon Red has become as a way to test new AI models, it’s worth asking: Is this game really a good way to judge what these models can do? In this blog, we look at how Pokémon Red works as a benchmark in a standardized setting. Our study shows three challenges in using Pokémon as eval:
+Given how popular Pokémon Red has become as a way to test new AI models, it’s worth asking: is this game really a good way to evaluation for latest models? In this blog, we look at how Pokémon Red works as a benchmark in a standardized setting. We identify three key tasks involved in the game. Within our budget, our case studies show Pokémon Red as an eval involves at least three challenges:
 
 - Navigation tasks are so hard that it becomes a gaming harness evaluation.
 - Combat control by itself with sufficiently capable Pokémon is too easy. 
 - Pokémon training as an eval is too costly. 
 
-To address these limitations, we introduce Lmgame Bench: a standardized framework that carefully selects a range of moderately challenging games, and offers varying degrees of gaming harness for model evaluation.
+We find most of these challenges are largely addressable, and games remain a rich and underutilized resource for evaluating AI. To address these limitations, we introduce Lmgame Bench: a standardized framework that carefully selects a range of moderately challenging games, and offers varying degrees of gaming harness for model evaluation.
 
 ---
 
-## Pokémon Red as Eval
+## Pokémon Red as an Eval
 
 The Pokémon game comprises multiple long-horizon tasks. As highlighted in the [Gemini 2.5 technical report](https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf), these challenges include training a team to defeat powerful Gym Leaders and [the Elite Four](https://pokemon.fandom.com/wiki/Elite_Four), acquiring hidden moves (special abilities) necessary for progression, navigating [the Safari Zone](https://pokemon.fandom.com/wiki/Safari_Zone), and locating keys within multi-level dungeons.
 
@@ -96,11 +96,11 @@ Gemini 2.5 Pro, outpaced Claude but only with heavy memory-inspection scaffoldin
 
 Because of navigation tasks are too hard and combat control is easy, Pokémon gameplay ends up serving primarily as a test of the underlying navigation gaming harness, rather than a true measure of the model’s reasoning abilities. 
 
-To better distinguish model capabilities even without custom gaming scaffolds, we introduce Lmgame Bench: a curated suite of moderately challenging video games paired with modular, easy-to-integrate gaming harnesses.
+To better distinguish model capabilities even without custom gaming scaffolds, we introduce Lmgame Bench: a curated suite of moderately challenging video games paired with modular, easy-to-integrate gaming harnesses. Our benchmark aims to unleash the potential of game as an eval by providing standardized settings for meaningful model evalution rather than harness evaluation.
 
 ### Game Choice
 
-To address these issues, we have been meticulous in selecting a diverse set of games with moderate difficulty levels. The game choices and metrics designs allow us to distinguish models, even in the absence of extensive scaffolding or harnessing.
+To address these issues, we have been meticulous in selecting a diverse set of games with moderate difficulty levels. The game choices and metrics designs allow us to distinguish models, even in the absence of extensive harnessing.
 
 **Sokoban**: scores are calculated as the total number of boxes pushed onto targets, summed over all levels from very simple to the hardest level in Sokoban 1989, until the first deadlock.
 
@@ -145,7 +145,7 @@ Recent studies have shown that integrating reinforcement learning (RL) can enhan
 
 Classic games are meticulously designed to challenge human minds. Skilled game designers have carefully engineered the difficulties through in-game metrics, such as points and levels, and relentlessly developed new types of games to challenge different aspects of human intelligence. 
 
-We believe these game designs are invaluable yet underutilized resources for benchmarking AI. Since there are a large number of high-quality games, we envision a highly scalable path ahead for evaluations.
+We believe these game are invaluable yet underutilized resources for benchmarking AI. Since there are a large number of high-quality games, we envision a highly scalable path ahead for evaluations.
 
 ---
 

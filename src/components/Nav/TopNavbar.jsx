@@ -94,7 +94,7 @@ export default function TopNavbar() {
             </a>
             </StyledLi> */}
             <SocialIcons>
-              <a href="https://github.com/lmgame-org" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/lmgame-org/GamingAgent" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faGithub} size="3x" />
               </a>
             </SocialIcons>
