@@ -7,6 +7,7 @@ import AISpaceEscapeCover from "../../assets/img/blogs/01_ai_space_escape.jpg";
 import GamingAgentCover from "../../assets/img/blogs/02_gaming_agent_intro.png";
 import LMGameBenchCover from "../../assets/img/blogs/03_lmgame_bench_cover.png";
 import PokemonRedCover from "../../assets/img/blogs/04_pokemon_red_cover.png";
+import LMGameUseCover from "../../assets/img/blogs/05_harness.png";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
@@ -31,6 +32,25 @@ export default function Projects() {
         <ProjectList>
 
           {/* Repeat below for other projects with the same TLDR support */}
+
+          <ProjectItem>
+            <ImageWrapper>
+              <StyledImage src={LMGameUseCover} alt="lmgame_use" />
+            </ImageWrapper>
+            <TextWrapper>
+              <PostTitle onClick={() => navigate("/blog/lmgame_use")}>A Practical Guideline to Using Lmgame-Bench</PostTitle>
+              <PostDescription>
+                <TLDR onClick={() => togglePostDescription(1)}>
+                  {expandedPost === 1 ? "Hide TLDR" : "Show TLDR"}
+                </TLDR>
+                {expandedPost === 1 && (
+                  <FullDescription>
+                    This guideline contains a detailed overview of the repository setup of Lmgame-Bench as well as how to use it for evaluation as well as the integration of new games. It covers the process of evaluation in the single/multi-agent mode as well as the various LLMs that you can use.
+                  </FullDescription>
+                )}
+              </PostDescription>
+            </TextWrapper>
+          </ProjectItem>
 
           <ProjectItem>
             <ImageWrapper>
