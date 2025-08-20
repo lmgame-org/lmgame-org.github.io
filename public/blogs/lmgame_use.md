@@ -24,22 +24,26 @@
 LMGame-Bench is an end-to-end benchmarking suite that visualizes and measures LLM/VLM performances across interactive game environments. It evaluates model performance across vision and text modalities, supporting both agentic runs with harness and single-model runs without one. All evaluations can be launched with a single, one-line command.
 Whether you are curious about how a single agent tackles a classical game like Tetris, or how two agents play side by side, we have both modes ready to go. We will take you through the high-level overview of the repository design as well as example commands you can try out for evaluation as well as integrating new games into the environment. Let’s get started. 
 
-## Design Overview
+
+---
+
+
+## High-Level Design
 ![agent_env](05_agent_env.png "Figure 1: BaseAgent and Env interaction.")
 
-At the heart of the repository design is the BaseAgent class and Env configuration. The BaseAgent class serves as the foundation for game-specific agents which inherit from it, and provides common functionalities like module management, caching, and workflow. The Env configuration stands for the game world that agents operate in. In other words, it is a gymnasium environment that encapsulates the game's rules, the current state, and the mechanics of its progression, which you have to custom define for each of the games yourself by inheriting from gym.Env. This dual setup ensures a separation of concerns: the custom game agents defined from BaseAgent focus on strategic thinking, and the environment is responsible for the logic and the reward for the game as it progresses. The interaction between the two is cyclical: the environment presents its current state as observation to the agent, which then processes the information (with or without the help of the three different harnesses) and decides a chosen action. The environment then takes the action and updates its internal state and calculates the reward, which the agent can use to make its next round of decisions, mimicking the continuous loop of a human player interacting with a game. This modular design allows you to quickly swap between using different LLMs and configure various game-specific environment and agent behaviors, making the integration of new games flexible. In order to set up a new game, you simply have to define the new game-specific environment as well as the specific actions for the game agent, and you are good to go. 
+At the heart of the repository design is the BaseAgent class and Env configuration. The BaseAgent class serves as the foundation for game-specific agents which inherit from it, and provides common functionalities like module management, caching, and workflow. The Env configuration stands for the game world that agents operate in. In other words, it is a gymnasium environment that encapsulates the game's rules, the current state, and the mechanics of its progression, which you have to custom define for each of the games yourself by inheriting from **gym.Env**. This dual setup ensures a separation of concerns: the custom game agents defined from BaseAgent focus on strategic thinking, and the environment is responsible for the logic and the reward for the game as it progresses. The interaction between the two is cyclical: the environment presents its current state as observation to the agent, which then processes the information (with or without the help of the three different harnesses) and decides a chosen action. The environment then takes the action and updates its internal state and calculates the reward, which the agent can use to make its next round of decisions, mimicking the continuous loop of a human player interacting with a game. This modular design allows you to quickly swap between using different LLMs and configure various game-specific environment and agent behaviors, making the integration of new games flexible. In order to set up a new game, you simply have to define the new game-specific environment as well as the specific actions for the game agent, and you are good to go. 
 
 ---
 
 ## Episode
 An episode represents the complete workflow of the agent and environment interaction for an entire game. In other words, it consists of each step of the agent’s action, the response from the environment, the agent’s next step, and so on and so forth until the game’s completion. 
-Each episode begins with a call to the environment's reset() method, which sets the game to its initial state. Then, the agent would take in the game state, and go through a series of internal processing in order to make an action through agent.get_action(). More specifically, if the harness mode is set to true, then the perception, memory, and reasoning modules would be activated to go through a series of steps of looking at the captured game image, storing the relevant information, and thinking about the best action to make next. This action is then sent through the env.step() function, where the environment is responsible for applying the action to the game world and updating its internal state according to the game rules, including the reward calculation. This observation and action cycle would continue until we encounter the termination flag (representing that the game has ended). All the game-specific information and the agent decision-making process is recorded within the cache directory, allowing you to refer back to the agent trajectory within the episode. 
+Each episode begins with a call to the environment's **reset()** method, which sets the game to its initial state. Then, the agent would take in the game state, and go through a series of internal processing in order to make an action through **agent.get_action()**. More specifically, if the harness mode is set to true, then the perception, memory, and reasoning modules would be activated to go through a series of steps of looking at the captured game image, storing the relevant information, and thinking about the best action to make next. This action is then sent through the **env.step()** function, where the environment is responsible for applying the action to the game world and updating its internal state according to the game rules, including the reward calculation. This observation and action cycle would continue until we encounter the termination flag (representing that the game has ended). All the game-specific information and the agent decision-making process is recorded within the **cache** directory, allowing you to refer back to the agent trajectory within the episode. 
 
 ---
 
 ## Single-Agent and Multi-Agent Evaluation Settings
 
-There are two different modes for how you can launch the game, namely single agent playing the game, and multi-player (player 1 vs. player 2). To launch the game for a single agent, simply use the single_agent_runner.py script. To launch the game for two agents, use the multi_agent_runner.py script. The specific games that are supported for the two modes are mentioned in the Model and Harness Support Details section below. Below is an example of how to launch the scripts for the tic-tac-toe game. 
+There are two different modes for how you can launch the game, namely single agent playing the game, and multi-player (player 1 vs. player 2). To launch the game for a single agent, simply use the **single_agent_runner.py** script. To launch the game for two agents, use the **multi_agent_runner.py** script. The specific games that are supported for the two modes are mentioned in the **Model and Harness Support Details** section below. Below is an example of how to launch the scripts for the tic-tac-toe game. 
 
 
 ### Example (text only)
@@ -54,12 +58,12 @@ Here is a more detailed description of what the command entails. The single_agen
 
 Once you do this, you will see the game state for each turn in the terminal with detailed information, such as the current game board state as follows:
 
-```
-  0 1 2
-0 X O . 
-1 . X . 
-2 . O . 
-```
+<div style="text-align: center; font-family: monospace; font-size: 16px; line-height: 1.5; margin: 20px 0;">
+  0 1 2<br>
+0 X O .<br>
+1 . X .<br>
+2 . O .
+</div>
 
 Representing the different pieces on the board at the current moment. Additionally, the game-specific state as well as the agent's specific decision-making process is logged into the "cache" directory with the game name and the model name as the subdirectories, so that you can see the detailed summary of how the agent decides what moves it makes.
  
@@ -82,7 +86,7 @@ We currently support integrations with the OpenAI, Gemini, Anthropic, xAI, and D
 ![agent_env](05_harness.png "Figure 3: Overall workflow of Lmgame-Bench.")
 
 
-| Game Names | Modality Support | Single-model Run | Agentic Run | Multi-Player |
+| **Game Names** | **Modality Support** | **Single-model Run** | **Agentic Run** | **Multi-Player** |
 |------------|------------------|------------------|-------------|--------------|
 | sokoban | text/vision | yes | yes | no |
 | tetris | text/vision | yes | yes | no |
