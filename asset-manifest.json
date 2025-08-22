@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ada62c28.css",
-    "main.js": "/static/js/main.2b6cefbd.js",
+    "main.js": "/static/js/main.445ecc56.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
     "static/media/02_mario-demo.gif": "/static/media/02_mario-demo.8c5514fed2f2d3c53254.gif",
     "static/media/mario_demo.gif": "/static/media/mario_demo.8c5514fed2f2d3c53254.gif",
@@ -33,6 +33,7 @@
     "static/media/blog1.png": "/static/media/blog1.224a5f52acfa6a2c43dd.png",
     "static/media/04_gym_retro.png": "/static/media/04_gym_retro.5b99f696592f9819bb6f.png",
     "static/media/02_game_control.png": "/static/media/02_game_control.cb723c465a02cc5283a1.png",
+    "static/media/06_grl_design.png": "/static/media/06_grl_design.ffdb530b08e99ea46f5c.png",
     "static/media/05_harness.png": "/static/media/05_harness.013b7d348644b2a662b0.png",
     "static/media/homepic3.jpg": "/static/media/homepic3.236c1697407e118f1bad.jpg",
     "static/media/04_gym_1_without_harness_success.png": "/static/media/04_gym_1_without_harness_success.b73e1e34c412adc119f0.png",
@@ -64,11 +65,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.ada62c28.css.map": "/static/css/main.ada62c28.css.map",
-    "main.2b6cefbd.js.map": "/static/js/main.2b6cefbd.js.map",
+    "main.445ecc56.js.map": "/static/js/main.445ecc56.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ada62c28.css",
-    "static/js/main.2b6cefbd.js"
+    "static/js/main.445ecc56.js"
   ]
 }

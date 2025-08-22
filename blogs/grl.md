@@ -20,9 +20,12 @@
 
 <div style="height:32px;"></div>
 
----
+## Overview
+An agent-level implementation controls the full lifecycle of environment and LLM interaction. Environment dynamics are isolated via declarative configs, making debugging simpler, scaling easier, and generalization measurable.
 
+![grl_design](06_grl_design.png "Figure: GRL training workflow.")
 
+<div style="height:16px;"></div>
 
 ## 1. **Agent-Centric Reinforcement Learning Framework**
 Our framework treats each *agent unit* as a self-contained rollout manager—controlling the entire lifecycle from task assignment to execution and feedback. This encapsulation is driven by two declarative configs:
