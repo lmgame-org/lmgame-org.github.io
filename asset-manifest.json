@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ada62c28.css",
-    "main.js": "/static/js/main.4fa9aed7.js",
+    "main.js": "/static/js/main.9c72671e.js",
     "static/js/453.e714295e.chunk.js": "/static/js/453.e714295e.chunk.js",
     "static/media/02_mario-demo.gif": "/static/media/02_mario-demo.8c5514fed2f2d3c53254.gif",
     "static/media/mario_demo.gif": "/static/media/mario_demo.8c5514fed2f2d3c53254.gif",
@@ -27,6 +27,7 @@
     "static/media/homepic7.jpg": "/static/media/homepic7.fc265fc44b14e36da000.jpg",
     "static/media/homepic6.png": "/static/media/homepic6.965bb0ca2000a7a19b62.png",
     "static/media/02_mechanical_computer.png": "/static/media/02_mechanical_computer.1fea9b372ada6d671988.png",
+    "static/media/06_example_validation_success_curves.png": "/static/media/06_example_validation_success_curves.b1d009de914907b1759b.png",
     "static/media/04_elite_four_over_leveling.png": "/static/media/04_elite_four_over_leveling.cb92be62e28c4a85dc0d.png",
     "static/media/homepic2.jpg": "/static/media/homepic2.2001cbe2174a283d247a.jpg",
     "static/media/blog1.png": "/static/media/blog1.224a5f52acfa6a2c43dd.png",
@@ -63,11 +64,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.ada62c28.css.map": "/static/css/main.ada62c28.css.map",
-    "main.4fa9aed7.js.map": "/static/js/main.4fa9aed7.js.map",
+    "main.9c72671e.js.map": "/static/js/main.9c72671e.js.map",
     "453.e714295e.chunk.js.map": "/static/js/453.e714295e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ada62c28.css",
-    "static/js/main.4fa9aed7.js"
+    "static/js/main.9c72671e.js"
   ]
 }
