@@ -1,12 +1,10 @@
-# GRL (Game Reinforcement Learning) in LLM Post Training
+# GRL (Game Reinforcement Learning)
 
 > Author: Lmgame Team
 
 > Date: Aug 25, 2025
 
-> TL;DR: GRL (Game Reinforcement Learning)  is an **agent-centric** framework for multi-turn reinforcement learning of LLMs, designed to study **generalization**. While well-suited for game-based tasks, it extends naturally to training and evaluating diverse domains with verifiable rewards—including math, coding, and beyond.  
->
-> Experiments show that training on board games such as Sokoban and Tetris can drive cross-game transfer improving planning ability and overall agentic task performance.
+> TL;DR: GRL (Game Reinforcement Learning) is an **agent-centric** framework for multi-turn reinforcement learning of LLMs, designed to study **generalization**. While well-suited for game-based tasks, it extends naturally to training and evaluating diverse domains with verifiable rewards—including math, coding, and beyond. Experiments show that training on board games such as Sokoban and Tetris can drive cross-game transfer, improving planning ability and overall agentic task performance.
 
 <div style="font-size:18px; text-align:left; letter-spacing:1px;">
   <a href="https://arxiv.org/pdf/2505.15146">Paper</a>

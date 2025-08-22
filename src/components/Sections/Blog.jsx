@@ -36,6 +36,25 @@ export default function Projects() {
 
           <ProjectItem>
             <ImageWrapper>
+              <StyledImage src={GRLCover} alt="lmgame_rl" />
+            </ImageWrapper>
+            <TextWrapper>
+              <PostTitle onClick={() => navigate("/blog/lmgame_rl")}>GRL (Game Reinforcement Learning) in LLM Post Training</PostTitle>
+              <PostDescription>
+                <TLDR onClick={() => togglePostDescription(2)}>
+                  {expandedPost === 2 ? "Hide TLDR" : "Show TLDR"}
+                </TLDR>
+                {expandedPost === 2 && (
+                  <FullDescription>
+                    GRL is an agent-centric framework for multi-turn RL of LLMs focused on generalization; training on Sokoban and Tetris improves cross-game planning and agentic performance.
+                  </FullDescription>
+                )}
+              </PostDescription>
+            </TextWrapper>
+          </ProjectItem>
+
+          <ProjectItem>
+            <ImageWrapper>
               <StyledImage src={LMGameUseCover} alt="lmgame_use" />
             </ImageWrapper>
             <TextWrapper>
@@ -72,24 +91,6 @@ export default function Projects() {
             </TextWrapper>
           </ProjectItem>
 
-          <ProjectItem>
-            <ImageWrapper>
-              <StyledImage src={GRLCover} alt="lmgame_rl" />
-            </ImageWrapper>
-            <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/lmgame_rl")}>GRL (Game Reinforcement Learning) in LLM Post Training</PostTitle>
-              <PostDescription>
-                <TLDR onClick={() => togglePostDescription(2)}>
-                  {expandedPost === 2 ? "Hide TLDR" : "Show TLDR"}
-                </TLDR>
-                {expandedPost === 2 && (
-                  <FullDescription>
-                    GRL is an agent-centric framework for multi-turn RL of LLMs focused on generalization; training on Sokoban and Tetris improves cross-game planning and agentic performance.
-                  </FullDescription>
-                )}
-              </PostDescription>
-            </TextWrapper>
-          </ProjectItem>
 
           {/* Legacy Blogs */}
           
