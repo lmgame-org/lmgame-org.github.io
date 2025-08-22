@@ -8,6 +8,7 @@ import GamingAgentCover from "../../assets/img/blogs/02_gaming_agent_intro.png";
 import LMGameBenchCover from "../../assets/img/blogs/03_lmgame_bench_cover.png";
 import PokemonRedCover from "../../assets/img/blogs/04_pokemon_red_cover.png";
 import LMGameUseCover from "../../assets/img/blogs/05_harness.png";
+import GRLCover from "../../assets/img/blogs/06_example_validation_success_curves.png";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
@@ -65,6 +66,25 @@ export default function Projects() {
                 {expandedPost === 0 && (
                   <FullDescription>
                     Pokémon is increasingly used to evaluate modern large language models, but current practices lack standardization, depend heavily on game-specific scaffolding, and are costly. We address these issues with lmgame-bench, a new framework offering standardized evaluations and initial results across diverse games.
+                  </FullDescription>
+                )}
+              </PostDescription>
+            </TextWrapper>
+          </ProjectItem>
+
+          <ProjectItem>
+            <ImageWrapper>
+              <StyledImage src={GRLCover} alt="lmgame_rl" />
+            </ImageWrapper>
+            <TextWrapper>
+              <PostTitle onClick={() => navigate("/blog/lmgame_rl")}>GRL (Game Reinforcement Learning) in LLM Post Training</PostTitle>
+              <PostDescription>
+                <TLDR onClick={() => togglePostDescription(2)}>
+                  {expandedPost === 2 ? "Hide TLDR" : "Show TLDR"}
+                </TLDR>
+                {expandedPost === 2 && (
+                  <FullDescription>
+                    GRL is an agent-centric framework for multi-turn RL of LLMs focused on generalization; training on Sokoban and Tetris improves cross-game planning and agentic performance.
                   </FullDescription>
                 )}
               </PostDescription>
