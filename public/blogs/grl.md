@@ -100,46 +100,37 @@ Each game is trained twice. Reported values correspond to the step at which the 
 
 
 
-Observations from Sokoban and Tetris Training:
+### Observations from Sokoban and Tetris Training
 
-1. Same-Game Generalization (Robust within Domain)
-We observe improvements in same-game but harder settings, indicating strong in-domain generalization.
-Training on Sokoban (6×6) leads to higher performance on the more complex Sokoban (8×8) task, with accuracy improving from 5.5% → 7.4%.
-Training on Tetris (1 block type) improves performance on Tetris (2 block types), from 9.9% → 23.1%.
-These results suggest that models trained on structured symbolic games can adapt to more challenging variants within the same domain, highlighting their capacity for scaling generalization to increased complexity.
+- **Same-Game Generalization (robust within domain)**
+  - Harder variants improve within the same game family.
+  - Sokoban: 6×6 → 8×8 rises from 5.5% → 7.4%.
+  - Tetris: 1 block type → 2 block types rises from 9.9% → 23.1%.
+  - Takeaway: Structured symbolic training scales to more complex in-domain settings.
 
-2. Cross-Game Generalization (Symbolic Transfer)
-Interestingly, we also find evidence of cross-game transfer. When trained on Sokoban, the model improves on Tetris tasks:
-Tetris (1 type): 2.2% → 4.5%
-Tetris (2 types): 9.9% → 13.1%
-Similarly, when trained on Tetris, the model improves on Sokoban tasks:
-Sokoban (6x6): 12.7% -> 15.1%
-Sokoban (8x8): 5.5% -> 7.2%
-Both Sokoban and Tetris share symbolic 2D ASCII representations and sequential reasoning requirements. The observed transfer suggests that training on one symbolic environment can boost performance on structurally similar symbolic tasks, even across different domains.
+- **Cross-Game Generalization (symbolic transfer)**
+  - Train on Sokoban → Tetris gains: 2.2% → 4.5% (1 type), 9.9% → 13.1% (2 types).
+  - Train on Tetris → Sokoban gains: 12.7% → 15.1% (6×6), 5.5% → 7.2% (8×8).
+  - Takeaway: Shared 2D symbolic structure enables transfer across different games.
 
-3. Blocksworld: Sensitivity to Representation Format
-Blocksworld performance demonstrates that representation format matters.
-With symbolic formats (2D ASCII tables or 1D lists), training on Sokoban or Tetris consistently improves Blocksworld outcomes.
-With natural language text representation, however, gains are inconsistent.
-This indicates that game-based symbolic reasoning primarily benefits other symbolic tasks but may not directly transfer to natural language reasoning, underscoring a representational gap between symbolic structures and linguistic abstractions.
+- **Blocksworld: sensitivity to representation**
+  - Symbolic formats (2D ASCII / 1D lists): consistent improvements after Sokoban/Tetris training.
+  - Natural language format: inconsistent gains.
+  - Takeaway: Symbolic-to-symbolic transfer is strong; symbolic-to-text is weaker.
 
-4. GSM8K: Neutral Effect on Math Reasoning
-For the GSM8K benchmark, training on Sokoban or Tetris yields neutral performance impact.
-There can be two explanations:
-Domain misalignment – Sokoban and Tetris emphasize spatial reasoning rather than arithmetic or logical deduction.
-Well-covered domain – Math is already a well-covered domain in LLM pretraining, so additional training on unrelated symbolic domains provides little incremental value.
-This reinforces the view that out-of-domain training benefits most when pretraining is insufficient or when structural overlap exists.
+- **GSM8K: neutral math impact**
+  - Effects are negligible when training on Sokoban/Tetris.
+  - Likely reasons: (a) domain misalignment (spatial vs arithmetic), (b) math already saturated in pretraining.
 
-5. WebShop: Multi-Turn Gains but with Instability
-For WebShop, which requires multi-turn reasoning and planning, we observe overall improvements after game-based training. This aligns well with the structural properties of board games. However, results are not fully stable:
-After Tetris training, run 1 shows a clear improvement, while run 2 shows a decline.
-This variability suggests that multi-turn reasoning tasks can benefit from symbolic training, but stability remains a challenge and need further investigation.
+- **WebShop: multi-turn gains with instability**
+  - Overall improvements align with multi-turn planning structure.
+  - Run-to-run variance persists (e.g., one Tetris-trained run improves, another declines).
 
-Insights:
-Game-based training generalizes most effectively when tasks share symbolic or multi-turn structure.
-Representation format plays a critical role, with symbolic-to-symbolic transfer being strong, but symbolic-to-text being weaker. 
-Domains already well-covered in pretraining (like math) see little gain.
-Training instability is a recurring issue, calling for more systematic exploration of curricula and stopping criteria.
+**Key insights**
+- Game-based training helps most when tasks share symbolic or multi-turn structure.
+- Representation matters; keep inputs symbolic to maximize transfer.
+- Domains well-covered in pretraining (e.g., math) see limited additional gains.
+- Stability is a challenge; curricula and stopping criteria deserve attention.
 
 ---
 

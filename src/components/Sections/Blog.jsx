@@ -39,7 +39,7 @@ export default function Projects() {
               <StyledImage src={GRLCover} alt="lmgame_rl" />
             </ImageWrapper>
             <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/lmgame_rl")}>GRL (Game Reinforcement Learning) in LLM Post Training</PostTitle>
+              <PostTitle onClick={() => navigate("/blog/grl")}>GRL (Game Reinforcement Learning) in LLM Post Training</PostTitle>
               <PostDescription>
                 <TLDR onClick={() => togglePostDescription(2)}>
                   {expandedPost === 2 ? "Hide TLDR" : "Show TLDR"}
