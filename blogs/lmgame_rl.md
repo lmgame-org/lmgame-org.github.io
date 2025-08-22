@@ -9,7 +9,7 @@
 <div style="font-size:18px; text-align:left; letter-spacing:1px;">
   <a href="https://arxiv.org/pdf/2505.15146">Paper</a>
   <span style="margin: 0 12px;"></span>
-  <a href="https://github.com/lmgame-org/GamingAgent">Lmgame Bench</a>
+  <a href="https://github.com/lmgame-org/GRL">GRL</a>
   <span style="margin: 0 12px;"></span>
   <a href="https://huggingface.co/spaces/lmgame/lmgame_bench">Leaderboard</a>
   <span style="margin: 0 12px;"></span>
