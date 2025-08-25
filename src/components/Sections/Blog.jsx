@@ -8,7 +8,7 @@ import GamingAgentCover from "../../assets/img/blogs/02_gaming_agent_intro.png";
 import LMGameBenchCover from "../../assets/img/blogs/03_lmgame_bench_cover.png";
 import PokemonRedCover from "../../assets/img/blogs/04_pokemon_red_cover.png";
 import LMGameUseCover from "../../assets/img/blogs/05_harness.png";
-import GRLCover from "../../assets/img/blogs/06_grl_design.png";
+import GRLCover from "../../assets/img/blogs/06_example_validation_success_curves.png";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
@@ -39,14 +39,14 @@ export default function Projects() {
               <StyledImage src={GRLCover} alt="grl" />
             </ImageWrapper>
             <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/grl")}>GRL (Game Reinforcement Learning) in LLM Post Training</PostTitle>
+              <PostTitle onClick={() => navigate("/blog/grl")}>Cross-Domain Gains from Game LLM Post-Training (GRL)</PostTitle>
               <PostDescription>
                 <TLDR onClick={() => togglePostDescription(2)}>
                   {expandedPost === 2 ? "Hide TLDR" : "Show TLDR"}
                 </TLDR>
                 {expandedPost === 2 && (
                   <FullDescription>
-                    GRL is an agent-centric framework for multi-turn RL of LLMs focused on generalization; training on Sokoban and Tetris improves cross-game planning and agentic performance.
+                    Training on Sokoban/Tetris boosts same-family games and transfers across games; out of domain, WebShop shows an unstable but positive ≈+6% gain, while GSM8K remains flat. GRL is an agent-centric, multi-turn RL framework that makes LLM–environment interaction highly customizable for systematic generalization studies.
                   </FullDescription>
                 )}
               </PostDescription>

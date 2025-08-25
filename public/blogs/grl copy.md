@@ -1,10 +1,10 @@
-# Exploring Cross-Domain Performance Gains from Game LLM Post-Training (GRL)
+# GRL (Game Reinforcement Learning)
 
 > Author: Lmgame Team
 
 > Date: Aug 25, 2025
 
-> TL;DR: Post-training LLMs on games (Sokoban, Tetris) improves same-family games and yields modest, unstable out-of-domain gains (WebShop ≈ +6%), while math (GSM8K) shows no clear benefit. We introduce GRL, an agent-centric multi-turn RL framework that makes it easy to customize LLM–environment interaction and systematically explore cross-domain generalization.
+> TL;DR: GRL (Game Reinforcement Learning) is an agent-centric framework for multi-turn reinforcement learning of LLMs, designed to study generalization. While well-suited for game-based tasks, it extends naturally to training and evaluating diverse domains with verifiable rewards—including math, coding, and beyond. Experiments show that training on board games such as Sokoban and Tetris can drive cross-game transfer, improving planning ability and overall agentic task performance.
 
 <div style="font-size:18px; text-align:left; letter-spacing:1px;">
   <a href="https://arxiv.org/pdf/2505.15146">Paper</a>
@@ -20,21 +20,38 @@
 
 <div style="height:32px;"></div>
 
-## Findings: Cross-Domain Effects of Game Post-Training
+## Overview
+An agent-level implementation controls the full lifecycle of environment and LLM interaction. Environment dynamics are isolated via declarative configs, making debugging simpler, scaling easier, and generalization measurable.
 
-- **Same- and Cross-Game Generalization**
-  - Training on Sokoban improves Sokoban variants and transfers to Tetris/Blocksworld.
-  - Training on Tetris improves Tetris variants and transfers to Sokoban/Blocksworld.
-  - Takeaway: Shared 2D symbolic structure supports transfer across games.
-
-- **Out-of-Domain Tasks**
-  - WebShop: unstable but positive gains with an increasing tendency (≈ +6% absolute after Sokoban/Tetris training).
-  - GSM8K: no clear improvement; likely domain mismatch and saturation from pretraining.
-
-- **Why GRL**
-  - We use GRL—an agent-centric, multi-turn RL framework—to flexibly control prompts, reasoning, turn budgets, and action formats, enabling rapid ablations over interaction/hyperparameters to probe generalization beyond games.
+![grl_design](06_grl_design.png "Figure: GRL training workflow.")
 
 <div style="height:16px;"></div>
+
+## 1. **Agent-Centric Reinforcement Learning Framework**
+Our framework treats each *agent unit* as a self-contained rollout manager—controlling the entire lifecycle from task assignment to execution and feedback. This encapsulation is driven by two declarative configs:
+- **`agent_config`**: Governs the LLM interaction—defines prompts, reasoning structure, token and turn budgets, action formatting, etc.
+- **`env_config`**: Dictates environment behavior—task dynamics, grid sizes, render modes, vocabularies, datasets, and gym-style dynamics.
+
+This separation ensures each agent is **completely modular and self-contained**, which:
+- Makes debugging straightforward and localized.
+- Enables clean extensibility across diverse environment types.
+- Enhances scalability by reducing cross-agent interference and simplifying configuration management.
+
+## GRL vs. verl-agent vs. RAGEN
+
+| Feature / Aspect          | **GRL (Ours)** – Advantage | verl-agent | RAGEN |
+|---------------------------|---------------------------|------------|-------|
+| **Design Focus**          | **Agent-centric**: each agent unit controls full rollout lifecycle | Gym-style multi-turn rollouts, less explicit agent isolation | Trajectory-level RL, less agent identity focus |
+| **Config Structure**      | **Clear split**: `agent_config` (LLM behavior) + `env_config` (environment) | Mixed configs, memory modules, less separation | Unified config, environment-focused |
+| **Scalability**           | **High** – modular agents scale cleanly across diverse envs | High throughput, grouped rollouts | Modular but less per-agent isolation |
+| **Debugging Ease**        | **Easy** – localized to single agent unit | Possible, but configs less explicit | More global-level tuning required |
+| **Cross-Domain Transfer** | **Built-in** – train/validate within isolated agent units | Possible with custom envs | Focused on stochastic env optimization |
+| **Customization**         | **High** – plug-and-play new agents/envs | Flexible, but less structured | Flexible, but environment-centric |
+
+(Please check [TUTORIAL.md](https://github.com/lmgame-org/LMGameRL/blob/main/docs/TUTORIAL.md) for further details)
+
+
+---
 
 
 
@@ -109,7 +126,8 @@ Each game is trained twice. Reported values correspond to the step at which the 
   - Likely reasons: (a) domain misalignment (spatial vs arithmetic), (b) math already saturated in pretraining.
 
 - **WebShop: multi-turn gains with instability**
-  - Overall improvements align with multi-turn planning structure (≈ +6% absolute on average), but variance persists across runs.
+  - Overall improvements align with multi-turn planning structure.
+  - Run-to-run variance persists (e.g., one Tetris-trained run improves, another declines).
 
 **Key insights**
 - Game-based training helps most when tasks share symbolic or multi-turn structure.
@@ -138,36 +156,3 @@ Source examples/sokoban_ppo/qwen_7b.sh
 ```bash
 Source examples/tetris_ppo/qwen_7b.sh
 ```
-
----
-
-## GRL System Design
-
-An agent-level implementation controls the full lifecycle of environment and LLM interaction. Environment dynamics are isolated via declarative configs, making debugging simpler, scaling easier, and generalization measurable.
-
-![grl_design](06_grl_design.png "Figure: GRL training workflow.")
-
-<div style="height:16px;"></div>
-
-### Agent-Centric Reinforcement Learning Framework
-Our framework treats each *agent unit* as a self-contained rollout manager—controlling the entire lifecycle from task assignment to execution and feedback. This encapsulation is driven by two declarative configs:
-- **`agent_config`**: Governs the LLM interaction—defines prompts, reasoning structure, token and turn budgets, action formatting, etc.
-- **`env_config`**: Dictates environment behavior—task dynamics, grid sizes, render modes, vocabularies, datasets, and gym-style dynamics.
-
-This separation ensures each agent is **completely modular and self-contained**, which:
-- Makes debugging straightforward and localized.
-- Enables clean extensibility across diverse environment types.
-- Enhances scalability by reducing cross-agent interference and simplifying configuration management.
-
-### GRL vs. verl-agent vs. RAGEN
-
-| Feature / Aspect          | **GRL (Ours)** – Advantage | verl-agent | RAGEN |
-|---------------------------|---------------------------|------------|-------|
-| **Design Focus**          | **Agent-centric**: each agent unit controls full rollout lifecycle | Gym-style multi-turn rollouts, less explicit agent isolation | Trajectory-level RL, less agent identity focus |
-| **Config Structure**      | **Clear split**: `agent_config` (LLM behavior) + `env_config` (environment) | Mixed configs, memory modules, less separation | Unified config, environment-focused |
-| **Scalability**           | **High** – modular agents scale cleanly across diverse envs | High throughput, grouped rollouts | Modular but less per-agent isolation |
-| **Debugging Ease**        | **Easy** – localized to single agent unit | Possible, but configs less explicit | More global-level tuning required |
-| **Cross-Domain Transfer** | **Built-in** – train/validate within isolated agent units | Possible with custom envs | Focused on stochastic env optimization |
-| **Customization**         | **High** – plug-and-play new agents/envs | Flexible, but less structured | Flexible, but environment-centric |
-
-(Please check [TUTORIAL.md](https://github.com/lmgame-org/LMGameRL/blob/main/docs/TUTORIAL.md) for further details)
