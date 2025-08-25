@@ -46,7 +46,7 @@ export default function Projects() {
                 </TLDR>
                 {expandedPost === 2 && (
                   <FullDescription>
-                    Training on Sokoban/Tetris boosts same-family games and transfers across games; out of domain, WebShop shows an unstable but positive ≈+6% gain, while GSM8K remains flat. GRL is an agent-centric, multi-turn RL framework that makes LLM–environment interaction highly customizable for systematic generalization studies.
+                    Training on Sokoban/Tetris boosts same-family games (≈+2–56%) and transfers across games (≈+2–7%); out of domain, WebShop shows ≈+6% unstable gains, while GSM8K remains flat. GRL is an agent-centric, multi-turn RL framework that makes LLM–environment interaction highly customizable for systematic generalization studies.
                   </FullDescription>
                 )}
               </PostDescription>
