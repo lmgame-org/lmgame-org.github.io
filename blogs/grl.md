@@ -4,7 +4,7 @@
 
 > Date: Aug 25, 2025
 
-> TL;DR: Post-training LLMs on games (Sokoban, Tetris) improves same-family games and yields modest, unstable out-of-domain gains (WebShop ≈ +6%), while math (GSM8K) shows no clear benefit. We introduce GRL, an agent-centric multi-turn RL framework that makes it easy to customize LLM–environment interaction and systematically explore cross-domain generalization.
+> TL;DR: Post-training LLMs on games (Sokoban, Tetris) boosts same-family games (≈ +2–56%) and transfers across games (≈ +2–7%); out of domain, WebShop shows ≈ +6% unstable gains, while math (GSM8K) shows no clear benefit. We introduce GRL, an agent-centric multi-turn RL framework that makes it easy to customize LLM–environment interaction and systematically explore cross-domain generalization.
 
 <div style="font-size:18px; text-align:left; letter-spacing:1px;">
   <a href="https://arxiv.org/pdf/2505.15146">Paper</a>
