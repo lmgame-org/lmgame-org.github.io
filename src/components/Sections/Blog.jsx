@@ -39,14 +39,14 @@ export default function Projects() {
               <StyledImage src={GRLCover} alt="grl" />
             </ImageWrapper>
             <TextWrapper>
-              <PostTitle onClick={() => navigate("/blog/grl")}>Cross-Domain Gains from Game LLM Post-Training (GRL)</PostTitle>
+              <PostTitle onClick={() => navigate("/blog/grl")}>Can RL-based LLM post-training on games generalize to other tasks? (GRL)</PostTitle>
               <PostDescription>
                 <TLDR onClick={() => togglePostDescription(2)}>
                   {expandedPost === 2 ? "Hide TLDR" : "Show TLDR"}
                 </TLDR>
                 {expandedPost === 2 && (
                   <FullDescription>
-                    Training on Sokoban/Tetris boosts same-family games (≈+2–56%) and transfers across games (≈+2–7%); out of domain, WebShop shows ≈+6% unstable gains, while GSM8K remains flat. GRL is an agent-centric, multi-turn RL framework that makes LLM–environment interaction highly customizable for systematic generalization studies.
+                    Post-training LLMs on games (Sokoban, Tetris) improves same-family variants (≈ +2–56%) and shows smaller gains on related tasks (Blocksworld +3–7%, WebShop ~+6% but unstable); no improvement on GSM8K. We introduce GRL, an agent-centric, multi-turn RL framework that makes LLM–environment interaction highly customizable for systematic generalization studies.
                   </FullDescription>
                 )}
               </PostDescription>

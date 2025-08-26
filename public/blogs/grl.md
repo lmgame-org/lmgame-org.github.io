@@ -1,10 +1,10 @@
-# Exploring Cross-Domain Performance Gains from Game LLM Post-Training (GRL)
+# Can RL-based LLM post-training on games generalize to other tasks? (GRL)
 
 > Author: Lmgame Team
 
 > Date: Aug 25, 2025
 
-> TL;DR: Post-training LLMs on games (Sokoban, Tetris) boosts same-family games (≈ +2–56%) and transfers across games (≈ +2–7%); out of domain, WebShop shows ≈ +6% unstable gains, while math (GSM8K) shows no clear benefit. We introduce GRL, an agent-centric multi-turn RL framework that makes it easy to customize LLM–environment interaction and systematically explore cross-domain generalization.
+> TL;DR: Post-training LLMs on games (Sokoban, Tetris) improves same-family variants (≈ +2–56%) and shows smaller gains on related tasks (Blocksworld +3–7%, WebShop ~+6% but unstable); no improvement on GSM8K. We introduce GRL, an agent-centric multi-turn RL framework that makes LLM–environment interaction highly customizable for systematic generalization studies.
 
 <div style="font-size:18px; text-align:left; letter-spacing:1px;">
   <a href="https://arxiv.org/pdf/2505.15146">Paper</a>
@@ -20,16 +20,17 @@
 
 <div style="height:32px;"></div>
 
-## Findings: Cross-Domain Effects of Game Post-Training
+## Findings: How game training carries over to other tasks
 
-- **Same- and Cross-Game Generalization**
-  - Training on Sokoban improves Sokoban variants and transfers to Tetris/Blocksworld.
-  - Training on Tetris improves Tetris variants and transfers to Sokoban/Blocksworld.
-  - Takeaway: Shared 2D symbolic structure supports transfer across games.
+- **Within-game family (in-family) generalization**
+  - Sokoban: training on 6×6 improves 8×8.
+  - Tetris: training on 1 block type improves 2 block types.
+  - Summary: ≈ +2–56% across same-family variants.
 
-- **Out-of-Domain Tasks**
-  - WebShop: unstable but positive gains with an increasing tendency (≈ +6% absolute after Sokoban/Tetris training).
-  - GSM8K: no clear improvement; likely domain mismatch and saturation from pretraining.
+- **Other tasks beyond the training games**
+  - Blocksworld: +3–7% after Sokoban/Tetris training.
+  - WebShop: ~+6% absolute on average, but unstable.
+  - GSM8K: no improvement.
 
 - **Why GRL**
   - We use GRL—an agent-centric, multi-turn RL framework—to flexibly control prompts, reasoning, turn budgets, and action formats, enabling rapid ablations over interaction/hyperparameters to probe generalization beyond games.
