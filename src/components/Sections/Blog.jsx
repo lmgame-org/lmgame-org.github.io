@@ -8,7 +8,7 @@ import GamingAgentCover from "../../assets/img/blogs/02_gaming_agent_intro.png";
 import LMGameBenchCover from "../../assets/img/blogs/03_lmgame_bench_cover.png";
 import PokemonRedCover from "../../assets/img/blogs/04_pokemon_red_cover.png";
 import LMGameUseCover from "../../assets/img/blogs/05_harness.png";
-import GRLCover from "../../assets/img/blogs/06_example_validation_success_curves.png";
+import GRLCover from "../../assets/img/blogs/06_grl_cover.png";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
