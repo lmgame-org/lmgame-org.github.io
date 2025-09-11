@@ -9,6 +9,7 @@ import LMGameBenchCover from "../../assets/img/blogs/03_lmgame_bench_cover.png";
 import PokemonRedCover from "../../assets/img/blogs/04_pokemon_red_cover.png";
 import LMGameUseCover from "../../assets/img/blogs/05_harness.png";
 import GRLCover from "../../assets/img/blogs/06_grl_cover.png";
+import TexasCover from "../../assets/img/blogs/07_texas_cover.gif";
 
 import TopNavbar from "../Nav/TopNavbar";
 import Footer from "./Footer";
@@ -33,6 +34,25 @@ export default function Projects() {
         <ProjectList>
 
           {/* Repeat below for other projects with the same TLDR support */}
+          <ProjectItem>
+            <ImageWrapper>
+              <StyledImage src={TexasCover} alt="TexasGamePlay" />
+            </ImageWrapper>
+            <TextWrapper>
+              <PostTitle onClick={() => navigate("/blog/texas")}>Multi-Agent Evaluation in Lmgame-Bench: Texas Hold’em Case Study</PostTitle>
+              <PostDescription>
+                <TLDR onClick={() => togglePostDescription(0)}>
+                  {expandedPost === 0 ? "Hide TLDR" : "Show TLDR"}
+                </TLDR>
+                {expandedPost === 0 && (
+                  <FullDescription>
+                    We extend Lmgame-Bench to a multi-agent evaluation setting using Texas Hold’em. Built on PettingZoo and adapted to our harness, the environment lets LLMs face each other in imperfect-information play. We report tournament results across eight models, use TrueSkill2 for ranking, and analyze play patterns using Aggression Factor and Fold Frequency to characterize strategic tendencies. 
+                  </FullDescription>
+                )}
+              </PostDescription>
+            </TextWrapper>
+          </ProjectItem>
+
 
           <ProjectItem>
             <ImageWrapper>
